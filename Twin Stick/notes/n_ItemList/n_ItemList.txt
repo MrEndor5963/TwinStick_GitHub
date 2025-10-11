@@ -1,0 +1,51 @@
+	Pistols
+m1911
+S&W 500
+Deagle (Desert eagle)
+5-7 Dualies
+Rickoshet (Bounces off walls and enemies)
+
+	Assualt Rifles
+AK-47
+m4a1-s
+SMR
+
+	Smg's
+mp5
+Timmy (Thompson)
+	
+	Snipers
+AWP
+DSR50
+/No-Scoper
+
+	Explosive
+RPG
+China Lake
+
+
+	Melee
+Baseball bat
+Machete
+Shovel
+Guitar
+
+	Other
+Ray-gun
+crossbow
+Lazer
+Square gun (Quad laser)
+SlingShot and bird (Angry bird)
+Ballistic Knives
+Squid Gun
+Sad child (Issac from binding of issac)
+
+
+	Items
+
+Minster beast - Randomly recieve challenges for money
+Weighted belt - Reduced knockback from firing weapons
+Blueprint - Copies the item to the right of it
+Green herb - Heals some health
+Ink Ribbon - Use it to save your game at a typewriter//Might be too difficult to program
+Mystery Box - Recieve a random weapon
