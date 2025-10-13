@@ -9,16 +9,28 @@ key_up = keyboard_check(vk_up) or keyboard_check(ord("W"))
 //key_up_pressed = keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"))
 key_down = keyboard_check(vk_down) or keyboard_check(ord("S"))
 //key_down_pressed = keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))
-key_shoot = mouse_check_button(mb_left)
-key_shoot_pressed = mouse_check_button_pressed(mb_left)
+key_shoot = mouse_check_button(mb_left) or gamepad_button_check(player_number,gp_shoulderrb)
+key_shoot_pressed = mouse_check_button_pressed(mb_left) or gamepad_button_check_pressed(player_number,gp_shoulderrb)
+
+gamepad_enumerate()
+//aim_direction = point_direction(x, y, mouse_x, mouse_y)
+if abs(gamepad_axis_value(player_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(player_number,gp_axisrv)) > 0.1{
+aim_x = ((gamepad_axis_value(player_number,gp_axisrh)*10) div 1)
+aim_y = ((gamepad_axis_value(player_number,gp_axisrv)*10) div 1)}
+
+aim_direction = point_direction(0, 0, aim_x,aim_y)
+
+
 
 
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
 hsp = (key_right-key_left)*mov_spd
+if abs(gamepad_axis_value(player_number,gp_axislh)) > 0.2{hsp = gamepad_axis_value(player_number,gp_axislh)*mov_spd}
 hsp += hsp_knockback
 vsp = (key_down-key_up)*mov_spd
+if abs(gamepad_axis_value(player_number,gp_axislv)) > 0.2{vsp = gamepad_axis_value(player_number,gp_axislv)*mov_spd}
 vsp += vsp_knockback
 
 if collision_present(x+hsp,y)
@@ -47,11 +59,14 @@ shoot_timer = 0
 _bullet = instance_create_depth(x,y,depth+1,Bullet)
 //ammo -= 1
 recoil = random_range(-base_recoil,base_recoil)
-if recoil_cooldown > 0{_bullet.image_angle = point_direction(x, y, mouse_x, mouse_y)+recoil}
-else{_bullet.image_angle = point_direction(x, y, mouse_x, mouse_y)}
+if recoil_cooldown > 0{_bullet.image_angle = aim_direction+recoil}
+else{_bullet.image_angle = aim_direction}
 recoil_cooldown = base_recoil*2
 _bullet.damage = weapon_damage
 _bullet.penetration = penetration
+_bullet.bullet_speed = bullet_speed
+_bullet.sprite_index = bullet_sprite
+
 direction = _bullet.image_angle +180
 speed = knockback
 hsp_knockback = hspeed
@@ -63,11 +78,17 @@ speed = 0
 if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 10}
 if hit_stun > 0{hit_stun -= 1}
 
+if player_number = 0{
+if aim_direction  > 45 or aim_direction  < 135{sprite_index = s_HazelU}
+if aim_direction  > 135 && aim_direction  < 225{sprite_index = s_HazelL}
+if aim_direction  > 225 && aim_direction  < 315{sprite_index = s_HazelD}
+if aim_direction  > 315 or aim_direction  < 45{sprite_index = s_HazelR}}
 
-if point_direction(x, y, mouse_x, mouse_y)  > 45 or point_direction(x, y, mouse_x, mouse_y)  < 135{sprite_index = s_HazelU}
-if point_direction(x, y, mouse_x, mouse_y)  > 135 && point_direction(x, y, mouse_x, mouse_y)  < 225{sprite_index = s_HazelL}
-if point_direction(x, y, mouse_x, mouse_y)  > 225 && point_direction(x, y, mouse_x, mouse_y)  < 315{sprite_index = s_HazelD}
-if point_direction(x, y, mouse_x, mouse_y)  > 315 or point_direction(x, y, mouse_x, mouse_y)  < 45{sprite_index = s_HazelR}
+if player_number = 1{
+if aim_direction  > 45 or aim_direction  < 135{sprite_index = s_JuneU}
+if aim_direction  > 135 && aim_direction  < 225{sprite_index = s_JuneL}
+if aim_direction  > 225 && aim_direction  < 315{sprite_index = s_JuneD}
+if aim_direction  > 315 or aim_direction  < 45{sprite_index = s_JuneR}}
 
 if aim_object != 0{
-aim_object.x = x;aim_object.y = y;aim_object.image_angle = point_direction(x, y, mouse_x, mouse_y)}
+aim_object.x = x;aim_object.y = y;aim_object.image_angle = aim_direction}

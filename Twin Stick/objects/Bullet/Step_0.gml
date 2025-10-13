@@ -1,5 +1,5 @@
 direction = image_angle
-speed = 30
+speed = bullet_speed
 
 if place_meeting(x,y,Enemy){
 
