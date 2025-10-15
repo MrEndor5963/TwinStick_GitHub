@@ -13,6 +13,7 @@ SMR
 	Smg's
 mp5
 Timmy (Thompson)
+Coin Shooter (cost 10 cents per bullet)
 	
 	Snipers
 AWP
@@ -29,6 +30,7 @@ Baseball bat
 Machete
 Shovel
 Guitar
+Diamond Sword
 
 	Other
 Ray-gun
@@ -39,13 +41,17 @@ SlingShot and bird (Angry bird)
 Ballistic Knives
 Squid Gun
 Sad child (Issac from binding of issac)
-
+Musket(Has bayonet on end)
+death tome - Kills an enemy in 40 seconds after use, must have shinigami eyes to use
+Bear mask - Enemys will not target player while equipped
 
 	Items
-
 Minster beast - Randomly recieve challenges for money
 Weighted belt - Reduced knockback from firing weapons
 Blueprint - Copies the item to the right of it
-Green herb - Heals some health
-Ink Ribbon - Use it to save your game at a typewriter//Might be too difficult to program
+Mixed herbs (green, red) - Increases recovers all hp
+Ink Ribbon - Use it to save your game at a typewriter//(Spawns safe room with typewriter between floors)
 Mystery Box - Recieve a random weapon
+Broken Controller(Joycon) - Causes movement and aim to drift in a random direction, triples player hit invincibiltiy
+GTO book - Doubles payout of the roulette wheel
+Shinigami eyes - Can see enemy health bars, but reduces hp and hp upgrades by half

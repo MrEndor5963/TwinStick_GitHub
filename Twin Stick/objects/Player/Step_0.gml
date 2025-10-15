@@ -12,13 +12,23 @@ key_down = keyboard_check(vk_down) or keyboard_check(ord("S"))
 key_shoot = mouse_check_button(mb_left) or gamepad_button_check(player_number,gp_shoulderrb)
 key_shoot_pressed = mouse_check_button_pressed(mb_left) or gamepad_button_check_pressed(player_number,gp_shoulderrb)
 
-gamepad_enumerate()
-//aim_direction = point_direction(x, y, mouse_x, mouse_y)
+key_weapon_toggle_back = gamepad_button_check_pressed(player_number,gp_shoulderl) or mouse_wheel_up()
+key_weapon_toggle_forward = gamepad_button_check_pressed(player_number,gp_shoulderr) or mouse_wheel_down()
+
+if key_weapon_toggle_back{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(weapon_list)-1}}
+if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(weapon_list){weapon_number = 0}}
+
+
+
 if abs(gamepad_axis_value(player_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(player_number,gp_axisrv)) > 0.1{
 aim_x = ((gamepad_axis_value(player_number,gp_axisrh)*10) div 1)
 aim_y = ((gamepad_axis_value(player_number,gp_axisrv)*10) div 1)}
 
+stick_aim_x = gamepad_axis_value(player_number,gp_axisrh)
+stick_aim_y = gamepad_axis_value(player_number,gp_axisrv)
+
 aim_direction = point_direction(0, 0, aim_x,aim_y)
+//aim_direction = point_direction(x, y, mouse_x,mouse_y)
 
 
 
@@ -49,13 +59,13 @@ if collision_present(x,y+vsp)
 
  y += vsp
 
-if shoot_timer < shoot_delay{shoot_timer += 1}
+if shoot_timer > 0{shoot_timer -= 1}
 if recoil_cooldown > 0{recoil_cooldown -= 1}
 
 recoil = 0
-if shoot_timer = shoot_delay && ammo > 0{
+if shoot_timer <= 0 && ammo > 0{
 if key_shoot && auto = true or key_shoot_pressed && auto = false{
-shoot_timer = 0
+shoot_timer = shoot_delay
 _bullet = instance_create_depth(x,y,depth+1,Bullet)
 //ammo -= 1
 recoil = random_range(-base_recoil,base_recoil)
@@ -75,7 +85,7 @@ speed = 0
 }
 }
 
-if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 10}
+if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 30}
 if hit_stun > 0{hit_stun -= 1}
 
 if player_number = 0{

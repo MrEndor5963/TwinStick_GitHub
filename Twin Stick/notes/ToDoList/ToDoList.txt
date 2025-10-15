@@ -1,0 +1,7 @@
+Add weapon switching
+enemies
+map design
+main menu
+individual player kill counts
+
+And more...

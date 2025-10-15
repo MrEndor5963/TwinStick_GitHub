@@ -26,7 +26,7 @@
   "origin":3,
   "parent":{
     "name":"PlayerSprites",
-    "path":"folders/BSprites/PlayerSprites.yy",
+    "path":"folders/BSprites/GunSprites/PlayerSprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

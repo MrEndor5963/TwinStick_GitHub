@@ -11,10 +11,8 @@ particle.timer += 10
 }
 }
 
-
-path_delete(path)
-path = path_add()
-mp_grid_path(global.grid,path,x,y,Player.x,Player.y,true)
+find_player_target()
+mp_grid_path(global.grid,path,x,y,target.x,target.y,true)
 path_start(path,3,path_action_stop,false)
 
 

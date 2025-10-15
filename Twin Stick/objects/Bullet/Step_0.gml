@@ -1,7 +1,12 @@
 direction = image_angle
 speed = bullet_speed
 
-if place_meeting(x,y,Enemy){
+if hurts_player = true && place_meeting(x,y,Player){
+var_temp = instance_nearest(x,y,Player)
+var_temp.hp -= 1;instance_destroy();exit
+}
+
+if hurts_enemy = true && place_meeting(x,y,Enemy){
 
 if array_contains(contact_list,instance_place(x,y,Enemy)) = false{
 array_push(contact_list,instance_place(x,y,Enemy))
