@@ -1,4 +1,7 @@
-cam_size_x = 960;cam_size_y = 540
+view_enabled = true
+view_visible[0] = true
+clamp_x1 = 0;clamp_x2 = room_width
+clamp_y1 = 0;clamp_y2 = room_height
 
 cam_target_x = Player.x+(Player.stick_aim_x*100)
 cam_target_y = Player.y+(Player.stick_aim_y*100)

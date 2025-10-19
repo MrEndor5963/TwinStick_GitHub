@@ -43,10 +43,13 @@ Squid Gun
 Sad child (Issac from binding of issac)
 Musket(Has bayonet on end)
 death tome - Kills an enemy in 40 seconds after use, must have shinigami eyes to use
-Bear mask - Enemys will not target player while equipped
+Spread shot(From Cuphead)
 
 	Items
-Minster beast - Randomly recieve challenges for money
+Mushroom - Increases Size and max hp
+Jug - Increases max hp
+
+Mr Beef - Randomly recieve challenges for money
 Weighted belt - Reduced knockback from firing weapons
 Blueprint - Copies the item to the right of it
 Mixed herbs (green, red) - Increases recovers all hp
@@ -55,3 +58,8 @@ Mystery Box - Recieve a random weapon
 Broken Controller(Joycon) - Causes movement and aim to drift in a random direction, triples player hit invincibiltiy
 GTO book - Doubles payout of the roulette wheel
 Shinigami eyes - Can see enemy health bars, but reduces hp and hp upgrades by half
+American Flag - all shop items replaced with guns and fast food restaurants spawn of every floor, increases hitbox size
+Super Star - Move at double speed, become invincible, and damage all enemies on contact for 30 seconds
+Shadow clone - Spawns a shadow clone that shoots behind you
+Jump Circle - Allows you to jump 36 times, which avoids most enemy attacks
+Bear mask - Stops some enemies from targeting the player

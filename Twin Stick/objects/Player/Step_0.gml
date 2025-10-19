@@ -27,8 +27,8 @@ aim_y = ((gamepad_axis_value(player_number,gp_axisrv)*10) div 1)}
 stick_aim_x = gamepad_axis_value(player_number,gp_axisrh)
 stick_aim_y = gamepad_axis_value(player_number,gp_axisrv)
 
-aim_direction = point_direction(0, 0, aim_x,aim_y)
-//aim_direction = point_direction(x, y, mouse_x,mouse_y)
+//aim_direction = point_direction(0, 0, aim_x,aim_y)
+aim_direction = point_direction(x, y, mouse_x,mouse_y)
 
 
 

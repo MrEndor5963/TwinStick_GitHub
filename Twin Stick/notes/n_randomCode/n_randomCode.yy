@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"n_randomCode",
+  "name":"n_randomCode",
+  "parent":{
+    "name":"Notes",
+    "path":"folders/Notes.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}
