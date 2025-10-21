@@ -26,7 +26,7 @@
   "origin":6,
   "parent":{
     "name":"Hazel",
-    "path":"folders/BSprites/GunSprites/PlayerSprites/Hazel.yy",
+    "path":"folders/BSprites/PlayerSprites/Hazel.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

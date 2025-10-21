@@ -16,7 +16,7 @@ if move_timer = 0{move_timer = 60
 	
 find_player_target()
 mp_grid_path(global.grid,path,x,y,target.x,target.y,true)
-path_start(path,2.5,path_action_stop,false)}
+path_start(path,5,path_action_stop,false)}
 
 
 if path_speed != 0{path_speed *=0.9};if path_speed < 0.1{path_speed = 0}

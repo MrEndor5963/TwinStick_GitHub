@@ -10,8 +10,6 @@ return false
 
 function create_enemy(){
 hit_stun = 0
-image_xscale = 3
-image_yscale = 3
 hitbox = instance_create_depth(x,y,depth+1,Enemy)
 hitbox.sprite_index = sprite_index
 hitbox.hp = hp
