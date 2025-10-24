@@ -8,8 +8,8 @@
   "name":"RoomChange",
   "overriddenProperties":[],
   "parent":{
-    "name":"AObjects",
-    "path":"folders/AObjects.yy",
+    "name":"RoomMaker",
+    "path":"folders/AObjects/RoomMaker.yy",
   },
   "parentObjectId":null,
   "persistent":false,

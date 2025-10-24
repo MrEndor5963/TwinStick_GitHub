@@ -1,4 +1,5 @@
 depth = -y
+set_tileset_collision()
 if keyboard_check_pressed(ord("R")) or hp <= 0{game_restart()}
 
 key_left = keyboard_check(vk_left) or keyboard_check(ord("A"))
@@ -15,8 +16,8 @@ key_shoot_pressed = mouse_check_button_pressed(mb_left) or gamepad_button_check_
 key_weapon_toggle_back = gamepad_button_check_pressed(player_number,gp_shoulderl) or mouse_wheel_up()
 key_weapon_toggle_forward = gamepad_button_check_pressed(player_number,gp_shoulderr) or mouse_wheel_down()
 
-if key_weapon_toggle_back{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(weapon_list)-1}}
-if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(weapon_list){weapon_number = 0}}
+if key_weapon_toggle_back && can_cycle_weapons = true{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(weapon_list)-1}}
+if key_weapon_toggle_forward && can_cycle_weapons = true{weapon_number += 1;if weapon_number = array_length(weapon_list){weapon_number = 0}}
 
 
 
@@ -27,8 +28,8 @@ aim_y = ((gamepad_axis_value(player_number,gp_axisrv)*10) div 1)}
 stick_aim_x = gamepad_axis_value(player_number,gp_axisrh)
 stick_aim_y = gamepad_axis_value(player_number,gp_axisrv)
 
-//aim_direction = point_direction(0, 0, aim_x,aim_y)
-aim_direction = point_direction(x, y, mouse_x,mouse_y)
+aim_direction = point_direction(0, 0, aim_x,aim_y)
+//aim_direction = point_direction(x, y, mouse_x,mouse_y)
 
 
 
@@ -88,17 +89,14 @@ speed = 0
 if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 30}
 if hit_stun > 0{hit_stun -= 1}
 
-if player_number = 0{
-if aim_direction  > 45 or aim_direction  < 135{sprite_index = s_HazelU}
-if aim_direction  > 135 && aim_direction  < 225{sprite_index = s_HazelL}
-if aim_direction  > 225 && aim_direction  < 315{sprite_index = s_HazelD}
-if aim_direction  > 315 or aim_direction  < 45{sprite_index = s_HazelR}}
+if aim_direction  > 45 or aim_direction  < 135{sprite_string = "U"}
+if aim_direction  > 135 && aim_direction  < 225{sprite_string = "L"}
+if aim_direction  > 225 && aim_direction  < 315{sprite_string = "D"}
+if aim_direction  > 315 or aim_direction  < 45{sprite_string = "R"}
 
-if player_number = 1{
-if aim_direction  > 45 or aim_direction  < 135{sprite_index = s_JuneU}
-if aim_direction  > 135 && aim_direction  < 225{sprite_index = s_JuneL}
-if aim_direction  > 225 && aim_direction  < 315{sprite_index = s_JuneD}
-if aim_direction  > 315 or aim_direction  < 45{sprite_index = s_JuneR}}
+sprite_string = "s_"+string(player_name)+string(sprite_string)
+sprite_index = asset_get_index(sprite_string)
 
 if aim_object != 0{
 aim_object.x = x;aim_object.y = y;aim_object.image_angle = aim_direction}
+sprite_set_bbox(sprite_index,(sprite_width/2)-20,(sprite_height/2)-20,(sprite_width/2)+20,sprite_height)

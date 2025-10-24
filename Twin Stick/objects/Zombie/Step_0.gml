@@ -5,21 +5,21 @@ if hitbox.hp <= 0{instance_destroy(hitbox);instance_destroy();Player.kills += 1;
 
 repeat(32){
 particle = instance_create_depth(x,y,depth-1,ParticleEffect)
-while particle.hsp > -1 && particle.hsp < 1{particle.hsp = random_range(-6,6)}
-particle.vsp = random_range(-12,-2)
+while particle.hsp > -1 && particle.hsp < 1{particle.hsp = random_range(-12,12)}
+particle.vsp = random_range(-24,-4)
 particle.timer += 10
 }
 }
 
 move_timer -= 1
-if move_timer = 0{move_timer = 60
+if move_timer = 0{move_timer = 50
 	
 find_player_target()
 mp_grid_path(global.grid,path,x,y,target.x,target.y,true)
 path_start(path,5,path_action_stop,false)}
 
 
-if path_speed != 0{path_speed *=0.9};if path_speed < 0.1{path_speed = 0}
+if path_speed != 0{path_speed *=0.95};if path_speed < 0.1{path_speed = 0}
 path_add()
 /*
 if collision_present(x+hsp,y)

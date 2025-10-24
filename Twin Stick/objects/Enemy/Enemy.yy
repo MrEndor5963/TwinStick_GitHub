@@ -9,8 +9,8 @@
   "name":"Enemy",
   "overriddenProperties":[],
   "parent":{
-    "name":"AObjects",
-    "path":"folders/AObjects.yy",
+    "name":"Enemies",
+    "path":"folders/AObjects/Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,

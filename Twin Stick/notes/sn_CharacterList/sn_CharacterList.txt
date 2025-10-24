@@ -1,0 +1,12 @@
+Mexico 
+	Speedy
+	Replaces fast food resaurants with taco stands and spawn every floor
+	Increased number of hellhounds spawn
+
+Brazil
+	Speedy
+
+America
+	Health
+	Guns cost 75% less
+	Fast food restaurants spawn on every floor

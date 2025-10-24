@@ -41,8 +41,18 @@ do {
 	if move_direction = "Right"{current_x += 1}
 	if move_direction = "Up"{current_y -= 1};
 	if move_direction = "Down"{current_y += 1}
-	if ds_grid_get(map,current_x,current_y) = 0{ds_grid_set(map,current_x,current_y,r_Floor1_Main01)}
-//if tiles_moved > mov*2{throw("Path Not Found")}
+	if ds_grid_get(map,current_x,current_y) = 0{
+	code_loops = 0
+	do{
+	var_string = irandom_range(1,array_length(room_list))
+	if var_string < 10{var_string = "0"+string(var_string)}
+	var_string = "r_Floor1_Main"+string(var_string)
+	var_room = asset_get_index(var_string)
+	code_loops += 1}
+	until(!array_contains(rooms_in_use,var_room))
+	ds_grid_set(map,current_x,current_y,var_room)
+	array_push(rooms_in_use,var_room)
+	}
 }
 until(current_x = start_x && current_y = start_y)}
 
@@ -70,16 +80,12 @@ set_room_with_path(r_Floor1_Boss)
 
 
 //Room Persistentcy
-/*this code kinda doesn't work
+//this code kinda doesn't work
 var_repeat = 0
 repeat(array_length(rooms_in_use)){
 var_temp = array_get(rooms_in_use,var_repeat)
 room_set_persistent(var_temp,true)
 var_repeat += 1}
-
-*/
-
-	
 
 
 }

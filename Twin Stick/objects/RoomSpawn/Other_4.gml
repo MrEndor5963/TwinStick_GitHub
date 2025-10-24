@@ -18,5 +18,5 @@ if on_map(GM.map_x,GM.map_y+1) = false or ds_grid_get(GM.map,GM.map_x,GM.map_y+1
 
 if make_block = true{
 block = instance_create_depth(x,y,depth+1,Collision)
-block.image_xscale = image_xscale/2
-block.image_yscale = image_yscale/2}
+block.image_xscale = image_xscale
+block.image_yscale = image_yscale}

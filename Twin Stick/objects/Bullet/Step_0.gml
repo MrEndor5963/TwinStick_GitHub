@@ -17,8 +17,8 @@ penetration -= 1
 
 repeat(4){
 particle = instance_create_depth(x,y,depth-100,ParticleEffect)
-particle.hsp = random_range(-6,6)
-particle.vsp = random_range(-9,2)}
+particle.hsp = random_range(-12,12)
+particle.vsp = random_range(-18,4)}
 }
 
 if penetration <= 0{
