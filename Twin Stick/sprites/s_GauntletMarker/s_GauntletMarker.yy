@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"MapSprites",
-    "path":"folders/BSprites/MapSprites.yy",
+    "path":"folders/BSprites/UI/MapSprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

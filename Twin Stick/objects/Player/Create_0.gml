@@ -1,33 +1,33 @@
 next_room = 0
 player_name = "Hazel"
-array_push(global.player_list,id)
-player_number = global.player_amount
-global.player_amount += 1
+array_push(GM.player_list,id)
+player_number = GM.player_amount
+GM.player_amount += 1
 hsp = 0;vsp = 0
 hsp_knockback = 0;vsp_knockback = 0
 mov_spd = 8
-hp = 4
+hp = 4;hp_max = 4
 hit_stun = 0
+money = 5000
 kills = 0
+//money = 0
 
 aim_direction = 0;aim_x = 0;aim_y = 0
 stick_aim_x = 0;stick_aim_y = 0
+ammo_inmag = 30
+reload_timer = 0
 
 
 aim_object = 0//instance_create_depth(x,y,depth,PlayerAim)
 
 //Default stats
-can_cycle_weapons = true
-weapon_sprite = s_m1911
-weapon_list = []
-array_push(weapon_list,s_m1911)
-array_push(weapon_list,s_mp5)
-array_push(weapon_list,s_spectre)
-array_push(weapon_list,s_AK47cs)
-array_push(weapon_list,s_AWP)
-array_push(weapon_list,s_DSR50)
-array_push(weapon_list,s_SquareGun)
-weapon_number = 0
-weapon_sprite = array_get(weapon_list,weapon_number)
-auto = true;recoil_cooldown = 0
+give_all_weapons = false
+box_list = GM.box_list 
+
+//weapon_slots_max = 3
+
+recoil_cooldown = 0
 shoot_timer = 0
+
+weapon_number = 1
+spawned = false

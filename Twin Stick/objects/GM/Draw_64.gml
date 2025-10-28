@@ -35,6 +35,6 @@ if room_type = r_Gauntlet{draw_sprite(s_GauntletMarker,0,var_xx*48,var_yy*48+200
 var_yy += 1}
 var_xx += 1}
 
-draw_sprite(s_HazelPortrait,0,map_x*48,map_y*48+232)
+draw_sprite(s_PlayerMarker,0,map_x*48,map_y*48+232)
 
 draw_set_alpha(1)

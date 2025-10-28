@@ -44,8 +44,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"BSprites",
-    "path":"folders/BSprites.yy",
+    "name":"InvisibleSprites",
+    "path":"folders/BSprites/InvisibleSprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

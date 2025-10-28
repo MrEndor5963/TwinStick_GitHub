@@ -3,8 +3,8 @@ randomize()
 global.grid = mp_grid_create(0,0,room_width/32,room_height/32,32,32)
 
 
-global.player_amount = 0
-global.player_list = []
+player_amount = 0
+player_list = []
 room_goto(r_Floor1_Spawn)
 cam_x = 0;cam_y = 0
 
@@ -14,7 +14,7 @@ camera_set_view_size(view_camera[0],cam_size_x,cam_size_y)
 clamp_x1 = 0;clamp_x2 = room_width
 clamp_y1 = 0;clamp_y2 = room_height
 
-map_size = 7
+map_size = 6
 map = ds_grid_create(map_size,map_size)
 
 
@@ -38,3 +38,18 @@ array_push(room_list,r_Floor1_Main16)
 array_push(room_list,r_Floor1_Main17)
 array_push(room_list,r_Floor1_Main18)
 array_push(room_list,r_Floor1_Main19)
+array_push(room_list,r_Floor1_Main20)
+
+box_list = []
+array_push(box_list,s_m1911)
+array_push(box_list,s_Taurus92)
+array_push(box_list,s_SnW500)
+array_push(box_list,s_Olympia)
+array_push(box_list,s_mp5)
+array_push(box_list,s_spectre)
+array_push(box_list,s_AK47cs)
+array_push(box_list,s_Xiuhcoatl)
+array_push(box_list,s_AWP)
+array_push(box_list,s_DSR50)
+array_push(box_list,s_M14)
+array_push(box_list,s_SquareGun)

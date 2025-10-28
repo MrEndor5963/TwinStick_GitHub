@@ -1,6 +1,6 @@
 depth = -y
 set_tileset_collision()
-if keyboard_check_pressed(ord("R")) or hp <= 0{game_restart()}
+if keyboard_check_pressed(ord("R")) && keyboard_check(vk_control) or hp <= 0{game_restart()}
 
 key_left = keyboard_check(vk_left) or keyboard_check(ord("A"))
 //key_left_pressed = keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A"))
@@ -12,14 +12,43 @@ key_down = keyboard_check(vk_down) or keyboard_check(ord("S"))
 //key_down_pressed = keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))
 key_shoot = mouse_check_button(mb_left) or gamepad_button_check(player_number,gp_shoulderrb)
 key_shoot_pressed = mouse_check_button_pressed(mb_left) or gamepad_button_check_pressed(player_number,gp_shoulderrb)
+key_interact = keyboard_check_pressed(ord("E")) or gamepad_button_check_pressed(player_number,gp_face1)
+key_reload = keyboard_check_pressed(ord("R")) or gamepad_button_check_pressed(player_number,gp_face3)
+
 
 key_weapon_toggle_back = gamepad_button_check_pressed(player_number,gp_shoulderl) or mouse_wheel_up()
 key_weapon_toggle_forward = gamepad_button_check_pressed(player_number,gp_shoulderr) or mouse_wheel_down()
 
-if key_weapon_toggle_back && can_cycle_weapons = true{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(weapon_list)-1}}
-if key_weapon_toggle_forward && can_cycle_weapons = true{weapon_number += 1;if weapon_number = array_length(weapon_list){weapon_number = 0}}
+if key_weapon_toggle_back or key_weapon_toggle_forward{
+if give_all_weapons = false{
+reload_timer = 0
+weapon_slot_ammo_inmag[weapon_number] = ammo_inmag
+weapon_slot_ammo_reserve[weapon_number] = ammo_reserve
+if key_weapon_toggle_back{weapon_number -= 1;if weapon_number < 1{weapon_number = array_length(weapon_slot)-1}}
+if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(weapon_slot){weapon_number = 1}}
+ammo_inmag = weapon_slot_ammo_inmag[weapon_number]
+ammo_reserve = weapon_slot_ammo_reserve[weapon_number]
+}
+else{
+if key_weapon_toggle_back{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(box_list)-1}}
+if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(box_list){weapon_number = 0}}
+weapon_sprite = array_get(box_list,weapon_number)}
+}
+
+if give_all_weapons = false{weapon_sprite = array_get(weapon_slot,weapon_number)}
 
 
+//ammo = 120
+weapon_damage = 1
+penetration = 1
+base_recoil = 0.5
+shoot_delay = 12
+knockback = 2
+bullet_speed = 60
+bullet_sprite = s_Bullet
+reload_time = 90
+
+script_execute_wpn(weapon_sprite)
 
 if abs(gamepad_axis_value(player_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(player_number,gp_axisrv)) > 0.1{
 aim_x = ((gamepad_axis_value(player_number,gp_axisrh)*10) div 1)
@@ -61,15 +90,26 @@ if collision_present(x,y+vsp)
  y += vsp
 
 if shoot_timer > 0{shoot_timer -= 1}
-if recoil_cooldown > 0{recoil_cooldown -= 1}
+if recoil_cooldown > 0 && shoot_timer = 0{recoil_cooldown -= 1}
+if reload_timer > 0{reload_timer -= 1
+if reload_timer = 0{
+var_reload = ammo_inmag_max-ammo_inmag
+if var_reload > ammo_reserve{var_reload = ammo_reserve}
+ammo_inmag += var_reload
+ammo_reserve -= var_reload
+}}
+
 
 recoil = 0
-if shoot_timer <= 0 && ammo > 0{
+if ammo_inmag = 0 && ammo_reserve > 0 && reload_timer = 0 or key_reload && ammo_reserve > 0 && ammo_inmag < ammo_inmag_max && reload_timer = 0
+{reload_timer = reload_time}
+
+if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0{
 if key_shoot && auto = true or key_shoot_pressed && auto = false{
 shoot_timer = shoot_delay
 _bullet = instance_create_depth(x,y,depth+1,Bullet)
-//ammo -= 1
-recoil = random_range(-base_recoil,base_recoil)
+ammo_inmag -= 1
+recoil = random_range(-recoil_cooldown,recoil_cooldown)
 if recoil_cooldown > 0{_bullet.image_angle = aim_direction+recoil}
 else{_bullet.image_angle = aim_direction}
 recoil_cooldown = base_recoil*2
@@ -77,6 +117,7 @@ _bullet.damage = weapon_damage
 _bullet.penetration = penetration
 _bullet.bullet_speed = bullet_speed
 _bullet.sprite_index = bullet_sprite
+_bullet.creator = id
 
 direction = _bullet.image_angle +180
 speed = knockback
@@ -89,12 +130,12 @@ speed = 0
 if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 30}
 if hit_stun > 0{hit_stun -= 1}
 
-if aim_direction  > 45 or aim_direction  < 135{sprite_string = "U"}
-if aim_direction  > 135 && aim_direction  < 225{sprite_string = "L"}
-if aim_direction  > 225 && aim_direction  < 315{sprite_string = "D"}
-if aim_direction  > 315 or aim_direction  < 45{sprite_string = "R"}
+if aim_direction  > 45 or aim_direction  < 135{aim_string = "U"}
+if aim_direction  > 135 && aim_direction  < 225{aim_string = "L"}
+if aim_direction  > 225 && aim_direction  < 315{aim_string = "D"}
+if aim_direction  > 315 or aim_direction  < 45{aim_string = "R"}
 
-sprite_string = "s_"+string(player_name)+string(sprite_string)
+sprite_string = "s_"+string(player_name)+string(aim_string)
 sprite_index = asset_get_index(sprite_string)
 
 if aim_object != 0{

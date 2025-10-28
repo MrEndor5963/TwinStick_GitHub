@@ -1,4 +1,4 @@
-hp = 6
+hp = 60
 move_timer = 1
 create_enemy()
 hsp = 0;vsp = 0
