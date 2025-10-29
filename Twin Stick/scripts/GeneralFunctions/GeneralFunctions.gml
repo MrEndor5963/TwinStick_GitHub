@@ -11,27 +11,6 @@ if place_meeting(x_place,y_place,[Collision,tiles]){return true}
 return false
 }
 
-function create_enemy(){
-hit_stun = 0
-hitbox = instance_create_depth(x,y,depth+1,Enemy)
-hitbox.sprite_index = sprite_index
-hitbox.hp = hp
-hitbox.creator = id
-set_tileset_collision()
-}
-
-function find_player_target(){
-if path_exists(path){path_delete(path)}
-path = path_add()
-var_repeat = 0;distance = infinity;new_distance =  0
-repeat(array_length(GM.player_list)){
-temp_target = GM.player_list[var_repeat]
-mp_grid_path(global.grid,path,x,y,temp_target.x,temp_target.y,true)
-new_distance = path_get_length(path)
-if new_distance < distance{target = GM.player_list[var_repeat];distance = new_distance}
-var_repeat += 1
-}
-}
 /*
 function astar(grid, startx, starty, endx, endy){
 

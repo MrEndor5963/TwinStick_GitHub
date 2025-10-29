@@ -1,3 +1,4 @@
+depth = 1
 grid_made = false
 randomize()
 global.grid = mp_grid_create(0,0,room_width/32,room_height/32,32,32)
@@ -7,6 +8,9 @@ player_amount = 0
 player_list = []
 room_goto(r_Floor1_Spawn)
 cam_x = 0;cam_y = 0
+cam_target_x = 0;cam_target_y = 0
+cam_speed = 40
+next_room = -1
 
 cam_size_x = 1280;cam_size_y = 720
 camera_set_view_size(view_camera[0],cam_size_x,cam_size_y)

@@ -1,3 +1,4 @@
+if GM.next_room = -1{
 draw_gun_size = 1
 
 if aim_string != "U"{draw_self()}
@@ -8,6 +9,7 @@ else{draw_sprite_ext(asset_get_index(weapon_sprite),0,x,y,draw_gun_size,draw_gun
 if aim_string = "U"{draw_self()}
 
 image_xscale = 1;image_yscale = 1
+}
 //image_xscale = 2;image_yscale = 2
 //draw_set_alpha(0.5)
 //mp_grid_draw(global.grid)

@@ -1,6 +1,13 @@
+draw_set_color(c_white)
 display_set_gui_size(1280,720)
 draw_color = c_green;portrait_sprite = s_HazelPortrait
 //else{draw_color = c_red;portrait_sprite = s_JunePortrait}
+
+if reload_timer > 0{
+draw_reload = 1-clamp(1/(reload_time/reload_timer),0,1)
+draw_sprite_ext(s_ReloadBar,0,x,y-(sprite_height/2)-20,draw_reload,1,0,draw_color,1)
+draw_sprite(s_ReloadBarOutline,0,x,y-(sprite_height/2)-20)
+}
 
 draw_set_font(f_Main)
 screen_width = 1280

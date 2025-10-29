@@ -1,4 +1,4 @@
-font = f_Main
+font = f_Main;draw_set_color(c_white)
 
 if display_text = true{
 draw_set_aligns(fa_center,fa_middle)

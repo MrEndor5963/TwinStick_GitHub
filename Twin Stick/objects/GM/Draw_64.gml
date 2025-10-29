@@ -1,4 +1,5 @@
-
+/*
+draw_set_color(c_white)
 draw_set_halign(fa_left)
 //draw_text(10,20,"floor_max_x:"+string(map_x))
 //draw_text(10,40,"floor_max_y:"+string(map_y))

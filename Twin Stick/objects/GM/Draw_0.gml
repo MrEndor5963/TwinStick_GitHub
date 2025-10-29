@@ -1,0 +1,5 @@
+draw_set_color(c_black)
+draw_rectangle(0-cam_size_x,0,0,cam_size_y,false)
+draw_rectangle(room_width,0,room_width+cam_size_x,cam_size_y,false)
+draw_rectangle(0,0-cam_size_y,cam_size_x,0,false)
+draw_rectangle(0,room_height,cam_size_x,room_height+cam_size_y,false)

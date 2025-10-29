@@ -7,6 +7,7 @@ weapon_slot_ammo_inmag[1] = ammo_inmag_max
 weapon_slot_ammo_reserve[1] = ammo_reserve_max
 ammo_inmag = ammo_inmag_max
 ammo_reserve = ammo_reserve_max
+mov_spd = 9
 }
 
 if player_name = "Justin"{
@@ -17,6 +18,7 @@ weapon_slot_ammo_inmag[1] = ammo_inmag_max
 weapon_slot_ammo_reserve[1] = ammo_reserve_max
 ammo_inmag = ammo_inmag_max
 ammo_reserve = ammo_reserve_max
+mov_spd = 10
 }
 }
 spawned = true

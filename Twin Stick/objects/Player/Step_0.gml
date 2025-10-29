@@ -2,6 +2,7 @@ depth = -y
 set_tileset_collision()
 if keyboard_check_pressed(ord("R")) && keyboard_check(vk_control) or hp <= 0{game_restart()}
 
+if can_control = true{
 key_left = keyboard_check(vk_left) or keyboard_check(ord("A"))
 //key_left_pressed = keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A"))
 key_right = keyboard_check(vk_right) or keyboard_check(ord("D"))
@@ -15,9 +16,16 @@ key_shoot_pressed = mouse_check_button_pressed(mb_left) or gamepad_button_check_
 key_interact = keyboard_check_pressed(ord("E")) or gamepad_button_check_pressed(player_number,gp_face1)
 key_reload = keyboard_check_pressed(ord("R")) or gamepad_button_check_pressed(player_number,gp_face3)
 
-
 key_weapon_toggle_back = gamepad_button_check_pressed(player_number,gp_shoulderl) or mouse_wheel_up()
 key_weapon_toggle_forward = gamepad_button_check_pressed(player_number,gp_shoulderr) or mouse_wheel_down()
+}
+else{
+key_left = -1;key_right = -1;key_up = -1;key_down = -1
+key_shoot = -1;key_shoot_pressed = -1
+key_interact = -1;key_reload = -1
+key_weapon_toggle_back = -1;key_weapon_toggle_forward = -1
+}
+
 
 if key_weapon_toggle_back or key_weapon_toggle_forward{
 if give_all_weapons = false{
@@ -37,8 +45,6 @@ weapon_sprite = array_get(box_list,weapon_number)}
 
 if give_all_weapons = false{weapon_sprite = array_get(weapon_slot,weapon_number)}
 
-
-//ammo = 120
 weapon_damage = 1
 penetration = 1
 base_recoil = 0.5
@@ -59,9 +65,6 @@ stick_aim_y = gamepad_axis_value(player_number,gp_axisrv)
 
 aim_direction = point_direction(0, 0, aim_x,aim_y)
 //aim_direction = point_direction(x, y, mouse_x,mouse_y)
-
-
-
 
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
@@ -131,9 +134,9 @@ if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 30}
 if hit_stun > 0{hit_stun -= 1}
 
 if aim_direction  > 45 or aim_direction  < 135{aim_string = "U"}
-if aim_direction  > 135 && aim_direction  < 225{aim_string = "L"}
+if aim_direction  >= 135 && aim_direction  <= 225{aim_string = "L"}
 if aim_direction  > 225 && aim_direction  < 315{aim_string = "D"}
-if aim_direction  > 315 or aim_direction  < 45{aim_string = "R"}
+if aim_direction  >= 315 or aim_direction  <= 45{aim_string = "R"}
 
 sprite_string = "s_"+string(player_name)+string(aim_string)
 sprite_index = asset_get_index(sprite_string)
@@ -141,3 +144,47 @@ sprite_index = asset_get_index(sprite_string)
 if aim_object != 0{
 aim_object.x = x;aim_object.y = y;aim_object.image_angle = aim_direction}
 sprite_set_bbox(sprite_index,(sprite_width/2)-20,(sprite_height/2)-20,(sprite_width/2)+20,sprite_height)
+
+if place_meeting(x,y,RoomChange){
+var_object = instance_place(x,y,RoomChange)
+GM.next_room = var_object.next_room
+}
+
+
+
+
+
+
+#region Record Data
+for(var i = record_size-1; i > 0; i--){
+record_x[i] = record_x[i-1];record_x[0] = x
+record_y[i] = record_y[i-1];record_y[0] = y
+}
+#endregion End Of Record Data
+
+
+
+#region Buyable Stuff
+image_xscale = 1.2
+image_yscale = 1.2
+if place_meeting(x,y,MysteryBox){
+var_object = instance_nearest(x,y,MysteryBox)
+var_object.display_text = true
+if key_interact && money >= 950 && var_object.box_open = false{
+money -= 950
+var_object.activate_box = true
+}
+
+if key_interact && var_object.box_open = true && var_object.box_timer = 0{
+var_object.box_open = false
+if array_length(weapon_slot)-1 < weapon_slots_max{weapon_number = array_length(weapon_slot)}
+weapon_slot[weapon_number] = var_object.weapon_sprite
+script_execute_wpn(weapon_slot[weapon_number])
+weapon_slot_ammo_inmag[weapon_number] = ammo_inmag_max
+weapon_slot_ammo_reserve[weapon_number] = ammo_reserve_max
+ammo_inmag = ammo_inmag_max;ammo_reserve = ammo_reserve_max
+}
+}
+
+image_xscale = 1;image_yscale = 1
+#endregion End Of Buyable Stuff

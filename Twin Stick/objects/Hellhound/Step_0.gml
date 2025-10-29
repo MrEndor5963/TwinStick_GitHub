@@ -3,19 +3,14 @@ if hit_stun > 0{hit_stun -= 1}
 
 if hitbox.hp <= 0{instance_destroy(hitbox);instance_destroy();Player.kills += 1;
 
-repeat(32){
-particle = instance_create_depth(x,y,depth-1,ParticleEffect)
-while particle.hsp > -1 && particle.hsp < 1{particle.hsp = random_range(-12,12)}
-particle.vsp = random_range(-24,-4)
-particle.timer += 10
-}
+blood_splatter()
 }
 
 find_player_target()
 mp_grid_path(global.grid,path,x,y,target.x,target.y,true)
 path_start(path,8,path_action_stop,false)
 
-
+move_hitbox()
 /*
 speed = 3
 direction = point_direction(x,y,Player.x,Player.y)

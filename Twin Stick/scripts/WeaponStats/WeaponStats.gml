@@ -56,7 +56,7 @@ penetration = 3
 base_recoil = 15
 shoot_delay = 20
 knockback = 10
-reload_time = 95
+reload_time = 130
 }
 
 function wpn_Olympia(){
@@ -70,7 +70,7 @@ penetration = 2
 base_recoil = 2
 shoot_delay = 5
 knockback = 12
-reload_time = 300
+reload_time = 180
 }
 
 function wpn_mp5(){
@@ -96,7 +96,7 @@ ammo_inmag_max = 50
 weapon_damage = 10
 penetration = 1
 base_recoil = 8
-shoot_delay = 2
+shoot_delay = 3
 knockback = 3
 reload_time = 75
 }
@@ -124,8 +124,8 @@ ammo_inmag_max = 30
 weapon_damage = 5
 penetration = 2
 base_recoil = 8
-shoot_delay = 1
-knockback = 7
+shoot_delay = 3
+knockback = 9
 reload_time = 110
 }
 
@@ -135,7 +135,7 @@ weapon_name = "M14"
 auto = false
 ammo_reserve_max = 96
 ammo_inmag_max = 8
-weapon_damage = 19
+weapon_damage = 24
 penetration = 1
 base_recoil = 2
 shoot_delay = 7
