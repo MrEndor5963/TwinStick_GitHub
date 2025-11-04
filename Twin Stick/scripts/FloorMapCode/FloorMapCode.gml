@@ -80,7 +80,6 @@ set_room_with_path(r_Floor1_Boss)
 
 
 //Room Persistentcy
-//this code kinda doesn't work
 var_repeat = 0
 repeat(array_length(rooms_in_use)){
 var_temp = array_get(rooms_in_use,var_repeat)

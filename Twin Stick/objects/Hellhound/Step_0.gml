@@ -1,26 +1,26 @@
+node_x = x div 48
+node_y = y div 48
+if spawn_timer > 0{
+spawn_timer -= 1;exit
+}
+
 depth = -y
 if hit_stun > 0{hit_stun -= 1}
 
 if hitbox.hp <= 0{instance_destroy(hitbox);instance_destroy();Player.kills += 1;
 
 blood_splatter()
+exit
 }
 
-find_player_target()
-mp_grid_path(global.grid,path,x,y,target.x,target.y,true)
-path_start(path,8,path_action_stop,false)
 
-move_hitbox()
-/*
-speed = 3
-direction = point_direction(x,y,Player.x,Player.y)
-hsp = hspeed;hspeed = 0
-vsp = vspeed;vspeed = 0
+get_move_directions()
 
 
-if hsp != 0{hsp *=0.9};if hsp < 0.1 && hsp > -0.1{hsp = 0}
-if vsp != 0{vsp *=0.9};if vsp < 0.1 && vsp > -0.1{vsp = 0}
+hsp = move_direction_h*4;vsp = move_direction_v*4
 
+
+corner_cutting()
 
 if collision_present(x+hsp,y)
 {
@@ -36,4 +36,6 @@ if collision_present(x,y+vsp)
 	vsp = 0
 }
 
- y += vsp
+y += vsp
+
+move_hitbox()

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GridCode",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GridCode",
+  "parent":{
+    "name":"!Scripts",
+    "path":"folders/!Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

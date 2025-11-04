@@ -1,6 +1,6 @@
-Mexico 
+Mexico
 	Speedy
-	Replaces fast food resaurants with taco stands and spawn every floor
+	Replaces fast food resaurants with taco stands and spawn on every floor
 	Increased number of hellhounds spawn
 
 Brazil

@@ -1,7 +1,3 @@
-Add weapon switching
-enemies
-map design
-main menu
-individual player kill counts
+code astar
 
-And more...
+need move radius and then jlhbubr edh

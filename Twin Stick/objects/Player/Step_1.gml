@@ -1,24 +1,42 @@
 if spawned = false{
 if player_name = "Hazel"{
-weapon_slot[0] = 0
-weapon_slot[1] = s_Taurus92
-script_execute_wpn(weapon_slot[1])
-weapon_slot_ammo_inmag[1] = ammo_inmag_max
-weapon_slot_ammo_reserve[1] = ammo_reserve_max
-ammo_inmag = ammo_inmag_max
-ammo_reserve = ammo_reserve_max
-mov_spd = 9
-}
-
-if player_name = "Justin"{
-weapon_slot[0] = 0
-weapon_slot[1] = s_Xiuhcoatl
-script_execute_wpn(weapon_slot[1])
-weapon_slot_ammo_inmag[1] = ammo_inmag_max
-weapon_slot_ammo_reserve[1] = ammo_reserve_max
+weapon[0] = s_Taurus92
+script_execute_wpn(weapon[0])
+weapon_ammo_inmag[0] = ammo_inmag_max
+weapon_ammo_reserve[0] = ammo_reserve_max
 ammo_inmag = ammo_inmag_max
 ammo_reserve = ammo_reserve_max
 mov_spd = 10
+strength = 2
+draw_color = c_green
 }
+
+if player_name = "Justin"{
+weapon[0] = s_Xiuhcoatl
+script_execute_wpn(weapon[0])
+weapon_ammo_inmag[0] = ammo_inmag_max
+weapon_ammo_reserve[0] = ammo_reserve_max
+ammo_inmag = ammo_inmag_max
+ammo_reserve = ammo_reserve_max
+mov_spd = 10
+strength = 5
+draw_color = c_aqua
 }
+
+if player_name = "Craig"{
+hp = 12;hp_max = 12
+weapon[0] = s_Remi870
+script_execute_wpn(weapon[0])
+weapon_ammo_inmag[0] = ammo_inmag_max
+weapon_ammo_reserve[0] = ammo_reserve_max
+ammo_inmag = ammo_inmag_max
+ammo_reserve = ammo_reserve_max
+mov_spd = 6
+strength = 14
+draw_color = c_purple
+}
+
+portrait_sprite = asset_get_index("s_"+string(player_name)+"Portrait")
+
 spawned = true
+}

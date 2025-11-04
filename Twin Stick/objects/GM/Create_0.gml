@@ -1,12 +1,13 @@
-depth = 1
+depth = -1000
 grid_made = false
 randomize()
-global.grid = mp_grid_create(0,0,room_width/32,room_height/32,32,32)
+screen_width = 1280
+screen_height = 720
 
 
 player_amount = 0
 player_list = []
-room_goto(r_Floor1_Spawn)
+//room_goto(r_Floor1_Spawn)
 cam_x = 0;cam_y = 0
 cam_target_x = 0;cam_target_y = 0
 cam_speed = 40
@@ -18,6 +19,7 @@ camera_set_view_size(view_camera[0],cam_size_x,cam_size_y)
 clamp_x1 = 0;clamp_x2 = room_width
 clamp_y1 = 0;clamp_y2 = room_height
 
+global.collision_grid = ds_grid_create(27,15)
 map_size = 6
 map = ds_grid_create(map_size,map_size)
 
@@ -51,9 +53,14 @@ array_push(box_list,s_SnW500)
 array_push(box_list,s_Olympia)
 array_push(box_list,s_mp5)
 array_push(box_list,s_spectre)
-array_push(box_list,s_AK47cs)
+array_push(box_list,s_AK47)
 array_push(box_list,s_Xiuhcoatl)
 array_push(box_list,s_AWP)
 array_push(box_list,s_DSR50)
 array_push(box_list,s_M14)
 array_push(box_list,s_SquareGun)
+
+enemy_list = []
+array_push(enemy_list,Zombie)
+array_push(enemy_list,ZombieShooter)
+array_push(enemy_list,Hellhound)

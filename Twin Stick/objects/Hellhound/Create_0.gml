@@ -1,4 +1,6 @@
-hp = 80
-move_timer = 1
+hp = 60
 create_enemy()
-path = path_add()
+hsp = 0;vsp = 0
+
+node_x = x div 48
+node_y = y div 48

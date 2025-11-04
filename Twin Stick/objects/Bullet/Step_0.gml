@@ -12,10 +12,11 @@ if array_contains(contact_list,instance_place(x,y,Enemy)) = false{
 array_push(contact_list,instance_place(x,y,Enemy))
 var_enemy =  instance_place(x,y,Enemy)
 var_enemy.hp -= damage
+if creator.object_index = Player{
 if var_enemy.hp <= 0{creator.money += 50}
 var_enemy.hit_stun = 2
 penetration -= 1
-creator.money += 10
+creator.money += 10}
 
 repeat(4){
 particle = instance_create_depth(x,y,depth-100,ParticleEffect)

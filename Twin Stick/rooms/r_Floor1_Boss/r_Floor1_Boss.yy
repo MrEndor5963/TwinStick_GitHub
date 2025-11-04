@@ -22,6 +22,7 @@
     {"name":"inst_24512465","path":"rooms/r_Floor1_Boss/r_Floor1_Boss.yy",},
     {"name":"inst_2F97E24A","path":"rooms/r_Floor1_Boss/r_Floor1_Boss.yy",},
     {"name":"inst_5AEF385A","path":"rooms/r_Floor1_Boss/r_Floor1_Boss.yy",},
+    {"name":"inst_55078517","path":"rooms/r_Floor1_Boss/r_Floor1_Boss.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -36,7 +37,9 @@
           16,47,47,24,-19,0,-4,-2147483648,4,16,47,47,24,-3,0,-10,-2147483648,3,0,-2147483648,0,-7,-2147483648,
           4,16,47,47,2,-9,20,1,36,-3,-2147483648,1,34,-9,20,1,1,-12,47,1,24,-3,-2147483648,1,16,-11,47,
         ],"TileDataFormat":1,},"tilesetId":{"name":"t_Walls","path":"tilesets/t_Walls/t_Walls.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
-    {"$GMRInstanceLayer":"","%Name":"Enemies","depth":100,"effectEnabled":true,"effectType":null,"gridX":48,"gridY":48,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"Enemies","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
+    {"$GMRInstanceLayer":"","%Name":"Enemies","depth":100,"effectEnabled":true,"effectType":null,"gridX":48,"gridY":48,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
+        {"$GMRInstance":"v2","%Name":"inst_55078517","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_55078517","objectId":{"name":"ZombieBoss","path":"objects/ZombieBoss/ZombieBoss.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":624.0,"y":336.0,},
+      ],"layers":[],"name":"Enemies","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":200,"effectEnabled":true,"effectType":null,"gridX":48,"gridY":48,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v2","%Name":"inst_6F338C65","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6F338C65","objectId":{"name":"RoomSpawn","path":"objects/RoomSpawn/RoomSpawn.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":3.0,"x":0.0,"y":288.0,},
         {"$GMRInstance":"v2","%Name":"inst_3F6BF40E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3F6BF40E","objectId":{"name":"RoomSpawn","path":"objects/RoomSpawn/RoomSpawn.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":3.0,"scaleY":2.0,"x":576.0,"y":0.0,},

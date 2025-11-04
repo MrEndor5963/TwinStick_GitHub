@@ -1,4 +1,4 @@
-/*
+
 draw_set_color(c_white)
 draw_set_halign(fa_left)
 //draw_text(10,20,"floor_max_x:"+string(map_x))
@@ -12,6 +12,7 @@ draw_set_halign(fa_left)
 
 draw_set_alpha(0.5)
 var_xx = 0
+if instance_exists(Player){
 repeat(map_size){
 var_yy = 0
 repeat(map_size){
@@ -37,5 +38,6 @@ var_yy += 1}
 var_xx += 1}
 
 draw_sprite(s_PlayerMarker,0,map_x*48,map_y*48+232)
+}
 
 draw_set_alpha(1)

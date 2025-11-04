@@ -23,7 +23,7 @@
   ],
   "name":"s_HazelD",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Hazel",
     "path":"folders/BSprites/PlayerSprites/Hazel.yy",
@@ -78,7 +78,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":48,
-    "yorigin":36,
+    "yorigin":48,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

@@ -1,7 +1,10 @@
-hp = 1000
+hp = 6300
 move_timer = 1
+shoot_timer = 90
 create_enemy()
 hsp = 0;vsp = 0
-path = path_add()
-shoot_delay = 120
-shoot_timer = 60
+
+node_x = x div 48
+node_y = y div 48
+image_xscale = 2
+image_yscale = 2

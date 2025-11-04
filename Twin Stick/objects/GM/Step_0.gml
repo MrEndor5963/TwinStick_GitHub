@@ -1,3 +1,4 @@
+set_tileset_collision()
 view_enabled = true
 view_visible[0] = true
 clamp_x1 = -cam_size_x;clamp_x2 = room_width+cam_size_x
