@@ -6,24 +6,4 @@ var_temp = instance_nearest(x,y,Player)
 var_temp.hp -= 1;instance_destroy();exit
 }
 
-if hurts_enemy = true && place_meeting(x,y,Enemy){
-
-if array_contains(contact_list,instance_place(x,y,Enemy)) = false{
-array_push(contact_list,instance_place(x,y,Enemy))
-var_enemy =  instance_place(x,y,Enemy)
-var_enemy.hp -= damage
-if creator.object_index = Player{
-if var_enemy.hp <= 0{creator.money += 50}
-var_enemy.hit_stun = 2
-penetration -= 1
-creator.money += 10}
-
-repeat(4){
-particle = instance_create_depth(x,y,depth-100,ParticleEffect)
-particle.hsp = random_range(-12,12)
-particle.vsp = random_range(-18,4)}
-}
-
-if penetration <= 0{
-instance_destroy()}
-}
+if x < 0 or x > room_width or y < 0 or y > room_height or collision_present(x,y){instance_destroy()}

@@ -7,13 +7,6 @@ spawn_timer -= 1;exit
 depth = -y
 if hit_stun > 0{hit_stun -= 1}
 
-if hitbox.hp <= 0{instance_destroy(hitbox);instance_destroy();Player.kills += 1;
-
-blood_splatter()
-exit
-}
-
-
 get_move_directions()
 
 

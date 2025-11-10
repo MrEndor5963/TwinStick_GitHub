@@ -1,15 +1,13 @@
 next_room = 0
 player_name = "Hazel"
 array_push(GM.player_list,id)
-player_number = GM.player_amount
-GM.player_amount += 1
 input_number = 0
 hsp = 0;vsp = 0
 hsp_knockback = 0;vsp_knockback = 0
 mov_spd = 10
 hp = 8;hp_max = 8
 hit_stun = 0
-money = 1500
+money = 150000
 kills = 0
 //money = 0
 
@@ -22,9 +20,12 @@ strength = 2
 refresh_grid = 60
 
 aim_object = 0//instance_create_depth(x,y,depth,PlayerAim)
-
+melee = instance_create_depth(x,y,depth-1,MeleeWeapon)
+melee.creator = id
+melee_equipped = false
 //Default stats
-give_all_weapons = false
+give_all_weapons = true
+//give_all_weapons = false
 box_list = GM.box_list
 can_control = true
 

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"ToDoList",
-    "path":"folders/BSprites/GunAndBulletSprites/ToDoList.yy",
+    "name":"!ToDoList",
+    "path":"folders/BSprites/GunAndBulletSprites/!ToDoList.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

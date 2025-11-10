@@ -19,14 +19,15 @@ key_reload = keyboard_check_pressed(ord("R")) or gamepad_button_check_pressed(in
 
 key_weapon_toggle_back = gamepad_button_check_pressed(input_number,gp_shoulderl) or mouse_wheel_up()
 key_weapon_toggle_forward = gamepad_button_check_pressed(input_number,gp_shoulderr) or mouse_wheel_down()
+key_knife_pressed = gamepad_button_check_pressed(input_number,gp_face2) or gamepad_button_check_pressed(input_number,gp_stickr)
 }
 else{
 key_left = -1;key_right = -1;key_up = -1;key_down = -1
 key_shoot = -1;key_shoot_pressed = -1
 key_interact = -1;key_reload = -1
 key_weapon_toggle_back = -1;key_weapon_toggle_forward = -1
+key_knife_pressed = -1
 }
-
 
 if key_weapon_toggle_back or key_weapon_toggle_forward{
 if give_all_weapons = false{
@@ -38,15 +39,16 @@ if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(
 ammo_inmag = weapon_ammo_inmag[weapon_number]
 ammo_reserve = weapon_ammo_reserve[weapon_number]
 }
-else{
+else{ammo_reserve = 1000
 if key_weapon_toggle_back{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(box_list)-1}}
 if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(box_list){weapon_number = 0}}
 weapon_sprite = array_get(box_list,weapon_number)}
+melee_equipped = false
 }
 
-if give_all_weapons = false{weapon_sprite = array_get(weapon,weapon_number)}
+if give_all_weapons = false && melee_equipped = false{weapon_sprite = array_get(weapon,weapon_number)}
 
-weapon_damage = 1
+weapon_damage = 10
 penetration = 1
 base_recoil = 0.5
 shoot_delay = 12
@@ -54,11 +56,14 @@ knockback = 2
 bullet_speed = 60
 bullet_sprite = s_Bullet
 reload_time = 60
-weapon_weight = 0
+weapon_weight = 0.5
 bullet_amount = 1
 bullet_spread = 0
 
-script_execute_wpn(weapon_sprite)
+if key_knife_pressed{melee_equipped = true}
+
+if melee_equipped = false{
+script_execute_wpn(weapon_sprite)}
 
 if abs(gamepad_axis_value(input_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(input_number,gp_axisrv)) > 0.1{
 aim_x = ((gamepad_axis_value(input_number,gp_axisrh)*10) div 1)
@@ -74,7 +79,9 @@ if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockba
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
 
-var_move = clamp(mov_spd-clamp(weapon_weight-strength,0,100),0,100)
+
+var_move = clamp(mov_spd-clamp((weapon_weight/strength),0,100),0,100)
+
 hsp = (key_right-key_left)*var_move
 if abs(gamepad_axis_value(input_number,gp_axislh)) > 0.2{hsp = gamepad_axis_value(input_number,gp_axislh)*var_move}
 hsp += hsp_knockback
@@ -108,10 +115,10 @@ if shoot_timer > 0{shoot_timer -= 1}
 if recoil_cooldown > 0 && shoot_timer = 0{recoil_cooldown -= 1}
 if reload_timer > 0{reload_timer -= 1
 if reload_timer = 0{
-var_reload = ammo_inmag_max-ammo_inmag
-if var_reload > ammo_reserve{var_reload = ammo_reserve}
-ammo_inmag += var_reload
-ammo_reserve -= var_reload
+reload_size = ammo_inmag_max-ammo_inmag
+if reload_size > ammo_reserve{reload_size = ammo_reserve}
+ammo_inmag += reload_size
+ammo_reserve -= reload_size
 }}
 
 
@@ -119,7 +126,11 @@ recoil = 0
 if ammo_inmag = 0 && ammo_reserve > 0 && reload_timer = 0 or key_reload && ammo_reserve > 0 && ammo_inmag < ammo_inmag_max && reload_timer = 0
 {reload_timer = reload_time}
 
-if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0{
+if key_shoot && ammo_inmag = 0 && ammo_reserve = 0{
+
+}
+
+if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = false{
 if key_shoot && auto = true or key_shoot_pressed && auto = false{
 shoot_timer = shoot_delay
 ammo_inmag -= 1
@@ -148,8 +159,15 @@ vsp_knockback = vspeed
 speed = 0
 }
 }
+	
+if melee_equipped = true{
+if key_knife_pressed or key_shoot_pressed{
+if melee.attacking = false{melee.attacking = true}
+}
+}
+else{melee.sprite_index = s_0}
 
-if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 30;blood_splatter()}
+if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 30+(GM.player_amount*5);blood_splatter()}
 if hit_stun > 0{hit_stun -= 1}
 
 if aim_direction  > 45 or aim_direction  < 135{aim_string = "U"}

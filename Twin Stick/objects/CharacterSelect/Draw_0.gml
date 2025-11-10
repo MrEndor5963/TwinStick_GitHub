@@ -10,22 +10,21 @@ var_yy += 1}
 var_xx += 1}
 
 var_y = 200
-if cursor_control[0] = -1{
-var_x = (screen_width/5)
+
+
+var_repeat = 0
+repeat(4){
+var_x = (screen_width/5)*(var_repeat+1)
+if cursor_control[var_repeat] = -1{
 draw_text(var_x,var_y,string("Press A to Start"))
 }
-
-if cursor_control[1] = -1{
-var_x = (screen_width/5)*2
-draw_text(var_x,var_y,string("Press A to Start"))
+else{
+draw_text(var_x,var_y,ds_grid_get(select_menu,cursor_c[var_repeat],cursor_r[var_repeat]))
+if player_selected[var_repeat] != 0{
+if player_ready[var_repeat] = false{draw_text(var_x,var_y+20,"Not Ready")}
+else{draw_text(var_x,var_y+20,"Ready")}
+}
 }
 
-if cursor_control[2] = -1{
-var_x = (screen_width/5)*3
-draw_text(var_x,var_y,string("Press A to Start"))
-}
-
-if cursor_control[3] = -1{
-var_x = (screen_width/5)*4
-draw_text(var_x,var_y,string("Press A to Start"))
+var_repeat += 1
 }

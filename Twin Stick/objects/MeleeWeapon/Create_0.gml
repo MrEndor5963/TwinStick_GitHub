@@ -1,0 +1,9 @@
+damage = 10
+attacking = false
+attack_timer = 0
+hurts_enemy = true
+xoff = 0;
+yoff = 0
+angleoff = 0
+penetration = 100
+contact_list = []
