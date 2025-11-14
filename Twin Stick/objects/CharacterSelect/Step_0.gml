@@ -17,10 +17,14 @@ exit
 }
 }
 //
-if gamepad_axis_value(cursor_control[vrp],gp_axislh) < -0.2{key_left[vrp] = true}else{key_left[vrp] = false}
-if gamepad_axis_value(cursor_control[vrp],gp_axislh) > 0.2{key_right[vrp] = true}else{key_right[vrp] = false}
-if gamepad_axis_value(cursor_control[vrp],gp_axislv) < -0.2{key_up[vrp] = true}else{key_up[vrp] = false}
-if gamepad_axis_value(cursor_control[vrp],gp_axislv) > 0.2{key_down[vrp] = true}else{key_down[vrp] = false}
+if gamepad_axis_value(cursor_control[vrp],gp_axislh) < -0.2 or gamepad_button_check(cursor_control[vrp],gp_padl)
+{key_left[vrp] = true}else{key_left[vrp] = false}
+if gamepad_axis_value(cursor_control[vrp],gp_axislh) > 0.2 or gamepad_button_check(cursor_control[vrp],gp_padr)
+{key_right[vrp] = true}else{key_right[vrp] = false}
+if gamepad_axis_value(cursor_control[vrp],gp_axislv) < -0.2 or gamepad_button_check(cursor_control[vrp],gp_padu)
+{key_up[vrp] = true}else{key_up[vrp] = false}
+if gamepad_axis_value(cursor_control[vrp],gp_axislv) > 0.2 or gamepad_button_check(cursor_control[vrp],gp_padd)
+{key_down[vrp] = true}else{key_down[vrp] = false}
 
 key_left_pressed[vrp] = 0;key_right_pressed[vrp] = 0;key_up_pressed[vrp] = 0;key_down_pressed[vrp] = 0
 

@@ -7,8 +7,8 @@ weapon_ammo_reserve[0] = ammo_reserve_max
 ammo_inmag = ammo_inmag_max
 ammo_reserve = ammo_reserve_max
 mov_spd = 10
-strength = 2
-draw_color = c_green
+strength = 1.5
+draw_color = $00CC00
 }
 
 if player_name = "Justin"{
@@ -19,7 +19,7 @@ weapon_ammo_reserve[0] = ammo_reserve_max
 ammo_inmag = ammo_inmag_max
 ammo_reserve = ammo_reserve_max
 mov_spd = 10
-strength = 5
+strength = 2
 draw_color = c_aqua
 }
 
@@ -32,8 +32,8 @@ weapon_ammo_reserve[0] = ammo_reserve_max
 ammo_inmag = ammo_inmag_max
 ammo_reserve = ammo_reserve_max
 mov_spd = 6
-strength = 14
-draw_color = c_purple
+strength = 6
+draw_color = $FF00A9
 }
 
 portrait_sprite = asset_get_index("s_"+string(player_name)+"Portrait")

@@ -1,3 +1,24 @@
+key_pause = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed_any(gp_start)
+key_left = gamepad_axis_value_any(gp_axislh,false)
+key_right = gamepad_axis_value_any(gp_axislh,true)
+key_up = gamepad_axis_value_any(gp_axislh,false)
+key_down = gamepad_axis_value_any(gp_axislh,true)
+
+if key_pause{
+if game_paused = false{
+game_paused = true
+
+}
+else{
+game_paused = false
+
+}
+}
+
+if game_paused = true{exit}
+
+
+
 set_tileset_collision()
 view_enabled = true
 view_visible[0] = true

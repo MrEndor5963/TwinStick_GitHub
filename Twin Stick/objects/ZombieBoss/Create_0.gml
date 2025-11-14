@@ -1,4 +1,4 @@
-hp = 6300
+hp = 3000
 move_timer = 1
 shoot_timer = 90
 create_enemy()

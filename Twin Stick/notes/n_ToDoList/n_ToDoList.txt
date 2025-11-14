@@ -1,3 +1,11 @@
-code astar
+fix enemy pathfinding
 
-need move radius and then jlhbubr edh
+optimize player ui code
+
+pause menu
+
+Main Menu
+
+enemy and player spritework
+
+floor transitions. enemies get more tougher each floor

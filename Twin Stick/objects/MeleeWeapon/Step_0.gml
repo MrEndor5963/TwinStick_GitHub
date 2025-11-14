@@ -1,3 +1,5 @@
+if GM.game_paused = true{exit}
+
 penetration = 100
 
 image_angle = creator.aim_direction

@@ -5,16 +5,22 @@ input_number = 0
 hsp = 0;vsp = 0
 hsp_knockback = 0;vsp_knockback = 0
 mov_spd = 10
-hp = 8;hp_max = 8
+hp = 6;hp_max = 6
 hit_stun = 0
-money = 150000
+money = 500
 kills = 0
 //money = 0
+recoil = 0
+weapon_yscale = 1
 
 aim_direction = 0;aim_x = 0;aim_y = 0
 stick_aim_x = 0;stick_aim_y = 0
 ammo_inmag = 30
 reload_timer = 0
+//current_reload_sfx = -1
+current_shoot_sfx = -1
+revive_time = 300
+revive_timer = 0
 strength = 2
 
 refresh_grid = 60
@@ -24,14 +30,13 @@ melee = instance_create_depth(x,y,depth-1,MeleeWeapon)
 melee.creator = id
 melee_equipped = false
 //Default stats
-give_all_weapons = true
-//give_all_weapons = false
+//give_all_weapons = true
+give_all_weapons = false
 box_list = GM.box_list
 can_control = true
 
 weapon_slots = 2
 
-recoil_cooldown = 0
 shoot_timer = 0
 
 weapon_number = 0
@@ -39,6 +44,12 @@ spawned = false
 
 node_x = x div 48
 node_y = y div 48
+
+point_que = []
+point_draw_dir_x = []
+point_draw_dir_y = []
+
+point_draw_timer = []
 
 record_size = 200
 for(var i = record_size-1; i >= 0; i--){

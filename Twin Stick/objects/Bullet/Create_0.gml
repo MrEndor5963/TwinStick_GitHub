@@ -1,5 +1,3 @@
-image_xscale = 2
-image_yscale = 2
 contact_list = []
 set_tileset_collision()
 penetration = 1

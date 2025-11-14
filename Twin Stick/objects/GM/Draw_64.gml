@@ -10,6 +10,7 @@ draw_set_halign(fa_left)
 //draw_text(100,160,room_get_name(rooms_in_use[7]))
 //draw_text(100,180,room_get_name(rooms_in_use[8]))
 
+if draw_map = true{
 draw_set_alpha(0.5)
 var_xx = 0
 if instance_exists(Player){
@@ -41,3 +42,5 @@ draw_sprite(s_PlayerMarker,0,map_x*48,map_y*48+232)
 }
 
 draw_set_alpha(1)
+draw_map = false
+}

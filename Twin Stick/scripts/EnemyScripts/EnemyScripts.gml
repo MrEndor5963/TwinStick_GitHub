@@ -36,7 +36,7 @@ repeat(array_length(GM.player_list)){
 var_player = GM.player_list[var_repeat]
 var_grid = var_player.pathfinding_grid
 value = ds_grid_get(var_grid,node_x,node_y) 
-if value < lowest_value{lowest_value = value;player_target = GM.player_list[var_repeat]}
+if value < lowest_value && var_player.hp > 0{lowest_value = value;player_target = GM.player_list[var_repeat]}
 var_repeat += 1
 }
 if collision_line(x,y,player_target.x,player_target.y,tiles,false,false) = noone{

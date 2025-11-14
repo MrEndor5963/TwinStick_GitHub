@@ -1,1 +1,0 @@
-//ds_grid_set(GM.astar_grid,x/48,y/48,1)

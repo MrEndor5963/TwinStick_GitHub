@@ -1,3 +1,5 @@
+if GM.game_paused = true{exit}
+
 node_x = x div 48
 node_y = y div 48
 if spawn_timer > 0{

@@ -1,3 +1,5 @@
+if GM.game_paused = true{exit}
+
 if hit_stun != 0{creator.hit_stun = hit_stun;hit_stun = 0}
 
 if spawn_enemy = true{
@@ -24,7 +26,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 
 	hit_stun = 2
 	var_player = var_bullet.creator
-	var_player.money += 10
+	with var_player{player_point_change(10)}
 
 	hp -= var_bullet.damage
 	if hp <= 0{
@@ -32,7 +34,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	instance_destroy();
 	ds_list_destroy(list_temp)
 	var_player.kills += 1
-	var_player.money += 50
+	with var_player{player_point_change(50)}
 	var_bullet.penetration -= 1
 	if var_bullet.penetration <= 0{instance_destroy(var_bullet)}
 	blood_splatter()

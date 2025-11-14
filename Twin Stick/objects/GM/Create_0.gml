@@ -1,10 +1,11 @@
+audio_group_set_gain(audiogroup_default,0,infinity)
 depth = -1000
 grid_made = false
 randomize()
 screen_width = 1280
 screen_height = 720
 
-
+game_paused = false
 player_amount = 0
 player_list = []
 //room_goto(r_Floor1_Spawn)
@@ -20,9 +21,9 @@ clamp_x1 = 0;clamp_x2 = room_width
 clamp_y1 = 0;clamp_y2 = room_height
 
 global.collision_grid = ds_grid_create(27,15)
-map_size = 6
+map_size = 4
 map = ds_grid_create(map_size,map_size)
-
+draw_map = false
 
 room_list = []
 array_push(room_list,r_Floor1_Main01)
@@ -45,6 +46,11 @@ array_push(room_list,r_Floor1_Main17)
 array_push(room_list,r_Floor1_Main18)
 array_push(room_list,r_Floor1_Main19)
 array_push(room_list,r_Floor1_Main20)
+
+if grid_made = false{
+floor_map_create()
+visited_rooms = []
+grid_made = true}
 
 box_list = []
 array_push(box_list,s_m1911)
