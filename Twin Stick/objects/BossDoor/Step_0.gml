@@ -7,6 +7,7 @@ if !instance_exists(Enemy){
 if place_meeting(x,y,Key){
 instance_destroy(Key)
 instance_destroy(block)
+GM.floor_door = false
 instance_destroy()
 }
 	

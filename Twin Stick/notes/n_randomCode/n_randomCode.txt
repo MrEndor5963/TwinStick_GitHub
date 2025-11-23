@@ -1,50 +1,56 @@
-function astar(arg_grid, startx, starty, endx, endy){
+if player_number = 1{
+draw_sprite(portrait_sprite,0,screen_width-92,0+48)
+draw_set_aligns(fa_center,fa_middle)
+draw_text(screen_width-48,0+120,string(hp)+"/"+string(hp_max))
+draw_sprite(s_HPBarOutline,0,screen_width-48,0+288)
+draw_hp = clamp(1/(hp_max/hp),0,1)
+draw_sprite_ext(s_HPBar,0,screen_width-48,0+288,1,-draw_hp,0,draw_color,1)
 
+var_x = screen_width-288-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
+var_y = 0+48-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
+draw_sprite(weapon_sprite,0,var_x,var_y)
+draw_sprite(s_WeaponNameBox,0,192,48)
+draw_text(screen_width-288,0+24,weapon_name)
+draw_text(screen_width-288,0+72,string(ammo_inmag)+"/"+string(ammo_reserve))
 
-//if Cursor.c = endx && Cursor.r = endy{throw("this code was read")}
-
-x_saved = x;y_saved = y
-x = startx;y = starty
-
-move_path_x = []
-move_path_y = []
-move_path_x[0] = startx
-move_path_y[0] = starty
-tiles_moved = 0
-
-do {
-	tiles_moved += 1
-	lowest_value = infinity
-	
-	value = ds_grid_get(arg_grid,x-1,y)
-	if value > 0{move_direction = "Left";lowest_value = value}
-	
-	value = ds_grid_get(arg_grid,x+1,y)
-	if value > 0 && value < lowest_value{move_direction = "Right";lowest_value = value}
-	
-	value = ds_grid_get(arg_grid,x,y-1)
-	if value > 0 && value < lowest_value{move_direction = "Up";lowest_value = value}
-	
-	value = ds_grid_get(arg_grid,x,y+1)
-	if value > 0 && value < lowest_value{move_direction = "Down"}
-	
-	if endx = x-1 && endy = y{move_direction = "Left"}
-	if endx = x+1 && endy = y{move_direction = "Right"}
-	if endx = x && endy = y-1{move_direction = "Up"}
-	if endx = x && endy = y+1{move_direction = "Down"}
-	
-	if move_direction = "Left"{x -= 1}
-	if move_direction = "Right"{x += 1}
-	if move_direction = "Up"{y -= 1};
-	if move_direction = "Down"{y += 1}
-array_push(move_path_x,x)
-array_push(move_path_y,y)
-
+draw_set_halign(fa_right)
+draw_text(screen_width-432,0+48,"$"+string(money))
 }
-until(x = endx && y = endy)
 
-x = x_saved;y = y_saved
+if player_number = 2{
+draw_sprite(portrait_sprite,0,0+92,screen_height-48)
+draw_set_aligns(fa_center,fa_middle)
+draw_text(0+48,screen_height-120,string(hp)+"/"+string(hp_max))
+draw_sprite(s_HPBarOutline,0,0+48,screen_height-288+144)
+draw_hp = clamp(1/(hp_max/hp),0,1)
+draw_sprite_ext(s_HPBar,0,0+48,screen_height-288+144,1,-draw_hp,0,draw_color,1)
 
-return true
+var_x = 0+288-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
+var_y = screen_height-48-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
+draw_sprite(weapon_sprite,0,var_x,var_y)
+draw_sprite(s_WeaponNameBox,0,192,48)
+draw_text(0+288,screen_height-24,weapon_name)
+draw_text(0+288,screen_height-72,string(ammo_inmag)+"/"+string(ammo_reserve))
 
+draw_set_halign(fa_left)
+draw_text(0+432,screen_height-48,"$"+string(money))
+}
+
+if player_number = 3{
+draw_sprite(portrait_sprite,0,screen_width-92,screen_height-48)
+draw_set_aligns(fa_center,fa_middle)
+draw_text(screen_width-48,screen_height-120,string(hp)+"/"+string(hp_max))
+draw_sprite(s_HPBarOutline,0,screen_width-48,screen_height-288+144)
+draw_hp = clamp(1/(hp_max/hp),0,1)
+draw_sprite_ext(s_HPBar,0,screen_width-48,screen_height-288+144,1,-draw_hp,0,draw_color,1)
+
+var_x = screen_width-288-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
+var_y = screen_height-48-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
+draw_sprite(weapon_sprite,0,var_x,var_y)
+draw_sprite(s_WeaponNameBox,0,192,48)
+draw_text(screen_width-288,screen_height-24,weapon_name)
+draw_text(screen_width-288,screen_height-72,string(ammo_inmag)+"/"+string(ammo_reserve))
+
+draw_set_halign(fa_right)
+draw_text(screen_width-432,screen_height-48,"$"+string(money))
 }

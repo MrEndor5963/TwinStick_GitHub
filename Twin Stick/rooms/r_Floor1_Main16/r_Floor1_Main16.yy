@@ -70,8 +70,8 @@
   ],
   "name":"r_Floor1_Main16",
   "parent":{
-    "name":"CRooms",
-    "path":"folders/CRooms.yy",
+    "name":"floor1Main",
+    "path":"folders/CRooms/floor1Main.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

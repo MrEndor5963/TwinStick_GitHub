@@ -13,8 +13,7 @@ cursor_control[0] != vrp && cursor_control[1] != vrp &&
 cursor_control[2] != vrp && cursor_control[3] != vrp{
 cursor_control[var_player] = vrp
 player_amount += 1
-exit
-}
+exit}
 }
 //
 if gamepad_axis_value(cursor_control[vrp],gp_axislh) < -0.2 or gamepad_button_check(cursor_control[vrp],gp_padl)

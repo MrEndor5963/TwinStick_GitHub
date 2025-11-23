@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.45820862,
+  "duration":0.38247165,
   "name":"sfx_m1911Shoot",
   "parent":{
     "name":"DSounds",

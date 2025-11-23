@@ -1,6 +1,13 @@
 set_tileset_collision()
-if instance_exists(Player){
-array_push(visited_rooms,x_plus_y(map_x,map_y))}
+if instance_exists(RoomSpawn){
+
+if !array_contains(visited_rooms,x_plus_y(map_x,map_y)){
+array_push(visited_rooms,x_plus_y(map_x,map_y))
+
+}
+
+
+}
 
 ds_grid_clear(global.collision_grid,0)
 var_xx = 0

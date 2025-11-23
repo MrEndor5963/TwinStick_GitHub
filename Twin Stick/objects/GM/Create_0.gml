@@ -21,9 +21,23 @@ clamp_x1 = 0;clamp_x2 = room_width
 clamp_y1 = 0;clamp_y2 = room_height
 
 global.collision_grid = ds_grid_create(27,15)
-map_size = 4
+floor_number = 1
+next_floor = false
+floor_door = true
+map_size = 6
 map = ds_grid_create(map_size,map_size)
 draw_map = false
+
+pause_alpha = 0
+menu_cursor = 0
+menu[0] = "Resume"
+menu[1] = "Settings"
+menu[2] = "Character Select"
+menu[3] = "Exit Game"
+key_held_u = 0
+key_held_d = 0
+key_held_l = 0
+key_held_r = 0
 
 room_list = []
 array_push(room_list,r_Floor1_Main01)
@@ -52,11 +66,17 @@ floor_map_create()
 visited_rooms = []
 grid_made = true}
 
+enemy_list = []
+array_push(enemy_list,Zombie)
+array_push(enemy_list,ZombieShooter)
+array_push(enemy_list,Hellhound)
+
 box_list = []
 array_push(box_list,s_m1911)
 array_push(box_list,s_Taurus92)
 array_push(box_list,s_DEagle)
 array_push(box_list,s_SnW500)
+//array_push(box_list,s_BFR500)
 array_push(box_list,s_CZ75Auto)
 array_push(box_list,s_Olympia)
 array_push(box_list,s_Ithaca)
@@ -64,11 +84,12 @@ array_push(box_list,s_Remi870)
 array_push(box_list,s_Spaz12)
 array_push(box_list,s_Luty)
 array_push(box_list,s_VzSkorpion)
+array_push(box_list,s_spectre)
 array_push(box_list,s_Uzi)
 array_push(box_list,s_mp5)
-array_push(box_list,s_spectre)
-array_push(box_list,s_Thompson)
 array_push(box_list,s_PPBison)
+array_push(box_list,s_Thompson)
+//array_push(box_list,s_KrissVector)
 array_push(box_list,s_AK47)
 array_push(box_list,s_AN94)
 array_push(box_list,s_Xiuhcoatl)
@@ -80,7 +101,7 @@ array_push(box_list,s_AWP)
 array_push(box_list,s_DSR50)
 array_push(box_list,s_SquareGun)
 
-enemy_list = []
-array_push(enemy_list,Zombie)
-array_push(enemy_list,ZombieShooter)
-array_push(enemy_list,Hellhound)
+item_list = []
+array_push(item_list,s_si_HPMax)
+array_push(item_list,s_si_Move)
+array_push(item_list,s_si_WeaponSlots)

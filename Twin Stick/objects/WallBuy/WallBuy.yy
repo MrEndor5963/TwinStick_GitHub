@@ -10,8 +10,8 @@
   "name":"WallBuy",
   "overriddenProperties":[],
   "parent":{
-    "name":"AObjects",
-    "path":"folders/AObjects.yy",
+    "name":"BuyableStuff",
+    "path":"folders/AObjects/BuyableStuff.yy",
   },
   "parentObjectId":null,
   "persistent":false,

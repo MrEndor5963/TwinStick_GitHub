@@ -1,10 +1,11 @@
 screen_width = GM.screen_width
 screen_height = GM.screen_height
-select_menu = ds_grid_create(3,1)
+select_menu = ds_grid_create(4,1)
 
 ds_grid_set(select_menu,0,0,"Hazel")
 ds_grid_set(select_menu,1,0,"Justin")
 ds_grid_set(select_menu,2,0,"Craig")
+ds_grid_set(select_menu,3,0,"Nia")
 //ds_grid_set(select_menu,3,0,"Stickman")
 //ds_grid_set(select_menu,4,0,"Tonis")
 

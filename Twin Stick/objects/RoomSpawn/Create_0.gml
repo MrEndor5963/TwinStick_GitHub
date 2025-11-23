@@ -30,7 +30,7 @@ block = instance_create_depth(x,y,depth+1,Collision)
 block.image_xscale = image_xscale
 block.image_yscale = image_yscale}
 
-if make_boss_door = true{
+if make_boss_door = true && GM.floor_door = true{
 block = instance_create_depth(x,y,depth+1,BossDoor)
 block.image_xscale = image_xscale
 block.image_yscale = image_yscale

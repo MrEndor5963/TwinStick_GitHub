@@ -7,7 +7,7 @@ hsp_knockback = 0;vsp_knockback = 0
 mov_spd = 10
 hp = 6;hp_max = 6
 hit_stun = 0
-money = 500
+money = 1000
 kills = 0
 //money = 0
 recoil = 0
@@ -30,10 +30,11 @@ melee = instance_create_depth(x,y,depth-1,MeleeWeapon)
 melee.creator = id
 melee_equipped = false
 //Default stats
-//give_all_weapons = true
+give_all_weapons = true
 give_all_weapons = false
 box_list = GM.box_list
 can_control = true
+
 
 weapon_slots = 2
 
@@ -57,3 +58,5 @@ record_x[i] = x;record_y[i] = y}
 
 pathfinding_grid = ds_grid_create(27,15)
 //set_player_grid()
+item_list = []
+new_item = -1

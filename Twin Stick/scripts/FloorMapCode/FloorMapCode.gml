@@ -41,15 +41,11 @@ do {
 	if move_direction = "Right"{current_x += 1}
 	if move_direction = "Up"{current_y -= 1};
 	if move_direction = "Down"{current_y += 1}
-	if ds_grid_get(map,current_x,current_y) = 0{
-	code_loops = 0
-	do{
+	if ds_grid_get(map,current_x,current_y) = 0{	
 	var_string = irandom_range(1,array_length(room_list))
 	if var_string < 10{var_string = "0"+string(var_string)}
 	var_string = "r_Floor1_Main"+string(var_string)
 	var_room = asset_get_index(var_string)
-	code_loops += 1}
-	until(!array_contains(rooms_in_use,var_room))
 	ds_grid_set(map,current_x,current_y,var_room)
 	array_push(rooms_in_use,var_room)
 	}
@@ -57,34 +53,30 @@ do {
 until(current_x = start_x && current_y = start_y)}
 
 function floor_map_create(){
+if instance_exists(MysteryBox){instance_destroy(MysteryBox)}
+if instance_exists(WallBuy){instance_destroy(WallBuy)}
+if instance_exists(ShopKeeper){instance_destroy(ShopKeeper)}
 
+floor_door = true
 map_x = irandom_range(0,map_size-1)
 map_y = irandom_range(0,map_size-1)
 rooms_in_use = []
+map_visited = []
 open_nodes = []
 //child_nodes = []
 //closed_nodes = []
-
+ds_grid_clear(map,0)
 ds_grid_set(map,map_x,map_y,r_Floor1_Spawn)
 array_push(open_nodes,x_plus_y(map_x,map_y))
 array_push(rooms_in_use,r_Floor1_Spawn)
 start_x = map_x
 start_y = map_y
 
+set_room_with_path(r_BoxRoom)
 set_room_with_path(r_Shop)
-set_room_with_path(r_Gauntlet)
 if irandom_range(1,2) = 1{set_room_with_path(r_FastFood)}
 else{set_room_with_path(r_Casino)}
 set_room_with_path(r_Floor1_KeyRoom)
 set_room_with_path(r_Floor1_Boss)
-
-
-//Room Persistentcy
-var_repeat = 0
-repeat(array_length(rooms_in_use)){
-var_temp = array_get(rooms_in_use,var_repeat)
-room_set_persistent(var_temp,true)
-var_repeat += 1}
-
 
 }

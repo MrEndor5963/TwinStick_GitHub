@@ -1,6 +1,8 @@
 fix enemy pathfinding
 
-optimize player ui code
+Make player vs player gamemode
+
+make player ui look cooler
 
 pause menu
 
@@ -9,3 +11,4 @@ Main Menu
 enemy and player spritework
 
 floor transitions. enemies get more tougher each floor
+1-4 player balacing (adding more enemies the more players there are)

@@ -1,3 +1,15 @@
+if GM.map_x != home_x or GM.map_y != home_y{
+sprite_index = s_0
+exit
+}
+else{sprite_index = s_MysteryBox}
+
+if !instance_exists(block){
+block = instance_create_depth(x,y,depth+1,Collision)
+block.image_xscale = 5
+block.image_yscale = 2
+}
+
 draw_self()
 if activate_box = true{
 activate_box = false

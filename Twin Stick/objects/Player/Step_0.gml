@@ -18,7 +18,7 @@ key_right = keyboard_check(vk_right) or keyboard_check(ord("D"))
 key_up = keyboard_check(vk_up) or keyboard_check(ord("W"))
 //key_up_pressed = keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"))
 key_down = keyboard_check(vk_down) or keyboard_check(ord("S"))
-//key_down_pressed = keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))
+//key_down_pressed = keyboard_check_pressed(vk_d+wn) or keyboard_check_pressed(ord("S"))
 key_shoot = mouse_check_button(mb_left) or gamepad_button_check(input_number,gp_shoulderrb)
 key_shoot_pressed = mouse_check_button_pressed(mb_left) or gamepad_button_check_pressed(input_number,gp_shoulderrb)
 key_interact = keyboard_check(ord("E")) or gamepad_button_check(input_number,gp_face1)
@@ -91,7 +91,8 @@ aim_direction = point_direction(0, 0, aim_x,aim_y)
 //aim_direction = point_direction(x, y, mouse_x,mouse_y)
 
 if shoot_timer > 0{shoot_timer -= 1}
-recoil *= 0.9
+if abs(recoil) > 10{recoil *= 0.92}else{
+recoil *= 0.9}
 if recoil < 0.5 && recoil > -0.5{recoil = 0}
 if reload_timer = 0{if audio_exists(reload_sfx){audio_stop_sound(reload_sfx)}}
 if reload_timer > 0{
@@ -144,7 +145,7 @@ vsp_knockback = vspeed
 speed = 0
 recoil += base_recoil*weapon_yscale
 current_shoot_sfx = play_sfx(shoot_sfx)
-audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.05,0.05))
+audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.0045))
 }
 }
 
@@ -266,7 +267,20 @@ ammo_inmag = weapon_ammo_inmag[weapon_number]
 ammo_reserve = weapon_ammo_reserve[weapon_number]
 }
 
+}
 
+if place_meeting(x,y,ShopItem){
+var_object = instance_nearest(x,y,ShopItem)
+var_object.display_text = true
+if key_interact_pressed && money >= var_object.cost{
+player_point_change(-var_object.cost)
+new_item = var_object.sprite_index
+}
+
+}
+
+if place_meeting(x,y,Teleporter) && key_interact{
+Teleporter.teleport_timer += 1
 }
 
 image_xscale = 1;image_yscale = 1
@@ -288,3 +302,10 @@ record_x[i] = record_x[i-1];record_x[0] = x
 record_y[i] = record_y[i-1];record_y[0] = y
 }
 #endregion End Of Record Data
+
+//Item data
+if new_item != -1{
+script_execute_item(new_item)
+array_push(item_list,new_item)
+new_item = -1
+}
