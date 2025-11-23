@@ -12,8 +12,8 @@
   "duration":1.9705442,
   "name":"sfx_m1911Reload",
   "parent":{
-    "name":"DSounds",
-    "path":"folders/DSounds.yy",
+    "name":"GunSounds",
+    "path":"folders/DSounds/GunSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

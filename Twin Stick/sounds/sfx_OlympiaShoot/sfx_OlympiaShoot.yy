@@ -12,8 +12,8 @@
   "duration":1.6861678,
   "name":"sfx_OlympiaShoot",
   "parent":{
-    "name":"DSounds",
-    "path":"folders/DSounds.yy",
+    "name":"GunSounds",
+    "path":"folders/DSounds/GunSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

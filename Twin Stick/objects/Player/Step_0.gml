@@ -157,7 +157,10 @@ if melee.attacking = false{melee.attacking = true}
 }
 else{melee.sprite_index = s_0}
 
-if place_meeting(x,y,Enemy) && hit_stun = 0{hp -= 1;hit_stun = 30+(GM.player_amount*5);blood_splatter()}
+if place_meeting(x,y,Enemy) && hit_stun = 0{
+hp -= 1;hit_stun = 30+(GM.player_amount*5);blood_splatter()
+play_sfx(sfx_PlayerHurt)
+}
 if hit_stun > 0{hit_stun -= 1}
 
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
@@ -233,6 +236,7 @@ var_object.display_text = true
 if key_interact_pressed && money >= 950 && var_object.box_open = false{
 player_point_change(-950)
 var_object.activate_box = true
+play_sfx(sfx_Buy)
 }
 
 if key_interact_pressed && var_object.box_open = true && var_object.box_timer = 0{
@@ -265,6 +269,7 @@ weapon_ammo_inmag[weapon_number] = ammo_inmag_max
 weapon_ammo_reserve[weapon_number] = ammo_reserve_max
 ammo_inmag = weapon_ammo_inmag[weapon_number]
 ammo_reserve = weapon_ammo_reserve[weapon_number]
+play_sfx(sfx_Buy)
 }
 
 }
@@ -275,6 +280,7 @@ var_object.display_text = true
 if key_interact_pressed && money >= var_object.cost{
 player_point_change(-var_object.cost)
 new_item = var_object.sprite_index
+play_sfx(sfx_Buy)
 }
 
 }

@@ -38,6 +38,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	var_bullet.penetration -= 1
 	if var_bullet.penetration <= 0{instance_destroy(var_bullet)}
 	blood_splatter()
+	play_sfx(sfx_EnemyDeath)
 	exit
 	}
 

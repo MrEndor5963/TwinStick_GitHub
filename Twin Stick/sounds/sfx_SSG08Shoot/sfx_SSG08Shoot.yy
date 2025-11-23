@@ -12,8 +12,8 @@
   "duration":2.5569842,
   "name":"sfx_SSG08Shoot",
   "parent":{
-    "name":"DSounds",
-    "path":"folders/DSounds.yy",
+    "name":"GunSounds",
+    "path":"folders/DSounds/GunSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

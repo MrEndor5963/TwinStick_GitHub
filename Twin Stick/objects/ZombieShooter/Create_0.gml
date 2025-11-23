@@ -4,7 +4,7 @@ if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
 
-hp = 50+(30*GM.floor_number)
+hp = 25+(30*GM.floor_number)
 move_timer = 1
 shoot_timer = 90
 create_enemy()

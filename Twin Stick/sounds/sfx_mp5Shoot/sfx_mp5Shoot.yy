@@ -12,8 +12,8 @@
   "duration":0.3729932,
   "name":"sfx_mp5Shoot",
   "parent":{
-    "name":"DSounds",
-    "path":"folders/DSounds.yy",
+    "name":"GunSounds",
+    "path":"folders/DSounds/GunSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

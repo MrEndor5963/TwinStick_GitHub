@@ -19,7 +19,7 @@ ammo_inmag = 30
 reload_timer = 0
 //current_reload_sfx = -1
 current_shoot_sfx = -1
-revive_time = 300
+revive_time = 180
 revive_timer = 0
 strength = 2
 

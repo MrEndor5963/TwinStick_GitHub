@@ -12,8 +12,8 @@
   "duration":0.38247165,
   "name":"sfx_m1911Shoot",
   "parent":{
-    "name":"DSounds",
-    "path":"folders/DSounds.yy",
+    "name":"GunSounds",
+    "path":"folders/DSounds/GunSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

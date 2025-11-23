@@ -12,8 +12,8 @@
   "duration":0.93897957,
   "name":"sfx_AK47Shoot",
   "parent":{
-    "name":"DSounds",
-    "path":"folders/DSounds.yy",
+    "name":"GunSounds",
+    "path":"folders/DSounds/GunSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

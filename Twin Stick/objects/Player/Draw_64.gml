@@ -107,7 +107,7 @@ if revive_timer > 0{
 draw_revive = clamp(1/(revive_time/revive_timer),0,1)
 draw_sprite_ext(s_ReloadBar,0,x-48,y-(sprite_height/2)-20,draw_revive,1,0,draw_color,1)
 draw_sprite(s_ReloadBarOutline,0,x,y-(sprite_height/2)-20)
-if revive_timer = revive_time{hp += 1;hit_stun = 120;revive_timer = 0}
+if revive_timer = revive_time{hp += 2;hit_stun = 120;revive_timer = 0}
 }
 
 /*

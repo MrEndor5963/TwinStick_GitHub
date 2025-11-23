@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"sfx_AWPShoot",
+  "%Name":"sfx_Buy",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":3.7929933,
-  "name":"sfx_AWPShoot",
+  "duration":1.2609978,
+  "name":"sfx_Buy",
   "parent":{
-    "name":"GunSounds",
-    "path":"folders/DSounds/GunSounds.yy",
+    "name":"DSounds",
+    "path":"folders/DSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_AWPShoot.mp3",
+  "soundFile":"sfx_Buy.mp3",
   "type":0,
   "volume":1.0,
 }
