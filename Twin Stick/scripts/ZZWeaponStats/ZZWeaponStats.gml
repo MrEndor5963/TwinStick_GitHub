@@ -1,48 +1,81 @@
+/*
+melee_list = []
+box_list = []
+handgun_list = []
+revolver_list = []
+machine_pistol_list = []
+smg_list = []
+semi_ar_list = []
+full_ar_list = []
+lmg_list = []
+shotgun_list = []
+sniper_list = []
+nazi_list = []
+*/
 function script_execute_wpn(arg_weapon_sprite){
 var_string = string_delete(sprite_get_name(arg_weapon_sprite),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
 }
-function referece_weapons(){referece_weapons()
+function referece_weapons(){
+//Melee
 wpn_Knife()
+//Pistols
 wpn_m1911()
 wpn_Taurus92()
 wpn_DEagle()
-wpn_CZ75Auto()
+//Revolvers
+wpn_Python()
 wpn_SnW500()
 wpn_BFR500()
-wpn_Olympia()
-wpn_Ithaca()
-wpn_Remi870()
-wpn_Spaz12()
+//Machine Pistols
+wpn_CZ75Auto()
+//SMG's
 wpn_Luty()
 wpn_VzSkorpion()
 wpn_Uzi()
 wpn_mp5()
 wpn_PPBison()
 wpn_spectre()
+wpn_MP40()
 wpn_Thompson()
 wpn_KrissVector()
+//Semi Auto AR's
+wpn_M14()
+//Full Auto AR's
 wpn_AK47()
 wpn_AN94()
-//H&K G11
 wpn_Xiuhcoatl()
+wpn_Galil()
+//LMG's
 wpn_RPD()
 wpn_Lewis()
-wpn_M14()
+//Shotguns
+wpn_Olympia()
+wpn_Ithaca()
+wpn_Remi870()
+wpn_Spaz12()
+wpn_Winchester1897()
+//Sniper Rifles
 wpn_SSG08()
 wpn_AWP()
 wpn_DSR50()
+wpn_GM6Lynx()
+//Other
 wpn_SquareGun()
+//Note weapons are roughly organized by power
 }
 
 function wpn_Knife(){
 weapon_sprite = s_Knife
 weapon_name = "Knife"
 cost = 0
+if object_index = GM{
+array_push(melee_list,weapon_sprite)
+exit}
 auto = false
 weapon_damage = 25
 penetration = 1
-base_recoil = 3
+gun_recoil = 3
 shoot_delay = 30
 knockback = 2
 reload_time = 0
@@ -53,14 +86,19 @@ function wpn_m1911(){
 weapon_sprite = s_m1911
 weapon_name = "m1911"
 cost = 250
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
 auto = false
 ammo_reserve_max = 72
 ammo_inmag_max = 8
-weapon_damage = 14
+weapon_damage = 18*handgun_damage_mult
 penetration = 1
-base_recoil = 3
+gun_recoil = 5*handgun_recoil_mult
 shoot_delay = 1
-knockback = 2
+knockback = 2*handgun_knockback_mult
+bullet_knockback = 3
 reload_time = 65
 weapon_weight = 1
 reload_sfx = sfx_m1911Reload
@@ -71,14 +109,19 @@ function wpn_Taurus92(){
 weapon_sprite = s_Taurus92
 weapon_name = "Taurus 92"
 cost = 350
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
 auto = false
 ammo_reserve_max = 85
 ammo_inmag_max = 17
-weapon_damage = 15
+weapon_damage = 22*handgun_damage_mult
 penetration = 1
-base_recoil = 6
+gun_recoil = 8*handgun_recoil_mult
 shoot_delay = 4
-knockback = 2.5
+knockback = 2.5*handgun_knockback_mult
+bullet_knockback = 4
 reload_time = 90
 weapon_weight = 1
 reload_sfx = sfx_m1911Reload
@@ -89,16 +132,46 @@ function wpn_DEagle(){
 weapon_sprite = s_DEagle
 weapon_name = "DEagle"
 cost = 1250
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
 auto = false
 ammo_reserve_max = 35
 ammo_inmag_max = 7
-weapon_damage = 80
+weapon_damage = 60*handgun_damage_mult
 penetration = 1
-base_recoil = 70
+gun_recoil = 70*handgun_recoil_mult
 shoot_delay = 5
-knockback = 9
+knockback = 9*handgun_knockback_mult
+bullet_knockback = 2
 reload_time = 65
 weapon_weight = 1.5
+reload_sfx = sfx_DEagleReload
+shoot_sfx = sfx_DEagleShoot
+}
+
+function wpn_Python(){
+weapon_sprite = s_Python
+weapon_name = "Python"
+cost = 1700
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+array_push(revolver_list,weapon_sprite)
+exit}
+auto = false
+ammo_reserve_max = 36
+ammo_inmag_max = 6
+weapon_damage = 70*handgun_damage_mult
+penetration = 2
+gun_recoil = 70*handgun_recoil_mult
+shoot_delay = 8
+knockback = 16*handgun_knockback_mult
+bullet_knockback = 2
+reload_time = 150
+weapon_weight = 1.5
+bullet_spread = 1
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
 }
@@ -107,14 +180,20 @@ function wpn_SnW500(){
 weapon_sprite = s_SnW500
 weapon_name = "S&W500"
 cost = 2500
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+array_push(revolver_list,weapon_sprite)
+exit}
 auto = false
 ammo_reserve_max = 10
 ammo_inmag_max = 5
-weapon_damage = 100
+weapon_damage = 80*handgun_damage_mult
 penetration = 3
-base_recoil = 80
+gun_recoil = 80*handgun_recoil_mult
 shoot_delay = 8
-knockback = 24
+knockback = 24*handgun_knockback_mult
+bullet_knockback = 2
 reload_time = 120
 weapon_weight = 1.5
 reload_sfx = sfx_DEagleReload
@@ -125,12 +204,16 @@ function wpn_BFR500(){
 weapon_sprite = s_BFR500
 weapon_name = "BFR 500"
 cost = 2780
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(revolver_list,weapon_sprite)
+exit}
 auto = false
 ammo_reserve_max = 5
 ammo_inmag_max = 5
 weapon_damage = 300
 penetration = 6
-base_recoil = 180
+gun_recoil = 180
 shoot_delay = 60
 knockback = 50
 reload_time = 100
@@ -143,111 +226,48 @@ function wpn_CZ75Auto(){
 weapon_sprite = s_CZ75Auto
 weapon_name = "CZ75 Auto"
 cost = 500
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+array_push(machine_pistol_list,weapon_sprite)
+exit}
 auto = true
 ammo_reserve_max = 48
 ammo_inmag_max = 16
-weapon_damage = 16
+weapon_damage = 16*handgun_damage_mult
 penetration = 1
-base_recoil = 7*choose(1,-1)
+gun_recoil = (7*choose(1,-1))*handgun_recoil_mult
 shoot_delay = 4
-knockback = 4
+knockback = 4*handgun_knockback_mult
+bullet_knockback = 4
 reload_time = 55
 weapon_weight = 1
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 }
 
-function wpn_Olympia(){
-weapon_sprite = s_Olympia
-weapon_name = "Olympia"
-cost = 400
-auto = false
-ammo_reserve_max = 38
-ammo_inmag_max = 2
-weapon_damage = 8
-penetration = 1
-base_recoil = 30
-shoot_delay = 5
-knockback = 12
-reload_time = 150
-weapon_weight = 3
-bullet_spread = 15
-bullet_amount = 10
-shoot_sfx = sfx_OlympiaShoot
-}
-
-function wpn_Ithaca(){
-weapon_sprite = s_Ithaca
-weapon_name = "Ithaca"
-cost = 800
-auto = false
-ammo_reserve_max = 35
-ammo_inmag_max = 7
-weapon_damage = 8
-penetration = 1
-base_recoil = 40
-shoot_delay = 45
-knockback = 18
-reload_time = 210
-weapon_weight = 3
-bullet_spread = 20
-bullet_amount = 15
-shoot_sfx = sfx_IthacaShoot
-}
-	
-function wpn_Remi870(){
-weapon_sprite = s_Remi870
-weapon_name = "Remi870Marine"
-cost = 2500
-auto = false
-ammo_reserve_max = 36
-ammo_inmag_max = 6
-weapon_damage = 10
-penetration = 2
-base_recoil = 70
-shoot_delay = 30
-knockback = 25
-reload_time = 180
-weapon_weight = 4
-bullet_spread = 35
-bullet_amount = 15
-shoot_sfx = sfx_IthacaShoot
-}
-
-function wpn_Spaz12(){
-weapon_sprite = s_Spaz12
-weapon_name = "Spaz 12"
-cost = 2600
-auto = false
-ammo_reserve_max = 60
-ammo_inmag_max = 8
-weapon_damage = 7
-penetration = 1
-base_recoil = 24
-shoot_delay = 5
-knockback = 20
-reload_time = 190
-weapon_weight = 4
-bullet_spread = 30
-bullet_amount = 12
-shoot_sfx = sfx_OlympiaShoot
-}
-
 function wpn_Luty(){
 weapon_sprite = s_Luty
 weapon_name = "Luty"
 cost = 80
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(smg_list,weapon_sprite)
+exit}
 auto = true
 ammo_reserve_max = 162
 ammo_inmag_max = 18
-weapon_damage = 10
+weapon_damage = 12
 penetration = 1
-base_recoil = 25*choose(1,-1)
-shoot_delay = 5
+gun_recoil = 25*choose(1,-1)
+shoot_delay = 4
 knockback = 2
-reload_time = 55
+reload_time = 75
 weapon_weight = 1.5
 bullet_spread = 12
+trigger_delay = 15
+jam_chance = 95
+jam_time = 160
 shoot_sfx = sfx_m1911Shoot
 }
 
@@ -260,7 +280,7 @@ ammo_reserve_max = 180
 ammo_inmag_max = 20
 weapon_damage = 12
 penetration = 1
-base_recoil = 4*choose(1,-1)
+gun_recoil = 4*choose(1,-1)
 shoot_delay = 3
 knockback = 1.5
 reload_time = 80
@@ -278,7 +298,7 @@ ammo_reserve_max = 175
 ammo_inmag_max = 25
 weapon_damage = 14
 penetration = 1
-base_recoil = 12*choose(1,-1)
+gun_recoil = 12*choose(1,-1)
 shoot_delay = 3
 knockback = 3
 reload_time = 60
@@ -295,10 +315,27 @@ ammo_reserve_max = 150
 ammo_inmag_max = 30
 weapon_damage = 12
 penetration = 1
-base_recoil = 5*choose(1,-1)
+gun_recoil = 5*choose(1,-1)
 shoot_delay = 4
 knockback = 3
 reload_time = 75
+weapon_weight = 2
+shoot_sfx = sfx_mp5Shoot
+}
+
+function wpn_MP40(){
+weapon_sprite = s_MP40
+weapon_name = "MP40"
+cost = 1040
+auto = true
+ammo_reserve_max = 192
+ammo_inmag_max = 32
+weapon_damage = 13
+penetration = 1
+gun_recoil = 3*choose(1,-1)
+shoot_delay = 9
+knockback = 3.5
+reload_time = 120
 weapon_weight = 2
 shoot_sfx = sfx_mp5Shoot
 }
@@ -312,7 +349,7 @@ ammo_inmag_max = 64
 auto = true
 weapon_damage = 12
 penetration = 1
-base_recoil = 5*choose(1,-1)
+gun_recoil = 5*choose(1,-1)
 shoot_delay = 5
 knockback = 2
 reload_time = 90
@@ -329,7 +366,7 @@ ammo_inmag_max = 30
 auto = true
 weapon_damage = 18
 penetration = 1
-base_recoil = 3*choose(1,-1)
+gun_recoil = 3*choose(1,-1)
 shoot_delay = 5
 knockback = 2
 reload_time = 90
@@ -346,7 +383,7 @@ ammo_inmag_max = 100
 auto = true
 weapon_damage = 14
 penetration = 1
-base_recoil = 6*choose(1,-1)
+gun_recoil = 6*choose(1,-1)
 shoot_delay = 4
 knockback = 2
 reload_time = 140
@@ -364,13 +401,31 @@ ammo_inmag_max = 40
 auto = true
 weapon_damage = 18
 penetration = 1
-base_recoil = 8*choose(1,-1)
+gun_recoil = 8*choose(1,-1)
 shoot_delay = 2
 knockback = 2
 reload_time = 140
 weapon_weight = 4
 bullet_spread = 0
 shoot_sfx = sfx_mp5Shoot
+}
+
+function wpn_M14(){
+weapon_sprite = s_M14
+weapon_name = "M14"
+cost = 400
+auto = false
+ammo_reserve_max = 96
+ammo_inmag_max = 8
+weapon_damage = 28
+penetration = 1
+gun_recoil = 4
+shoot_delay = 7
+knockback = 5
+bullet_knockback = 8
+reload_time = 70
+weapon_weight = 3.5
+shoot_sfx = sfx_AK47Shoot
 }
 
 function wpn_AK47(){
@@ -380,13 +435,14 @@ cost = 1500
 auto = true
 ammo_reserve_max = 60
 ammo_inmag_max = 30
-weapon_damage = 59
+weapon_damage = 40
 penetration = 2
-base_recoil = 30*choose(1,-1)
+gun_recoil = 30*choose(1,-1)
 shoot_delay = 8
 knockback = 14
+bullet_knockback = 10
 reload_time = 110
-weapon_weight = 4
+weapon_weight = 4.5
 shoot_sfx = sfx_AK47Shoot
 }
 
@@ -397,9 +453,9 @@ cost = 2790
 auto = true
 ammo_reserve_max = 90
 ammo_inmag_max = 30
-weapon_damage = 25
+weapon_damage = 35
 penetration = 2
-base_recoil = 10*choose(1,-1)
+gun_recoil = 10*choose(1,-1)
 shoot_delay = 6
 knockback = 10
 reload_time = 110
@@ -413,12 +469,29 @@ cost = 1450
 auto = true
 ammo_reserve_max = 120
 ammo_inmag_max = 30
-weapon_damage = 20
+weapon_damage = 25
 penetration = 2
-base_recoil = 9*choose(1,-1)
+gun_recoil = 9*choose(1,-1)
 shoot_delay = 4
 knockback = 9
 reload_time = 110
+weapon_weight = 4
+shoot_sfx = sfx_AK47Shoot
+}
+
+function wpn_Galil(){
+weapon_sprite = s_Galil
+weapon_name = "Galil"
+cost = 3300
+auto = true
+ammo_reserve_max = 140
+ammo_inmag_max = 35
+weapon_damage = 25
+penetration = 2
+gun_recoil = 5*choose(1,-1)
+shoot_delay = 7
+knockback = 7
+reload_time = 130
 weapon_weight = 4
 shoot_sfx = sfx_AK47Shoot
 }
@@ -432,7 +505,7 @@ ammo_reserve_max = 141
 ammo_inmag_max = 47
 weapon_damage = 30
 penetration = 3
-base_recoil = 6*choose(1,-1)
+gun_recoil = 6*choose(1,-1)
 shoot_delay = 8
 knockback = 8
 reload_time = 240
@@ -449,7 +522,7 @@ ammo_reserve_max = 100
 ammo_inmag_max = 100
 weapon_damage = 19
 penetration = 1
-base_recoil = 9*choose(1,-1)
+gun_recoil = 9*choose(1,-1)
 shoot_delay = 5
 knockback = 10
 reload_time = 300
@@ -457,21 +530,102 @@ weapon_weight = 7
 shoot_sfx = sfx_AK47Shoot
 }
 
-function wpn_M14(){
-weapon_sprite = s_M14
-weapon_name = "M14"
+function wpn_Olympia(){
+weapon_sprite = s_Olympia
+weapon_name = "Olympia 72"
 cost = 400
 auto = false
-ammo_reserve_max = 96
-ammo_inmag_max = 8
-weapon_damage = 24
+ammo_reserve_max = 38
+ammo_inmag_max = 2
+weapon_damage = 8
 penetration = 1
-base_recoil = 4
-shoot_delay = 7
-knockback = 4
-reload_time = 70
+gun_recoil = 30
+shoot_delay = 5
+knockback = 12
+reload_time = 150
+weapon_weight = 3
+bullet_spread = 15*shotgun_spread_mult
+bullet_amount = 10*shotgun_bullet_mult
+shoot_sfx = sfx_OlympiaShoot
+
+}
+
+function wpn_Ithaca(){
+weapon_sprite = s_Ithaca
+weapon_name = "Ithaca 37"
+cost = 800
+auto = false
+ammo_reserve_max = 35
+ammo_inmag_max = 7
+weapon_damage = 8
+penetration = 1
+gun_recoil = 40
+shoot_delay = 45
+knockback = 18
+reload_time = 210
+weapon_weight = 3
+bullet_spread = 20*shotgun_spread_mult
+bullet_amount = 15*shotgun_bullet_mult
+shoot_sfx = sfx_IthacaShoot
+}
+	
+function wpn_Remi870(){
+weapon_sprite = s_Remi870
+weapon_name = "Remi 870 Marine"
+cost = 2500
+auto = false
+ammo_reserve_max = 35
+ammo_inmag_max = 7
+weapon_damage = 10
+penetration = 2
+gun_recoil = 70
+shoot_delay = 30
+knockback = 25
+reload_time = 180
 weapon_weight = 3.5
-shoot_sfx = sfx_AK47Shoot
+bullet_spread = 35*shotgun_spread_mult
+bullet_amount = 15*shotgun_bullet_mult
+shoot_sfx = sfx_IthacaShoot
+}
+
+function wpn_Spaz12(){
+weapon_sprite = s_Spaz12
+weapon_name = "Spas 12"
+cost = 2600
+auto = false
+ammo_reserve_max = 60
+ammo_inmag_max = 8
+weapon_damage = 8
+penetration = 1
+gun_recoil = 95
+shoot_delay = 5
+knockback = 20
+reload_time = 190
+weapon_weight = 4.5
+bullet_spread = 30*shotgun_spread_mult
+bullet_amount = 12*shotgun_bullet_mult
+shoot_sfx = sfx_OlympiaShoot
+jam_chance = 40
+jam_time = 130
+}
+
+function wpn_Winchester1897(){
+weapon_sprite = s_Winchester1897
+weapon_name = "1897 Trench Gun"
+cost = 1150
+auto = true
+ammo_reserve_max = 42
+ammo_inmag_max = 6
+weapon_damage = 8
+penetration = 2
+gun_recoil = 45
+shoot_delay = 30
+knockback = 42
+reload_time = 180
+weapon_weight = 3
+bullet_spread = 35*shotgun_spread_mult
+bullet_amount = 12*shotgun_bullet_mult
+shoot_sfx = sfx_IthacaShoot
 }
 
 function wpn_SSG08(){
@@ -481,15 +635,16 @@ cost = 750
 auto = false
 ammo_reserve_max = 90
 ammo_inmag_max = 10
-weapon_damage = 55
+weapon_damage = 55*sniper_damage_mult
 penetration = 1
-base_recoil = 15
+gun_recoil = 15
 shoot_delay = 60
 knockback = 4
 reload_time = 95
 weapon_weight = 3.5
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_SSG08Shoot
+bullet_spread = sniper_spread_increaser
 }
 
 function wpn_AWP(){
@@ -499,15 +654,16 @@ cost = 4750
 auto = false
 ammo_reserve_max = 30
 ammo_inmag_max = 5
-weapon_damage = 150//Reduced damage against Bosses
+weapon_damage = 150*sniper_damage_mult
 penetration = 4
-base_recoil = 30
+gun_recoil = 30
 shoot_delay = 70
 knockback = 16
 reload_time = 100
 weapon_weight = 5.5
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
+bullet_spread = sniper_spread_increaser
 }
 
 function wpn_DSR50(){
@@ -517,15 +673,38 @@ cost = 5000
 auto = false
 ammo_reserve_max = 28
 ammo_inmag_max = 4
-weapon_damage = 140
+weapon_damage = 140*sniper_damage_mult
 penetration = 8
-base_recoil = 60
+gun_recoil = 60
 shoot_delay = 80
 knockback = 32
 reload_time = 105
 weapon_weight = 8
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
+bullet_spread = sniper_spread_increaser
+}
+
+function wpn_GM6Lynx(){
+weapon_sprite = s_GM6Lynx
+weapon_name = "GM6 Lynx"
+cost = 14000
+auto = false
+ammo_reserve_max = 35
+ammo_inmag_max = 5
+weapon_damage = 165*sniper_damage_mult
+penetration = 4
+gun_recoil = 135
+shoot_delay = 15
+knockback = 72
+reload_time = 105
+weapon_weight = 8
+if object_index = Player && ammo_inmag = ammo_inmag_max{jam_chance = 5}
+else{jam_chance = 100}
+jam_time = 720
+reload_sfx = sfx_AWPReload
+shoot_sfx = sfx_AWPShoot
+bullet_spread = sniper_spread_increaser
 }
 
 function wpn_SquareGun(){
@@ -537,7 +716,7 @@ ammo_reserve_max = 4
 ammo_inmag_max = 4
 weapon_damage = 9999
 penetration = 1
-base_recoil = 0
+gun_recoil = 0
 shoot_delay = 1
 knockback = 96
 bullet_speed = 0.2

@@ -1,8 +1,8 @@
 if GM.map_x != home_x or GM.map_y != home_y{
-sprite_index = s_0
+x = -3000
 exit
 }
-else{sprite_index = s_MysteryBox}
+else{x = xstart}
 
 if !instance_exists(block){
 block = instance_create_depth(x,y,depth+1,Collision)

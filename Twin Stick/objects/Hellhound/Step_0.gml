@@ -17,20 +17,25 @@ hsp = move_direction_h*4;vsp = move_direction_v*4
 
 corner_cutting()
 
-if collision_present(x+hsp,y)
+if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
+if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
+
+if collision_present(x+hsp+hsp_knockback,y)
 {
-	while !collision_present(x+sign(hsp)*1,y){x += sign(hsp)*1}
+	while !collision_present(x+sign(hsp+hsp_knockback)*1,y){x += sign(hsp+hsp_knockback)*1}
 	hsp = 0
+	hsp_knockback = 0
 }
 
-x += hsp
+x += hsp+hsp_knockback
 
-if collision_present(x,y+vsp)
+if collision_present(x,y+vsp+vsp_knockback)
 {
-	while !collision_present(x,y+sign(vsp)*1){y += sign(vsp)*1}
+	while !collision_present(x,y+sign(vsp+vsp_knockback)*1){y += sign(vsp+vsp_knockback)*1}
 	vsp = 0
+	vsp_knockback = 0
 }
 
-y += vsp
+y += vsp+vsp_knockback
 
 move_hitbox()

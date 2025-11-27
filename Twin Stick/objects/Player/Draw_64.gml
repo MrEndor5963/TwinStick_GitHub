@@ -52,6 +52,9 @@ var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get
 draw_sprite(weapon_sprite,0,var_x,var_y)
 
 draw_text_with_outline(draw_origin_x+(288*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
+if jam_timer > 0{
+draw_text_with_outline(draw_origin_x+(288*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
+}
 draw_text_with_outline(draw_origin_x+(288*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
 
 
@@ -100,6 +103,12 @@ if hp <= 0{draw_sprite(s_ReviveIcon,0,x,y-64)}
 if reload_timer > 0{
 draw_reload = clamp(1/(reload_time/reload_timer),0,1)
 draw_sprite_ext(s_ReloadBar,0,x-48,y-(sprite_height/2)-20,draw_reload,1,0,draw_color,1)
+draw_sprite(s_ReloadBarOutline,0,x,y-(sprite_height/2)-20)
+}
+
+if jam_timer > 0{
+draw_jam = clamp(1/(jam_time/jam_timer),0,1)
+draw_sprite_ext(s_ReloadBar,0,x-48,y-(sprite_height/2)-20,draw_jam,1,0,draw_color,1)
 draw_sprite(s_ReloadBarOutline,0,x,y-(sprite_height/2)-20)
 }
 

@@ -11,24 +11,44 @@ reload_timer = 0
 }
 else{
 if can_control = true{
+if input_number = "Keyboard"{
 key_left = keyboard_check(vk_left) or keyboard_check(ord("A"))
-//key_left_pressed = keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A"))
 key_right = keyboard_check(vk_right) or keyboard_check(ord("D"))
-//key_right_pressed = keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D"))
 key_up = keyboard_check(vk_up) or keyboard_check(ord("W"))
-//key_up_pressed = keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"))
 key_down = keyboard_check(vk_down) or keyboard_check(ord("S"))
-//key_down_pressed = keyboard_check_pressed(vk_d+wn) or keyboard_check_pressed(ord("S"))
-key_shoot = mouse_check_button(mb_left) or gamepad_button_check(input_number,gp_shoulderrb)
-key_shoot_pressed = mouse_check_button_pressed(mb_left) or gamepad_button_check_pressed(input_number,gp_shoulderrb)
-key_interact = keyboard_check(ord("E")) or gamepad_button_check(input_number,gp_face1)
-key_interact_pressed = keyboard_check_pressed(ord("E")) or gamepad_button_check_pressed(input_number,gp_face1)
-key_reload = keyboard_check_pressed(ord("R")) or gamepad_button_check_pressed(input_number,gp_face3)
-key_map = keyboard_check(vk_tab) or gamepad_button_check(input_number,gp_select)
-
-key_weapon_toggle_back = gamepad_button_check_pressed(input_number,gp_shoulderl) or mouse_wheel_up()
-key_weapon_toggle_forward = gamepad_button_check_pressed(input_number,gp_shoulderr) or mouse_wheel_down()
+key_shoot = mouse_check_button(mb_left)
+key_shoot_pressed = mouse_check_button_pressed(mb_left)
+key_interact = keyboard_check(ord("E"))
+key_interact_pressed = keyboard_check_pressed(ord("E"))
+key_reload = keyboard_check_pressed(ord("R"))
+key_map = keyboard_check(vk_tab)
+key_weapon_toggle_back = mouse_wheel_up()
+key_weapon_toggle_forward = mouse_wheel_down()
+key_knife_pressed = mouse_check_button_pressed(mb_middle)
+aim_direction = point_direction(x, y, mouse_x,mouse_y)
+}
+else{//Controller Controls
+key_left = 0;key_right = 0;key_up = 0;key_down = 0
+key_left = -gamepad_axis_value(input_number,gp_axislh);if key_left < 0.2{key_left = 0}
+key_right = gamepad_axis_value(input_number,gp_axislh);if key_right < 0.2{key_right = 0}
+key_up = -gamepad_axis_value(input_number,gp_axislv);if key_up < 0.2{key_up = 0}
+key_down = gamepad_axis_value(input_number,gp_axislv);if key_down < 0.2{key_down = 0}
+key_shoot = gamepad_button_check(input_number,gp_shoulderrb)
+key_shoot_pressed = gamepad_button_check_pressed(input_number,gp_shoulderrb)
+key_interact = gamepad_button_check(input_number,gp_face1)
+key_interact_pressed = gamepad_button_check_pressed(input_number,gp_face1)
+key_reload = gamepad_button_check_pressed(input_number,gp_face3)
+key_map = gamepad_button_check(input_number,gp_select)
+key_weapon_toggle_back = gamepad_button_check_pressed(input_number,gp_shoulderl)
+key_weapon_toggle_forward = gamepad_button_check_pressed(input_number,gp_shoulderr) or gamepad_button_check_pressed(input_number,gp_face4)
 key_knife_pressed = gamepad_button_check_pressed(input_number,gp_face2) or gamepad_button_check_pressed(input_number,gp_stickr)
+if abs(gamepad_axis_value(input_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(input_number,gp_axisrv)) > 0.1{
+aim_x = ((gamepad_axis_value(input_number,gp_axisrh)*10) div 1)
+aim_y = ((gamepad_axis_value(input_number,gp_axisrv)*10) div 1)}
+stick_aim_x = gamepad_axis_value(input_number,gp_axisrh)
+stick_aim_y = gamepad_axis_value(input_number,gp_axisrv)
+aim_direction = point_direction(0, 0, aim_x,aim_y)
+}
 }
 else{
 key_left = -1;key_right = -1;key_up = -1;key_down = -1
@@ -61,15 +81,18 @@ if give_all_weapons = false && melee_equipped = false{weapon_sprite = array_get(
 
 weapon_damage = 10
 penetration = 1
-base_recoil = 0.5
+gun_recoil = 0.5
 shoot_delay = 12
 knockback = 2
+bullet_knockback = 2
 bullet_speed = 60
 bullet_sprite = s_Bullet
 reload_time = 60
 weapon_weight = 0.5
 bullet_amount = 1
 bullet_spread = 0
+jam_chance = 0
+trigger_delay = 0
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 //bullet_xoff = 0
@@ -80,73 +103,75 @@ if key_knife_pressed{melee_equipped = true}
 if melee_equipped = false{
 script_execute_wpn(weapon_sprite)}
 
-if abs(gamepad_axis_value(input_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(input_number,gp_axisrv)) > 0.1{
-aim_x = ((gamepad_axis_value(input_number,gp_axisrh)*10) div 1)
-aim_y = ((gamepad_axis_value(input_number,gp_axisrv)*10) div 1)}
-
-stick_aim_x = gamepad_axis_value(input_number,gp_axisrh)
-stick_aim_y = gamepad_axis_value(input_number,gp_axisrv)
-
-aim_direction = point_direction(0, 0, aim_x,aim_y)
-//aim_direction = point_direction(x, y, mouse_x,mouse_y)
-
 if shoot_timer > 0{shoot_timer -= 1}
+
 if abs(recoil) > 10{recoil *= 0.92}else{
 recoil *= 0.9}
 if recoil < 0.5 && recoil > -0.5{recoil = 0}
+
 if reload_timer = 0{if audio_exists(reload_sfx){audio_stop_sound(reload_sfx)}}
 if reload_timer > 0{
-if reload_timer = reload_time{
+if reload_timer >= reload_time{
 reload_size = ammo_inmag_max-ammo_inmag
 if reload_size > ammo_reserve{reload_size = ammo_reserve}
 ammo_inmag += reload_size
 ammo_reserve -= reload_size
-reload_timer = -1
+reload_timer = -reload_speed
+trigger_delay_timer = 0
 }
-reload_timer += 1
+reload_timer += reload_speed
 }
 
+if jam_timer > 0{jam_timer += reload_speed;if jam_timer >= jam_time{jam_timer = 0;trigger_delay_timer = 0}}
 
 
-if ammo_inmag = 0 && ammo_reserve > 0 && reload_timer = 0 or key_reload && ammo_reserve > 0 && ammo_inmag < ammo_inmag_max && reload_timer = 0
+if ammo_inmag <= 0 && ammo_reserve > 0 && reload_timer = 0 or key_reload && ammo_reserve > 0 && ammo_inmag < ammo_inmag_max && reload_timer = 0
 {
 reload_timer = 1
 play_sfx(reload_sfx)
 }
 
 if key_shoot && ammo_inmag = 0 && ammo_reserve = 0{
-
+//gun_toogle
 }
 
-if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = false{
-if key_shoot && auto = true or key_shoot_pressed && auto = false{
-shoot_timer = shoot_delay
-ammo_inmag -= 1
-direction = aim_direction+recoil
-var_x = sprite_get_xoffset(weapon_sprite)
-speed = sprite_get_width(weapon_sprite)-var_x-5
-var_x = x+(hspeed)
-var_y = y+(vspeed)
-speed = 0
-repeat(bullet_amount){
-_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
-_bullet.image_angle = aim_direction+recoil+irandom_range(-bullet_spread,bullet_spread)
-_bullet.damage = weapon_damage
-_bullet.penetration = penetration
-_bullet.bullet_speed = bullet_speed
-_bullet.sprite_index = bullet_sprite
-_bullet.creator = id
-}
+if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0}
 
-direction = aim_direction+recoil+180
-speed = knockback
-hsp_knockback = hspeed
-vsp_knockback = vspeed
-speed = 0
-recoil += base_recoil*weapon_yscale
-current_shoot_sfx = play_sfx(shoot_sfx)
-audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.0045))
-}
+if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay{
+	repeat(round(shoot_amount)){
+	if key_shoot && auto = true or key_shoot_pressed && auto = false{
+	shoot_timer = shoot_delay
+	ammo_inmag -= 1
+	direction = aim_direction+recoil
+	var_x = sprite_get_xoffset(weapon_sprite)
+	speed = sprite_get_width(weapon_sprite)-var_x-5
+	var_x = x+(hspeed)
+	var_y = y+(vspeed)
+	speed = 0
+	repeat(round(bullet_amount)){
+	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
+	_bullet.image_angle = aim_direction+recoil+irandom_range(-bullet_spread,bullet_spread)
+	_bullet.damage = round(weapon_damage*damage_mult)
+	_bullet.penetration = penetration
+	_bullet.bullet_speed = bullet_speed
+	_bullet.knockback = bullet_knockback
+	_bullet.sprite_index = bullet_sprite
+	_bullet.creator = id
+	}
+
+	if knockback*knockback_mult < 0{knockback = 0}
+	direction = aim_direction+recoil+180
+	speed = knockback*knockback_mult
+	hsp_knockback = hspeed
+	vsp_knockback = vspeed
+	speed = 0
+	recoil += gun_recoil*weapon_yscale
+	current_shoot_sfx = play_sfx(shoot_sfx)
+	audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.0045))
+	if jam_chance != 0 && irandom_range(1,jam_chance) = 1{jam_timer += 1}
+	}
+	}
+	
 }
 
 	
@@ -158,7 +183,9 @@ if melee.attacking = false{melee.attacking = true}
 else{melee.sprite_index = s_0}
 
 if place_meeting(x,y,Enemy) && hit_stun = 0{
-hp -= 1;hit_stun = 30+(GM.player_amount*5);blood_splatter()
+hp -= 1;hit_stun = 60;
+ammo_reserve += round(ammo_reserve_max*ammo_recived_when_hurt)
+blood_splatter()
 play_sfx(sfx_PlayerHurt)
 }
 if hit_stun > 0{hit_stun -= 1}
@@ -171,10 +198,8 @@ if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockba
 var_move = clamp(mov_spd-clamp((weapon_weight/strength),0,100),0,100)
 
 hsp = (key_right-key_left)*var_move
-if abs(gamepad_axis_value(input_number,gp_axislh)) > 0.2{hsp = gamepad_axis_value(input_number,gp_axislh)*var_move}
 hsp += hsp_knockback
 vsp = (key_down-key_up)*var_move
-if abs(gamepad_axis_value(input_number,gp_axislv)) > 0.2{vsp = gamepad_axis_value(input_number,gp_axislv)*var_move}
 vsp += vsp_knockback
 
 if collision_present(x+hsp,y)

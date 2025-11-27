@@ -6,7 +6,7 @@ if spawn_enemy = true{
 enemy_list = GM.enemy_list
 enemy_id = enemy_list[irandom_range(0,array_length(enemy_list)-1)]
 instance_create_depth(x,y,depth,enemy_id)
-instance_destroy()
+instance_destroy();exit
 }
 
 list_temp = ds_list_create() 
@@ -29,6 +29,11 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	with var_player{player_point_change(10)}
 
 	hp -= var_bullet.damage
+	direction = var_bullet.direction
+	speed = 1;
+	creator.hsp_knockback = hspeed*var_bullet.knockback
+	creator.vsp_knockback = vspeed*var_bullet.knockback
+	speed = 0
 	if hp <= 0{
 	instance_destroy(creator);
 	instance_destroy();

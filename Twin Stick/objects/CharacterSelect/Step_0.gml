@@ -1,4 +1,18 @@
 
+key_enter = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("E"))
+if key_enter
+{var_player = -1
+if cursor_control[3] = -1{var_player = 3}
+if cursor_control[2] = -1{var_player = 2}
+if cursor_control[1] = -1{var_player = 1}
+if cursor_control[0] = -1{var_player = 0}
+if var_player != -1 && 
+cursor_control[0] != "Keyboard" && cursor_control[1] != "Keyboard" &&
+cursor_control[2] != "Keyboard" && cursor_control[3] != "Keyboard"{
+cursor_control[var_player] = "Keyboard"
+player_amount += 1
+exit}
+}
 
 vrp = 0;
 repeat(4){
@@ -16,6 +30,8 @@ player_amount += 1
 exit}
 }
 //
+if cursor_control[vrp] != "Keyboard"{
+
 if gamepad_axis_value(cursor_control[vrp],gp_axislh) < -0.2 or gamepad_button_check(cursor_control[vrp],gp_padl)
 {key_left[vrp] = true}else{key_left[vrp] = false}
 if gamepad_axis_value(cursor_control[vrp],gp_axislh) > 0.2 or gamepad_button_check(cursor_control[vrp],gp_padr)
@@ -24,6 +40,19 @@ if gamepad_axis_value(cursor_control[vrp],gp_axislv) < -0.2 or gamepad_button_ch
 {key_up[vrp] = true}else{key_up[vrp] = false}
 if gamepad_axis_value(cursor_control[vrp],gp_axislv) > 0.2 or gamepad_button_check(cursor_control[vrp],gp_padd)
 {key_down[vrp] = true}else{key_down[vrp] = false}
+
+if gamepad_button_check_pressed(cursor_control[vrp],gp_face1){key_enter[vrp] = true}else{key_enter[vrp] = false}
+if gamepad_button_check_pressed(cursor_control[vrp],gp_face2){key_back[vrp] = true}else{key_back[vrp] = false}
+
+}
+else{
+key_left[vrp] = keyboard_check(vk_left)
+key_right[vrp] = keyboard_check(vk_right)
+key_up[vrp] = keyboard_check(vk_up)
+key_down[vrp] = keyboard_check(vk_down)
+key_back[vrp] = keyboard_check_pressed(vk_escape) or keyboard_check_pressed(vk_backspace) or keyboard_check_pressed(ord("X"))
+key_enter[vrp] = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("Z"))
+}
 
 key_left_pressed[vrp] = 0;key_right_pressed[vrp] = 0;key_up_pressed[vrp] = 0;key_down_pressed[vrp] = 0
 
@@ -40,18 +69,14 @@ if key_held_d[vrp] = 0{key_held_d[vrp] = -12;key_down_pressed[vrp] = true}
 if key_left_pressed[vrp] = true{cursor_c[vrp]-= 1};if cursor_c[vrp] < 0{cursor_c[vrp] = ds_grid_width(select_menu)-1}
 if key_right_pressed[vrp] = true{cursor_c[vrp] += 1};if cursor_c[vrp] > ds_grid_width(select_menu)-1{cursor_c[vrp] = 0}
 }
-//
 
-if gamepad_button_check_pressed(cursor_control[vrp],gp_face1){
+if key_enter[vrp] = true{
 if player_selected[vrp] = 0{
 player_selected[vrp] = ds_grid_get(select_menu,cursor_c[vrp],cursor_r[vrp])}
 else{player_ready[vrp] = true}
 }
 
-
-
-
-if gamepad_button_check_pressed(cursor_control[vrp],gp_face2) {
+if key_back[vrp] = true{
 if player_selected[vrp] = 0{
 cursor_control[vrp] = -1
 player_amount -= 1}
@@ -59,8 +84,8 @@ if player_selected[vrp] != 0{
 if player_ready[vrp] = false{player_selected[vrp] = 0}
 if player_ready[vrp] = true{player_ready[vrp] = false}
 }
-
 }
+//
 
 
 vrp += 1

@@ -35,10 +35,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"s_HazelD",
-    "path":"sprites/s_HazelD/s_HazelD.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

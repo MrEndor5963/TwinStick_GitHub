@@ -7,6 +7,9 @@ hitbox.creator = id
 hitbox.spawn_enemy = false
 set_tileset_collision()
 spawn_timer = 60
+
+hsp_knockback = 0;vsp_knockback = 0
+hsp = 0;vsp = 0
 }
 
 function blood_splatter(){

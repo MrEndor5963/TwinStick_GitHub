@@ -1,11 +1,11 @@
 key_pause = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed_any(gp_start)
-key_left = gamepad_axis_value_any(gp_axislh,false)
-key_right = gamepad_axis_value_any(gp_axislh,true)
-key_up = gamepad_axis_value_any(gp_axislv,false)
-key_down = gamepad_axis_value_any(gp_axislv,true)
-key_enter = gamepad_button_check_pressed_any(gp_face1)
+key_left = gamepad_axis_value_any(gp_axislh,false) or keyboard_check(vk_left)
+key_right = gamepad_axis_value_any(gp_axislh,true) or keyboard_check(vk_right)
+key_up = gamepad_axis_value_any(gp_axislv,false) or keyboard_check(vk_up)
+key_down = gamepad_axis_value_any(gp_axislv,true) or keyboard_check(vk_down)
+key_enter = gamepad_button_check_pressed_any(gp_face1) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("Z"))
 
-if key_pause{
+if key_pause && room != r_TitleScreen{
 if game_paused = false{
 game_paused = true
 

@@ -24,7 +24,7 @@ global.collision_grid = ds_grid_create(27,15)
 floor_number = 1
 next_floor = false
 floor_door = true
-map_size = 6
+map_size =4
 map = ds_grid_create(map_size,map_size)
 draw_map = false
 
@@ -71,37 +71,32 @@ array_push(enemy_list,Zombie)
 array_push(enemy_list,ZombieShooter)
 array_push(enemy_list,Hellhound)
 
+melee_list = []
 box_list = []
-array_push(box_list,s_m1911)
-array_push(box_list,s_Taurus92)
-array_push(box_list,s_DEagle)
-array_push(box_list,s_SnW500)
-//array_push(box_list,s_BFR500)
-array_push(box_list,s_CZ75Auto)
-array_push(box_list,s_Olympia)
-array_push(box_list,s_Ithaca)
-array_push(box_list,s_Remi870)
-array_push(box_list,s_Spaz12)
-array_push(box_list,s_Luty)
-array_push(box_list,s_VzSkorpion)
-array_push(box_list,s_spectre)
-array_push(box_list,s_Uzi)
-array_push(box_list,s_mp5)
-array_push(box_list,s_PPBison)
-array_push(box_list,s_Thompson)
-//array_push(box_list,s_KrissVector)
-array_push(box_list,s_AK47)
-array_push(box_list,s_AN94)
-array_push(box_list,s_Xiuhcoatl)
-array_push(box_list,s_RPD)
-array_push(box_list,s_Lewis)
-array_push(box_list,s_M14)
-array_push(box_list,s_SSG08)
-array_push(box_list,s_AWP)
-array_push(box_list,s_DSR50)
-array_push(box_list,s_SquareGun)
+handgun_list = []
+revolver_list = []
+machine_pistol_list = []
+smg_list = []
+semi_ar_list = []
+full_ar_list = []
+lmg_list = []
+shotgun_list = []
+sniper_list = []
+nazi_list = []
+
+referece_weapons()
+
 
 item_list = []
+array_push(item_list,s_si_BloodBullets)
+array_push(item_list,s_si_DamageUp)
+array_push(item_list,s_si_DoubleTap)
+array_push(item_list,s_si_HandgunHavoc)
 array_push(item_list,s_si_HPMax)
+array_push(item_list,s_si_MLGNoScoper)
 array_push(item_list,s_si_Move)
+array_push(item_list,s_si_PoundOfFeathers)
+array_push(item_list,s_si_ShotGunner)
+array_push(item_list,s_si_SpeedCola)
 array_push(item_list,s_si_WeaponSlots)
+array_push(item_list,s_si_WeightedBelt)
