@@ -57,7 +57,7 @@ item_name = "Double tap"
 cost = 2000
 description_text = "Weapons shoot one more bullet at a time"
 if object_index = Player && new_item != -1{
-shoot_amount += 1
+shoot_amount_increase += 1
 }
 }
 
@@ -94,7 +94,7 @@ item_name = "Blood Bullets"
 cost = 1000
 description_text = "Get some extra ammo when hurt"
 if object_index = Player && new_item != -1{
-ammo_recived_when_hurt += 0.1
+ammo_recived_when_hurt += 0.2
 }
 }
 
@@ -103,8 +103,8 @@ item_name = "MLG No Scoper"
 cost = 1400
 description_text = "Increases Sniper damage by 42.0% but decreases sniper accuracy"
 if object_index = Player && new_item != -1{
-sniper_damage_mult += 0.69
-sniper_spread_increaser += 15
+sniper_damage_mult += 0.42
+sniper_spread_increase += 15
 }
 }
 

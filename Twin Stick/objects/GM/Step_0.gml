@@ -146,3 +146,6 @@ room_goto(r_FloorTransition)
 
 
 }
+
+if room != r_TitleScreen{
+layer_background_change(layer_get_id("Background"),asset_get_index("s_BackgroundF"+string(floor_number)))}

@@ -14,14 +14,6 @@ jam_timer = 0
 jam_time = 60
 trigger_delay = 0
 trigger_delay_timer = 0
-
-damage_mult = 1
-knockback_mult = 1
-shoot_amount = 1
-reload_speed = 1
-handgun_damage_mult = 1
-handgun_recoil_mult = 1
-handgun_knockback_mult = 1
-shotgun_spread_mult = 1
-shotgun_bullet_mult = 1
-sniper_damage_mult = 1
+reload_timer = -1
+reload_amount = 0
+shoot_amount = 0

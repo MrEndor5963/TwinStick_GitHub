@@ -36,7 +36,7 @@ pon_y = -1
 }
 
 
-draw_sprite(portrait_sprite,0,draw_origin_x+(92*pon_x),draw_origin_y+(48*pon_y))
+draw_sprite(portrait_sprite,0,draw_origin_x+(48*pon_x),draw_origin_y+(48*pon_y))
 draw_set_aligns(fa_center,fa_middle)
 
 
@@ -47,16 +47,23 @@ draw_hp = clamp(1/(hp_max/hp),0,1)
 draw_sprite_ext(s_HPBar,0,draw_origin_x+(48*pon_x),draw_origin_y+(288*pon_y),1,-draw_hp,0,draw_color,1)
 if player_number > 1{draw_origin_y -= sprite_get_height(s_HPBarOutline)}
 
-var_x = draw_origin_x+(288*pon_x)-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
+var_x = draw_origin_x+(240*pon_x)-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
 var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
 draw_sprite(weapon_sprite,0,var_x,var_y)
 
-draw_text_with_outline(draw_origin_x+(288*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
+draw_text_with_outline(draw_origin_x+(240*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
 if jam_timer > 0{
-draw_text_with_outline(draw_origin_x+(288*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
+draw_text_with_outline(draw_origin_x+(240*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
 }
-draw_text_with_outline(draw_origin_x+(288*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
+draw_text_with_outline(draw_origin_x+(240*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
 
+
+//item draw
+vrp = 0
+repeat(array_length(item_list)){
+draw_sprite_ext(item_list[vrp],0,
+draw_origin_x-24+(432*pon_x)+(48*vrp),draw_origin_y+(24*pon_y),0.5,0.5,0,-1,1)
+vrp += 1}
 
 //Point draw
 if player_number = 0 or player_number = 2{draw_set_halign(fa_left)}
@@ -76,7 +83,7 @@ speed = 0
 }	
 
 var_x = draw_origin_x+(432*pon_x)+72+(point_draw_dir_x[vrp]*point_draw_timer[vrp])
-var_y = draw_origin_y+(27*pon_y)+(point_draw_dir_y[vrp]*point_draw_timer[vrp])
+var_y = draw_origin_y+(72*pon_y)+(point_draw_dir_y[vrp]*point_draw_timer[vrp])
 
 draw_set_alpha((25-point_draw_timer[vrp])/5)
 
@@ -99,23 +106,34 @@ vrp += 1}
 //
 
 if hp <= 0{draw_sprite(s_ReviveIcon,0,x,y-64)}
-
+draw_bar_x = x-(sprite_get_width(s_ReloadBar)/2)
 if reload_timer > 0{
 draw_reload = clamp(1/(reload_time/reload_timer),0,1)
-draw_sprite_ext(s_ReloadBar,0,x-48,y-(sprite_height/2)-20,draw_reload,1,0,draw_color,1)
-draw_sprite(s_ReloadBarOutline,0,x,y-(sprite_height/2)-20)
+draw_sprite_ext(s_ReloadBar,0,draw_bar_x,y-(sprite_height/2)-20,-draw_reload,-1,0,draw_color,1)
+if reload_bullet_time != 0{
+
+var_length = sprite_get_width(s_ReloadBar)
+var_length_1 = var_length/(reload_time/reload_startup)
+var_length_2 = var_length/(reload_time/reload_endlag)
+x_offset = (var_length-var_length_1-var_length_2)/reload_amount
+vrp = 1
+repeat(reload_amount){
+draw_sprite_ext(s_ReloadBarSegmant,0,draw_bar_x+var_length_1+(x_offset*vrp),y-(sprite_height/2)-20,1,1,0,draw_color,1)
+vrp += 1}
+}
+draw_sprite(s_ReloadBarOutline,0,draw_bar_x,y-(sprite_height/2)-20)
 }
 
 if jam_timer > 0{
 draw_jam = clamp(1/(jam_time/jam_timer),0,1)
-draw_sprite_ext(s_ReloadBar,0,x-48,y-(sprite_height/2)-20,draw_jam,1,0,draw_color,1)
-draw_sprite(s_ReloadBarOutline,0,x,y-(sprite_height/2)-20)
+draw_sprite_ext(s_ReloadBar,0,draw_bar_x,y-(sprite_height/2)-20,-draw_jam,-1,0,draw_color,1)
+draw_sprite(s_ReloadBarOutline,0,draw_bar_x,y-(sprite_height/2)-20)
 }
 
 if revive_timer > 0{
 draw_revive = clamp(1/(revive_time/revive_timer),0,1)
-draw_sprite_ext(s_ReloadBar,0,x-48,y-(sprite_height/2)-20,draw_revive,1,0,draw_color,1)
-draw_sprite(s_ReloadBarOutline,0,x,y-(sprite_height/2)-20)
+draw_sprite_ext(s_ReloadBar,0,draw_bar_x,y-(sprite_height/2)-20,-draw_revive,-1,0,draw_color,1)
+draw_sprite(s_ReloadBarOutline,0,draw_bar_x,y-(sprite_height/2)-20)
 if revive_timer = revive_time{hp += 2;hit_stun = 120;revive_timer = 0}
 }
 

@@ -16,8 +16,6 @@ if move_timer = 0{move_timer = 50
 hsp = move_direction_h*3;vsp = move_direction_v*3
 }
 
-
-
 corner_cutting()
 
 

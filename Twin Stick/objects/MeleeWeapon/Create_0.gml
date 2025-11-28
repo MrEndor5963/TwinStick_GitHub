@@ -1,4 +1,5 @@
 damage = 10
+knockback = 0
 attacking = false
 attack_timer = 0
 hurts_enemy = true

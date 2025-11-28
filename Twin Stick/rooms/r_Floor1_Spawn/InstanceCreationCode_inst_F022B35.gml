@@ -1,1 +1,1 @@
-sprite_index = s_si_HandgunHavoc
+sprite_index = s_si_DoubleTap

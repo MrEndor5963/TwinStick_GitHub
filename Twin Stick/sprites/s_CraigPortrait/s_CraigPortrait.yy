@@ -23,7 +23,7 @@
   ],
   "name":"s_CraigPortrait",
   "nineSlice":null,
-  "origin":4,
+  "origin":5,
   "parent":{
     "name":"Craig",
     "path":"folders/BSprites/PlayerSprites/Craig.yy",
@@ -77,7 +77,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":96,
+    "xorigin":192,
     "yorigin":48,
   },
   "swatchColours":null,

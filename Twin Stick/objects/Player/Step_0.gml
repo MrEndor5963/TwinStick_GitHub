@@ -59,8 +59,9 @@ key_weapon_toggle_back = -1;key_weapon_toggle_forward = -1
 key_knife_pressed = -1
 }
 
+
 if key_weapon_toggle_back or key_weapon_toggle_forward{
-	
+
 reload_timer = 0
 if give_all_weapons = false{
 weapon_ammo_inmag[weapon_number] = ammo_inmag
@@ -95,13 +96,44 @@ jam_chance = 0
 trigger_delay = 0
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
+reload_bullet_time = 0
+shoot_amount = 1
 //bullet_xoff = 0
 //bullet_yoff = 0
+//
+shoot_amount = 1
+spread_increase = 0
+spread_mult = 1
+damage_mult = 1
+recoil_mult = 1
+knockback_mult = 1
+bullet_mult = 1
 
 if key_knife_pressed{melee_equipped = true}
 
-if melee_equipped = false{
-script_execute_wpn(weapon_sprite)}
+
+	script_execute_wpn(weapon_sprite)
+	if array_contains(GM.handgun_list,weapon_sprite){
+	damage_mult += handgun_damage_mult
+	recoil_mult += handgun_recoil_mult
+	knockback_mult += handgun_knockback_mult
+	}
+	if array_contains(GM.shotgun_list,weapon_sprite){
+	spread_mult += shotgun_spread_mult
+	bullet_mult += shotgun_bullet_mult
+	}
+	if array_contains(GM.sniper_list,weapon_sprite){
+	spread_increase += sniper_spread_increase
+	damage_mult += sniper_damage_mult
+	}
+
+	weapon_damage = round(weapon_damage*damage_mult)
+	knockback = knockback*knockback_mult
+	gun_recoil = gun_recoil*recoil_mult
+	bullet_spread = (bullet_spread*spread_mult)+spread_increase
+	shoot_amount = shoot_amount+shoot_amount_increase
+
+
 
 if shoot_timer > 0{shoot_timer -= 1}
 
@@ -111,6 +143,12 @@ if recoil < 0.5 && recoil > -0.5{recoil = 0}
 
 if reload_timer = 0{if audio_exists(reload_sfx){audio_stop_sound(reload_sfx)}}
 if reload_timer > 0{
+	
+if reload_bullet_time != 0{
+if reload_timer >= reload_startup+((reload_bullet_time*reload_amount)-((ammo_inmag_max-ammo_inmag-1)*reload_bullet_time)) && reload_timer <= reload_time-reload_endlag+reload_speed
+{ammo_inmag += 1;ammo_reserve -= 1}
+}
+
 if reload_timer >= reload_time{
 reload_size = ammo_inmag_max-ammo_inmag
 if reload_size > ammo_reserve{reload_size = ammo_reserve}
@@ -151,7 +189,7 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 	repeat(round(bullet_amount)){
 	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
 	_bullet.image_angle = aim_direction+recoil+irandom_range(-bullet_spread,bullet_spread)
-	_bullet.damage = round(weapon_damage*damage_mult)
+	_bullet.damage = weapon_damage
 	_bullet.penetration = penetration
 	_bullet.bullet_speed = bullet_speed
 	_bullet.knockback = bullet_knockback
@@ -159,9 +197,9 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 	_bullet.creator = id
 	}
 
-	if knockback*knockback_mult < 0{knockback = 0}
+	if knockback < 0{knockback = 0}
 	direction = aim_direction+recoil+180
-	speed = knockback*knockback_mult
+	speed = knockback
 	hsp_knockback = hspeed
 	vsp_knockback = vspeed
 	speed = 0
@@ -174,7 +212,7 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 	
 }
 
-	
+
 if melee_equipped = true{
 if key_knife_pressed or key_shoot_pressed{
 if melee.attacking = false{melee.attacking = true}
