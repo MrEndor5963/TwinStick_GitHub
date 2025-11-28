@@ -194,8 +194,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 10
-ammo_inmag_max = 5
+set_gun_ammo(5,15)
 weapon_damage = 80
 penetration = 3
 gun_recoil = 80
@@ -221,8 +220,7 @@ array_push(box_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 5
-ammo_inmag_max = 5
+set_gun_ammo(5,5)
 weapon_damage = 300
 penetration = 6
 gun_recoil = 180
@@ -244,8 +242,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(machine_pistol_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 48
-ammo_inmag_max = 16
+set_gun_ammo(16,48)
 weapon_damage = 17
 penetration = 1
 gun_recoil = (7*choose(1,-1))
@@ -267,8 +264,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 162
-ammo_inmag_max = 18
+set_gun_ammo(18,162)
 weapon_damage = 12
 penetration = 1
 gun_recoil = 25*choose(1,-1)
@@ -292,8 +288,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 180
-ammo_inmag_max = 20
+set_gun_ammo(20,180)
 weapon_damage = 12
 penetration = 1
 gun_recoil = 4*choose(1,-1)
@@ -314,8 +309,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 175
-ammo_inmag_max = 25
+set_gun_ammo(25,175)
 weapon_damage = 14
 penetration = 1
 gun_recoil = 12*choose(1,-1)
@@ -357,8 +351,7 @@ array_push(smg_list,weapon_sprite)
 array_push(nazi_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 192
-ammo_inmag_max = 32
+set_gun_ammo(32,192)
 weapon_damage = 13
 penetration = 1
 gun_recoil = 3*choose(1,-1)
@@ -373,13 +366,12 @@ function wpn_PPBison(){
 weapon_sprite = s_PPBison
 weapon_name = "PP Bison"
 cost = 1350
-ammo_reserve_max = 192
-ammo_inmag_max = 64
 if object_index = GM{
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
+set_gun_ammo(64,192)
 weapon_damage = 12
 penetration = 1
 gun_recoil = 5*choose(1,-1)
@@ -394,13 +386,12 @@ function wpn_mp5(){
 weapon_sprite = s_mp5
 weapon_name = "mp5"
 cost = 2000
-ammo_reserve_max = 150
-ammo_inmag_max = 30
 if object_index = GM{
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
+set_gun_ammo(30,150)
 weapon_damage = 18
 penetration = 1
 gun_recoil = 3*choose(1,-1)
@@ -415,13 +406,12 @@ function wpn_Thompson(){
 weapon_sprite = s_Thompson
 weapon_name = "Tommy"
 cost = 3200
-ammo_reserve_max = 200
-ammo_inmag_max = 100
 if object_index = GM{
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
+set_gun_ammo(100,200)
 weapon_damage = 14
 penetration = 1
 gun_recoil = 6*choose(1,-1)
@@ -437,13 +427,12 @@ function wpn_KrissVector(){
 weapon_sprite = s_KrissVector
 weapon_name = "Vector 45"
 cost = 4800
-ammo_reserve_max = 160
-ammo_inmag_max = 40
 if object_index = GM{
 //array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
+set_gun_ammo(40,160)
 weapon_damage = 18
 penetration = 1
 gun_recoil = 8*choose(1,-1)
@@ -464,8 +453,7 @@ array_push(box_list,weapon_sprite)
 array_push(semi_ar_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 96
-ammo_inmag_max = 8
+set_gun_ammo(8,96)
 weapon_damage = 28
 penetration = 1
 gun_recoil = 4
@@ -486,8 +474,7 @@ array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 60
-ammo_inmag_max = 30
+set_gun_ammo(30,60)
 weapon_damage = 40
 penetration = 2
 gun_recoil = 30*choose(1,-1)
@@ -508,8 +495,7 @@ array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 90
-ammo_inmag_max = 30
+set_gun_ammo(30,60)
 weapon_damage = 35
 penetration = 2
 gun_recoil = 6*choose(1,-1)
@@ -529,8 +515,7 @@ array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 120
-ammo_inmag_max = 30
+set_gun_ammo(30,90)
 weapon_damage = 25
 penetration = 2
 gun_recoil = 9*choose(1,-1)
@@ -550,8 +535,7 @@ array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 140
-ammo_inmag_max = 35
+set_gun_ammo(35,105)
 weapon_damage = 25
 penetration = 2
 gun_recoil = 5*choose(1,-1)
@@ -571,8 +555,7 @@ array_push(box_list,weapon_sprite)
 array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 141
-ammo_inmag_max = 47
+set_gun_ammo(47,141)
 weapon_damage = 30
 penetration = 3
 gun_recoil = 6*choose(1,-1)
@@ -592,8 +575,7 @@ array_push(box_list,weapon_sprite)
 array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 100
-ammo_inmag_max = 100
+set_gun_ammo(100,100)
 weapon_damage = 19
 penetration = 1
 gun_recoil = 9*choose(1,-1)
@@ -613,8 +595,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 38
-ammo_inmag_max = 2
+set_gun_ammo(2,44)
 weapon_damage = 8
 penetration = 1
 gun_recoil = 30
@@ -637,8 +618,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 35
-ammo_inmag_max = 7
+set_gun_ammo(7,35)
 weapon_damage = 8
 penetration = 1
 gun_recoil = 40
@@ -665,8 +645,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 35
-ammo_inmag_max = 7
+set_gun_ammo(7,28)
 weapon_damage = 10
 penetration = 2
 gun_recoil = 70
@@ -692,8 +671,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 60
-ammo_inmag_max = 8
+set_gun_ammo(8,52)
 weapon_damage = 8
 penetration = 1
 gun_recoil = 95
@@ -723,8 +701,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 42
-ammo_inmag_max = 6
+set_gun_ammo(6,42)
 weapon_damage = 8
 penetration = 2
 gun_recoil = 45
@@ -750,8 +727,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 90
-ammo_inmag_max = 10
+set_gun_ammo(10,90)
 weapon_damage = 55
 penetration = 1
 gun_recoil = 15
@@ -772,8 +748,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 30
-ammo_inmag_max = 5
+set_gun_ammo(5,35)
 weapon_damage = 150
 penetration = 4
 gun_recoil = 30
@@ -794,8 +769,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 28
-ammo_inmag_max = 4
+set_gun_ammo(4,28)
 weapon_damage = 140
 penetration = 8
 gun_recoil = 60
@@ -816,8 +790,7 @@ if object_index = GM{
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
-ammo_reserve_max = 35
-ammo_inmag_max = 5
+set_gun_ammo(5,30)
 weapon_damage = 165
 penetration = 4
 gun_recoil = 135
@@ -840,8 +813,7 @@ auto = false
 if object_index = GM{
 array_push(box_list,weapon_sprite)
 exit}
-ammo_reserve_max = 4
-ammo_inmag_max = 4
+set_gun_ammo(4,4)
 weapon_damage = 9999
 penetration = 400
 gun_recoil = 0
