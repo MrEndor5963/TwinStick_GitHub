@@ -15,7 +15,14 @@ nazi_list = []
 function script_execute_wpn(arg_weapon_sprite){
 var_string = string_delete(sprite_get_name(arg_weapon_sprite),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
-}sprite_nineslice_create()
+}
+
+function set_gun_ammo(arg_ammo_inmag_max,arg_ammo_reserve_max){
+ammo_inmag_max = arg_ammo_inmag_max
+ammo_reserve_max = arg_ammo_reserve_max
+}
+
+
 function referece_weapons(){
 //Melee
 wpn_Knife()
@@ -92,16 +99,15 @@ array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 72
-ammo_inmag_max = 8
+set_gun_ammo(8,72)
 weapon_damage = 18
 penetration = 1
 gun_recoil = 5
 shoot_delay = 1
 knockback = 2
 bullet_knockback = 3
-reload_time = 65
 weapon_weight = 1
+reload_time = 65
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 }
@@ -115,8 +121,7 @@ array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 85
-ammo_inmag_max = 17
+set_gun_ammo(17,85)
 weapon_damage = 22
 penetration = 1
 gun_recoil = 8
@@ -138,8 +143,7 @@ array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 35
-ammo_inmag_max = 7
+set_gun_ammo(7,35)
 weapon_damage = 60
 penetration = 1
 gun_recoil = 70
@@ -162,8 +166,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-ammo_reserve_max = 36
-ammo_inmag_max = 6
+set_gun_ammo(6,36)
 weapon_damage = 70
 penetration = 2
 gun_recoil = 70
