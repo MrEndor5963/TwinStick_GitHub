@@ -28,6 +28,16 @@ bullet_knockback = arg_bullet_knockback
 penetration = arg_bullet_penetration
 }
 
+function set_variable_reload_time(arg_reload_startup,arg_reload_bullet_time,arg_reload_endlag){
+if object_index != Player{exit}
+reload_startup = arg_reload_startup
+reload_bullet_time = arg_reload_bullet_time
+reload_endlag = arg_reload_endlag
+
+if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
+reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+}
+
 function referece_weapons(){
 //Melee
 wpn_Knife()
@@ -170,11 +180,7 @@ set_bullet_power(70,2,2)
 gun_recoil = 70
 shoot_delay = 8
 knockback = 16
-reload_startup = 30
-reload_bullet_time = 45
-reload_endlag = 60
-if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
-reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+set_variable_reload_time(30,45,60)
 weapon_weight = 1.5
 bullet_spread = 1
 reload_sfx = sfx_DEagleReload
@@ -196,11 +202,7 @@ set_bullet_power(80,2,3)
 gun_recoil = 80
 shoot_delay = 8
 knockback = 24
-reload_startup = 45
-reload_bullet_time = 45
-reload_endlag = 60
-if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
-reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+set_variable_reload_time(45,45,30)
 weapon_weight = 1.5
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
@@ -220,7 +222,7 @@ set_bullet_power(300,20,6)
 gun_recoil = 180
 shoot_delay = 60
 knockback = 50
-reload_time = 100
+set_variable_reload_time(45,30,45
 weapon_weight = 1.5
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
