@@ -22,6 +22,11 @@ ammo_inmag_max = arg_ammo_inmag_max
 ammo_reserve_max = arg_ammo_reserve_max
 }
 
+function set_bullet_power(arg_bullet_damage,arg_bullet_knockback,arg_bullet_penetration){
+weapon_damage = arg_bullet_damage
+bullet_knockback = arg_bullet_knockback
+penetration = arg_bullet_penetration
+}
 
 function referece_weapons(){
 //Melee
@@ -100,12 +105,10 @@ array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(8,72)
-weapon_damage = 18
-penetration = 1
+set_bullet_power(18,3,1)
 gun_recoil = 5
 shoot_delay = 1
 knockback = 2
-bullet_knockback = 3
 weapon_weight = 1
 reload_time = 65
 reload_sfx = sfx_m1911Reload
@@ -122,12 +125,10 @@ array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(17,85)
-weapon_damage = 22
-penetration = 1
+set_bullet_power(22,4,1)
 gun_recoil = 8
 shoot_delay = 4
 knockback = 2.5
-bullet_knockback = 4
 reload_time = 90
 weapon_weight = 1
 reload_sfx = sfx_m1911Reload
@@ -144,12 +145,10 @@ array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(7,35)
-weapon_damage = 60
-penetration = 1
+set_bullet_power(60,2,1)
 gun_recoil = 70
 shoot_delay = 5
 knockback = 9
-bullet_knockback = 2
 reload_time = 65
 weapon_weight = 1.5
 reload_sfx = sfx_DEagleReload
@@ -167,12 +166,10 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(6,36)
-weapon_damage = 70
-penetration = 2
+set_bullet_power(70,2,2)
 gun_recoil = 70
 shoot_delay = 8
 knockback = 16
-bullet_knockback = 2
 reload_startup = 30
 reload_bullet_time = 45
 reload_endlag = 60
@@ -195,12 +192,10 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,15)
-weapon_damage = 80
-penetration = 3
+set_bullet_power(80,2,3)
 gun_recoil = 80
 shoot_delay = 8
 knockback = 24
-bullet_knockback = 2
 reload_startup = 45
 reload_bullet_time = 45
 reload_endlag = 60
@@ -221,8 +216,7 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,5)
-weapon_damage = 300
-penetration = 6
+set_bullet_power(300,20,6)
 gun_recoil = 180
 shoot_delay = 60
 knockback = 50
@@ -243,12 +237,10 @@ array_push(machine_pistol_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(16,48)
-weapon_damage = 17
-penetration = 1
+set_bullet_power(17,4,1)
 gun_recoil = (7*choose(1,-1))
 shoot_delay = 4
 knockback = 4
-bullet_knockback = 4
 reload_time = 55
 weapon_weight = 1
 reload_sfx = sfx_m1911Reload
@@ -265,8 +257,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(18,162)
-weapon_damage = 12
-penetration = 1
+set_bullet_power(12,2,1)
 gun_recoil = 25*choose(1,-1)
 shoot_delay = 4
 knockback = 2
@@ -289,8 +280,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(20,180)
-weapon_damage = 12
-penetration = 1
+set_bullet_power(12,1,1)
 gun_recoil = 4*choose(1,-1)
 shoot_delay = 3
 knockback = 1.5
@@ -310,8 +300,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(25,175)
-weapon_damage = 14
-penetration = 1
+set_bullet_power(14,2,1)
 gun_recoil = 12*choose(1,-1)
 shoot_delay = 3
 knockback = 3
@@ -329,10 +318,8 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-ammo_reserve_max = 150
-ammo_inmag_max = 30
-weapon_damage = 12
-penetration = 1
+set_gun_ammo(30,150)
+set_bullet_power(12,2,1)
 gun_recoil = 5*choose(1,-1)
 shoot_delay = 4
 knockback = 3
@@ -352,8 +339,7 @@ array_push(nazi_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(32,192)
-weapon_damage = 13
-penetration = 1
+set_bullet_power(13,3,1)
 gun_recoil = 3*choose(1,-1)
 shoot_delay = 9
 knockback = 3.5
@@ -372,8 +358,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(64,192)
-weapon_damage = 12
-penetration = 1
+set_bullet_power(12,2,1)
 gun_recoil = 5*choose(1,-1)
 shoot_delay = 5
 knockback = 2
@@ -392,8 +377,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,150)
-weapon_damage = 18
-penetration = 1
+set_bullet_power(18,2,1)
 gun_recoil = 3*choose(1,-1)
 shoot_delay = 5
 knockback = 2
@@ -412,8 +396,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(100,200)
-weapon_damage = 14
-penetration = 1
+set_bullet_power(14,2,1)
 gun_recoil = 6*choose(1,-1)
 shoot_delay = 4
 knockback = 2
@@ -433,8 +416,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(40,160)
-weapon_damage = 18
-penetration = 1
+set_bullet_power(18,2,1)
 gun_recoil = 8*choose(1,-1)
 shoot_delay = 2
 knockback = 2
@@ -454,12 +436,10 @@ array_push(semi_ar_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(8,96)
-weapon_damage = 28
-penetration = 1
+set_bullet_power(28,8,1)
 gun_recoil = 4
 shoot_delay = 7
 knockback = 5
-bullet_knockback = 8
 reload_time = 70
 weapon_weight = 3.5
 shoot_sfx = sfx_AK47Shoot
@@ -475,12 +455,10 @@ array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,60)
-weapon_damage = 40
-penetration = 2
+set_bullet_power(40,10,2)
 gun_recoil = 30*choose(1,-1)
 shoot_delay = 8
 knockback = 14
-bullet_knockback = 10
 reload_time = 110
 weapon_weight = 4.5
 shoot_sfx = sfx_AK47Shoot
@@ -496,8 +474,7 @@ array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,60)
-weapon_damage = 35
-penetration = 2
+set_bullet_power(35,6,2)
 gun_recoil = 6*choose(1,-1)
 shoot_delay = 6
 knockback = 10
@@ -516,8 +493,7 @@ array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,90)
-weapon_damage = 25
-penetration = 2
+set_bullet_power(29,5,2)
 gun_recoil = 9*choose(1,-1)
 shoot_delay = 4
 knockback = 9
@@ -536,8 +512,7 @@ array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(35,105)
-weapon_damage = 25
-penetration = 2
+set_bullet_power(25,6,2)
 gun_recoil = 5*choose(1,-1)
 shoot_delay = 7
 knockback = 7
@@ -556,8 +531,7 @@ array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(47,141)
-weapon_damage = 30
-penetration = 3
+set_bullet_power(30,8,3)
 gun_recoil = 6*choose(1,-1)
 shoot_delay = 8
 knockback = 8
@@ -576,8 +550,7 @@ array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(100,100)
-weapon_damage = 19
-penetration = 1
+set_bullet_power(28,10,1)
 gun_recoil = 9*choose(1,-1)
 shoot_delay = 5
 knockback = 10
@@ -596,8 +569,7 @@ array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(2,44)
-weapon_damage = 8
-penetration = 1
+set_bullet_power(8,1.5,1)
 gun_recoil = 30
 shoot_delay = 5
 knockback = 12
@@ -619,8 +591,7 @@ array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(7,35)
-weapon_damage = 8
-penetration = 1
+set_bullet_power(8,2,1)
 gun_recoil = 40
 shoot_delay = 45
 knockback = 18
@@ -646,8 +617,7 @@ array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(7,28)
-weapon_damage = 10
-penetration = 2
+set_bullet_power(10,2,2)
 gun_recoil = 70
 shoot_delay = 30
 knockback = 25
@@ -672,8 +642,7 @@ array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(8,52)
-weapon_damage = 8
-penetration = 1
+set_bullet_power(8,1,1)
 gun_recoil = 95
 shoot_delay = 5
 knockback = 20
@@ -702,8 +671,7 @@ array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(6,42)
-weapon_damage = 8
-penetration = 2
+set_bullet_power(8,1,2)
 gun_recoil = 45
 shoot_delay = 30
 knockback = 42
@@ -728,8 +696,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(10,90)
-weapon_damage = 55
-penetration = 1
+set_bullet_power(55,12,1)
 gun_recoil = 15
 shoot_delay = 60
 knockback = 4
@@ -749,8 +716,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,35)
-weapon_damage = 150
-penetration = 4
+set_bullet_power(150,14,4)
 gun_recoil = 30
 shoot_delay = 70
 knockback = 16
@@ -770,8 +736,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(4,28)
-weapon_damage = 140
-penetration = 8
+set_bullet_power(140,16,8)
 gun_recoil = 60
 shoot_delay = 80
 knockback = 32
@@ -791,8 +756,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 set_gun_ammo(5,30)
-weapon_damage = 165
-penetration = 4
+set_bullet_power(165,12,4)
 gun_recoil = 135
 shoot_delay = 15
 knockback = 72
@@ -814,8 +778,7 @@ if object_index = GM{
 array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(4,4)
-weapon_damage = 9999
-penetration = 400
+set_bullet_power(16000,0,4000)
 gun_recoil = 0
 shoot_delay = 1
 knockback = 96
