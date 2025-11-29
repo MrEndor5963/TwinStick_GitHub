@@ -222,7 +222,7 @@ set_bullet_power(300,20,6)
 gun_recoil = 180
 shoot_delay = 60
 knockback = 50
-set_variable_reload_time(45,30,45
+set_variable_reload_time(45,30,45)
 weapon_weight = 1.5
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
@@ -597,11 +597,7 @@ set_bullet_power(8,2,1)
 gun_recoil = 40
 shoot_delay = 45
 knockback = 18
-reload_startup = 15
-reload_bullet_time = 60
-reload_endlag = 30
-if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
-reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+set_variable_reload_time(15,60,30)
 
 weapon_weight = 3
 bullet_spread = 20
@@ -623,11 +619,7 @@ set_bullet_power(10,2,2)
 gun_recoil = 70
 shoot_delay = 30
 knockback = 25
-reload_startup = 15
-reload_bullet_time = 60
-reload_endlag = 30
-if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
-reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+set_variable_reload_time(15,55,30)
 weapon_weight = 3.5
 bullet_spread = 35
 bullet_amount = 15
@@ -653,11 +645,7 @@ weapon_weight = 4.5
 bullet_spread = 30
 bullet_amount = 12
 knockback = 18
-reload_startup = 30
-reload_bullet_time = 50
-reload_endlag = 60
-if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
-reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+set_variable_reload_time(30,45,30)
 shoot_sfx = sfx_OlympiaShoot
 jam_chance = 40
 jam_time = 130
@@ -677,11 +665,7 @@ set_bullet_power(8,1,2)
 gun_recoil = 45
 shoot_delay = 30
 knockback = 42
-reload_startup = 15
-reload_bullet_time = 60
-reload_endlag = 30
-if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
-reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+set_variable_reload_time(15,45,30)
 weapon_weight = 3
 bullet_spread = 35
 bullet_amount = 12
