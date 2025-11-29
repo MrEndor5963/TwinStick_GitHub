@@ -7,7 +7,7 @@ hsp_knockback = 0;vsp_knockback = 0
 mov_spd = 10
 hp = 6;hp_max = 6
 hit_stun = 0
-money = 10000
+money = 100000
 kills = 0
 recoil = 0
 weapon_yscale = 1
@@ -59,6 +59,7 @@ pathfinding_grid = ds_grid_create(27,15)
 //set_player_grid()
 item_list = []
 new_item = -1
+item_draw_y = 0
 
 jam_chance = 0
 jam_timer = 0

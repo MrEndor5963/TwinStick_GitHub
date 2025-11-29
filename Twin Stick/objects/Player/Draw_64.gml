@@ -47,29 +47,50 @@ draw_hp = clamp(1/(hp_max/hp),0,1)
 draw_sprite_ext(s_HPBar,0,draw_origin_x+(48*pon_x),draw_origin_y+(288*pon_y),1,-draw_hp,0,draw_color,1)
 if player_number > 1{draw_origin_y -= sprite_get_height(s_HPBarOutline)}
 
-var_x = draw_origin_x+(240*pon_x)-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
-var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
-draw_sprite(weapon_sprite,0,var_x,var_y)
-
-draw_text_with_outline(draw_origin_x+(240*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
-if jam_timer > 0{
-draw_text_with_outline(draw_origin_x+(240*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
-}
-draw_text_with_outline(draw_origin_x+(240*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
-
-
-//item draw
-vrp = 0
-repeat(array_length(item_list)){
-draw_sprite_ext(item_list[vrp],0,
-draw_origin_x-24+(432*pon_x)+(48*vrp),draw_origin_y+(24*pon_y),0.5,0.5,0,-1,1)
-vrp += 1}
-
-//Point draw
 if player_number = 0 or player_number = 2{draw_set_halign(fa_left)}
 else{draw_set_halign(fa_right)}
 
-draw_text_with_outline(draw_origin_x+(432*pon_x),draw_origin_y+(72*pon_y),"$"+string(money),draw_color)
+//item draw
+item_draw_y += 0.04
+if item_draw_y = 360{item_draw_y = 0}
+item_rows = (array_length(item_list)-1) div 5
+
+vrp = 0
+repeat(array_length(item_list)){
+item_draw_y_offset = 4*sin(item_draw_y+vrp)
+row_offset = vrp div 5
+if item_rows = 0{
+draw_sprite_ext(item_list[vrp],0,
+draw_origin_x-24+(384*pon_x)+(48*vrp)-(row_offset*240),draw_origin_y+(24*pon_y)+item_draw_y_offset+((row_offset*48)),0.5,0.5,0,-1,1)}
+else{
+draw_sprite_ext(item_list[vrp],0,
+draw_origin_x-24+(384*pon_x)+(48*vrp)-(row_offset*240),draw_origin_y+(24*pon_y)+item_draw_y_offset+((row_offset*48)/item_rows),0.5,0.5,0,-1,1)
+}
+vrp += 1}
+
+//var_x = draw_origin_x+(96*pon_x)+sprite_get_xoffset(weapon_sprite)
+//var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
+//draw_sprite(weapon_sprite,0,var_x,var_y)
+
+//draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
+//if jam_timer > 0{
+//draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
+//}
+//draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
+
+draw_set_aligns(fa_center,fa_middle)
+var_x = draw_origin_x+(216*pon_x)-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
+var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
+draw_sprite(weapon_sprite,0,var_x,var_y)
+
+draw_text_with_outline(draw_origin_x+(216*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
+if jam_timer > 0{
+draw_text_with_outline(draw_origin_x+(216*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
+}
+draw_text_with_outline(draw_origin_x+(216*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
+
+//Point draw
+draw_text_with_outline(draw_origin_x+(384*pon_x),draw_origin_y+(48*pon_y),"$"+string(money),draw_color)
 
 vrp = 0
 repeat(array_length(point_que)){
@@ -82,8 +103,8 @@ array_insert(point_draw_dir_y,vrp,vspeed)
 speed = 0
 }	
 
-var_x = draw_origin_x+(432*pon_x)+72+(point_draw_dir_x[vrp]*point_draw_timer[vrp])
-var_y = draw_origin_y+(72*pon_y)+(point_draw_dir_y[vrp]*point_draw_timer[vrp])
+var_x = draw_origin_x+(384*pon_x)+72+(point_draw_dir_x[vrp]*point_draw_timer[vrp])
+var_y = draw_origin_y+(48*pon_y)+(point_draw_dir_y[vrp]*point_draw_timer[vrp])
 
 draw_set_alpha((25-point_draw_timer[vrp])/5)
 

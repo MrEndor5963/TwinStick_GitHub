@@ -1,1 +1,1 @@
-sprite_index = s_si_DoubleTap
+sprite_index = s_si_SpeedCola
