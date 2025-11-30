@@ -307,7 +307,7 @@ gun_recoil = 12*choose(1,-1)
 shoot_delay = 3
 knockback = 3
 reload_time = 60
-weapon_weight = 2
+weapon_weight = 2.5
 shoot_sfx = sfx_mp5Shoot
 }
 
