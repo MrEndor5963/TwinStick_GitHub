@@ -310,7 +310,7 @@ trigger_delay = 15
 jam_chance = 70
 jam_time = 160
 shoot_sfx = sfx_m1911Shoot
-description "Homemade firearm made by Phillip A. Luty in response to UK anti gun legislation in the 1990's.
+description "Homemade firearm made by Phillip A. Luty in response to UK anti gun legislation in the 1990's. Although the Luty has many, many flaws, it's still a quite cheaply made lethal weapon using only parts from a hardware store"
 }
 
 function wpn_VzSkorpion(){
@@ -326,14 +326,14 @@ set_gun_ammo(20,180)
 set_bullet_power(12,1,1)
 set_deploy_stats(8,-1)
 gun_recoil = 4*choose(1,-1)
-shoot_delay = 3
+shoot_delay = 4
 knockback = 1.5
 reload_time = 80
-weapon_weight = 1.5
+weapon_weight = 1.2
 shoot_sfx = sfx_mp5Shoot
+description = "Compact and light SMG with great handling"
 }
 
-	
 function wpn_Uzi(){
 weapon_sprite = s_Uzi
 weapon_name = "Uzi"
@@ -344,7 +344,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(25,175)
-set_bullet_power(14,2,1)
+set_bullet_power(18,2,1)
 set_deploy_stats(11,-1)
 gun_recoil = 12*choose(1,-1)
 shoot_delay = 3
@@ -352,6 +352,7 @@ knockback = 3
 reload_time = 60
 weapon_weight = 2.5
 shoot_sfx = sfx_mp5Shoot
+description = ""
 }
 
 function wpn_spectre(){
@@ -372,6 +373,7 @@ knockback = 3
 reload_time = 75
 weapon_weight = 2
 shoot_sfx = sfx_mp5Shoot
+description = ""
 }
 
 function wpn_MP40(){
@@ -393,6 +395,7 @@ knockback = 3
 reload_time = 120
 weapon_weight = 2
 shoot_sfx = sfx_mp5Shoot
+description = "Nazi SMG during WW2 with exceptional handling"
 }
 
 function wpn_PPBison(){
@@ -413,6 +416,7 @@ knockback = 2
 reload_time = 90
 weapon_weight = 2
 shoot_sfx = sfx_mp5Shoot
+description = "Light SMG with a spiral magazine allowing for a weapon with good handling and lots of bullets"
 }
 
 function wpn_mp5(){
@@ -454,6 +458,7 @@ reload_time = 140
 weapon_weight = 5
 bullet_spread = 3
 shoot_sfx = sfx_mp5Shoot
+description = "Oldschool gangster SMG with a drum mag. Weighes a lot, and is hard to shoot straight, but lights up enemies like Christmas trees"
 }
 
 function wpn_KrissVector(){
@@ -515,6 +520,7 @@ knockback = 14
 reload_time = 110
 weapon_weight = 4.5
 shoot_sfx = sfx_AK47Shoot
+description = "Most produced firearm in the world as it's a cheap and simple, yet deadly weapon. High power but known for it's inaccuracy due to subpar recoil control"
 }
 
 function wpn_AN94(){
@@ -536,6 +542,7 @@ reload_time = 110
 weapon_weight = 4
 if object_index != Player{exit}
 if trigger_delay_timer < 2 && ammo_inmag > 1{shoot_amount = 2;gun_recoil = 2}else{shoot_amount = 1}
+description = "Russian assault rifle with good handling and a unique firing system that allows the first 2 shots after a trigger pull to shoot at a faster rate of fire"
 }
 
 function wpn_Xiuhcoatl(){
@@ -556,6 +563,7 @@ knockback = 9
 reload_time = 110
 weapon_weight = 4
 shoot_sfx = sfx_AK47Shoot
+description = "Mexican produced AR for the Mexican military. Xiuhcoatl translates to Fire Serpant and is named such for it's high fire rate for an assault rifle"
 }
 
 function wpn_Galil(){
@@ -839,4 +847,5 @@ bullet_speed = 0.2
 bullet_sprite = s_SquareGunBullet
 reload_time = 4
 weapon_weight = 5.5
+description = "Standard issue Lazer Pistol for Mooninite infantry in the Plutonian war. "
 }
