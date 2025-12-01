@@ -149,6 +149,7 @@ weapon_weight = 1
 reload_time = 65
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
+description = "Iconic, reliable, and accurate WW1 pistol still manufactured today"
 }
 	
 function wpn_Taurus92(){
@@ -170,6 +171,7 @@ reload_time = 90
 weapon_weight = 1
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
+description= "Effective sidearm based on the Berretta 92, used by many Brazilian police and military"
 }
 	
 function wpn_DEagle(){
@@ -182,15 +184,16 @@ array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(7,35)
-set_bullet_power(60,2,1)
+set_bullet_power(70,2,1)
 set_deploy_stats(9,-1)
-gun_recoil = 70
+gun_recoil = 85
 shoot_delay = 5
 knockback = 9
 reload_time = 65
-weapon_weight = 1.5
+weapon_weight = 2.5
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
+description = "Desert Eagle or Deagle for short, a very powerful yet heavy magnum pistol with high recoil"
 }
 
 function wpn_Python(){
@@ -204,16 +207,17 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(6,36)
-set_bullet_power(70,2,2)
+set_bullet_power(60,2,2)
 set_deploy_stats(9,-1)
-gun_recoil = 70
+gun_recoil = 25
 shoot_delay = 8
-knockback = 16
+knockback = 10
 set_variable_reload_time(30,45,60)
-weapon_weight = 1.5
+weapon_weight = 1
 bullet_spread = 1
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
+description "1955 Colt Python Luxery Revolver, considered by some to be one of the finest revolvers on the market with a refined balance between power, accuracy, and handling"
 }
 
 function wpn_SnW500(){
@@ -227,15 +231,16 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,15)
-set_bullet_power(80,2,3)
-set_deploy_stats(10,-1)
+set_bullet_power(120,2,3)
+set_deploy_stats(12,-1)
 gun_recoil = 80
 shoot_delay = 8
-knockback = 24
+knockback = 30
 set_variable_reload_time(45,45,30)
-weapon_weight = 1.5
+weapon_weight = 2
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
+description = "Immensely powerful magnum revolver that lays down large enemies with few shots, but has quite intense recoil and knockback"
 }
 
 function wpn_BFR500(){
@@ -248,15 +253,16 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,5)
-set_bullet_power(300,20,6)
-set_deploy_stats(12,-1)
+set_bullet_power(240,20,6)
+set_deploy_stats(20,-1)
 gun_recoil = 180
 shoot_delay = 60
-knockback = 50
+knockback = 64
 set_variable_reload_time(45,30,45)
-weapon_weight = 1.5
+weapon_weight = 2.5
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
+description "Unnecessarily large revolver with power that questionably compensates it's uncontrollable recoil and knockback"
 }
 
 function wpn_CZ75Auto(){
@@ -272,13 +278,14 @@ auto = true
 set_gun_ammo(16,48)
 set_bullet_power(17,4,1)
 set_deploy_stats(7,-1)
-gun_recoil = (7*choose(1,-1))
+gun_recoil = (10*choose(1,-1))
 shoot_delay = 4
-knockback = 4
+knockback = 3
 reload_time = 55
 weapon_weight = 1
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
+description = ""
 }
 
 function wpn_Luty(){
@@ -300,9 +307,10 @@ reload_time = 75
 weapon_weight = 1.5
 bullet_spread = 12
 trigger_delay = 15
-jam_chance = 95
+jam_chance = 70
 jam_time = 160
 shoot_sfx = sfx_m1911Shoot
+description "Homemade firearm made by Phillip A. Luty in response to UK anti gun legislation in the 1990's.
 }
 
 function wpn_VzSkorpion(){
