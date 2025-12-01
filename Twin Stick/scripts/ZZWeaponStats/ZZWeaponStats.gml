@@ -13,6 +13,26 @@ sniper_list = []
 nazi_list = []
 */
 function script_execute_wpn(arg_weapon_sprite){
+set_gun_ammo(8,72)
+set_bullet_power(18,3,1)
+bullet_speed = 60
+gun_recoil = 0.5
+shoot_delay = 12
+knockback = 2
+bullet_sprite = s_Bullet
+reload_time = 60
+weapon_weight = 0.5
+bullet_amount = 1
+bullet_spread = 1
+jam_chance = 0
+trigger_delay = 0
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+reload_bullet_time = 0
+shoot_amount = 1
+//bullet_xoff = 0
+//bullet_yoff = 0
+//
 var_string = string_delete(sprite_get_name(arg_weapon_sprite),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
 }
@@ -36,6 +56,11 @@ reload_endlag = arg_reload_endlag
 
 if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
 reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+}
+
+function set_deploy_stats(arg_deploy_time,arg_deploy_direction){
+deploy_time = arg_deploy_time
+deploy_direction = arg_deploy_direction
 }
 
 function referece_weapons(){
@@ -116,6 +141,7 @@ exit}
 auto = false
 set_gun_ammo(8,72)
 set_bullet_power(18,3,1)
+set_deploy_stats(7,-1)
 gun_recoil = 5
 shoot_delay = 1
 knockback = 2
@@ -136,6 +162,7 @@ exit}
 auto = false
 set_gun_ammo(17,85)
 set_bullet_power(22,4,1)
+set_deploy_stats(7,-1)
 gun_recoil = 8
 shoot_delay = 4
 knockback = 2.5
@@ -156,6 +183,7 @@ exit}
 auto = false
 set_gun_ammo(7,35)
 set_bullet_power(60,2,1)
+set_deploy_stats(9,-1)
 gun_recoil = 70
 shoot_delay = 5
 knockback = 9
@@ -177,6 +205,7 @@ exit}
 auto = false
 set_gun_ammo(6,36)
 set_bullet_power(70,2,2)
+set_deploy_stats(9,-1)
 gun_recoil = 70
 shoot_delay = 8
 knockback = 16
@@ -199,6 +228,7 @@ exit}
 auto = false
 set_gun_ammo(5,15)
 set_bullet_power(80,2,3)
+set_deploy_stats(10,-1)
 gun_recoil = 80
 shoot_delay = 8
 knockback = 24
@@ -219,6 +249,7 @@ exit}
 auto = false
 set_gun_ammo(5,5)
 set_bullet_power(300,20,6)
+set_deploy_stats(12,-1)
 gun_recoil = 180
 shoot_delay = 60
 knockback = 50
@@ -240,6 +271,7 @@ exit}
 auto = true
 set_gun_ammo(16,48)
 set_bullet_power(17,4,1)
+set_deploy_stats(7,-1)
 gun_recoil = (7*choose(1,-1))
 shoot_delay = 4
 knockback = 4
@@ -260,6 +292,7 @@ exit}
 auto = true
 set_gun_ammo(18,162)
 set_bullet_power(12,2,1)
+set_deploy_stats(11,1)
 gun_recoil = 25*choose(1,-1)
 shoot_delay = 4
 knockback = 2
@@ -283,6 +316,7 @@ exit}
 auto = true
 set_gun_ammo(20,180)
 set_bullet_power(12,1,1)
+set_deploy_stats(8,-1)
 gun_recoil = 4*choose(1,-1)
 shoot_delay = 3
 knockback = 1.5
@@ -303,6 +337,7 @@ exit}
 auto = true
 set_gun_ammo(25,175)
 set_bullet_power(14,2,1)
+set_deploy_stats(11,-1)
 gun_recoil = 12*choose(1,-1)
 shoot_delay = 3
 knockback = 3
@@ -322,6 +357,7 @@ exit}
 auto = true
 set_gun_ammo(30,150)
 set_bullet_power(12,2,1)
+set_deploy_stats(9,-1)
 gun_recoil = 5*choose(1,-1)
 shoot_delay = 4
 knockback = 3
@@ -342,9 +378,10 @@ exit}
 auto = true
 set_gun_ammo(32,192)
 set_bullet_power(13,3,1)
+set_deploy_stats(10,-1)
 gun_recoil = 3*choose(1,-1)
-shoot_delay = 9
-knockback = 3.5
+shoot_delay = 8
+knockback = 3
 reload_time = 120
 weapon_weight = 2
 shoot_sfx = sfx_mp5Shoot
@@ -361,6 +398,7 @@ exit}
 auto = true
 set_gun_ammo(64,192)
 set_bullet_power(12,2,1)
+set_deploy_stats(14,-1)
 gun_recoil = 5*choose(1,-1)
 shoot_delay = 5
 knockback = 2
@@ -380,6 +418,7 @@ exit}
 auto = true
 set_gun_ammo(30,150)
 set_bullet_power(18,2,1)
+set_deploy_stats(12,-1)
 gun_recoil = 3*choose(1,-1)
 shoot_delay = 5
 knockback = 2
@@ -399,6 +438,7 @@ exit}
 auto = true
 set_gun_ammo(100,200)
 set_bullet_power(14,2,1)
+set_deploy_stats(20,1)
 gun_recoil = 6*choose(1,-1)
 shoot_delay = 4
 knockback = 2
@@ -419,6 +459,7 @@ exit}
 auto = true
 set_gun_ammo(40,160)
 set_bullet_power(18,2,1)
+set_deploy_stats(18,-1)
 gun_recoil = 8*choose(1,-1)
 shoot_delay = 2
 knockback = 2
@@ -439,6 +480,7 @@ exit}
 auto = false
 set_gun_ammo(8,96)
 set_bullet_power(28,8,1)
+set_deploy_stats(18,1)
 gun_recoil = 4
 shoot_delay = 7
 knockback = 5
@@ -458,6 +500,7 @@ exit}
 auto = true
 set_gun_ammo(30,60)
 set_bullet_power(40,10,2)
+set_deploy_stats(20,1)
 gun_recoil = 30*choose(1,-1)
 shoot_delay = 8
 knockback = 14
@@ -477,11 +520,13 @@ exit}
 auto = true
 set_gun_ammo(30,60)
 set_bullet_power(35,6,2)
+set_deploy_stats(16,1)
 gun_recoil = 6*choose(1,-1)
 shoot_delay = 6
 knockback = 10
 reload_time = 110
 weapon_weight = 4
+if object_index != Player{exit}
 if trigger_delay_timer < 2 && ammo_inmag > 1{shoot_amount = 2;gun_recoil = 2}else{shoot_amount = 1}
 }
 
@@ -496,6 +541,7 @@ exit}
 auto = true
 set_gun_ammo(30,90)
 set_bullet_power(29,5,2)
+set_deploy_stats(15,1)
 gun_recoil = 9*choose(1,-1)
 shoot_delay = 4
 knockback = 9
@@ -515,6 +561,7 @@ exit}
 auto = true
 set_gun_ammo(35,105)
 set_bullet_power(25,6,2)
+set_deploy_stats(18,1)
 gun_recoil = 5*choose(1,-1)
 shoot_delay = 7
 knockback = 7
@@ -534,6 +581,7 @@ exit}
 auto = true
 set_gun_ammo(47,141)
 set_bullet_power(30,8,3)
+set_deploy_stats(35,-1)
 gun_recoil = 6*choose(1,-1)
 shoot_delay = 8
 knockback = 8
@@ -553,6 +601,7 @@ exit}
 auto = true
 set_gun_ammo(100,100)
 set_bullet_power(28,10,1)
+set_deploy_stats(30,-1)
 gun_recoil = 9*choose(1,-1)
 shoot_delay = 5
 knockback = 10
@@ -572,6 +621,7 @@ exit}
 auto = false
 set_gun_ammo(2,44)
 set_bullet_power(8,1.5,1)
+set_deploy_stats(12,-1)
 gun_recoil = 30
 shoot_delay = 5
 knockback = 12
@@ -594,6 +644,7 @@ exit}
 auto = false
 set_gun_ammo(7,35)
 set_bullet_power(8,2,1)
+set_deploy_stats(15,-1)
 gun_recoil = 40
 shoot_delay = 45
 knockback = 18
@@ -616,6 +667,7 @@ exit}
 auto = false
 set_gun_ammo(7,28)
 set_bullet_power(10,2,2)
+set_deploy_stats(25,1)
 gun_recoil = 70
 shoot_delay = 30
 knockback = 25
@@ -637,6 +689,7 @@ exit}
 auto = false
 set_gun_ammo(8,52)
 set_bullet_power(8,1,1)
+set_deploy_stats(15,-1)
 gun_recoil = 95
 shoot_delay = 5
 knockback = 20
@@ -662,6 +715,7 @@ exit}
 auto = true
 set_gun_ammo(6,42)
 set_bullet_power(8,1,2)
+set_deploy_stats(14,-1)
 gun_recoil = 45
 shoot_delay = 30
 knockback = 42
@@ -683,6 +737,7 @@ exit}
 auto = false
 set_gun_ammo(10,90)
 set_bullet_power(55,12,1)
+set_deploy_stats(15,1)
 gun_recoil = 15
 shoot_delay = 60
 knockback = 4
@@ -703,6 +758,7 @@ exit}
 auto = false
 set_gun_ammo(5,35)
 set_bullet_power(150,14,4)
+set_deploy_stats(20,1)
 gun_recoil = 30
 shoot_delay = 70
 knockback = 16
@@ -723,6 +779,7 @@ exit}
 auto = false
 set_gun_ammo(4,28)
 set_bullet_power(140,16,8)
+set_deploy_stats(28,1)
 gun_recoil = 60
 shoot_delay = 80
 knockback = 32
@@ -743,6 +800,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 set_gun_ammo(5,30)
 set_bullet_power(165,12,4)
+set_deploy_stats(36,1)
 gun_recoil = 135
 shoot_delay = 15
 knockback = 72
@@ -765,6 +823,7 @@ array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(4,4)
 set_bullet_power(16000,0,4000)
+set_deploy_stats(20,-1)
 gun_recoil = 0
 shoot_delay = 1
 knockback = 96

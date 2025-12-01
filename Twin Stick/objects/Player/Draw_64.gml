@@ -7,7 +7,9 @@ screen_width = 1280
 screen_height = 720
 draw_set_alpha(1)
 
+
 if player_number = 0{
+draw_text(screen_width/2,screen_height/2,GM.floor_number)
 draw_origin_x = 0
 draw_origin_y = 0
 pon_x = 1

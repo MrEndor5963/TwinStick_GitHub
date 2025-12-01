@@ -113,7 +113,7 @@ item_name = "Pound Of Feathers"
 cost = 1400
 description_text = "Increases move_spd by alot but increases gun knockback by 100%"
 if object_index = Player && new_item != -1{
-mov_spd += 4
+mov_spd += 3
 knockback_mult += 1
 }
 }
@@ -123,7 +123,7 @@ item_name = "Weighted Belt"
 cost = 900
 description_text = "Decrease gun knockback by 75% but decrease mov_spd"
 if object_index = Player && new_item != -1{
-mov_spd -= 2
+mov_spd -= 1
 knockback_mult -= 0.75
 }
 }

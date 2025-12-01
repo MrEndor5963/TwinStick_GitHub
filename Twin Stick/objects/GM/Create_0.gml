@@ -100,3 +100,5 @@ array_push(item_list,s_si_ShotGunner)
 array_push(item_list,s_si_SpeedCola)
 array_push(item_list,s_si_WeaponSlots)
 array_push(item_list,s_si_WeightedBelt)
+
+items_bought = []

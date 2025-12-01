@@ -58,61 +58,54 @@ key_reload = -1
 key_weapon_toggle_back = -1;key_weapon_toggle_forward = -1
 key_knife_pressed = -1
 }
+//var_diff = angle_difference(aim_direction,gun_angle)
+//gun_angle += var_diff * aim_speed;
 
 
 if key_weapon_toggle_back or key_weapon_toggle_forward{
-
+if deploying = false{
+previous_deployed_weapon = weapon_number
+deploying = true}
 reload_timer = 0
-if give_all_weapons = false{
-weapon_ammo_inmag[weapon_number] = ammo_inmag
-weapon_ammo_reserve[weapon_number] = ammo_reserve
 if key_weapon_toggle_back{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(weapon)-1}}
 if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(weapon){weapon_number = 0}}
-ammo_inmag = weapon_ammo_inmag[weapon_number]
-ammo_reserve = weapon_ammo_reserve[weapon_number]
-}
-else{ammo_reserve = 1000
-if key_weapon_toggle_back{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(box_list)-1}}
-if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(box_list){weapon_number = 0}}
-weapon_sprite = array_get(box_list,weapon_number)}
+
+next_deployed_weapon = weapon_number
+
+if previous_deployed_weapon = next_deployed_weapon{deploying = false}
+
+
 melee_equipped = false
 }
 
-if give_all_weapons = false && melee_equipped = false{weapon_sprite = array_get(weapon,weapon_number)}
+if deploy_timer >= deploy_time{
+	deploying = false;
+	saved_ammo_inmag[previous_deployed_weapon] = ammo_inmag
+	saved_ammo_reserve[previous_deployed_weapon] = ammo_reserve
+	weapon_number = next_deployed_weapon
+	ammo_inmag = saved_ammo_inmag[weapon_number]
+	ammo_reserve = saved_ammo_reserve[weapon_number]
+	weapon_sprite = weapon[weapon_number]
+	script_execute_wpn(weapon_sprite)
+	deploy_timer = deploy_time
+}
 
-weapon_damage = 10
-penetration = 1
-gun_recoil = 0.5
-shoot_delay = 12
-knockback = 2
-bullet_knockback = 2
-bullet_speed = 60
-bullet_sprite = s_Bullet
-reload_time = 60
-weapon_weight = 0.5
-bullet_amount = 1
-bullet_spread = 0
-jam_chance = 0
-trigger_delay = 0
-reload_sfx = sfx_m1911Reload
-shoot_sfx = sfx_m1911Shoot
-reload_bullet_time = 0
-shoot_amount = 1
-//bullet_xoff = 0
-//bullet_yoff = 0
-//
-shoot_amount = 1
-spread_increase = 0
-spread_mult = 1
-damage_mult = 1
-recoil_mult = 1
-knockback_mult = 1
-bullet_mult = 1
+if deploying = false{if deploy_timer > 0{deploy_timer -= 1}}else{if deploy_timer < deploy_time{deploy_timer += 1}}
+if deploy_timer < 0{deploy_timer = 0}
+
+
 
 if key_knife_pressed{melee_equipped = true}
 
 
 	script_execute_wpn(weapon_sprite)
+	shoot_amount = 1
+	spread_increase = 0
+	spread_mult = 1
+	damage_mult = 1
+	recoil_mult = 1
+	knockback_mult = 1
+	bullet_mult = 1
 	if array_contains(GM.handgun_list,weapon_sprite){
 	damage_mult += handgun_damage_mult
 	recoil_mult += handgun_recoil_mult
@@ -132,15 +125,7 @@ if key_knife_pressed{melee_equipped = true}
 	gun_recoil = gun_recoil*recoil_mult
 	bullet_spread = (bullet_spread*spread_mult)+spread_increase
 	shoot_amount = shoot_amount+shoot_amount_increase
-
-
-
-if shoot_timer > 0{shoot_timer -= 1}
-
-if abs(recoil) > 10{recoil *= 0.92}else{
-recoil *= 0.9}
-if recoil < 0.5 && recoil > -0.5{recoil = 0}
-
+	
 if reload_timer = 0{if audio_exists(reload_sfx){audio_stop_sound(reload_sfx)}}
 if reload_timer > 0{
 	
@@ -169,13 +154,21 @@ reload_timer = 1
 play_sfx(reload_sfx)
 }
 
+
+
+if shoot_timer > 0{shoot_timer -= 1}
+
+if abs(recoil) > 10{recoil *= 0.92}else{
+recoil *= 0.9}
+if recoil < 0.5 && recoil > -0.5{recoil = 0}
+
 if key_shoot && ammo_inmag = 0 && ammo_reserve = 0{
 //gun_toogle
 }
 
 if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0}
 
-if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay{
+if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay && deploy_timer = 0{
 	repeat(round(shoot_amount)){
 	if key_shoot && auto = true or key_shoot_pressed && auto = false{
 	shoot_timer = shoot_delay
@@ -305,15 +298,15 @@ play_sfx(sfx_Buy)
 if key_interact_pressed && var_object.box_open = true && var_object.box_timer = 0{
 var_object.box_open = false
 if array_length(weapon) < weapon_slots{
-weapon_ammo_inmag[weapon_number] = ammo_inmag
-weapon_ammo_reserve[weapon_number] = ammo_reserve
+saved_ammo_inmag[weapon_number] = ammo_inmag
+saved_ammo_reserve[weapon_number] = ammo_reserve
 weapon_number = array_length(weapon)}
 weapon[weapon_number] = var_object.weapon_sprite
 script_execute_wpn(weapon[weapon_number])
-weapon_ammo_inmag[weapon_number] = ammo_inmag_max
-weapon_ammo_reserve[weapon_number] = ammo_reserve_max
-ammo_inmag = weapon_ammo_inmag[weapon_number]
-ammo_reserve = weapon_ammo_reserve[weapon_number]
+saved_ammo_inmag[weapon_number] = ammo_inmag_max
+saved_ammo_reserve[weapon_number] = ammo_reserve_max
+ammo_inmag = saved_ammo_inmag[weapon_number]
+ammo_reserve = saved_ammo_reserve[weapon_number]
 }
 }
 	
@@ -323,26 +316,27 @@ var_object.display_text = true
 if key_interact_pressed && money >= var_object.cost{
 player_point_change(-var_object.cost)
 if array_length(weapon) < weapon_slots{
-weapon_ammo_inmag[weapon_number] = ammo_inmag
-weapon_ammo_reserve[weapon_number] = ammo_reserve
+saved_ammo_inmag[weapon_number] = ammo_inmag
+saved_ammo_reserve[weapon_number] = ammo_reserve
 weapon_number = array_length(weapon)}
 weapon[weapon_number] = var_object.weapon_sprite
 script_execute_wpn(weapon[weapon_number])
-weapon_ammo_inmag[weapon_number] = ammo_inmag_max
-weapon_ammo_reserve[weapon_number] = ammo_reserve_max
-ammo_inmag = weapon_ammo_inmag[weapon_number]
-ammo_reserve = weapon_ammo_reserve[weapon_number]
+saved_ammo_inmag[weapon_number] = ammo_inmag_max
+saved_ammo_reserve[weapon_number] = ammo_reserve_max
+ammo_inmag = saved_ammo_inmag[weapon_number]
+ammo_reserve = saved_ammo_reserve[weapon_number]
 play_sfx(sfx_Buy)
 }
 
 }
 
-if place_meeting(x,y,ShopItem){
-var_object = instance_nearest(x,y,ShopItem)
+if place_meeting(x,y,Item){
+var_object = instance_nearest(x,y,Item)
 var_object.display_text = true
 if key_interact_pressed && money >= var_object.cost{
 player_point_change(-var_object.cost)
 new_item = var_object.sprite_index
+array_push(GM.items_bought,var_object.sprite_index)
 play_sfx(sfx_Buy)
 }
 

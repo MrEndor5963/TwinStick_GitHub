@@ -5,10 +5,15 @@ instance_destroy();exit
 }
 
 items_in_shop = 3
-
+shop_item = []
 vrp = 0
 repeat(items_in_shop){
-shop_item_bought[vrp] = false
-shop_item_name[vrp] = array_get(GM.item_list,irandom_range(0,array_length(GM.item_list)-1))
+do{
+var_item = array_get(GM.item_list,irandom_range(0,array_length(GM.item_list)-1))}
+until(
+array_contains(GM.items_bought,var_item) = false && array_contains(shop_item,var_item) = false
+)
+shop_item[vrp] = var_item
+
 
 vrp += 1}

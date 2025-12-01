@@ -28,10 +28,22 @@ aim_object = 0//instance_create_depth(x,y,depth,PlayerAim)
 melee = instance_create_depth(x,y,depth-1,MeleeWeapon)
 melee.creator = id
 melee_equipped = false
+
+trigger_delay_timer = 0
 //Default stats
 give_all_weapons = true
 //give_all_weapons = false
-box_list = GM.box_list
+if give_all_weapons = true{
+vrp = 0
+repeat(array_length(GM.box_list)){
+weapon[vrp] = GM.box_list[vrp]
+weapon_sprite = weapon[vrp]
+script_execute_wpn(weapon_sprite)
+saved_ammo_inmag[vrp] = ammo_inmag_max
+saved_ammo_reserve[vrp] = ammo_reserve_max
+vrp += 1
+}
+}
 can_control = true
 
 
@@ -44,6 +56,13 @@ spawned = false
 
 node_x = x div 48
 node_y = y div 48
+deploy_time = 15
+deploy_timer = 0
+deploying = false
+previous_deployed_weapon = 0
+next_deployed_weapon = 0
+gun_angle = 0
+aim_speed = 0.5
 
 point_que = []
 point_draw_dir_x = []
