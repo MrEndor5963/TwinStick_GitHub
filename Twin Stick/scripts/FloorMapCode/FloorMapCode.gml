@@ -44,7 +44,8 @@ do {
 	if ds_grid_get(map,current_x,current_y) = 0{	
 	var_string = irandom_range(1,array_length(room_list))
 	if var_string < 10{var_string = "0"+string(var_string)}
-	var_string = "r_Floor"+string(floor_number)+"_Main"+string(var_string)
+	//var_string = "r_Floor"+string(floor_number)+"_Main"+string(var_string)
+	var_string = "r_Floor1"+"_Main"+string(var_string)
 	var_room = asset_get_index(var_string)
 	ds_grid_set(map,current_x,current_y,var_room)
 	array_push(rooms_in_use,var_room)

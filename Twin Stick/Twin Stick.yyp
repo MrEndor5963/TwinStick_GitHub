@@ -134,7 +134,6 @@
     {"id":{"name":"EnemyScripts","path":"scripts/EnemyScripts/EnemyScripts.yy",},},
     {"id":{"name":"FloorMapCode","path":"scripts/FloorMapCode/FloorMapCode.yy",},},
     {"id":{"name":"GridCode","path":"scripts/GridCode/GridCode.yy",},},
-    {"id":{"name":"PersistencyCode","path":"scripts/PersistencyCode/PersistencyCode.yy",},},
     {"id":{"name":"ZItemStats","path":"scripts/ZItemStats/ZItemStats.yy",},},
     {"id":{"name":"ZZWeaponStats","path":"scripts/ZZWeaponStats/ZZWeaponStats.yy",},},
     {"id":{"name":"sh_HitFlash","path":"shaders/sh_HitFlash/sh_HitFlash.yy",},},

@@ -15,13 +15,11 @@ nazi_list = []
 function script_execute_wpn(arg_weapon_sprite){
 set_gun_ammo(8,72)
 set_bullet_power(18,3,1)
+set_gun_handling(2,2,1)
 bullet_speed = 60
-gun_recoil = 0.5
 shoot_delay = 12
-knockback = 2
 bullet_sprite = s_Bullet
 reload_time = 60
-weapon_weight = 0.5
 bullet_amount = 1
 bullet_spread = 1
 jam_chance = 0
@@ -297,7 +295,7 @@ shoot_delay = 4
 reload_time = 75
 bullet_spread = 12
 trigger_delay = 15
-jam_chance = 70
+jam_chance = 48
 jam_time = 160
 shoot_sfx = sfx_m1911Shoot
 description = "Homemade firearm made by Phillip A. Luty in response to UK anti gun legislation in the 1990's. Although the Luty has many, many flaws, it's still a quite cheaply made lethal weapon using only parts from a hardware store"
@@ -773,7 +771,7 @@ shoot_sfx = sfx_AWPShoot
 function wpn_SquareGun(){
 weapon_sprite = s_SquareGun
 weapon_name = "Quad Lazer"
-cost = 16000
+cost = 6666333325
 auto = false
 if object_index = GM{
 array_push(box_list,weapon_sprite)

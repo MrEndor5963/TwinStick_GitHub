@@ -7,7 +7,7 @@ hsp_knockback = 0;vsp_knockback = 0
 mov_spd = 10
 hp = 6;hp_max = 6
 hit_stun = 0
-money = 100000
+money = 500
 kills = 0
 recoil = 0
 weapon_yscale = 1
