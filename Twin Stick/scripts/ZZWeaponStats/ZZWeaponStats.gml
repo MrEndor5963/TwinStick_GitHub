@@ -50,7 +50,7 @@ penetration = arg_bullet_penetration
 
 function set_gun_handling(arg_gun_recoil,arg_gun_knockback,arg_gun_weight){
 if arg_gun_recoil < 0{
-gun_recoil = gun_recoil*choose(-1,1)}
+gun_recoil = arg_gun_recoil*choose(-1,1)}
 else{gun_recoil = arg_gun_recoil}
 knockback = arg_gun_knockback
 weapon_weight = arg_gun_weight}
@@ -314,7 +314,7 @@ exit}
 auto = true
 set_gun_ammo(20,180)
 set_bullet_power(12,1,1)
-set_gun_handling(-4,1.5,1.2)
+set_gun_handling(-3,1.5,1.2)
 set_deploy_stats(8,-1)
 shoot_delay = 4
 reload_time = 80
@@ -761,9 +761,9 @@ set_gun_ammo(5,30)
 set_bullet_power(165,12,4)
 set_gun_handling(135,72,8)
 set_deploy_stats(36,1)
-shoot_delay = 15
+shoot_delay = 14
 reload_time = 105
-if object_index = Player && ammo_inmag = ammo_inmag_max{jam_chance = 4}
+if object_index = Player && ammo_inmag = ammo_inmag_max{jam_chance = 2}
 else{jam_chance = 100}
 jam_time = 720
 reload_sfx = sfx_AWPReload
@@ -787,5 +787,5 @@ knockback = 96
 bullet_speed = 0.2
 bullet_sprite = s_SquareGunBullet
 reload_time = 4
-description = "Standard issue Lazer Pistol for Mooninite infantry during the Plutonian conflict. "
+description = "Standard issue Lazer Pistol for Mooninite infantry during the Plutonian conflict"
 }

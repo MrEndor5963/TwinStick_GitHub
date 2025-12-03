@@ -12,9 +12,9 @@ if hit_stun > 0{hit_stun -= 1}
 
 
 move_timer -= 1
-if move_timer = 0{move_timer = 50
+if move_timer = 0{move_timer = 90
 get_move_directions()
-hsp = move_direction_h*3;vsp = move_direction_v*3
+hsp = move_direction_h*28;vsp = move_direction_v*28
 }
 
 corner_cutting()
@@ -41,8 +41,8 @@ if collision_present(x,y+vsp+vsp_knockback)
 
 y += vsp+vsp_knockback
 
-hsp *= 0.95
-vsp *= 0.95
+hsp *= 0.9
+vsp *= 0.9
 
 if move_direction_h != 0 or move_direction_v != 0{
 

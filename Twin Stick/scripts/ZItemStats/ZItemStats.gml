@@ -14,6 +14,9 @@ item_BloodBullets()
 item_MLGNoScoper()
 item_DamageUp()
 item_ShotGunner()
+item_PoundOfFeathers()
+item_WeightedBelt()
+item_HandgunHavoc()
 }
 
 function item_Heart(){

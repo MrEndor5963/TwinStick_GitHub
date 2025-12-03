@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"Zombie",
+  "%Name":"StickBlade",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Zombie",
+  "name":"StickBlade",
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_ZombieD",
-    "path":"sprites/s_ZombieD/s_ZombieD.yy",
+    "name":"s_StickBladeD",
+    "path":"sprites/s_StickBladeD/s_StickBladeD.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -54,7 +54,7 @@ else{draw_set_halign(fa_right)}
 
 //item draw
 item_draw_y += 0.04
-if item_draw_y = 360{item_draw_y = 0}
+if item_draw_y = 3600{item_draw_y = 0}
 item_rows = (array_length(item_list)-1) div 5
 
 vrp = 0

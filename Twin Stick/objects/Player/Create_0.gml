@@ -62,7 +62,7 @@ deploying = false
 previous_deployed_weapon = 0
 next_deployed_weapon = 0
 gun_angle = 0
-aim_speed = 0.5
+//aim_speed = 0.5
 
 point_que = []
 point_draw_dir_x = []

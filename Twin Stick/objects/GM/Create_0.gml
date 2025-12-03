@@ -68,8 +68,9 @@ grid_made = true}
 
 enemy_list = []
 array_push(enemy_list,Zombie)
-array_push(enemy_list,ZombieShooter)
-array_push(enemy_list,Hellhound)
+array_push(enemy_list,StickBlade)
+//array_push(enemy_list,ZombieShooter)
+//array_push(enemy_list,Hellhound)
 
 melee_list = []
 box_list = []

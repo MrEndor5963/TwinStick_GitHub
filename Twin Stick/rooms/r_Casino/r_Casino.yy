@@ -61,8 +61,8 @@
   ],
   "name":"r_Casino",
   "parent":{
-    "name":"CRooms",
-    "path":"folders/CRooms.yy",
+    "name":"SpecialRooms",
+    "path":"folders/CRooms/SpecialRooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
