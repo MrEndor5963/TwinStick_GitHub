@@ -5,6 +5,7 @@ instance_destroy();exit
 }
 
 items_in_shop = 3
+if room = r_Treasure{items_in_shop = 1}
 shop_item = []
 vrp = 0
 repeat(items_in_shop){

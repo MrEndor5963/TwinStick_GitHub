@@ -61,6 +61,7 @@ if room_type = r_Casino{draw_sprite(s_CasinoMarker,0,var_xx*48,var_yy*48+200)}
 if room_type = r_FastFood{draw_sprite(s_FastFoodMarker,0,var_xx*48,var_yy*48+200)}
 if room_type = r_Gauntlet{draw_sprite(s_GauntletMarker,0,var_xx*48,var_yy*48+200)}
 if room_type = r_BoxRoom{draw_sprite(s_BoxRoomMarker,0,var_xx*48,var_yy*48+200)}
+if room_type = r_Treasure{draw_sprite(s_TreaureMarker,0,var_xx*48,var_yy*48+200)}
 
 var_yy += 1}
 var_xx += 1}

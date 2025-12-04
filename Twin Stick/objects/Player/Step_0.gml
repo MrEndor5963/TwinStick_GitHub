@@ -334,7 +334,7 @@ if place_meeting(x,y,Item){
 var_object = instance_nearest(x,y,Item)
 var_object.display_text = true
 if key_interact_pressed && money >= var_object.cost{
-player_point_change(-var_object.cost)
+if var_object.item_is_free = false{player_point_change(-var_object.cost)}
 new_item = var_object.sprite_index
 array_push(GM.items_bought,var_object.sprite_index)
 play_sfx(sfx_Buy)

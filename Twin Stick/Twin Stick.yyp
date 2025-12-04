@@ -274,6 +274,7 @@
     {"id":{"name":"s_Teleporter","path":"sprites/s_Teleporter/s_Teleporter.yy",},},
     {"id":{"name":"s_Thompson","path":"sprites/s_Thompson/s_Thompson.yy",},},
     {"id":{"name":"s_TileGuide","path":"sprites/s_TileGuide/s_TileGuide.yy",},},
+    {"id":{"name":"s_TreaureMarker","path":"sprites/s_TreaureMarker/s_TreaureMarker.yy",},},
     {"id":{"name":"s_UnVisited","path":"sprites/s_UnVisited/s_UnVisited.yy",},},
     {"id":{"name":"s_Uzi","path":"sprites/s_Uzi/s_Uzi.yy",},},
     {"id":{"name":"s_Visited","path":"sprites/s_Visited/s_Visited.yy",},},

@@ -22,7 +22,7 @@
     {"name":"inst_68F5D426_1_1","path":"rooms/r_Treasure/r_Treasure.yy",},
     {"name":"inst_343172A7_1_1","path":"rooms/r_Treasure/r_Treasure.yy",},
     {"name":"inst_1A6D933C_1_1","path":"rooms/r_Treasure/r_Treasure.yy",},
-    {"name":"inst_34ED4BBE_1","path":"rooms/r_Treasure/r_Treasure.yy",},
+    {"name":"inst_263AB4DA","path":"rooms/r_Treasure/r_Treasure.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -38,7 +38,7 @@
           4,16,47,47,2,-9,20,1,36,-3,-2147483648,1,34,-9,20,1,1,-12,47,1,24,-3,-2147483648,1,16,-11,47,
         ],"TileDataFormat":1,},"tilesetId":{"name":"t_Walls","path":"tilesets/t_Walls/t_Walls.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Enemies","depth":100,"effectEnabled":true,"effectType":null,"gridX":48,"gridY":48,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-        {"$GMRInstance":"v2","%Name":"inst_34ED4BBE_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_34ED4BBE_1","objectId":{"name":"Item","path":"objects/Item/Item.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":624.0,"y":384.0,},
+        {"$GMRInstance":"v2","%Name":"inst_263AB4DA","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_263AB4DA","objectId":{"name":"ShopKeeper","path":"objects/ShopKeeper/ShopKeeper.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":384.0,"y":-48.0,},
       ],"layers":[],"name":"Enemies","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":200,"effectEnabled":true,"effectType":null,"gridX":48,"gridY":48,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v2","%Name":"inst_3DE09CFE_1_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3DE09CFE_1_1","objectId":{"name":"RoomSpawn","path":"objects/RoomSpawn/RoomSpawn.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":3.0,"x":0.0,"y":288.0,},

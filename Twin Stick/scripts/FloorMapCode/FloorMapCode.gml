@@ -75,6 +75,7 @@ start_y = map_y
 
 set_room_with_path(r_BoxRoom)
 set_room_with_path(r_Shop)
+set_room_with_path(r_Treasure)
 if irandom_range(1,2) = 1{set_room_with_path(r_FastFood)}
 else{set_room_with_path(r_Casino)}
 set_room_with_path(r_Floor1_KeyRoom)
