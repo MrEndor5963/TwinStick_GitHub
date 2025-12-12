@@ -1,4 +1,4 @@
-damage = 10
+damage = 19
 knockback = 0
 attacking = false
 attack_timer = 0
@@ -8,3 +8,4 @@ yoff = 0
 angleoff = 0
 penetration = 100
 contact_list = []
+shot_reward = 10

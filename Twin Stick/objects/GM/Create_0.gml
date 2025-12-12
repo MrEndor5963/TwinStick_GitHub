@@ -67,8 +67,9 @@ visited_rooms = []
 grid_made = true}
 
 enemy_list = []
-array_push(enemy_list,Zombie)
+//array_push(enemy_list,Zombie)
 array_push(enemy_list,StickBlade)
+array_push(enemy_list,SpikeFly)
 //array_push(enemy_list,ZombieShooter)
 //array_push(enemy_list,Hellhound)
 
@@ -89,17 +90,18 @@ referece_weapons()
 
 
 item_list = []
-array_push(item_list,s_si_BloodBullets)
-array_push(item_list,s_si_DamageUp)
-array_push(item_list,s_si_DoubleTap)
-array_push(item_list,s_si_HandgunHavoc)
-array_push(item_list,s_si_HPMax)
-array_push(item_list,s_si_MLGNoScoper)
-array_push(item_list,s_si_Move)
-array_push(item_list,s_si_PoundOfFeathers)
-array_push(item_list,s_si_ShotGunner)
-array_push(item_list,s_si_SpeedCola)
-array_push(item_list,s_si_WeaponSlots)
-array_push(item_list,s_si_WeightedBelt)
+reference_items()
+array_push(item_list,s_item_BloodBullets)
+array_push(item_list,s_item_DamageUp)
+array_push(item_list,s_item_DoubleTap)
+array_push(item_list,s_item_HandgunHavoc)
+array_push(item_list,s_item_SuperMushroom)
+array_push(item_list,s_item_MLGNoScoper)
+array_push(item_list,s_item_Move)
+array_push(item_list,s_item_PoundOfFeathers)
+array_push(item_list,s_item_ShotGunner)
+array_push(item_list,s_item_SpeedCola)
+array_push(item_list,s_item_WeaponSlots)
+array_push(item_list,s_item_WeightedBelt)
 
 items_bought = []

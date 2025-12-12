@@ -58,6 +58,13 @@ if instance_exists(MysteryBox){instance_destroy(MysteryBox)}
 if instance_exists(WallBuy){instance_destroy(WallBuy)}
 if instance_exists(ShopKeeper){instance_destroy(ShopKeeper)}
 
+i = 0;lowest_value = 1000
+repeat(array_length(GM.player_list)){
+var_player = GM.player_list[i]
+var_player.floor_mystery_box_rolls = 0
+i += 1
+}
+
 floor_door = true
 map_x = irandom_range(0,map_size-1)
 map_y = irandom_range(0,map_size-1)

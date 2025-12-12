@@ -17,8 +17,8 @@
   "out_tilehborder":0,
   "out_tilevborder":0,
   "parent":{
-    "name":"BSprites",
-    "path":"folders/BSprites.yy",
+    "name":"EnviornmentArt",
+    "path":"folders/BSprites/EnviornmentArt.yy",
   },
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",

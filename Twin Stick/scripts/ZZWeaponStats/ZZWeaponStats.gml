@@ -28,6 +28,7 @@ reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 reload_bullet_time = 0
 shoot_amount = 1
+shot_reward = 10
 //bullet_xoff = 0
 //bullet_yoff = 0
 //
@@ -463,7 +464,7 @@ array_push(box_list,weapon_sprite)
 array_push(semi_ar_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,96)
+set_gun_ammo(8,88)
 set_bullet_power(28,8,1)
 set_gun_handling(4,5,3.5)
 set_deploy_stats(18,1)
@@ -602,7 +603,7 @@ reload_time = 120
 bullet_spread = 15
 bullet_amount = 10
 shoot_sfx = sfx_OlympiaShoot
-
+shot_reward = 5
 }
 
 function wpn_Ithaca(){
@@ -623,6 +624,7 @@ set_variable_reload_time(15,60,30)
 bullet_spread = 20
 bullet_amount = 15
 shoot_sfx = sfx_IthacaShoot
+shot_reward = 5
 }
 	
 function wpn_Remi870(){
@@ -643,6 +645,7 @@ set_variable_reload_time(15,55,30)
 bullet_spread = 35
 bullet_amount = 15
 shoot_sfx = sfx_IthacaShoot
+shot_reward = 5
 }
 
 function wpn_Spaz12(){
@@ -667,6 +670,7 @@ set_variable_reload_time(30,45,30)
 shoot_sfx = sfx_OlympiaShoot
 jam_chance = 40
 jam_time = 130
+shot_reward = 5
 }
 
 function wpn_Winchester1897(){
@@ -687,6 +691,7 @@ set_variable_reload_time(15,45,30)
 bullet_spread = 35
 bullet_amount = 12
 shoot_sfx = sfx_IthacaShoot
+shot_reward = 5
 }
 
 function wpn_SSG08(){

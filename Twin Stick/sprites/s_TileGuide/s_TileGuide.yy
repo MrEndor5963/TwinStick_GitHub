@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"BSprites",
-    "path":"folders/BSprites.yy",
+    "name":"EnviornmentArt",
+    "path":"folders/BSprites/EnviornmentArt.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

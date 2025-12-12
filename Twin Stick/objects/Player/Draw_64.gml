@@ -14,6 +14,7 @@ draw_origin_x = 0
 draw_origin_y = 0
 pon_x = 1
 pon_y = 1
+portrait_x_scale = 1
 }
 
 if player_number = 1{
@@ -21,6 +22,7 @@ draw_origin_x = screen_width
 draw_origin_y = 0
 pon_x = -1
 pon_y = 1
+portrait_x_scale = -1
 }
 
 if player_number = 2{
@@ -28,6 +30,7 @@ draw_origin_x = 0
 draw_origin_y = screen_height
 pon_x = 1
 pon_y = -1
+portrait_x_scale = 1
 }
 
 if player_number = 3{
@@ -35,10 +38,11 @@ draw_origin_x = screen_width
 draw_origin_y = screen_height
 pon_x = -1
 pon_y = -1
+portrait_x_scale = -1
 }
 
 
-draw_sprite(portrait_sprite,0,draw_origin_x+(48*pon_x),draw_origin_y+(48*pon_y))
+draw_sprite_ext(portrait_sprite,0,draw_origin_x+(48*pon_x),draw_origin_y+(48*pon_y),portrait_x_scale,1,0,-1,1)
 draw_set_aligns(fa_center,fa_middle)
 
 
@@ -63,10 +67,10 @@ item_draw_y_offset = 4*sin(item_draw_y+vrp)
 row_offset = vrp div 5
 if item_rows = 0{
 draw_sprite_ext(item_list[vrp],0,
-draw_origin_x-24+(384*pon_x)+(48*vrp)-(row_offset*240),draw_origin_y+(24*pon_y)+item_draw_y_offset+((row_offset*48)),0.5,0.5,0,-1,1)}
+draw_origin_x-24+(384*pon_x)+(48*vrp)-(row_offset*240),draw_origin_y+(24*pon_y)+item_draw_y_offset+((row_offset*48)),1,1,0,-1,1)}
 else{
 draw_sprite_ext(item_list[vrp],0,
-draw_origin_x-24+(384*pon_x)+(48*vrp)-(row_offset*240),draw_origin_y+(24*pon_y)+item_draw_y_offset+((row_offset*48)/item_rows),0.5,0.5,0,-1,1)
+draw_origin_x-24+(384*pon_x)+(48*vrp)-(row_offset*240),draw_origin_y+(24*pon_y)+item_draw_y_offset+((row_offset*48)/item_rows),1,1,0,-1,1)
 }
 vrp += 1}
 

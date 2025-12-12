@@ -26,7 +26,8 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 
 	hit_stun = 2
 	var_player = var_bullet.creator
-	with var_player{player_point_change(10)}
+	bullet_reward = var_bullet.shot_reward
+	with var_player{player_point_change(other.bullet_reward)}
 
 	hp -= var_bullet.damage
 	direction = var_bullet.direction

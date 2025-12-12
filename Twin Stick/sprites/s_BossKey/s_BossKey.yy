@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"BSprites",
-    "path":"folders/BSprites.yy",
+    "name":"SpecialRoomAssets",
+    "path":"folders/BSprites/EnviornmentArt/SpecialRoomAssets.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

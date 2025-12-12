@@ -34,15 +34,15 @@ hitbox.depth = depth+1
 function get_move_directions(){
 if instance_exists(Player){
 	
-var_repeat = 0;lowest_value = 1000
+i = 0;lowest_value = 1000
 repeat(array_length(GM.player_list)){
-var_player = GM.player_list[var_repeat]
+var_player = GM.player_list[i]
 var_grid = var_player.pathfinding_grid
 value = ds_grid_get(var_grid,node_x,node_y) 
-if value < lowest_value && var_player.hp > 0{lowest_value = value;player_target = GM.player_list[var_repeat]}
-var_repeat += 1
+if value < lowest_value && var_player.hp > 0{lowest_value = value;player_target = GM.player_list[i]}
+i += 1
 }
-if collision_line(x,y,player_target.x,player_target.y,tiles,false,false) = noone{
+if collision_line(x,y,player_target.x,player_target.y,tiles,false,false) = noone or object_index = SpikeFly{
 direction = point_direction(x,y,player_target.x,player_target.y)
 speed = 1
 move_direction_h = hspeed
@@ -84,27 +84,27 @@ if value < lowest_value{move_direction_h = 1;move_direction_v = 1;}
 
 function corner_cutting(){
 	
-corner_cut = false;var_repeat = 0
+corner_cut = false;i = 0
 if collision_present(x+sign(move_direction_h),y+sign(move_direction_v)){
-repeat (24){var_repeat += 2
+repeat (24){i += 2
 
 if vsp < 0{
-if !collision_present(x-var_repeat,y-1){y-=1;while collision_present(x,y){x-=1};corner_cut = true;break}
-if !collision_present(x+var_repeat,y-1){y-=1;while collision_present(x,y){x+=1};corner_cut = true;break}
+if !collision_present(x-i,y-1){y-=1;while collision_present(x,y){x-=1};corner_cut = true;break}
+if !collision_present(x+i,y-1){y-=1;while collision_present(x,y){x+=1};corner_cut = true;break}
 }
 
 if vsp > 0{
-if !collision_present(x-var_repeat,y+1){y+=1;while collision_present(x,y){x-=1};corner_cut = true;break}
-if !collision_present(x+var_repeat,y+1){y+=1;while collision_present(x,y){x+=1};corner_cut = true;break}
+if !collision_present(x-i,y+1){y+=1;while collision_present(x,y){x-=1};corner_cut = true;break}
+if !collision_present(x+i,y+1){y+=1;while collision_present(x,y){x+=1};corner_cut = true;break}
 }
 
 if hsp > 0{
-if !collision_present(x+1,y-var_repeat){x+=1;while collision_present(x,y){y-= 1};corner_cut = true;break}
-if !collision_present(x+1,y+var_repeat){x+=1;while collision_present(x,y){y+= 1};corner_cut = true;break}
+if !collision_present(x+1,y-i){x+=1;while collision_present(x,y){y-= 1};corner_cut = true;break}
+if !collision_present(x+1,y+i){x+=1;while collision_present(x,y){y+= 1};corner_cut = true;break}
 }													  													
 if hsp < 0{
-if !collision_present(x-1,y-var_repeat){x-=var_repeat;while collision_present(x,y){y-= 1};corner_cut = true;break}
-if !collision_present(x-1,y+var_repeat){x-=var_repeat;while collision_present(x,y){y+=1};corner_cut = true;break}
+if !collision_present(x-1,y-i){x-=i;while collision_present(x,y){y-= 1};corner_cut = true;break}
+if !collision_present(x-1,y+i){x-=i;while collision_present(x,y){y+=1};corner_cut = true;break}
 }
 }
 }

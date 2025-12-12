@@ -99,3 +99,10 @@ shotgun_bullet_mult = 0
 sniper_damage_mult = 0
 sniper_spread_increase = 0
 ammo_recived_when_hurt = 0
+wall_ammo_multiplier = 1
+
+shot_reward = 10
+shot_reward_increase = 0
+floor_mystery_box_rolls = 0
+total_mystery_box_rolls = 0
+free_mystery_box_rolls_per_floor = 0

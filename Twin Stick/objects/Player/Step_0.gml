@@ -106,6 +106,7 @@ if key_knife_pressed{melee_equipped = true}
 	recoil_mult = 1
 	knockback_mult = 1
 	bullet_mult = 1
+	shot_reward += shot_reward_increase
 	if array_contains(GM.handgun_list,weapon_sprite){
 	damage_mult += handgun_damage_mult
 	recoil_mult += handgun_recoil_mult
@@ -188,6 +189,7 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 	_bullet.knockback = bullet_knockback
 	_bullet.sprite_index = bullet_sprite
 	_bullet.creator = id
+	_bullet.shot_reward = shot_reward
 	}
 
 	if knockback < 0{knockback = 0}
@@ -291,8 +293,11 @@ var_object = instance_nearest(x,y,MysteryBox)
 var_object.display_text = true
 if key_interact_pressed && money >= 950 && var_object.box_open = false{
 player_point_change(-950)
+if free_mystery_box_rolls_per_floor > floor_mystery_box_rolls{player_point_change(950)}
 var_object.activate_box = true
 play_sfx(sfx_Buy)
+floor_mystery_box_rolls += 1
+total_mystery_box_rolls += 1
 }
 
 if key_interact_pressed && var_object.box_open = true && var_object.box_timer = 0{
@@ -322,7 +327,7 @@ weapon_number = array_length(weapon)}
 weapon[weapon_number] = var_object.weapon_sprite
 script_execute_wpn(weapon[weapon_number])
 saved_ammo_inmag[weapon_number] = ammo_inmag_max
-saved_ammo_reserve[weapon_number] = ammo_reserve_max
+saved_ammo_reserve[weapon_number] = round(ammo_reserve_max*wall_ammo_multiplier)
 ammo_inmag = saved_ammo_inmag[weapon_number]
 ammo_reserve = saved_ammo_reserve[weapon_number]
 play_sfx(sfx_Buy)
