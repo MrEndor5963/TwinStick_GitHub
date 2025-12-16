@@ -181,7 +181,7 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 	var_y = y+(vspeed)
 	speed = 0
 	repeat(round(bullet_amount)){
-	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
+	_bullet = instance_create_depth(var_x,var_y,depth+1,Bullet)
 	_bullet.image_angle = aim_direction+recoil+irandom_range(-bullet_spread,bullet_spread)
 	_bullet.damage = weapon_damage
 	_bullet.penetration = penetration
@@ -190,6 +190,9 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 	_bullet.sprite_index = bullet_sprite
 	_bullet.creator = id
 	_bullet.shot_reward = shot_reward
+	_bullet.explosive = explosive
+	_bullet.explosion_damage = explosion_damage
+	_bullet.png_explosion_checks = png_explosions
 	}
 
 	if knockback < 0{knockback = 0}

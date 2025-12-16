@@ -33,17 +33,6 @@ trigger_delay_timer = 0
 //Default stats
 give_all_weapons = true
 //give_all_weapons = false
-if give_all_weapons = true{
-vrp = 0
-repeat(array_length(GM.box_list)){
-weapon[vrp] = GM.box_list[vrp]
-weapon_sprite = weapon[vrp]
-script_execute_wpn(weapon_sprite)
-saved_ammo_inmag[vrp] = ammo_inmag_max
-saved_ammo_reserve[vrp] = ammo_reserve_max
-vrp += 1
-}
-}
 can_control = true
 
 
@@ -100,9 +89,24 @@ sniper_damage_mult = 0
 sniper_spread_increase = 0
 ammo_recived_when_hurt = 0
 wall_ammo_multiplier = 1
+bullets_per_new_room = 0
 
 shot_reward = 10
 shot_reward_increase = 0
 floor_mystery_box_rolls = 0
 total_mystery_box_rolls = 0
 free_mystery_box_rolls_per_floor = 0
+cryptocoin = 0
+png_explosions = 0
+
+if give_all_weapons = true{
+vrp = 0
+repeat(array_length(GM.box_list)){
+weapon[vrp] = GM.box_list[vrp]
+weapon_sprite = weapon[vrp]
+script_execute_wpn(weapon_sprite)
+saved_ammo_inmag[vrp] = ammo_inmag_max
+saved_ammo_reserve[vrp] = ammo_reserve_max
+vrp += 1
+}
+}

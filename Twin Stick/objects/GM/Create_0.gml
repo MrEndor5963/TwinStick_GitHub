@@ -24,7 +24,7 @@ global.collision_grid = ds_grid_create(27,15)
 floor_number = 1
 next_floor = false
 floor_door = true
-map_size = 5
+map_size = 4
 map = ds_grid_create(map_size,map_size)
 draw_map = false
 

@@ -9,8 +9,8 @@
   "name":"PlayerAim",
   "overriddenProperties":[],
   "parent":{
-    "name":"AObjects",
-    "path":"folders/AObjects.yy",
+    "name":"ItemSpawnedObjects",
+    "path":"folders/AObjects/ItemSpawnedObjects.yy",
   },
   "parentObjectId":null,
   "persistent":true,

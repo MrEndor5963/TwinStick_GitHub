@@ -10,13 +10,14 @@ instance_destroy();exit
 }
 
 list_temp = ds_list_create() 
-instance_place_list(x,y,[Bullet,MeleeWeapon],list_temp,false)
+instance_place_list(x,y,[Bullet,MeleeWeapon,PNGExplosion],list_temp,false)
 var_repeat = 0
 repeat(ds_list_size(list_temp)){
 var_bullet = ds_list_find_value(list_temp,var_repeat)
 if array_contains(contact_list,var_bullet) = false && var_bullet.hurts_enemy = true && var_bullet.object_index != MeleeWeapon or
 var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_contains(var_bullet.contact_list,id) = false
 {
+	
 
 	repeat(4){
 	if var_bullet.object_index = MeleeWeapon{particle = instance_create_depth(x,y,depth-100,ParticleEffect)}
@@ -35,7 +36,19 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	creator.hsp_knockback = hspeed*var_bullet.knockback
 	creator.vsp_knockback = vspeed*var_bullet.knockback
 	speed = 0
+	if var_bullet.object_index != PNGExplosion && var_bullet.explosive = true{
+	var_explosion = instance_create_depth(var_bullet.x,var_bullet.y,var_bullet.depth-1000,PNGExplosion)
+	var_explosion.creator = var_bullet.creator
+	var_explosion.damage = var_bullet.explosion_damage
+	}
+	
 	if hp <= 0{
+	repeat(var_bullet.png_explosion_checks){
+	if irandom_range(1,4) = 1{
+	var_explosion = instance_create_depth(var_bullet.x,var_bullet.y,var_bullet.depth-1000,PNGExplosion)
+	var_explosion.creator = var_bullet.creator
+	}
+	}
 	instance_destroy(creator);
 	instance_destroy();
 	ds_list_destroy(list_temp)

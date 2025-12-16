@@ -62,6 +62,9 @@ i = 0;lowest_value = 1000
 repeat(array_length(GM.player_list)){
 var_player = GM.player_list[i]
 var_player.floor_mystery_box_rolls = 0
+repeat(var_player.cryptocoin){
+with var_player{player_point_change(irandom_range(-10000,10000))}
+}
 i += 1
 }
 

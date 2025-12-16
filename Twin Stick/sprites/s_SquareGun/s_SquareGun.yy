@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":3,
   "parent":{
-    "name":"8Misc",
-    "path":"folders/BSprites/GunAndBulletSprites/8Misc.yy",
+    "name":"9Misc",
+    "path":"folders/BSprites/GunAndBulletSprites/9Misc.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

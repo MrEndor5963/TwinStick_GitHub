@@ -4,6 +4,14 @@ if instance_exists(RoomSpawn){
 if !array_contains(visited_rooms,x_plus_y(map_x,map_y)){
 array_push(visited_rooms,x_plus_y(map_x,map_y))
 
+i = 0;
+repeat(array_length(GM.player_list)){
+var_player = GM.player_list[i]
+if var_player.weapon_sprite != s_SquareGun && var_player.melee_equipped = false{
+var_player.ammo_reserve += var_player.bullets_per_new_room}
+i += 1
+}
+
 }
 
 

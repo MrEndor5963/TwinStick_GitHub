@@ -20,6 +20,11 @@ item_HandgunHavoc()
 item_NoobiniPizzanini()
 item_TeddyBear()
 item_AmmoCase()
+item_Wallnut()
+item_MetalDetector()
+item_CryptoCoin()
+item_ChoccyMilk()
+item_PNGExplosion()
 }
 
 function item_Heart(){
@@ -99,7 +104,7 @@ reload_speed += 1
 function item_ShotGunner(){
 item_sprite = s_item_ShotGunner
 item_name = "Shot Gunner"
-cost = 1000
+cost = 2500
 description_text = "Shotguns bullets shoot more pellets but have a larger spread"
 if object_index = GM{
 array_push(item_list,item_sprite)
@@ -123,7 +128,7 @@ damage_mult += 0.1
 function item_BloodBullets(){
 item_sprite = s_item_BloodBullets
 item_name = "Blood Bullets"
-cost = 1000
+cost = 1200
 description_text = "Get some extra ammo when hurt"
 if object_index = GM{
 array_push(item_list,item_sprite)
@@ -136,7 +141,7 @@ ammo_recived_when_hurt += 0.2
 function item_MLGNoScoper(){
 item_sprite = s_item_MLGNoScoper
 item_name = "MLG No Scoper"
-cost = 1400
+cost = 2000
 description_text = "Increases Sniper damage by 42.0% but decreases sniper accuracy"
 if object_index = GM{
 array_push(item_list,item_sprite)
@@ -227,5 +232,72 @@ array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
 wall_ammo_multiplier += 0.5
+}
+}
+
+function item_Wallnut(){
+item_sprite = s_item_Wallnut
+item_name = "Wallnut"
+cost = 1600
+description_text = "Max HP +3"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+hp_max += 3
+}
+}
+
+function item_MetalDetector(){
+item_sprite = s_item_MetalDetector
+item_name = "Metal Detector"
+cost = 1200
+description_text = "Find 1 bullet when entering a new room. Doesn't apply to energy based ammo"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+bullets_per_new_room += 1
+}
+}
+
+function item_CryptoCoin(){
+item_sprite = s_item_CryptoCoin
+item_name = "Crypto Coin"
+cost = 1000
+description_text = "Gain or lose $1-$10000 at the start of every floor"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+cryptocoin += 1
+}
+}
+
+function item_ChoccyMilk(){
+item_sprite = s_item_ChoccyMilk
+item_name = "Choccy Milk"
+cost = 1500
+description_text = "+1 speed, +10% reload speed, and +2 hp"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+mov_spd += 1
+reload_speed += 0.1
+hp += 2;if hp > hp_max{hp = hp_max}
+}
+}
+
+function item_PNGExplosion(){
+item_sprite = s_item_PNGExplosion
+item_name = "png explosion gif"
+cost = 2000
+description_text = "1 in 4 chance to cause png explosion gifs when killing enemies, dealing additional explosion damage"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+png_explosions += 1
 }
 }

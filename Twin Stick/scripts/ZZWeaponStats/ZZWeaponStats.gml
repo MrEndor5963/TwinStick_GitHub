@@ -29,6 +29,9 @@ shoot_sfx = sfx_m1911Shoot
 reload_bullet_time = 0
 shoot_amount = 1
 shot_reward = 10
+explosive = false
+explosion_damage = 0
+weapon_draw_sprite = -99
 //bullet_xoff = 0
 //bullet_yoff = 0
 //
@@ -76,6 +79,7 @@ wpn_Knife()
 wpn_m1911()
 wpn_Taurus92()
 wpn_DEagle()
+wpn_Zip22()
 //Revolvers
 wpn_Python()
 wpn_SnW500()
@@ -107,12 +111,18 @@ wpn_Olympia()
 wpn_Ithaca()
 wpn_Remi870()
 wpn_Spaz12()
+wpn_AA12()
 wpn_Winchester1897()
 //Sniper Rifles
+wpn_Karabiner98k()
+wpn_MosinNagat()
 wpn_SSG08()
 wpn_AWP()
 wpn_DSR50()
 wpn_GM6Lynx()
+//Explosive
+wpn_M79()
+wpn_RPG7()
 //Other
 wpn_SquareGun()
 //Note weapons are roughly organized by power
@@ -194,6 +204,29 @@ reload_time = 65
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
 description = "Desert Eagle or Deagle for short, a very powerful yet heavy magnum pistol with high recoil"
+}
+	
+function wpn_Zip22(){
+weapon_sprite = s_Zip22
+weapon_name = "Zip 22"
+cost = 22
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(25,125)
+set_bullet_power(12,2,1)
+set_gun_handling(12,1.5,1)
+set_deploy_stats(10,-1)
+shoot_delay = 1
+reload_time = 120
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+bullet_spread = 3
+jam_chance = 3
+if jam_timer = 0{jam_time = irandom_range(30,122)}
+description = ""
 }
 
 function wpn_Python(){
@@ -665,11 +698,31 @@ shoot_delay = 5
 reload_time = 190
 bullet_spread = 30
 bullet_amount = 12
-knockback = 18
 set_variable_reload_time(30,45,30)
 shoot_sfx = sfx_OlympiaShoot
 jam_chance = 40
 jam_time = 130
+shot_reward = 5
+}
+
+function wpn_AA12(){
+weapon_sprite = s_AA12
+weapon_name = "AA12"
+cost = 3120
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(shotgun_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(20,40)
+set_bullet_power(8,1,1)
+set_gun_handling(15,6,3)
+set_deploy_stats(12,-1)
+shoot_delay = 12
+reload_time = 190
+bullet_spread = 20
+bullet_amount = 10
+shoot_sfx = sfx_OlympiaShoot
 shot_reward = 5
 }
 
@@ -694,6 +747,44 @@ shoot_sfx = sfx_IthacaShoot
 shot_reward = 5
 }
 
+function wpn_Karabiner98k(){
+weapon_sprite = s_Karabiner98k
+weapon_name = "Karabiner98k"
+cost = 400
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(sniper_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(5,80)
+set_bullet_power(50,12,1)
+set_gun_handling(12,4,3.5)
+set_deploy_stats(10,1)
+shoot_delay = 60
+reload_time = 95
+reload_sfx = sfx_AWPReload
+shoot_sfx = sfx_SSG08Shoot
+}
+
+function wpn_MosinNagat(){
+weapon_sprite = s_MosinNagat
+weapon_name = "Mosin Nagat"
+cost = 150
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+array_push(sniper_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(5,55)
+set_bullet_power(60,12,1)
+set_gun_handling(15,4,3.5)
+set_deploy_stats(15,1)
+shoot_delay = 60
+reload_time = 95
+reload_sfx = sfx_AWPReload
+shoot_sfx = sfx_SSG08Shoot
+}
+
 function wpn_SSG08(){
 weapon_sprite = s_SSG08
 weapon_name = "SSG-08"
@@ -704,7 +795,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(10,90)
-set_bullet_power(55,12,1)
+set_bullet_power(100,12,1)
 set_gun_handling(15,4,3.5)
 set_deploy_stats(15,1)
 shoot_delay = 60
@@ -723,7 +814,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,35)
-set_bullet_power(150,14,4)
+set_bullet_power(205,14,4)
 set_gun_handling(30,16,5.5)
 set_deploy_stats(20,1)
 shoot_delay = 70
@@ -742,7 +833,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(4,28)
-set_bullet_power(140,16,8)
+set_bullet_power(310,16,8)
 set_gun_handling(60,32,8)
 set_deploy_stats(28,1)
 shoot_delay = 80
@@ -761,8 +852,8 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 set_gun_ammo(5,30)
-set_bullet_power(165,12,4)
-set_gun_handling(135,72,8)
+set_bullet_power(280,12,4)
+set_gun_handling(135,72,6)
 set_deploy_stats(36,1)
 shoot_delay = 14
 reload_time = 105
@@ -771,6 +862,50 @@ else{jam_chance = 100}
 jam_time = 720
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
+}
+
+function wpn_M79(){
+weapon_sprite = s_M79
+weapon_name = "M79 Thumper"
+cost = 3000
+auto = false
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+exit}
+set_gun_ammo(1,8)
+set_bullet_power(150,0,1)
+set_gun_handling(5,2,3)
+set_deploy_stats(10,-1)
+shoot_delay = 15
+bullet_speed = 45
+bullet_sprite = s_SquareGunBullet
+reload_time = 170
+explosive = true
+explosion_damage = 300
+description = ""
+}
+
+function wpn_RPG7(){
+weapon_sprite = s_RPG7
+weapon_name = "RPG-7"
+cost = 5500
+auto = false
+if object_index = GM{
+array_push(box_list,weapon_sprite)
+exit}
+set_gun_ammo(1,1)
+set_bullet_power(500,0,1)
+set_gun_handling(-5,0,5)
+set_deploy_stats(30,1)
+shoot_delay = 15
+bullet_speed = 45
+bullet_sprite = s_RPG7Rocket
+if object_index != Player{exit}
+if ammo_inmag > 0{weapon_draw_sprite = s_RPG7}else{weapon_draw_sprite = s_RPG7NoRocket}
+reload_time = 170
+explosive = true
+explosion_damage = 600
+description = ""
 }
 
 function wpn_SquareGun(){
@@ -786,7 +921,6 @@ set_bullet_power(16000,0,4000)
 set_gun_handling(0,96,5.5)
 set_deploy_stats(20,-1)
 shoot_delay = 1
-knockback = 96
 bullet_speed = 0.2
 bullet_sprite = s_SquareGunBullet
 reload_time = 4

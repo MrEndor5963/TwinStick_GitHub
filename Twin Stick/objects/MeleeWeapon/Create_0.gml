@@ -9,3 +9,4 @@ angleoff = 0
 penetration = 100
 contact_list = []
 shot_reward = 10
+png_explosion_checks = 0
