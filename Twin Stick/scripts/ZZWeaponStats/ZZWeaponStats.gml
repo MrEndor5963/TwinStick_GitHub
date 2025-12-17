@@ -168,6 +168,26 @@ reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = "Iconic, reliable, and accurate WW1 pistol still manufactured today"
 }
+
+function wpn_Beretta92(){
+weapon_sprite = s_Taurus92
+weapon_name = "Beretta 92"
+cost = 950
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(15,75)
+set_bullet_power(21,4,1)
+set_gun_handling(8,2.4,1)
+set_deploy_stats(7,-1)
+shoot_delay = 4
+reload_time = 90
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+description = ""
+}
 	
 function wpn_Taurus92(){
 weapon_sprite = s_Taurus92
