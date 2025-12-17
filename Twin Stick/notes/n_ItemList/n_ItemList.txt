@@ -1,28 +1,56 @@
-	Pistols
-m1911
-S&W 500
-Deagle (Desert eagle)
-5-7 Dualies
-Rickoshet (Bounces off walls and enemies)
-
-	Assualt Rifles
-AK-47
-m4a1-s
-SMR
-
-	Smg's
-mp5
-Timmy (Thompson)
-Coin Shooter (cost 10 cents per bullet)
-	
-	Snipers
-AWP
-DSR50
-/No-Scoper
-
-	Explosive
-RPG
-China Lake
+	//Melee
+wpn_Knife()
+//Pistols
+wpn_m1911()
+wpn_Taurus92()
+wpn_DEagle()
+wpn_Zip22()
+//Revolvers
+wpn_Python()
+wpn_SnW500()
+wpn_BFR500()
+//Machine Pistols
+wpn_CZ75Auto()
+//SMG's
+wpn_Luty()
+wpn_VzSkorpion()
+wpn_Uzi()
+wpn_mp5()
+wpn_PPBison()
+wpn_spectre()
+wpn_MP40()
+wpn_Thompson()
+wpn_KrissVector()
+//Semi Auto AR's
+wpn_M14()
+//Full Auto AR's
+wpn_AK47()
+wpn_AN94()
+wpn_Xiuhcoatl()
+wpn_Galil()
+//LMG's
+wpn_RPD()
+wpn_Lewis()
+//Shotguns
+wpn_Olympia()
+wpn_Ithaca()
+wpn_Remi870()
+wpn_Spaz12()
+wpn_AA12()
+wpn_Winchester1897()
+//Sniper Rifles
+wpn_Karabiner98k()
+wpn_MosinNagat()
+wpn_SSG08()
+wpn_AWP()
+wpn_DSR50()
+wpn_GM6Lynx()
+//Explosive
+wpn_M79()
+wpn_RPG7()
+//Other
+wpn_SquareGun()
+//Note weapons
 
 
 	Melee
