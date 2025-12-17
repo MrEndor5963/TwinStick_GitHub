@@ -1,5 +1,6 @@
 
 key_enter = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("E"))
+
 if key_enter
 {var_player = -1
 if cursor_control[3] = -1{var_player = 3}
@@ -12,6 +13,12 @@ cursor_control[2] != "Keyboard" && cursor_control[3] != "Keyboard"{
 cursor_control[var_player] = "Keyboard"
 player_amount += 1
 exit}
+}
+
+if gamepad_button_check_pressed_any(gp_face2) or keyboard_check_pressed(vk_backspace) or keyboard_check_pressed(vk_escape) or keyboard_check_pressed(ord("X")){
+if cursor_control[0] != vrp && cursor_control[1] != vrp &&
+cursor_control[2] != vrp && cursor_control[3] != vrp{
+room_goto(r_TitleScreen)}
 }
 
 vrp = 0;

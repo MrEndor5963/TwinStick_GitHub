@@ -100,6 +100,7 @@
     {"id":{"name":"SpikeFly","path":"objects/SpikeFly/SpikeFly.yy",},},
     {"id":{"name":"StickBlade","path":"objects/StickBlade/StickBlade.yy",},},
     {"id":{"name":"Teleporter","path":"objects/Teleporter/Teleporter.yy",},},
+    {"id":{"name":"TitleMenu","path":"objects/TitleMenu/TitleMenu.yy",},},
     {"id":{"name":"WallBuy","path":"objects/WallBuy/WallBuy.yy",},},
     {"id":{"name":"Wizard","path":"objects/Wizard/Wizard.yy",},},
     {"id":{"name":"Zombie","path":"objects/Zombie/Zombie.yy",},},
@@ -107,6 +108,7 @@
     {"id":{"name":"ZombieSpawner","path":"objects/ZombieSpawner/ZombieSpawner.yy",},},
     {"id":{"name":"r_BoxRoom","path":"rooms/r_BoxRoom/r_BoxRoom.yy",},},
     {"id":{"name":"r_Casino","path":"rooms/r_Casino/r_Casino.yy",},},
+    {"id":{"name":"r_CharacterSelectScreen","path":"rooms/r_CharacterSelectScreen/r_CharacterSelectScreen.yy",},},
     {"id":{"name":"r_FastFood","path":"rooms/r_FastFood/r_FastFood.yy",},},
     {"id":{"name":"r_Floor1_Boss","path":"rooms/r_Floor1_Boss/r_Floor1_Boss.yy",},},
     {"id":{"name":"r_Floor1_KeyRoom","path":"rooms/r_Floor1_KeyRoom/r_Floor1_KeyRoom.yy",},},
@@ -331,6 +333,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"r_TitleScreen","path":"rooms/r_TitleScreen/r_TitleScreen.yy",},},
+    {"roomId":{"name":"r_CharacterSelectScreen","path":"rooms/r_CharacterSelectScreen/r_CharacterSelectScreen.yy",},},
     {"roomId":{"name":"r_Floor1_Spawn","path":"rooms/r_Floor1_Spawn/r_Floor1_Spawn.yy",},},
     {"roomId":{"name":"r_Floor1_Main01","path":"rooms/r_Floor1_Main01/r_Floor1_Main01.yy",},},
     {"roomId":{"name":"r_Floor1_Boss","path":"rooms/r_Floor1_Boss/r_Floor1_Boss.yy",},},

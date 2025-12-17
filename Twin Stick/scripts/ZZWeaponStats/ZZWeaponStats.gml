@@ -133,6 +133,7 @@ weapon_sprite = s_Knife
 weapon_name = "Knife"
 cost = 0
 if object_index = GM{
+//array_push(weapon_list,weapon_sprite)
 array_push(melee_list,weapon_sprite)
 exit}
 auto = false
@@ -151,6 +152,8 @@ weapon_sprite = s_m1911
 weapon_name = "m1911"
 cost = 250
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
@@ -171,7 +174,7 @@ weapon_sprite = s_Taurus92
 weapon_name = "Taurus 92"
 cost = 350
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
@@ -191,7 +194,8 @@ weapon_sprite = s_DEagle
 weapon_name = "DEagle"
 cost = 1250
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
@@ -211,6 +215,7 @@ weapon_sprite = s_Zip22
 weapon_name = "Zip 22"
 cost = 22
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
@@ -234,7 +239,9 @@ weapon_sprite = s_Python
 weapon_name = "Python"
 cost = 1700
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
@@ -255,7 +262,9 @@ weapon_sprite = s_SnW500
 weapon_name = "S&W500"
 cost = 2500
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
@@ -276,8 +285,9 @@ weapon_sprite = s_BFR500
 weapon_name = "BFR 500"
 cost = 2780
 if object_index = GM{
-array_push(box_list,weapon_sprite)
-array_push(revolver_list,weapon_sprite)
+//array_push(weapon_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
+//array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,5)
@@ -288,7 +298,7 @@ shoot_delay = 60
 set_variable_reload_time(45,30,45)
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
-description = "Unnecessarily large revolver with power that questionably compensates it's uncontrollable recoil and knockback"
+//description = "Unnecessarily large revolver with power that questionably compensates it's uncontrollable recoil and knockback"
 }
 
 function wpn_CZ75Auto(){
@@ -296,12 +306,13 @@ weapon_sprite = s_CZ75Auto
 weapon_name = "CZ75 Auto"
 cost = 400
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 array_push(machine_pistol_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(16,48)
+set_gun_ammo(16,64)
 set_bullet_power(17,4,1)
 set_gun_handling(-10,3,1)
 set_deploy_stats(7,-1)
@@ -317,6 +328,8 @@ weapon_sprite = s_Luty
 weapon_name = "Luty"
 cost = 80
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
@@ -340,7 +353,8 @@ weapon_sprite = s_VzSkorpion
 weapon_name = "Vz Škorpion"
 cost = 700
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
@@ -359,7 +373,8 @@ weapon_sprite = s_Uzi
 weapon_name = "Uzi"
 cost = 800
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
@@ -378,6 +393,7 @@ weapon_sprite = s_spectre
 weapon_name = "spectre"
 cost = 850
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
@@ -397,7 +413,8 @@ weapon_sprite = s_MP40
 weapon_name = "MP40"
 cost = 1040
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 array_push(nazi_list,weapon_sprite)
 exit}
@@ -417,6 +434,7 @@ weapon_sprite = s_PPBison
 weapon_name = "PP Bison"
 cost = 1350
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
@@ -436,7 +454,8 @@ weapon_sprite = s_mp5
 weapon_name = "mp5"
 cost = 2000
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
@@ -454,6 +473,7 @@ weapon_sprite = s_Thompson
 weapon_name = "Thompson"
 cost = 3200
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
@@ -474,8 +494,9 @@ weapon_sprite = s_KrissVector
 weapon_name = "Vector 45"
 cost = 4800
 if object_index = GM{
+//array_push(weapon_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
-array_push(smg_list,weapon_sprite)
+//array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(40,160)
@@ -493,7 +514,8 @@ weapon_sprite = s_M14
 weapon_name = "M14"
 cost = 400
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+//array_push(wallbuy_list,weapon_sprite)
 array_push(semi_ar_list,weapon_sprite)
 exit}
 auto = false
@@ -511,6 +533,8 @@ weapon_sprite = s_AK47
 weapon_name = "AK-47"
 cost = 1500
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
@@ -530,6 +554,7 @@ weapon_sprite = s_AN94
 weapon_name = "AN-94"
 cost = 2790
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
@@ -550,7 +575,8 @@ weapon_sprite = s_Xiuhcoatl
 weapon_name = "Xiuhcoatl"
 cost = 1450
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
@@ -561,7 +587,7 @@ set_deploy_stats(15,1)
 shoot_delay = 4
 reload_time = 110
 shoot_sfx = sfx_AK47Shoot
-description = "Mexican produced AR for the Mexican military. Xiuhcoatl translates to Fire Serpant and is named such for it's high fire rate for an assault rifle"
+description = "Mexican produced AR for the Mexican military. Xiuhcoatl translates to Fire Serpant and is named such for it's high fire rate for"
 }
 
 function wpn_Galil(){
@@ -569,6 +595,7 @@ weapon_sprite = s_Galil
 weapon_name = "Galil"
 cost = 3300
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
@@ -587,6 +614,7 @@ weapon_sprite = s_Lewis
 weapon_name = "Lewis"
 cost = 2150
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(lmg_list,weapon_sprite)
 exit}
@@ -605,6 +633,8 @@ weapon_sprite = s_RPD
 weapon_name = "RPD"
 cost = 2900
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(lmg_list,weapon_sprite)
 exit}
@@ -623,7 +653,8 @@ weapon_sprite = s_Olympia
 weapon_name = "Olympia 72"
 cost = 400
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
@@ -644,7 +675,9 @@ weapon_sprite = s_Ithaca
 weapon_name = "Ithaca 37"
 cost = 800
 if object_index = GM{
-array_push(box_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
@@ -665,6 +698,8 @@ weapon_sprite = s_Remi870
 weapon_name = "Remi 870 Marine"
 cost = 2500
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
@@ -686,6 +721,7 @@ weapon_sprite = s_Spaz12
 weapon_name = "Spas 12"
 cost = 2600
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
@@ -710,6 +746,7 @@ weapon_sprite = s_AA12
 weapon_name = "AA12"
 cost = 3120
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
@@ -731,6 +768,8 @@ weapon_sprite = s_Winchester1897
 weapon_name = "1897 Trench Gun"
 cost = 1150
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
@@ -752,6 +791,8 @@ weapon_sprite = s_Karabiner98k
 weapon_name = "Karabiner98k"
 cost = 400
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
@@ -771,6 +812,8 @@ weapon_sprite = s_MosinNagat
 weapon_name = "Mosin Nagat"
 cost = 150
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
@@ -790,6 +833,7 @@ weapon_sprite = s_SSG08
 weapon_name = "SSG-08"
 cost = 750
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
@@ -809,6 +853,8 @@ weapon_sprite = s_AWP
 weapon_name = "AWP"
 cost = 4750
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
@@ -828,6 +874,7 @@ weapon_sprite = s_DSR50
 weapon_name = "DSR-50"
 cost = 5000
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
@@ -848,6 +895,7 @@ weapon_name = "GM6 Lynx"
 cost = 14000
 auto = false
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
@@ -870,6 +918,7 @@ weapon_name = "M79 Thumper"
 cost = 3000
 auto = false
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(1,8)
@@ -891,6 +940,8 @@ weapon_name = "RPG-7"
 cost = 5500
 auto = false
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(1,1)
@@ -914,6 +965,7 @@ weapon_name = "Quad Lazer"
 cost = 6666333325
 auto = false
 if object_index = GM{
+array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(4,4)

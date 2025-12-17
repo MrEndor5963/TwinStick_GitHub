@@ -24,3 +24,25 @@ else{return false}
 }
 
 }
+
+function menu_controls(){
+key_left = gamepad_axis_value_any(gp_axislh,false) or keyboard_check(vk_left)
+key_right = gamepad_axis_value_any(gp_axislh,true) or keyboard_check(vk_right)
+key_up = gamepad_axis_value_any(gp_axislv,false) or keyboard_check(vk_up)
+key_down = gamepad_axis_value_any(gp_axislv,true) or keyboard_check(vk_down)
+key_enter = gamepad_button_check_pressed_any(gp_face1) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("Z"))
+
+key_left_pressed = false;key_right_pressed = false;key_up_pressed = false;key_down_pressed = false
+
+if key_left{key_held_l += 1}else{key_held_l = -1};
+if key_held_l = 0{key_held_l = -12;key_left_pressed = true}
+if key_right{key_held_r += 1}else{key_held_r = -1};
+if key_held_r = 0{key_held_r = -12;key_right_pressed = true}
+if key_up{key_held_u += 1}else{key_held_u = -1};
+if key_held_u = 0{key_held_u = -12;key_up_pressed = true}
+if key_down{key_held_d += 1}else{key_held_d = -1};
+if key_held_d = 0{key_held_d = -12;key_down_pressed = true}
+
+if key_up_pressed = true{menu_cursor -= 1;if menu_cursor < 0{menu_cursor = array_length(menu)-1}}
+if key_down_pressed = true{menu_cursor += 1;if menu_cursor > array_length(menu)-1{menu_cursor = 0}}
+}

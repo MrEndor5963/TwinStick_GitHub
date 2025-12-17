@@ -1,3 +1,4 @@
+if instance_number(GM) > 1{instance_destroy();exit}
 audio_group_set_gain(audiogroup_default,0,infinity)
 depth = -1000
 grid_made = false
@@ -73,8 +74,11 @@ array_push(enemy_list,SpikeFly)
 //array_push(enemy_list,ZombieShooter)
 //array_push(enemy_list,Hellhound)
 
-melee_list = []
+weapon_list = []
+wallbuy_list = []
 box_list = []
+
+melee_list = []
 handgun_list = []
 revolver_list = []
 machine_pistol_list = []

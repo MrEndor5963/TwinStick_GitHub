@@ -101,8 +101,8 @@ png_explosions = 0
 
 if give_all_weapons = true{
 vrp = 0
-repeat(array_length(GM.box_list)){
-weapon[vrp] = GM.box_list[vrp]
+repeat(array_length(GM.weapon_list)){
+weapon[vrp] = GM.weapon_list[vrp]
 weapon_sprite = weapon[vrp]
 script_execute_wpn(weapon_sprite)
 saved_ammo_inmag[vrp] = ammo_inmag_max

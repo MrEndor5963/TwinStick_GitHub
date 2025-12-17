@@ -4,8 +4,8 @@ if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
 
-box_list = GM.box_list
-weapon_sprite = array_get(box_list,(irandom_range(0,array_length(box_list)-1)))
+weapon_list = GM.weapon_list
+weapon_sprite = array_get(weapon_list,(irandom_range(0,array_length(weapon_list)-1)))
 display_text = false
 spawned = false
 
