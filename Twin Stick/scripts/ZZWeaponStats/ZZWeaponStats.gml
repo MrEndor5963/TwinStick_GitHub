@@ -13,6 +13,7 @@ sniper_list = []
 nazi_list = []
 */
 function script_execute_wpn(arg_weapon_sprite){
+slide_sprite = s_0
 set_gun_ammo(8,72)
 set_bullet_power(18,3,1)
 set_gun_handling(2,2,1)
@@ -148,7 +149,7 @@ weapon_weight = 0.5
 }
 
 function wpn_m1911(){
-weapon_sprite = s_m1911
+weapon_sprite = s_m1911;slide_sprite = s_m1911Slide
 weapon_name = "m1911"
 cost = 250
 if object_index = GM{
@@ -160,9 +161,9 @@ exit}
 auto = false
 set_gun_ammo(8,72)
 set_bullet_power(18,3,1)
-set_gun_handling(5,2,1)
+set_gun_handling(8,2,1)
 set_deploy_stats(7,-1)
-shoot_delay = 1
+shoot_delay = 6
 action_type = s_SemiAuto
 reload_time = 65
 reload_sfx = sfx_m1911Reload
@@ -201,7 +202,7 @@ exit}
 auto = false
 set_gun_ammo(17,85)
 set_bullet_power(22,4,1)
-set_gun_handling(8,2.5,1)
+set_gun_handling(12,2.5,1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
@@ -394,7 +395,7 @@ set_gun_ammo(20,180)
 set_bullet_power(12,1,1)
 set_gun_handling(-3,1.5,1.2)
 set_deploy_stats(8,-1)
-shoot_delay = 4
+shoot_delay = 3
 action_type = s_FullAuto
 reload_time = 80
 shoot_sfx = sfx_mp5Shoot
@@ -415,7 +416,7 @@ set_gun_ammo(25,175)
 set_bullet_power(18,2,1)
 set_gun_handling(-12,3,2.5)
 set_deploy_stats(11,-1)
-shoot_delay = 3
+shoot_delay = 6
 action_type = s_FullAuto
 reload_time = 60
 shoot_sfx = sfx_mp5Shoot

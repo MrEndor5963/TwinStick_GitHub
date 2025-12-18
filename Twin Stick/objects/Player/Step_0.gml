@@ -170,8 +170,9 @@ if key_shoot && ammo_inmag = 0 && ammo_reserve = 0{
 if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0}
 
 if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay && deploy_timer = 0{
-	repeat(round(shoot_amount)){
+	
 	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && auto = false && trigger_delay_timer = trigger_delay{
+	animate_slide = true
 	shoot_timer = shoot_delay
 	ammo_inmag -= 1
 	direction = aim_direction+recoil
@@ -206,7 +207,7 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 	audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.0045))
 	if jam_chance != 0 && irandom_range(1,jam_chance) = 1{jam_timer += 1}
 	}
-	}
+	
 	
 }
 

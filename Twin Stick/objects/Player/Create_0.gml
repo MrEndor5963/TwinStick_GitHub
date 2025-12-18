@@ -30,9 +30,6 @@ melee.creator = id
 melee_equipped = false
 
 trigger_delay_timer = 0
-//Default stats
-//give_all_weapons = true
-give_all_weapons = false
 can_control = true
 
 
@@ -99,6 +96,7 @@ free_mystery_box_rolls_per_floor = 0
 cryptocoin = 0
 png_explosions = 0
 
+give_all_weapons = true
 if give_all_weapons = true{
 vrp = 0
 repeat(array_length(GM.weapon_list)){
@@ -110,3 +108,6 @@ saved_ammo_reserve[vrp] = ammo_reserve_max
 vrp += 1
 }
 }
+
+animate_slide = false
+slide_offset = 0

@@ -254,6 +254,7 @@
     {"id":{"name":"s_Luty","path":"sprites/s_Luty/s_Luty.yy",},},
     {"id":{"name":"s_M14","path":"sprites/s_M14/s_M14.yy",},},
     {"id":{"name":"s_m1911","path":"sprites/s_m1911/s_m1911.yy",},},
+    {"id":{"name":"s_m1911Slide","path":"sprites/s_m1911Slide/s_m1911Slide.yy",},},
     {"id":{"name":"s_M79","path":"sprites/s_M79/s_M79.yy",},},
     {"id":{"name":"s_MenuCursor","path":"sprites/s_MenuCursor/s_MenuCursor.yy",},},
     {"id":{"name":"s_MosinNagat","path":"sprites/s_MosinNagat/s_MosinNagat.yy",},},
