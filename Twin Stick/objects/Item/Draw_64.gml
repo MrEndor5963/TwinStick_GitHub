@@ -8,6 +8,6 @@ else{
 var_text = "Press A to Buy "+string(item_name)+" [Cost "+string(cost)+"]"}
 
 draw_text(x+(sprite_width/2),y-(font_get_size(font)*2),var_text)
-draw_text(x+(sprite_width/2),y-font_get_size(font),description_text)
+draw_text(x+(sprite_width/2),y-font_get_size(font),description)
 }
 display_text = false

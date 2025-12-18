@@ -4,7 +4,7 @@ if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
 
-box_list = GM.weapon_list
+weapon_list = GM.weapon_list
 display_text = false
 box_open = false
 box_timer = 0

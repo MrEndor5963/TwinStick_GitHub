@@ -7,3 +7,6 @@ menu[3] = "Collection"
 menu[4] = "???????????"//Achievments
 menu[5] = "Configuration"
 sub_menu = 0
+
+jam_timer = 0
+script_execute_wpn(s_m1911)

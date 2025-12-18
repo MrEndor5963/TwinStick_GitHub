@@ -38,7 +38,7 @@ draw_color = $FF00A9
 
 if player_name = "Nia"{
 hp = 6;hp_max = 6
-weapon[0] = s_VzSkorpion //Should be glock 17 or glock 22
+weapon[0] = s_VzSkorpion
 script_execute_wpn(weapon[0])
 weapon_ammo_inmag[0] = ammo_inmag_max
 weapon_ammo_reserve[0] = ammo_reserve_max

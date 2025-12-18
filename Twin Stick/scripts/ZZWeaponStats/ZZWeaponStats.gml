@@ -163,31 +163,32 @@ set_bullet_power(18,3,1)
 set_gun_handling(5,2,1)
 set_deploy_stats(7,-1)
 shoot_delay = 1
+action_type = s_SemiAuto
 reload_time = 65
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = "Iconic, reliable, and accurate WW1 pistol still manufactured today"
 }
 
-function wpn_Beretta92(){
-weapon_sprite = s_Taurus92
-weapon_name = "Beretta 92"
-cost = 950
-if object_index = GM{
-array_push(weapon_list,weapon_sprite)
-array_push(handgun_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(15,75)
-set_bullet_power(21,4,1)
-set_gun_handling(8,2.4,1)
-set_deploy_stats(7,-1)
-shoot_delay = 4
-reload_time = 90
-reload_sfx = sfx_m1911Reload
-shoot_sfx = sfx_m1911Shoot
-description = ""
-}
+//function wpn_Beretta92(){
+//weapon_sprite = s_Taurus92
+//weapon_name = "Beretta 92"
+//cost = 950
+//if object_index = GM{
+//array_push(weapon_list,weapon_sprite)
+//array_push(handgun_list,weapon_sprite)
+//exit}
+//auto = false
+//set_gun_ammo(15,75)
+//set_bullet_power(21,4,1)
+//set_gun_handling(8,2.4,1)
+//set_deploy_stats(7,-1)
+//shoot_delay = 4
+//reload_time = 90
+//reload_sfx = sfx_m1911Reload
+//shoot_sfx = sfx_m1911Shoot
+//description = ""
+//}
 	
 function wpn_Taurus92(){
 weapon_sprite = s_Taurus92
@@ -203,6 +204,7 @@ set_bullet_power(22,4,1)
 set_gun_handling(8,2.5,1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
+action_type = s_SemiAuto
 reload_time = 90
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
@@ -224,6 +226,7 @@ set_bullet_power(70,2,1)
 set_gun_handling(85,9,2.5)
 set_deploy_stats(9,-1)
 shoot_delay = 5
+action_type = s_SemiAuto
 reload_time = 65
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
@@ -243,12 +246,14 @@ auto = false
 set_gun_ammo(25,125)
 set_bullet_power(12,2,1)
 set_gun_handling(12,1.5,1)
-set_deploy_stats(10,-1)
+set_deploy_stats(11,-1)
 shoot_delay = 1
-reload_time = 120
+action_type = s_SemiAuto
+if reload_timer = 0{reload_time = irandom_range(120,210)}
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
-bullet_spread = 3
+bullet_spread = 4
+trigger_delay = 2
 jam_chance = 3
 if jam_timer = 0{jam_time = irandom_range(30,122)}
 description = ""
@@ -267,11 +272,13 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(6,36)
-set_bullet_power(60,2,2)
+set_bullet_power(100,2,2)
 set_gun_handling(25,10,1)
 set_deploy_stats(9,-1)
-shoot_delay = 8
-set_variable_reload_time(30,45,60)
+shoot_delay = 2
+trigger_delay = 8
+action_type = s_DoubleAction
+set_variable_reload_time(30,35,45)
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
 description = "Colt Python Luxery Revolver, considered by some to be one of the finest revolvers on the market with a refined balance between power, accuracy, and handling"
@@ -290,11 +297,13 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,15)
-set_bullet_power(120,2,3)
-set_gun_handling(80,30,2)
+set_bullet_power(150,2,3)
+set_gun_handling(90,40,2)
 set_deploy_stats(12,-1)
-shoot_delay = 8
-set_variable_reload_time(45,45,30)
+shoot_delay = 2
+trigger_delay = 24
+action_type = s_DoubleAction
+set_variable_reload_time(45,40,30)
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
 description = "Immensely powerful magnum revolver that lays down large enemies with few shots, but has quite intense recoil and knockback"
@@ -315,6 +324,7 @@ set_bullet_power(240,20,6)
 set_gun_handling(180,64,2.5)
 set_deploy_stats(20,-1)
 shoot_delay = 60
+action_type = s_SingleAction
 set_variable_reload_time(45,30,45)
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
@@ -337,6 +347,7 @@ set_bullet_power(17,4,1)
 set_gun_handling(-10,3,1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
+action_type = s_FullAuto
 reload_time = 55
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
@@ -359,6 +370,7 @@ set_bullet_power(12,2,1)
 set_gun_handling(-25,2,1.5)
 set_deploy_stats(11,1)
 shoot_delay = 4
+action_type = s_FullAuto
 reload_time = 75
 bullet_spread = 12
 trigger_delay = 15
@@ -383,6 +395,7 @@ set_bullet_power(12,1,1)
 set_gun_handling(-3,1.5,1.2)
 set_deploy_stats(8,-1)
 shoot_delay = 4
+action_type = s_FullAuto
 reload_time = 80
 shoot_sfx = sfx_mp5Shoot
 description = "Compact and light SMG with great handling"
@@ -403,6 +416,7 @@ set_bullet_power(18,2,1)
 set_gun_handling(-12,3,2.5)
 set_deploy_stats(11,-1)
 shoot_delay = 3
+action_type = s_FullAuto
 reload_time = 60
 shoot_sfx = sfx_mp5Shoot
 description = ""
@@ -423,6 +437,7 @@ set_bullet_power(12,2,1)
 set_gun_handling(-5,3,2)
 set_deploy_stats(9,-1)
 shoot_delay = 4
+action_type = s_FullAuto
 reload_time = 75
 shoot_sfx = sfx_mp5Shoot
 description = ""
@@ -444,6 +459,7 @@ set_bullet_power(13,3,1)
 set_gun_handling(-3,2,2)
 set_deploy_stats(10,-1)
 shoot_delay = 8
+action_type = s_FullAuto
 reload_time = 120
 shoot_sfx = sfx_mp5Shoot
 description = "Nazi SMG during WW2 with slower fire rate making for exceptional handling"
@@ -464,6 +480,7 @@ set_bullet_power(12,2,1)
 set_gun_handling(-5,2,2)
 set_deploy_stats(14,-1)
 shoot_delay = 5
+action_type = s_FullAuto
 reload_time = 90
 shoot_sfx = sfx_mp5Shoot
 description = "Light SMG with a spiral magazine allowing for a weapon with good handling and lots of bullets"
@@ -484,6 +501,7 @@ set_bullet_power(18,2,1)
 set_gun_handling(-3,2,2.5)
 set_deploy_stats(12,-1)
 shoot_delay = 5
+action_type = s_FullAuto
 reload_time = 90
 shoot_sfx = sfx_mp5Shoot
 }
@@ -503,6 +521,7 @@ set_bullet_power(14,2,1)
 set_gun_handling(-6,2,5)
 set_deploy_stats(20,1)
 shoot_delay = 4
+action_type = s_FullAuto
 reload_time = 140
 bullet_spread = 3
 shoot_sfx = sfx_mp5Shoot
@@ -524,6 +543,7 @@ set_bullet_power(18,2,1)
 set_gun_handling(-8,2,4)
 set_deploy_stats(18,-1)
 shoot_delay = 2
+action_type = s_FullAuto
 reload_time = 140
 bullet_spread = 0
 shoot_sfx = sfx_mp5Shoot
@@ -544,6 +564,7 @@ set_bullet_power(28,8,1)
 set_gun_handling(4,5,3.5)
 set_deploy_stats(18,1)
 shoot_delay = 7
+action_type = s_SemiAuto
 reload_time = 70
 shoot_sfx = sfx_AK47Shoot
 }
@@ -564,6 +585,7 @@ set_bullet_power(40,10,2)
 set_gun_handling(-30,14,4.5)
 set_deploy_stats(20,1)
 shoot_delay = 8
+action_type = s_FullAuto
 reload_time = 110
 shoot_sfx = sfx_AK47Shoot
 description = "Most produced firearm in the world as it's a cheap and simple, yet deadly weapon. High power but known for it's inaccuracy due to subpar recoil control"
@@ -584,6 +606,7 @@ set_bullet_power(35,6,2)
 set_gun_handling(-6,10,4)
 set_deploy_stats(16,1)
 shoot_delay = 6
+action_type = s_FullAuto
 reload_time = 110
 if object_index != Player{exit}
 if trigger_delay_timer < 2 && ammo_inmag > 1{shoot_amount = 2;gun_recoil = 2}else{shoot_amount = 1}
@@ -600,11 +623,12 @@ array_push(weapon_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(30,90)
+set_gun_ammo(30,60)
 set_bullet_power(29,5,2)
 set_gun_handling(-9,9,4)
 set_deploy_stats(15,1)
 shoot_delay = 4
+action_type = s_FullAuto
 reload_time = 110
 shoot_sfx = sfx_AK47Shoot
 description = "Mexican produced AR for the Mexican military. Xiuhcoatl translates to Fire Serpant and is named such for it's high fire rate for"
@@ -625,6 +649,7 @@ set_bullet_power(25,6,2)
 set_gun_handling(-5,7,4)
 set_deploy_stats(18,1)
 shoot_delay = 7
+action_type = s_FullAuto
 reload_time = 130
 shoot_sfx = sfx_AK47Shoot
 }
@@ -644,6 +669,7 @@ set_bullet_power(30,9,2)
 set_gun_handling(-6,8,7.5)
 set_deploy_stats(35,-1)
 shoot_delay = 8
+action_type = s_FullAuto
 reload_time = 240
 shoot_sfx = sfx_AK47Shoot
 }
@@ -664,6 +690,7 @@ set_bullet_power(28,10,1)
 set_gun_handling(-9,10,7)
 set_deploy_stats(30,-1)
 shoot_delay = 5
+action_type = s_FullAuto
 reload_time = 300
 shoot_sfx = sfx_AK47Shoot
 }
@@ -682,7 +709,8 @@ set_gun_ammo(2,44)
 set_bullet_power(8,1.5,1)
 set_gun_handling(30,12,3)
 set_deploy_stats(12,-1)
-shoot_delay = 5
+shoot_delay = 1
+action_type = s_DoubleBarrel
 reload_time = 120
 bullet_spread = 15
 bullet_amount = 10
@@ -706,6 +734,7 @@ set_bullet_power(8,2,1)
 set_gun_handling(40,18,3)
 set_deploy_stats(15,-1)
 shoot_delay = 45
+action_type = s_PumpAction
 set_variable_reload_time(15,60,30)
 bullet_spread = 20
 bullet_amount = 15
@@ -729,6 +758,7 @@ set_bullet_power(10,2,2)
 set_gun_handling(70,25,3.5)
 set_deploy_stats(25,1)
 shoot_delay = 30
+action_type = s_PumpAction
 set_variable_reload_time(15,55,30)
 bullet_spread = 35
 bullet_amount = 15
@@ -751,6 +781,7 @@ set_bullet_power(8,1,1)
 set_gun_handling(95,20,4.5)
 set_deploy_stats(15,-1)
 shoot_delay = 5
+action_type = s_SemiAuto
 reload_time = 190
 bullet_spread = 30
 bullet_amount = 12
@@ -776,6 +807,7 @@ set_bullet_power(8,1,1)
 set_gun_handling(15,6,3)
 set_deploy_stats(12,-1)
 shoot_delay = 12
+action_type = s_FullAuto
 reload_time = 190
 bullet_spread = 20
 bullet_amount = 10
@@ -799,6 +831,7 @@ set_bullet_power(8,1,2)
 set_gun_handling(45,42,3)
 set_deploy_stats(14,-1)
 shoot_delay = 30
+action_type = s_PumpAction
 set_variable_reload_time(15,45,30)
 bullet_spread = 35
 bullet_amount = 12
@@ -822,6 +855,7 @@ set_bullet_power(50,12,1)
 set_gun_handling(12,4,3.5)
 set_deploy_stats(10,1)
 shoot_delay = 60
+action_type = s_BoltAction
 reload_time = 95
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_SSG08Shoot
@@ -843,6 +877,7 @@ set_bullet_power(60,12,1)
 set_gun_handling(15,4,3.5)
 set_deploy_stats(15,1)
 shoot_delay = 60
+action_type = s_BoltAction
 reload_time = 95
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_SSG08Shoot
@@ -863,6 +898,7 @@ set_bullet_power(100,12,1)
 set_gun_handling(15,4,3.5)
 set_deploy_stats(15,1)
 shoot_delay = 60
+action_type = s_BoltAction
 reload_time = 95
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_SSG08Shoot
@@ -884,6 +920,7 @@ set_bullet_power(205,14,4)
 set_gun_handling(30,16,5.5)
 set_deploy_stats(20,1)
 shoot_delay = 70
+action_type = s_BoltAction
 reload_time = 100
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
@@ -904,6 +941,7 @@ set_bullet_power(310,16,8)
 set_gun_handling(60,32,8)
 set_deploy_stats(28,1)
 shoot_delay = 80
+action_type = s_BoltAction
 reload_time = 105
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
@@ -924,6 +962,7 @@ set_bullet_power(280,12,4)
 set_gun_handling(135,72,6)
 set_deploy_stats(36,1)
 shoot_delay = 14
+action_type = s_SemiAuto
 reload_time = 105
 if object_index = Player && ammo_inmag = ammo_inmag_max{jam_chance = 2}
 else{jam_chance = 100}
@@ -946,6 +985,7 @@ set_bullet_power(150,0,1)
 set_gun_handling(5,2,3)
 set_deploy_stats(10,-1)
 shoot_delay = 15
+action_type = s_SingleShot
 bullet_speed = 45
 bullet_sprite = s_SquareGunBullet
 reload_time = 170
@@ -969,6 +1009,7 @@ set_bullet_power(500,0,1)
 set_gun_handling(-5,0,5)
 set_deploy_stats(30,1)
 shoot_delay = 15
+action_type = s_SingleShot
 bullet_speed = 45
 bullet_sprite = s_RPG7Rocket
 if object_index != Player{exit}
@@ -992,7 +1033,8 @@ set_gun_ammo(4,4)
 set_bullet_power(16000,0,4000)
 set_gun_handling(0,96,5.5)
 set_deploy_stats(20,-1)
-shoot_delay = 1
+shoot_delay = 4
+action_type = s_SemiAuto
 bullet_speed = 0.2
 bullet_sprite = s_SquareGunBullet
 reload_time = 4

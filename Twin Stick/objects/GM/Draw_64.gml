@@ -27,7 +27,7 @@ var_y = 240+(menu_cursor*(font_get_size(f_Main)*1.5))
 draw_sprite(s_MenuCursor,0,var_x,var_y)
 var_x = (screen_width/2)+32+(string_width(menu[menu_cursor])/2)
 draw_sprite_ext(s_MenuCursor,0,var_x,var_y,-1,1,0,-1,pause_alpha)
-draw_text(screen_width/2,200,"Game Paused")
+draw_text(screen_width/2,200,"Game Paused"+string(array_length(player_list)))
 vrp = 0
 repeat(array_length(menu)){
 draw_text(screen_width/2,240+(vrp*(font_get_size(f_Main)*1.5)),menu[vrp])

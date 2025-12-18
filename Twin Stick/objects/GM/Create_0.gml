@@ -95,17 +95,4 @@ referece_weapons()
 
 item_list = []
 reference_items()
-array_push(item_list,s_item_BloodBullets)
-array_push(item_list,s_item_DamageUp)
-array_push(item_list,s_item_DoubleTap)
-array_push(item_list,s_item_HandgunHavoc)
-array_push(item_list,s_item_SuperMushroom)
-array_push(item_list,s_item_MLGNoScoper)
-array_push(item_list,s_item_Move)
-array_push(item_list,s_item_PoundOfFeathers)
-array_push(item_list,s_item_ShotGunner)
-array_push(item_list,s_item_SpeedCola)
-array_push(item_list,s_item_WeaponSlots)
-array_push(item_list,s_item_WeightedBelt)
-
 items_bought = []

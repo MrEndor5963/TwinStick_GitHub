@@ -29,7 +29,7 @@ box_toggle_timer = box_toggle_length
 box_toggle_length+=0.25
 
 weapon_sprite = irandom_range(0,array_length(weapon_list)-1)
-weapon_sprite = box_list[weapon_sprite]
+weapon_sprite = weapon_list[weapon_sprite]
 var_x = x+(sprite_width/2)-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
 var_y = y+(sprite_height/2)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
 }

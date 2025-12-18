@@ -1,1 +1,1 @@
-sprite_index = s_item_PNGExplosion
+sprite_index = s_item_MetalDetector

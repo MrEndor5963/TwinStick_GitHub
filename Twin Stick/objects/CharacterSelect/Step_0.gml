@@ -1,4 +1,3 @@
-
 key_enter = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("E"))
 
 if key_enter

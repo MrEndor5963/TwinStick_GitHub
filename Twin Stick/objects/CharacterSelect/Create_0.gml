@@ -6,8 +6,6 @@ ds_grid_set(select_menu,0,0,"Hazel")
 ds_grid_set(select_menu,1,0,"Justin")
 ds_grid_set(select_menu,2,0,"Craig")
 ds_grid_set(select_menu,3,0,"Nia")
-//ds_grid_set(select_menu,3,0,"Stickman")
-//ds_grid_set(select_menu,4,0,"Tonis")
 
 cursor_control[0] = -1
 cursor_control[1] = -1
@@ -33,7 +31,5 @@ player_ready[0] = false
 player_ready[1] = false
 player_ready[2] = false
 player_ready[3] = false
-
-
 
 player_amount = 0

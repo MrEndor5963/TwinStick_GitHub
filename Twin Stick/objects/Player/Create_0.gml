@@ -31,8 +31,8 @@ melee_equipped = false
 
 trigger_delay_timer = 0
 //Default stats
-give_all_weapons = true
-//give_all_weapons = false
+//give_all_weapons = true
+give_all_weapons = false
 can_control = true
 
 
