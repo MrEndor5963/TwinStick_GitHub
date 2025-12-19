@@ -108,6 +108,4 @@ saved_ammo_reserve[vrp] = ammo_reserve_max
 vrp += 1
 }
 }
-
-animate_slide = false
 slide_offset = 0

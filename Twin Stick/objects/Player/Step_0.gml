@@ -172,7 +172,6 @@ if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0}
 if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay && deploy_timer = 0{
 	
 	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && auto = false && trigger_delay_timer = trigger_delay{
-	animate_slide = true
 	shoot_timer = shoot_delay
 	ammo_inmag -= 1
 	direction = aim_direction+recoil
@@ -199,8 +198,8 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 	if knockback < 0{knockback = 0}
 	direction = aim_direction+recoil+180
 	speed = knockback
-	hsp_knockback = hspeed
-	vsp_knockback = vspeed
+	hsp_knockback += hspeed
+	vsp_knockback += vspeed
 	speed = 0
 	recoil += gun_recoil*weapon_yscale
 	current_shoot_sfx = play_sfx(shoot_sfx)
@@ -345,7 +344,7 @@ var_object.display_text = true
 if key_interact_pressed && money >= var_object.cost{
 if var_object.item_is_free = false{player_point_change(-var_object.cost)}
 new_item = var_object.sprite_index
-array_push(GM.items_bought,var_object.sprite_index)
+if var_object.consumable = false{array_push(GM.items_bought,var_object.sprite_index)}
 play_sfx(sfx_Buy)
 }
 
@@ -378,6 +377,6 @@ record_y[i] = record_y[i-1];record_y[0] = y
 //Item data
 if new_item != -1{
 script_execute_item(new_item)
-array_push(item_list,new_item)
+if consumable = false{array_push(item_list,new_item)}
 new_item = -1
 }

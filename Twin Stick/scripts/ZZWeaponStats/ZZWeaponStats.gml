@@ -13,7 +13,6 @@ sniper_list = []
 nazi_list = []
 */
 function script_execute_wpn(arg_weapon_sprite){
-slide_sprite = s_0
 set_gun_ammo(8,72)
 set_bullet_power(18,3,1)
 set_gun_handling(2,2,1)
@@ -33,6 +32,8 @@ shot_reward = 10
 explosive = false
 explosion_damage = 0
 weapon_draw_sprite = -99
+slide_sprite = s_0
+hammer_sprite = s_0
 //bullet_xoff = 0
 //bullet_yoff = 0
 //
@@ -149,7 +150,9 @@ weapon_weight = 0.5
 }
 
 function wpn_m1911(){
-weapon_sprite = s_m1911;slide_sprite = s_m1911Slide
+weapon_sprite = s_m1911;
+weapon_draw_sprite = s_m1911Base
+slide_sprite = s_m1911Slide;slide_distance = -12
 weapon_name = "m1911"
 cost = 250
 if object_index = GM{
@@ -163,7 +166,7 @@ set_gun_ammo(8,72)
 set_bullet_power(18,3,1)
 set_gun_handling(8,2,1)
 set_deploy_stats(7,-1)
-shoot_delay = 6
+shoot_delay = 8
 action_type = s_SemiAuto
 reload_time = 65
 reload_sfx = sfx_m1911Reload
@@ -243,6 +246,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
+if object_index != Player{exit}
 auto = false
 set_gun_ammo(25,125)
 set_bullet_power(12,2,1)
@@ -262,6 +266,8 @@ description = ""
 
 function wpn_Python(){
 weapon_sprite = s_Python
+weapon_draw_sprite = s_PythonBase
+hammer_sprite = s_PythonHammer
 weapon_name = "Python"
 cost = 1700
 if object_index = GM{
@@ -345,7 +351,7 @@ exit}
 auto = true
 set_gun_ammo(16,64)
 set_bullet_power(17,4,1)
-set_gun_handling(-10,3,1)
+set_gun_handling(-10,0.8,1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -368,7 +374,7 @@ exit}
 auto = true
 set_gun_ammo(18,162)
 set_bullet_power(12,2,1)
-set_gun_handling(-25,2,1.5)
+set_gun_handling(-25,1,1.5)
 set_deploy_stats(11,1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -392,7 +398,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(20,180)
-set_bullet_power(12,1,1)
+set_bullet_power(12,0.4,1)
 set_gun_handling(-3,1.5,1.2)
 set_deploy_stats(8,-1)
 shoot_delay = 3
@@ -434,8 +440,8 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,150)
-set_bullet_power(12,2,1)
-set_gun_handling(-5,3,2)
+set_bullet_power(12,1,1)
+set_gun_handling(-5,1,2)
 set_deploy_stats(9,-1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -519,7 +525,7 @@ exit}
 auto = true
 set_gun_ammo(100,200)
 set_bullet_power(14,2,1)
-set_gun_handling(-6,2,5)
+set_gun_handling(-6,2.2,5)
 set_deploy_stats(20,1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -541,7 +547,7 @@ exit}
 auto = true
 set_gun_ammo(40,160)
 set_bullet_power(18,2,1)
-set_gun_handling(-8,2,4)
+set_gun_handling(-5,3,4)
 set_deploy_stats(18,-1)
 shoot_delay = 2
 action_type = s_FullAuto
@@ -582,8 +588,8 @@ array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,60)
-set_bullet_power(40,10,2)
-set_gun_handling(-30,14,4.5)
+set_bullet_power(45,10,2)
+set_gun_handling(-30,11,4.5)
 set_deploy_stats(20,1)
 shoot_delay = 8
 action_type = s_FullAuto
@@ -604,7 +610,7 @@ exit}
 auto = true
 set_gun_ammo(30,60)
 set_bullet_power(35,6,2)
-set_gun_handling(-6,10,4)
+set_gun_handling(-6,7,4)
 set_deploy_stats(16,1)
 shoot_delay = 6
 action_type = s_FullAuto
@@ -626,7 +632,7 @@ exit}
 auto = true
 set_gun_ammo(30,60)
 set_bullet_power(29,5,2)
-set_gun_handling(-9,9,4)
+set_gun_handling(-9,8,4)
 set_deploy_stats(15,1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -647,7 +653,7 @@ exit}
 auto = true
 set_gun_ammo(35,105)
 set_bullet_power(25,6,2)
-set_gun_handling(-5,7,4)
+set_gun_handling(-5,6,4)
 set_deploy_stats(18,1)
 shoot_delay = 7
 action_type = s_FullAuto
@@ -667,7 +673,7 @@ exit}
 auto = true
 set_gun_ammo(47,141)
 set_bullet_power(30,9,2)
-set_gun_handling(-6,8,7.5)
+set_gun_handling(-6,6,7.5)
 set_deploy_stats(35,-1)
 shoot_delay = 8
 action_type = s_FullAuto
@@ -688,7 +694,7 @@ exit}
 auto = true
 set_gun_ammo(100,100)
 set_bullet_power(28,10,1)
-set_gun_handling(-9,10,7)
+set_gun_handling(-9,9,7)
 set_deploy_stats(30,-1)
 shoot_delay = 5
 action_type = s_FullAuto
@@ -805,7 +811,7 @@ exit}
 auto = true
 set_gun_ammo(20,40)
 set_bullet_power(8,1,1)
-set_gun_handling(15,6,3)
+set_gun_handling(15,5,3)
 set_deploy_stats(12,-1)
 shoot_delay = 12
 action_type = s_FullAuto
@@ -1039,5 +1045,4 @@ action_type = s_SemiAuto
 bullet_speed = 0.2
 bullet_sprite = s_SquareGunBullet
 reload_time = 4
-description = "Standard issue Lazer Pistol for Mooninite infantry during the Plutonian conflict"
-}
+description = "Standard issue Lazer Pistol for Mooninite infantry during the Plutonian conflict"}

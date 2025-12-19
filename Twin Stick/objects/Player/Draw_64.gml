@@ -164,6 +164,8 @@ draw_sprite(s_ReloadBarOutline,0,draw_bar_x,y-(sprite_height/2)-20)
 if revive_timer = revive_time{hp += 2;hit_stun = 120;revive_timer = 0}
 }
 
+draw_text(200,80,slide_offset)
+//draw_text(200,120,shoot_timer)
 /*
 draw_set_aligns(fa_center,fa_middle)
 var_xx = 0

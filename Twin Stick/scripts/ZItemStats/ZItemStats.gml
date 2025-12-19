@@ -1,4 +1,5 @@
 function script_execute_item(arg_item_sprite){
+consumable = false
 var_string = string_delete(sprite_get_name(arg_item_sprite),1,7)
 script_execute(asset_get_index("item_"+string(var_string)))
 }
@@ -31,6 +32,7 @@ function item_Heart(){
 item_name = "HP Max Up"
 cost = 500
 description = "Heals 1 HP"
+consumable = true
 if object_index = Player && new_item != -1{
 hp += 1;if hp > hp_max{hp = hp_max}
 }
