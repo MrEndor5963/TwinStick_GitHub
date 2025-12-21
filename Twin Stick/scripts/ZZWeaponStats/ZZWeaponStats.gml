@@ -633,7 +633,7 @@ exit}
 auto = true
 set_gun_ammo(30,60)
 set_bullet_power(29,5,2)
-set_gun_handling(-9,8,4)
+set_gun_handling(-9,8,8.6)
 set_deploy_stats(15,1)
 shoot_delay = 4
 action_type = s_FullAuto
