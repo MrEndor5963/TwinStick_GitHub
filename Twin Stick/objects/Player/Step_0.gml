@@ -64,29 +64,22 @@ key_knife_pressed = -1
 
 if key_weapon_toggle_back or key_weapon_toggle_forward{
 if deploying = false{
-previous_deployed_weapon = weapon_number
+next_weapon_number = weapon_number
 deploying = true}
 reload_timer = 0
-if key_weapon_toggle_back{weapon_number -= 1;if weapon_number < 0{weapon_number = array_length(weapon)-1}}
-if key_weapon_toggle_forward{weapon_number += 1;if weapon_number = array_length(weapon){weapon_number = 0}}
-
-next_deployed_weapon = weapon_number
-
-if previous_deployed_weapon = next_deployed_weapon{deploying = false}
-
-
+if key_weapon_toggle_back{next_weapon_number -= 1;if next_weapon_number < 0{next_weapon_number = array_length(weapon)-1}}
+if key_weapon_toggle_forward{next_weapon_number += 1;if next_weapon_number = array_length(weapon){next_weapon_number = 0}}
 melee_equipped = false
 }
 
+if deploying = true{if next_weapon_number = weapon_number{deploying = false}}
+
 if deploy_timer >= deploy_time{
+	reload_timer = 0
 	deploying = false;
-	saved_ammo_inmag[previous_deployed_weapon] = ammo_inmag
-	saved_ammo_reserve[previous_deployed_weapon] = ammo_reserve
-	weapon_number = next_deployed_weapon
-	ammo_inmag = saved_ammo_inmag[weapon_number]
-	ammo_reserve = saved_ammo_reserve[weapon_number]
-	weapon_sprite = weapon[weapon_number]
-	script_execute_wpn(weapon_sprite)
+	saved_ammo_inmag[weapon_number] = ammo_inmag
+	saved_ammo_reserve[weapon_number] = ammo_reserve
+	switch_to_weapon(next_weapon_number)
 	deploy_timer = deploy_time
 }
 
@@ -253,9 +246,7 @@ if collision_present(x,y+vsp)
 }
 
  y += vsp
- 
-node_x = x div 48
-node_y = y div 48
+
 refresh_grid -= 1
 if refresh_grid = 0{refresh_grid = 60}
 if refresh_grid % GM.player_amount = 0{set_player_grid()}
@@ -309,12 +300,8 @@ if array_length(weapon) < weapon_slots{
 saved_ammo_inmag[weapon_number] = ammo_inmag
 saved_ammo_reserve[weapon_number] = ammo_reserve
 weapon_number = array_length(weapon)}
-weapon[weapon_number] = var_object.weapon_sprite
-script_execute_wpn(weapon[weapon_number])
-saved_ammo_inmag[weapon_number] = ammo_inmag_max
-saved_ammo_reserve[weapon_number] = ammo_reserve_max
-ammo_inmag = saved_ammo_inmag[weapon_number]
-ammo_reserve = saved_ammo_reserve[weapon_number]
+get_new_weapon(var_object.weapon_sprite,weapon_number)
+switch_to_weapon(weapon_number)
 }
 }
 	
@@ -327,12 +314,8 @@ if array_length(weapon) < weapon_slots{
 saved_ammo_inmag[weapon_number] = ammo_inmag
 saved_ammo_reserve[weapon_number] = ammo_reserve
 weapon_number = array_length(weapon)}
-weapon[weapon_number] = var_object.weapon_sprite
-script_execute_wpn(weapon[weapon_number])
-saved_ammo_inmag[weapon_number] = ammo_inmag_max
-saved_ammo_reserve[weapon_number] = round(ammo_reserve_max*wall_ammo_multiplier)
-ammo_inmag = saved_ammo_inmag[weapon_number]
-ammo_reserve = saved_ammo_reserve[weapon_number]
+get_new_weapon(var_object.weapon_sprite,weapon_number)
+switch_to_weapon(weapon_number)
 play_sfx(sfx_Buy)
 }
 
@@ -373,6 +356,16 @@ record_x[i] = record_x[i-1];record_x[0] = x
 record_y[i] = record_y[i-1];record_y[0] = y
 }
 #endregion End Of Record Data
+
+#region
+camera_box = instance_place(x,y,CameraBox)
+if camera_box != noone{
+GM.clamp_x1 = camera_box.clamp_x1;
+GM.clamp_x2 = camera_box.clamp_x2
+GM.clamp_y1 = camera_box.clamp_y1
+GM.clamp_y2 = camera_box.clamp_y2
+}
+#endregion
 
 //Item data
 if new_item != -1{

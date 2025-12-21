@@ -27,11 +27,8 @@ view_visible[0] = true
 clamp_x1 = -cam_size_x;clamp_x2 = room_width+cam_size_x
 clamp_y1 = -cam_size_y;clamp_y2 = room_height+cam_size_y
 
-
-
 //cam_target_x = Player.x+(Player.stick_aim_x*100)
 //cam_target_y = Player.y+(Player.stick_aim_y*100)
-
 
 //cam_move_x = (cam_target_x - cam_x)*cam_speed
 //cam_move_y = (cam_target_y - cam_y)*cam_speed

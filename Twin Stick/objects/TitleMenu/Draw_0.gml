@@ -50,7 +50,7 @@ vrp = 0
 repeat(array_length(menu)){
 weapon_sprite = menu[vrp]
 var_x = 64+sprite_get_xoffset(weapon_sprite)
-var_y = 80+(64*vrp)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)-(menu_cursor*64)
+var_y = 80+(96*vrp)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)-(menu_cursor*96)
 draw_sprite(weapon_sprite,0,var_x,var_y)
 vrp += 1}
 

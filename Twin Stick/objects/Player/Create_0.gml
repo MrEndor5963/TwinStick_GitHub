@@ -1,28 +1,45 @@
-next_room = 0
-player_name = "Hazel"
+//Object will be created by CharacterSelect
+spawned = false
 array_push(GM.player_list,id)
-input_number = 0
+
+//Gameplay Variables
+input_number = 0//Input number set by CharacterSelect
 hsp = 0;vsp = 0
 hsp_knockback = 0;vsp_knockback = 0
-mov_spd = 10
-hp = 6;hp_max = 6
 hit_stun = 0
-money = 500
 kills = 0
 recoil = 0
-weapon_yscale = 1
-
 aim_direction = 0;aim_x = 0;aim_y = 0
 stick_aim_x = 0;stick_aim_y = 0
+weapon_yscale = 1
+
+//Player stats
+player_name = ""
+money = 50000
+mov_spd = 10
+hp = 6;hp_max = 6
+weapon_slots = 3
+strength = 2
+reload_speed = 1
+
+//Weapon variables
 ammo_inmag = 30
+ammo_reserve = 30
 reload_timer = 0
-//current_reload_sfx = -1
 current_shoot_sfx = -1
 revive_time = 180
 revive_timer = 0
-strength = 2
+jam_chance = 0
+jam_timer = 0
+jam_time = 60
+trigger_delay = 0
+trigger_delay_timer = 0
 
+
+//
 refresh_grid = 60
+
+slide_offset = 0
 
 aim_object = 0//instance_create_depth(x,y,depth,PlayerAim)
 melee = instance_create_depth(x,y,depth-1,MeleeWeapon)
@@ -32,16 +49,10 @@ melee_equipped = false
 trigger_delay_timer = 0
 can_control = true
 
-
-weapon_slots = 2
-
 shoot_timer = 0
 
 weapon_number = 0
-spawned = false
 
-node_x = x div 48
-node_y = y div 48
 deploy_time = 15
 deploy_timer = 0
 deploying = false
@@ -53,7 +64,6 @@ gun_angle = 0
 point_que = []
 point_draw_dir_x = []
 point_draw_dir_y = []
-
 point_draw_timer = []
 
 record_size = 200
@@ -62,21 +72,15 @@ record_x[i] = x;record_y[i] = y}
 
 pathfinding_grid = ds_grid_create(27,15)
 //set_player_grid()
+
+//Item variables
 item_list = []
 new_item = -1
 item_draw_y = 0
 
-jam_chance = 0
-jam_timer = 0
-jam_time = 60
-trigger_delay = 0
-trigger_delay_timer = 0
-
 damage_mult = 1
 knockback_mult = 1
-shoot_amount = 1
-reload_speed = 1
-shoot_amount_increase = 0
+
 handgun_damage_mult = 0
 handgun_recoil_mult = 0
 handgun_knockback_mult = 0
@@ -84,6 +88,10 @@ shotgun_spread_mult = 0
 shotgun_bullet_mult = 0
 sniper_damage_mult = 0
 sniper_spread_increase = 0
+
+shoot_amount = 1
+shoot_amount_increase = 0
+
 ammo_recived_when_hurt = 0
 wall_ammo_multiplier = 1
 bullets_per_new_room = 0
@@ -96,16 +104,30 @@ free_mystery_box_rolls_per_floor = 0
 cryptocoin = 0
 png_explosions = 0
 
-give_all_weapons = true
+function get_new_weapon(arg_weapon,arg_weapon_number){
+weapon[arg_weapon_number] = arg_weapon
+weapon_sprite = arg_weapon
+script_execute_wpn(arg_weapon)
+saved_ammo_inmag[arg_weapon_number] = ammo_inmag_max
+saved_ammo_reserve[arg_weapon_number] = ammo_reserve_max
+}
+
+function switch_to_weapon(arg_weapon_number){
+weapon_number = arg_weapon_number
+script_execute_wpn(weapon[weapon_number])
+saved_ammo_inmag[weapon_number] = ammo_inmag_max
+saved_ammo_reserve[weapon_number] = ammo_reserve_max
+ammo_inmag = saved_ammo_inmag[weapon_number]
+ammo_reserve = saved_ammo_reserve[weapon_number]
+}
+
+
+
+give_all_weapons = false
 if give_all_weapons = true{
 vrp = 0
 repeat(array_length(GM.weapon_list)){
-weapon[vrp] = GM.weapon_list[vrp]
-weapon_sprite = weapon[vrp]
-script_execute_wpn(weapon_sprite)
-saved_ammo_inmag[vrp] = ammo_inmag_max
-saved_ammo_reserve[vrp] = ammo_reserve_max
+get_new_weapon(GM.weapon_list[vrp],vrp)
 vrp += 1
 }
 }
-slide_offset = 0

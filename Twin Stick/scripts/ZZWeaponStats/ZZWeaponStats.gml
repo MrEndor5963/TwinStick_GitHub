@@ -152,7 +152,7 @@ weapon_weight = 0.5
 function wpn_m1911(){
 weapon_sprite = s_m1911;
 weapon_draw_sprite = s_m1911Base
-slide_sprite = s_m1911Slide;slide_distance = -12
+slide_sprite = s_m1911Slide;slide_distance = -8
 weapon_name = "m1911"
 cost = 250
 if object_index = GM{

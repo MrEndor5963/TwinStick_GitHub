@@ -1,8 +1,13 @@
+//GM = Game manager
+//Operates various game data,Save data, pause menu, and floor map
+
 if instance_number(GM) > 1{instance_destroy();exit}
+dev_mode = true
+randomize()
+
 audio_group_set_gain(audiogroup_default,0,infinity)
 depth = -1000
 grid_made = false
-randomize()
 screen_width = 1280
 screen_height = 720
 
@@ -40,27 +45,15 @@ key_held_d = 0
 key_held_l = 0
 key_held_r = 0
 
+
 room_list = []
-array_push(room_list,r_Floor1_Main01)
-array_push(room_list,r_Floor1_Main02)
-array_push(room_list,r_Floor1_Main03)
-array_push(room_list,r_Floor1_Main04)
-array_push(room_list,r_Floor1_Main05)
-array_push(room_list,r_Floor1_Main06)
-array_push(room_list,r_Floor1_Main07)
-array_push(room_list,r_Floor1_Main08)
-array_push(room_list,r_Floor1_Main09)
-array_push(room_list,r_Floor1_Main10)
-array_push(room_list,r_Floor1_Main11)
-array_push(room_list,r_Floor1_Main12)
-array_push(room_list,r_Floor1_Main13)
-array_push(room_list,r_Floor1_Main14)
-array_push(room_list,r_Floor1_Main15)
-array_push(room_list,r_Floor1_Main16)
-array_push(room_list,r_Floor1_Main17)
-array_push(room_list,r_Floor1_Main18)
-array_push(room_list,r_Floor1_Main19)
-array_push(room_list,r_Floor1_Main20)
+vrp = 1
+repeat(20){
+if vrp < 10{var_string = "0"+string(vrp)}else{var_string = vrp}
+var_temp = asset_get_index("r_Floor1_Main"+string(var_string))
+array_push(room_list,var_temp)
+vrp += 1
+}
 
 if grid_made = false{
 floor_map_create()

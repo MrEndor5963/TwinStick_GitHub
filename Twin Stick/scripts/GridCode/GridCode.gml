@@ -7,6 +7,8 @@ return false
 function set_player_grid(){
 ds_grid_clear(pathfinding_grid,0)
 
+node_x = x div 48;node_y = y div 48
+
 c = node_x;r = node_y
 
 mov_cost = 0
