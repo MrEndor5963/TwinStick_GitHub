@@ -165,7 +165,7 @@ exit}
 auto = false
 set_gun_ammo(8,72)
 set_bullet_power(18,3,1)
-set_gun_handling(8,2,1)
+set_gun_handling(8,2,2.4)
 set_deploy_stats(7,-1)
 shoot_delay = 8
 action_type = s_SemiAuto
@@ -206,7 +206,7 @@ exit}
 auto = false
 set_gun_ammo(17,85)
 set_bullet_power(22,4,1)
-set_gun_handling(12,2.5,1)
+set_gun_handling(12,2.5,2.1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
@@ -228,7 +228,7 @@ exit}
 auto = false
 set_gun_ammo(7,35)
 set_bullet_power(70,2,1)
-set_gun_handling(85,9,2.5)
+set_gun_handling(85,9,4.4)
 set_deploy_stats(9,-1)
 shoot_delay = 5
 action_type = s_SemiAuto
@@ -281,7 +281,7 @@ exit}
 auto = false
 set_gun_ammo(6,36)
 set_bullet_power(100,2,2)
-set_gun_handling(25,10,1)
+set_gun_handling(25,10,2.8)
 set_deploy_stats(9,-1)
 shoot_delay = 2
 trigger_delay = 8
@@ -306,7 +306,7 @@ exit}
 auto = false
 set_gun_ammo(5,15)
 set_bullet_power(150,2,3)
-set_gun_handling(90,40,2)
+set_gun_handling(90,40,4.8)
 set_deploy_stats(12,-1)
 shoot_delay = 2
 trigger_delay = 24
@@ -329,7 +329,7 @@ exit}
 auto = false
 set_gun_ammo(5,5)
 set_bullet_power(240,20,6)
-set_gun_handling(180,64,2.5)
+set_gun_handling(180,64,4.2)
 set_deploy_stats(20,-1)
 shoot_delay = 60
 action_type = s_SingleAction
@@ -352,7 +352,7 @@ exit}
 auto = true
 set_gun_ammo(16,64)
 set_bullet_power(17,4,1)
-set_gun_handling(-10,0.8,1)
+set_gun_handling(-10,0.8,2.4)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -375,7 +375,7 @@ exit}
 auto = true
 set_gun_ammo(18,162)
 set_bullet_power(12,2,1)
-set_gun_handling(-25,1,1.5)
+set_gun_handling(-25,1,6.6)
 set_deploy_stats(11,1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -400,7 +400,7 @@ exit}
 auto = true
 set_gun_ammo(20,180)
 set_bullet_power(12,0.4,1)
-set_gun_handling(-3,1.5,1.2)
+set_gun_handling(-3,1.5,2.9)
 set_deploy_stats(8,-1)
 shoot_delay = 3
 action_type = s_FullAuto
@@ -421,7 +421,7 @@ exit}
 auto = true
 set_gun_ammo(25,175)
 set_bullet_power(18,2,1)
-set_gun_handling(-12,3,2.5)
+set_gun_handling(-12,3,7.7)
 set_deploy_stats(11,-1)
 shoot_delay = 6
 action_type = s_FullAuto
@@ -442,7 +442,7 @@ exit}
 auto = true
 set_gun_ammo(30,150)
 set_bullet_power(12,1,1)
-set_gun_handling(-5,1,2)
+set_gun_handling(-5,1,6.6)
 set_deploy_stats(9,-1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -464,7 +464,7 @@ exit}
 auto = true
 set_gun_ammo(32,192)
 set_bullet_power(13,3,1)
-set_gun_handling(-3,2,2)
+set_gun_handling(-3,2,8.8)
 set_deploy_stats(10,-1)
 shoot_delay = 8
 action_type = s_FullAuto
@@ -485,7 +485,7 @@ exit}
 auto = true
 set_gun_ammo(64,192)
 set_bullet_power(12,2,1)
-set_gun_handling(-5,2,2)
+set_gun_handling(-5,2,4.6)
 set_deploy_stats(14,-1)
 shoot_delay = 5
 action_type = s_FullAuto
@@ -506,7 +506,7 @@ exit}
 auto = true
 set_gun_ammo(30,150)
 set_bullet_power(18,2,1)
-set_gun_handling(-3,2,2.5)
+set_gun_handling(-3,2,5.5)
 set_deploy_stats(12,-1)
 shoot_delay = 5
 action_type = s_FullAuto
@@ -526,7 +526,7 @@ exit}
 auto = true
 set_gun_ammo(100,200)
 set_bullet_power(14,2,1)
-set_gun_handling(-6,3,5)
+set_gun_handling(-6,3,10.8)
 set_deploy_stats(20,1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -548,7 +548,7 @@ exit}
 auto = true
 set_gun_ammo(40,160)
 set_bullet_power(18,2,1)
-set_gun_handling(-5,3,4)
+set_gun_handling(-5,3,6)
 set_deploy_stats(18,-1)
 shoot_delay = 2
 action_type = s_FullAuto
@@ -569,7 +569,7 @@ exit}
 auto = false
 set_gun_ammo(8,88)
 set_bullet_power(28,8,1)
-set_gun_handling(4,5,3.5)
+set_gun_handling(4,5,9)
 set_deploy_stats(18,1)
 shoot_delay = 7
 action_type = s_SemiAuto
@@ -590,7 +590,7 @@ exit}
 auto = true
 set_gun_ammo(30,60)
 set_bullet_power(45,10,2)
-set_gun_handling(-30,11,4.5)
+set_gun_handling(-30,11,8.4)
 set_deploy_stats(20,1)
 shoot_delay = 8
 action_type = s_FullAuto
@@ -611,7 +611,7 @@ exit}
 auto = true
 set_gun_ammo(30,60)
 set_bullet_power(35,6,2)
-set_gun_handling(-6,7,4)
+set_gun_handling(-6,7,8.6)
 set_deploy_stats(16,1)
 shoot_delay = 6
 action_type = s_FullAuto
@@ -654,7 +654,7 @@ exit}
 auto = true
 set_gun_ammo(35,105)
 set_bullet_power(25,6,2)
-set_gun_handling(-5,6,4)
+set_gun_handling(-5,6,9.5)
 set_deploy_stats(18,1)
 shoot_delay = 7
 action_type = s_FullAuto
@@ -674,7 +674,7 @@ exit}
 auto = true
 set_gun_ammo(47,141)
 set_bullet_power(30,9,2)
-set_gun_handling(-6,6,7.5)
+set_gun_handling(-6,6,28)
 set_deploy_stats(35,-1)
 shoot_delay = 8
 action_type = s_FullAuto
@@ -695,7 +695,7 @@ exit}
 auto = true
 set_gun_ammo(100,100)
 set_bullet_power(28,10,1)
-set_gun_handling(-9,9,7)
+set_gun_handling(-9,9,16.3)
 set_deploy_stats(30,-1)
 shoot_delay = 5
 action_type = s_FullAuto
@@ -715,7 +715,7 @@ exit}
 auto = false
 set_gun_ammo(2,44)
 set_bullet_power(8,1.5,1)
-set_gun_handling(30,12,3)
+set_gun_handling(30,12,9.7)
 set_deploy_stats(12,-1)
 shoot_delay = 1
 action_type = s_DoubleBarrel
@@ -739,7 +739,7 @@ exit}
 auto = false
 set_gun_ammo(7,35)
 set_bullet_power(8,2,1)
-set_gun_handling(40,18,3)
+set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
 shoot_delay = 45
 action_type = s_PumpAction
@@ -763,7 +763,7 @@ exit}
 auto = false
 set_gun_ammo(7,28)
 set_bullet_power(10,2,2)
-set_gun_handling(70,25,3.5)
+set_gun_handling(70,25,8)
 set_deploy_stats(25,1)
 shoot_delay = 30
 action_type = s_PumpAction
@@ -786,7 +786,7 @@ exit}
 auto = false
 set_gun_ammo(8,40)
 set_bullet_power(8,1,1)
-set_gun_handling(95,20,4.5)
+set_gun_handling(95,20,9.7)
 set_deploy_stats(15,-1)
 shoot_delay = 5
 action_type = s_SemiAuto
@@ -812,7 +812,7 @@ exit}
 auto = true
 set_gun_ammo(20,40)
 set_bullet_power(8,1,1)
-set_gun_handling(15,5,3)
+set_gun_handling(15,5,11.5)
 set_deploy_stats(12,-1)
 shoot_delay = 12
 action_type = s_FullAuto
@@ -836,7 +836,7 @@ exit}
 auto = true
 set_gun_ammo(6,42)
 set_bullet_power(8,1,2)
-set_gun_handling(45,42,3)
+set_gun_handling(45,42,8.4)
 set_deploy_stats(14,-1)
 shoot_delay = 30
 action_type = s_PumpAction
@@ -860,7 +860,7 @@ exit}
 auto = false
 set_gun_ammo(5,80)
 set_bullet_power(50,12,1)
-set_gun_handling(12,4,3.5)
+set_gun_handling(12,4,9)
 set_deploy_stats(10,1)
 shoot_delay = 60
 action_type = s_BoltAction
@@ -882,7 +882,7 @@ exit}
 auto = false
 set_gun_ammo(5,55)
 set_bullet_power(60,12,1)
-set_gun_handling(15,4,3.5)
+set_gun_handling(15,4,8.8)
 set_deploy_stats(15,1)
 shoot_delay = 60
 action_type = s_BoltAction
@@ -903,7 +903,7 @@ exit}
 auto = false
 set_gun_ammo(10,90)
 set_bullet_power(100,12,1)
-set_gun_handling(15,4,3.5)
+set_gun_handling(15,4,13.4)
 set_deploy_stats(15,1)
 shoot_delay = 60
 action_type = s_BoltAction
@@ -925,7 +925,7 @@ exit}
 auto = false
 set_gun_ammo(5,35)
 set_bullet_power(205,14,4)
-set_gun_handling(30,16,5.5)
+set_gun_handling(30,16,14.3)
 set_deploy_stats(20,1)
 shoot_delay = 70
 action_type = s_BoltAction
@@ -946,7 +946,7 @@ exit}
 auto = false
 set_gun_ammo(4,28)
 set_bullet_power(310,16,8)
-set_gun_handling(60,32,8)
+set_gun_handling(60,32,13.9)
 set_deploy_stats(28,1)
 shoot_delay = 80
 action_type = s_BoltAction
@@ -967,7 +967,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 set_gun_ammo(5,30)
 set_bullet_power(280,12,4)
-set_gun_handling(135,72,6)
+set_gun_handling(135,72,26.5)
 set_deploy_stats(36,1)
 shoot_delay = 14
 action_type = s_SemiAuto
@@ -990,7 +990,7 @@ array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(1,8)
 set_bullet_power(150,0,1)
-set_gun_handling(5,2,3)
+set_gun_handling(5,2,6)
 set_deploy_stats(10,-1)
 shoot_delay = 15
 action_type = s_SingleShot
@@ -1014,7 +1014,7 @@ array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(1,1)
 set_bullet_power(500,0,1)
-set_gun_handling(-5,0,5)
+set_gun_handling(-5,0,15.4)
 set_deploy_stats(30,1)
 shoot_delay = 15
 action_type = s_SingleShot
@@ -1039,7 +1039,7 @@ array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(4,4)
 set_bullet_power(16000,0,4000)
-set_gun_handling(0,96,5.5)
+set_gun_handling(0,96,16)
 set_deploy_stats(20,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
