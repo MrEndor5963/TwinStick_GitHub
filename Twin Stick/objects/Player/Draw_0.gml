@@ -34,7 +34,3 @@ if aim_string = "U"{draw_self();melee.depth = depth+1}
 
 image_xscale = 1;image_yscale = 1
 }
-//image_xscale = 2;image_yscale = 2
-//draw_set_alpha(0.5)
-//mp_grid_draw(global.grid)
-//draw_set_alpha(1)

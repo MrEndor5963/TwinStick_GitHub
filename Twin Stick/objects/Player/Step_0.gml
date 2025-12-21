@@ -7,7 +7,7 @@ game_restart()}
 sprite_index = asset_get_index("s_"+string(player_name)+"Dead")
 melee_equipped = false
 melee.sprite_index = s_0
-reload_timer = 0
+reload_timer = -1
 }
 else{
 if can_control = true{
@@ -60,22 +60,28 @@ key_knife_pressed = -1
 }
 //var_diff = angle_difference(aim_direction,gun_angle)
 //gun_angle += var_diff * aim_speed;
-
+#region weapon toggling
+if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0 && deploying = false{
+key_weapon_toggle_forward = true}
 
 if key_weapon_toggle_back or key_weapon_toggle_forward{
 if deploying = false{
 next_weapon_number = weapon_number
 deploying = true}
-reload_timer = 0
+reload_timer = -1
 if key_weapon_toggle_back{next_weapon_number -= 1;if next_weapon_number < 0{next_weapon_number = array_length(weapon)-1}}
 if key_weapon_toggle_forward{next_weapon_number += 1;if next_weapon_number = array_length(weapon){next_weapon_number = 0}}
 melee_equipped = false
 }
 
-if deploying = true{if next_weapon_number = weapon_number{deploying = false}}
+if deploying = false{if deploy_timer > 0{deploy_timer -= 1}}
+if deploy_timer < 0{deploy_timer = 0}
+if deploying = true{
+if deploy_timer < deploy_time{deploy_timer += 1}
+if next_weapon_number = weapon_number{deploying = false}}
 
 if deploy_timer >= deploy_time{
-	reload_timer = 0
+	reload_timer = -1
 	deploying = false;
 	saved_ammo_inmag[weapon_number] = ammo_inmag
 	saved_ammo_reserve[weapon_number] = ammo_reserve
@@ -83,14 +89,11 @@ if deploy_timer >= deploy_time{
 	deploy_timer = deploy_time
 }
 
-if deploying = false{if deploy_timer > 0{deploy_timer -= 1}}else{if deploy_timer < deploy_time{deploy_timer += 1}}
-if deploy_timer < 0{deploy_timer = 0}
-
-
-
 if key_knife_pressed{melee_equipped = true}
 
+#endregion End of Weapon toggling
 
+	#region Weapon damage
 	script_execute_wpn(weapon_sprite)
 	shoot_amount = 1
 	spread_increase = 0
@@ -113,56 +116,52 @@ if key_knife_pressed{melee_equipped = true}
 	spread_increase += sniper_spread_increase
 	damage_mult += sniper_damage_mult
 	}
-
+	
 	weapon_damage = round(weapon_damage*damage_mult)
 	knockback = knockback*knockback_mult
 	gun_recoil = gun_recoil*recoil_mult
 	bullet_spread = (bullet_spread*spread_mult)+spread_increase
 	shoot_amount = shoot_amount+shoot_amount_increase
 	
-if reload_timer = 0{if audio_exists(reload_sfx){audio_stop_sound(reload_sfx)}}
-if reload_timer > 0{
+	#endregion End of weapon damage
 	
-if reload_bullet_time != 0{
-if reload_timer >= reload_startup+((reload_bullet_time*reload_amount)-((ammo_inmag_max-ammo_inmag-1)*reload_bullet_time)) && reload_timer <= reload_time-reload_endlag+reload_speed
-{ammo_inmag += 1;ammo_reserve -= 1}
-}
+#region Reload Weapon
 
-if reload_timer >= reload_time{
-reload_size = ammo_inmag_max-ammo_inmag
-if reload_size > ammo_reserve{reload_size = ammo_reserve}
-ammo_inmag += reload_size
-ammo_reserve -= reload_size
-reload_timer = -reload_speed
-trigger_delay_timer = 0
+	if key_reload or ammo_inmag = 0 && ammo_reserve > 0{
+	if reload_timer = -1{
+	play_sfx(reload_sfx)
+	reload_timer = 0}}
+	
+	if reload_timer = -1{if audio_exists(reload_sfx){audio_stop_sound(reload_sfx)}}
+	if reload_timer > -1{
+	reload_timer += reload_speed
+	
+	if reload_bullet_time != 0{
+	if reload_timer >= reload_startup+((reload_bullet_time*reload_amount)-((ammo_inmag_max-ammo_inmag-1)*reload_bullet_time)) && reload_timer <= reload_time-reload_endlag+reload_speed
+	{ammo_inmag += 1;ammo_reserve -= 1}
+	}
+
+	if reload_timer >= reload_time{
+	reload_size = ammo_inmag_max-ammo_inmag
+	if reload_size > ammo_reserve{reload_size = ammo_reserve}
+	ammo_inmag += reload_size
+	ammo_reserve -= reload_size
+	reload_timer = -1
+	trigger_delay_timer = 0
+	}
 }
-reload_timer += reload_speed
-}
+#endregion End of Reload weapon
 
 if jam_timer > 0{jam_timer += reload_speed;if jam_timer >= jam_time{jam_timer = 0;trigger_delay_timer = 0}}
 
-
-if ammo_inmag <= 0 && ammo_reserve > 0 && reload_timer = 0 or key_reload && ammo_reserve > 0 && ammo_inmag < ammo_inmag_max && reload_timer = 0
-{
-reload_timer = 1
-play_sfx(reload_sfx)
-}
-
-
+if abs(recoil) > 10{recoil *= 0.92}else{recoil *= 0.9}
+if recoil < 0.5 && recoil > -0.5{recoil = 0}
 
 if shoot_timer > 0{shoot_timer -= 1}
 
-if abs(recoil) > 10{recoil *= 0.92}else{
-recoil *= 0.9}
-if recoil < 0.5 && recoil > -0.5{recoil = 0}
-
-if key_shoot && ammo_inmag = 0 && ammo_reserve = 0{
-//gun_toogle
-}
-
 if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0}
 
-if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay && deploy_timer = 0{
+if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay && deploy_timer = 0{
 	
 	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && auto = false && trigger_delay_timer = trigger_delay{
 	shoot_timer = shoot_delay
@@ -190,14 +189,14 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer = 0 && melee_equipped = fa
 
 	if knockback < 0{knockback = 0}
 	direction = aim_direction+recoil+180
-	speed = knockback
+	speed = knockback/player_weight
 	hsp_knockback += hspeed
 	vsp_knockback += vspeed
 	speed = 0
 	recoil += gun_recoil*weapon_yscale
 	current_shoot_sfx = play_sfx(shoot_sfx)
-	audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.0045))
-	if jam_chance != 0 && irandom_range(1,jam_chance) = 1{jam_timer += 1}
+	audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.045))
+	if jam_chance != 0 && random_range(0,100) <= jam_chance{jam_timer += 1}
 	}
 	
 	
@@ -211,18 +210,8 @@ if melee.attacking = false{melee.attacking = true}
 }
 else{melee.sprite_index = s_0}
 
-if place_meeting(x,y,Enemy) && hit_stun = 0{
-hp -= 1;hit_stun = 60;
-ammo_reserve += round(ammo_reserve_max*ammo_recived_when_hurt)
-blood_splatter()
-play_sfx(sfx_PlayerHurt)
-}
-if hit_stun > 0{hit_stun -= 1}
-
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
-
-
 
 var_move = clamp(mov_spd-clamp((weapon_weight/strength),0,100),0,100)
 
@@ -258,6 +247,14 @@ if aim_direction  >= 315 or aim_direction  <= 45{aim_string = "R"}
 
 sprite_string = "s_"+string(player_name)+string(aim_string)
 sprite_index = asset_get_index(sprite_string)
+
+if place_meeting(x,y,Enemy) && hit_stun = 0{
+hp -= 1;hit_stun = 60;
+ammo_reserve += round(ammo_reserve_max*ammo_recived_when_hurt)
+blood_splatter()
+play_sfx(sfx_PlayerHurt)
+}
+if hit_stun > 0{hit_stun -= 1}
 
 if aim_object != 0{
 aim_object.x = x;aim_object.y = y;aim_object.image_angle = aim_direction}
@@ -296,11 +293,7 @@ total_mystery_box_rolls += 1
 
 if key_interact_pressed && var_object.box_open = true && var_object.box_timer = 0{
 var_object.box_open = false
-if array_length(weapon) < weapon_slots{
-saved_ammo_inmag[weapon_number] = ammo_inmag
-saved_ammo_reserve[weapon_number] = ammo_reserve
-weapon_number = array_length(weapon)}
-get_new_weapon(var_object.weapon_sprite,weapon_number)
+get_new_weapon(var_object.weapon_sprite)
 switch_to_weapon(weapon_number)
 }
 }
@@ -310,11 +303,8 @@ var_object = instance_nearest(x,y,WallBuy)
 var_object.display_text = true
 if key_interact_pressed && money >= var_object.cost{
 player_point_change(-var_object.cost)
-if array_length(weapon) < weapon_slots{
-saved_ammo_inmag[weapon_number] = ammo_inmag
-saved_ammo_reserve[weapon_number] = ammo_reserve
-weapon_number = array_length(weapon)}
-get_new_weapon(var_object.weapon_sprite,weapon_number)
+get_new_weapon(var_object.weapon_sprite)
+saved_ammo_reserve[weapon_number] += round(ammo_reserve_max*wall_ammo_multiplier)
 switch_to_weapon(weapon_number)
 play_sfx(sfx_Buy)
 }

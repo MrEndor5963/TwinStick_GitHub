@@ -18,14 +18,14 @@ player_name = ""
 money = 50000
 mov_spd = 10
 hp = 6;hp_max = 6
-weapon_slots = 3
+weapon_slots = 2
 strength = 2
 reload_speed = 1
 
 //Weapon variables
 ammo_inmag = 30
 ammo_reserve = 30
-reload_timer = 0
+reload_timer = -1
 current_shoot_sfx = -1
 revive_time = 180
 revive_timer = 0
@@ -52,12 +52,11 @@ can_control = true
 shoot_timer = 0
 
 weapon_number = 0
+weapon = []
 
 deploy_time = 15
 deploy_timer = 0
 deploying = false
-previous_deployed_weapon = 0
-next_deployed_weapon = 0
 gun_angle = 0
 //aim_speed = 0.5
 
@@ -93,7 +92,7 @@ shoot_amount = 1
 shoot_amount_increase = 0
 
 ammo_recived_when_hurt = 0
-wall_ammo_multiplier = 1
+wall_ammo_multiplier = 0
 bullets_per_new_room = 0
 
 shot_reward = 10
@@ -104,30 +103,35 @@ free_mystery_box_rolls_per_floor = 0
 cryptocoin = 0
 png_explosions = 0
 
-function get_new_weapon(arg_weapon,arg_weapon_number){
-weapon[arg_weapon_number] = arg_weapon
+function get_new_weapon(arg_weapon){
+if array_length(weapon) < weapon_slots{
+saved_ammo_inmag[weapon_number] = ammo_inmag
+saved_ammo_reserve[weapon_number] = ammo_reserve
+weapon_number = array_length(weapon)}
+weapon[weapon_number] = arg_weapon
 weapon_sprite = arg_weapon
 script_execute_wpn(arg_weapon)
-saved_ammo_inmag[arg_weapon_number] = ammo_inmag_max
-saved_ammo_reserve[arg_weapon_number] = ammo_reserve_max
+saved_ammo_inmag[weapon_number] = ammo_inmag_max
+saved_ammo_reserve[weapon_number] = ammo_reserve_max
 }
 
 function switch_to_weapon(arg_weapon_number){
 weapon_number = arg_weapon_number
 script_execute_wpn(weapon[weapon_number])
-saved_ammo_inmag[weapon_number] = ammo_inmag_max
-saved_ammo_reserve[weapon_number] = ammo_reserve_max
 ammo_inmag = saved_ammo_inmag[weapon_number]
 ammo_reserve = saved_ammo_reserve[weapon_number]
 }
 
 
 
-give_all_weapons = false
+give_all_weapons = true
 if give_all_weapons = true{
+weapon = []
+weapon_slots = array_length(GM.weapon_list)
 vrp = 0
-repeat(array_length(GM.weapon_list)){
-get_new_weapon(GM.weapon_list[vrp],vrp)
+repeat(weapon_slots){
+get_new_weapon(GM.weapon_list[vrp])
+switch_to_weapon(vrp)
 vrp += 1
 }
 }

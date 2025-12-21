@@ -22,7 +22,8 @@ bullet_sprite = s_Bullet
 reload_time = 60
 bullet_amount = 1
 bullet_spread = 1
-jam_chance = 0
+jam_chance = 0.09
+jam_time = 90
 trigger_delay = 0
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
@@ -65,7 +66,7 @@ reload_startup = arg_reload_startup
 reload_bullet_time = arg_reload_bullet_time
 reload_endlag = arg_reload_endlag
 
-if reload_timer = 0{reload_amount = ammo_inmag_max-ammo_inmag}
+if reload_timer = -1{reload_amount = ammo_inmag_max-ammo_inmag}
 reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
 }
 
@@ -254,12 +255,12 @@ set_gun_handling(12,1.5,1)
 set_deploy_stats(11,-1)
 shoot_delay = 1
 action_type = s_SemiAuto
-if reload_timer = 0{reload_time = irandom_range(120,210)}
+if reload_timer = -1{reload_time = irandom_range(120,210)}
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 bullet_spread = 4
 trigger_delay = 2
-jam_chance = 3
+jam_chance = 40
 if jam_timer = 0{jam_time = irandom_range(30,122)}
 description = ""
 }
@@ -381,7 +382,7 @@ action_type = s_FullAuto
 reload_time = 75
 bullet_spread = 12
 trigger_delay = 15
-jam_chance = 48
+jam_chance = 2.5
 jam_time = 160
 shoot_sfx = sfx_m1911Shoot
 description = "Homemade firearm made by Phillip A. Luty in response to UK anti gun legislation in the 1990's. Although the Luty has many, many flaws, it's still a quite cheaply made lethal weapon using only parts from a hardware store"
@@ -525,7 +526,7 @@ exit}
 auto = true
 set_gun_ammo(100,200)
 set_bullet_power(14,2,1)
-set_gun_handling(-6,2.2,5)
+set_gun_handling(-6,3,5)
 set_deploy_stats(20,1)
 shoot_delay = 4
 action_type = s_FullAuto
@@ -783,7 +784,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,52)
+set_gun_ammo(8,40)
 set_bullet_power(8,1,1)
 set_gun_handling(95,20,4.5)
 set_deploy_stats(15,-1)
@@ -794,7 +795,7 @@ bullet_spread = 30
 bullet_amount = 12
 set_variable_reload_time(30,45,30)
 shoot_sfx = sfx_OlympiaShoot
-jam_chance = 40
+jam_chance = 3
 jam_time = 130
 shot_reward = 5
 }
@@ -971,8 +972,8 @@ set_deploy_stats(36,1)
 shoot_delay = 14
 action_type = s_SemiAuto
 reload_time = 105
-if object_index = Player && ammo_inmag = ammo_inmag_max{jam_chance = 2}
-else{jam_chance = 100}
+if object_index = Player && ammo_inmag = ammo_inmag_max{jam_chance = 49}
+else{jam_chance = 1}
 jam_time = 720
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot

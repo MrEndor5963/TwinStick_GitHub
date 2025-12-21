@@ -9,7 +9,6 @@ draw_set_alpha(1)
 
 
 if player_number = 0{
-draw_text(screen_width/2,screen_height/2,GM.floor_number)
 draw_origin_x = 0
 draw_origin_y = 0
 pon_x = 1
@@ -73,16 +72,6 @@ draw_sprite_ext(item_list[vrp],0,
 draw_origin_x-24+(384*pon_x)+(48*vrp)-(row_offset*240),draw_origin_y+(24*pon_y)+item_draw_y_offset+((row_offset*48)/item_rows),1,1,0,-1,1)
 }
 vrp += 1}
-
-//var_x = draw_origin_x+(96*pon_x)+sprite_get_xoffset(weapon_sprite)
-//var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
-//draw_sprite(weapon_sprite,0,var_x,var_y)
-
-//draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
-//if jam_timer > 0{
-//draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
-//}
-//draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
 
 draw_set_aligns(fa_center,fa_middle)
 var_x = draw_origin_x+(216*pon_x)-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
@@ -164,7 +153,7 @@ draw_sprite(s_ReloadBarOutline,0,draw_bar_x,y-(sprite_height/2)-20)
 if revive_timer = revive_time{hp += 2;hit_stun = 120;revive_timer = 0}
 }
 
-draw_text(200,80,slide_offset)
+//draw_text(200,80,slide_offset)
 //draw_text(200,120,shoot_timer)
 /*
 draw_set_aligns(fa_center,fa_middle)
