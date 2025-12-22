@@ -213,7 +213,8 @@ else{melee.sprite_index = s_0}
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
-var_move = clamp(mov_spd-clamp((weapon_weight/strength),0,100),0,100)
+var_move = mov_spd-clamp(weapon_weight/strength,0,100)
+if var_move<0.5{var_move = 0.5}
 
 hsp = (key_right-key_left)*var_move
 hsp += hsp_knockback

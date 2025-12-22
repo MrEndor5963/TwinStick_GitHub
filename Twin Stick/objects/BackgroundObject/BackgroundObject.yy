@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_BackgroundF1",
-    "path":"sprites/s_BackgroundF1/s_BackgroundF1.yy",
+    "name":"s_BackgroundF0",
+    "path":"sprites/s_BackgroundF0/s_BackgroundF0.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -1,6 +1,6 @@
 font = f_Main;draw_set_color(c_white)
 
-if display_text = true{
+if display_text = true && place_meeting(x,y,Player){
 draw_set_aligns(fa_center,fa_middle)
 if item_is_free = true{
 var_text = "Press A to take "+string(item_name)}
