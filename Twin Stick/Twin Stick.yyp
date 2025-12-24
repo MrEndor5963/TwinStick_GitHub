@@ -335,6 +335,7 @@
     {"id":{"name":"s_Visited","path":"sprites/s_Visited/s_Visited.yy",},},
     {"id":{"name":"s_VzSkorpion","path":"sprites/s_VzSkorpion/s_VzSkorpion.yy",},},
     {"id":{"name":"s_WallBuyPlaceHolder","path":"sprites/s_WallBuyPlaceHolder/s_WallBuyPlaceHolder.yy",},},
+    {"id":{"name":"s_Walls_1","path":"sprites/s_Walls_1/s_Walls_1.yy",},},
     {"id":{"name":"s_Walls","path":"sprites/s_Walls/s_Walls.yy",},},
     {"id":{"name":"s_WeaponNameBox","path":"sprites/s_WeaponNameBox/s_WeaponNameBox.yy",},},
     {"id":{"name":"s_Winchester1897","path":"sprites/s_Winchester1897/s_Winchester1897.yy",},},

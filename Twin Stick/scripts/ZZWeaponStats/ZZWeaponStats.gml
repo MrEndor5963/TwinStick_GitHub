@@ -673,12 +673,12 @@ array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(47,141)
-set_bullet_power(30,9,2)
-set_gun_handling(-6,6,28)
+set_bullet_power(40,9,3)
+set_gun_handling(-5,3,28)
 set_deploy_stats(35,-1)
 shoot_delay = 8
 action_type = s_FullAuto
-reload_time = 240
+reload_time = 170
 shoot_sfx = sfx_AK47Shoot
 }
 
@@ -977,6 +977,7 @@ else{jam_chance = 1}
 jam_time = 720
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
+description = ".50 BMG semi auto rifle that would be an ideal head exploding weapon if it wasn't hindered by it's weight, unpleasent shooting, and unreliability. If (or when) this gun jams, you'll need a screwdriver, knife, or some other kind of tool to get the rounds unstuck"
 }
 
 function wpn_M79(){

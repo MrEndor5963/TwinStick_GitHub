@@ -214,7 +214,8 @@ if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockba
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
 var_move = mov_spd-clamp(weapon_weight/strength,0,100)
-if var_move<0.5{var_move = 0.5}
+if var_move<0{var_move = 0}
+if var_move > mov_spd{var_move = mov_spd}
 
 hsp = (key_right-key_left)*var_move
 hsp += hsp_knockback
