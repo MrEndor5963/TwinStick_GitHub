@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TextScrollCode",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TextScrollCode",
+  "parent":{
+    "name":"!Scripts",
+    "path":"folders/!Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

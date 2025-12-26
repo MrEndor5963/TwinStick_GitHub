@@ -16,7 +16,7 @@ var_repeat = 0
 repeat(4){
 var_x = (screen_width/5)*(var_repeat+1)
 if cursor_control[var_repeat] = -1{
-draw_text(var_x,var_y,string("Press A to Start"))
+draw_text(var_x,var_y,string("Press A"))
 }
 else{
 draw_text(var_x,var_y,ds_grid_get(select_menu,cursor_c[var_repeat],cursor_r[var_repeat]))

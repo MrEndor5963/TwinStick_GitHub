@@ -1,4 +1,5 @@
 menu_controls()
+if key_up_pressed or key_down_pressed{text_progress = 0}
 key_back = gamepad_button_check_pressed_any(gp_face2) or keyboard_check_pressed(vk_backspace) or keyboard_check_pressed(vk_escape) or keyboard_check_pressed(ord("X"))
 
 if key_back{sub_menu = 0;menu_cursor = 0}
@@ -14,12 +15,12 @@ if sub_menu = 0
 menu[0] = "Solo"
 menu[1] = "Co-op"
 menu[2] = "??????"//Versus
-menu[3] = "Collection"
+menu[3] = "Database"
 menu[4] = "???????????"//Achievments
 menu[5] = "Configuration"
 }
 
-if sub_menu = "Collection"
+if sub_menu = "Database"
 {
 menu[0] = "Weaponry"
 menu[1] = "Items"

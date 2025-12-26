@@ -38,6 +38,7 @@ hammer_sprite = s_0
 //bullet_xoff = 0
 //bullet_yoff = 0
 //
+description = ""
 var_string = string_delete(sprite_get_name(arg_weapon_sprite),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
 }
@@ -715,15 +716,16 @@ exit}
 auto = false
 set_gun_ammo(2,44)
 set_bullet_power(8,1.5,1)
-set_gun_handling(30,12,9.7)
+set_gun_handling(14,5,9.7)
 set_deploy_stats(12,-1)
 shoot_delay = 1
 action_type = s_DoubleBarrel
 reload_time = 120
-bullet_spread = 15
+bullet_spread = 6
 bullet_amount = 10
 shoot_sfx = sfx_OlympiaShoot
 shot_reward = 5
+description = "A finely made skeet shooting double barrel shotgun. Although reloading will be frequent and it lacks firepower compared to other shotguns, it's excellent handling and accuracy makes it a favorite for some"
 }
 
 function wpn_Ithaca(){
@@ -836,7 +838,7 @@ exit}
 auto = true
 set_gun_ammo(6,42)
 set_bullet_power(8,1,2)
-set_gun_handling(45,42,8.4)
+set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
 shoot_delay = 30
 action_type = s_PumpAction
@@ -845,6 +847,7 @@ bullet_spread = 35
 bullet_amount = 12
 shoot_sfx = sfx_IthacaShoot
 shot_reward = 5
+description = "What used to be a missionary of firearms design is now an antique overshadowed by more modern shotguns. However should the trench gun need to come out of retirement it can get the job done, though it may be uncomfortable to shoot."
 }
 
 function wpn_Karabiner98k(){
@@ -889,6 +892,8 @@ action_type = s_BoltAction
 reload_time = 95
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_SSG08Shoot
+var_string = current_year-1891
+description = "This unassuming broom closet rifle has somehow managed to weasel it's way into any major or minor conflict for the last "+string(var_string)+" years, examples being the russo-japanese war, WW1, Russian Civil, Finnish Civil, Spanish Civil, WW2, 1950's Korean War, Vietnam resistence War against USA, Afgan Civil, Chechen War 1 and 2, Iraq Wars, Ukraine Vs Russia, various African conflicts, and so many other conflicts you and I have never heard of and I bet as I'm typing this there's probably another war starting, god knows where, and some guy is gonna use their grandad's Mosin Nagat that he got from some guy he killed in some other war and... war never changes does it?"
 }
 
 function wpn_SSG08(){
