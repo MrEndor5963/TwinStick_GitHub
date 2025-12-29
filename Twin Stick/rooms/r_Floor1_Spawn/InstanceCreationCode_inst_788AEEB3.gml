@@ -1,1 +1,1 @@
-weapon_sprite = s_CZ75Auto
+weapon_sprite = s_Karabiner98k

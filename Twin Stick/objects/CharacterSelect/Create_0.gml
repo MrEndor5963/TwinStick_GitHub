@@ -1,3 +1,6 @@
+buffer = 0
+players_ready = false
+start_timer = 300
 screen_width = GM.screen_width
 screen_height = GM.screen_height
 select_menu = ds_grid_create(5,1)

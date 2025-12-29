@@ -16,6 +16,11 @@ var var_temp = audio_play_sound(arg_sfx,5,false)
 return var_temp
 }
 
+function play_msc(arg_msc){
+var var_temp = audio_play_sound(arg_msc,1,true)
+return var_temp
+}
+
 
 function draw_text_with_outline(arg_x,arg_y,arg_text,arg_color){
 draw_set_color(c_black)
@@ -27,7 +32,17 @@ draw_set_color(arg_color)
 draw_text(arg_x,arg_y,arg_text)
 }
 
-function player_point_change(arg_amount){
-array_insert(point_que,0,arg_amount)
-array_insert(point_draw_timer,0,0)
+function goto_main_menu(){
+vrp = 0
+repeat(array_length(GM.persistent_object_list)){
+var_temp = array_get(GM.persistent_object_list,vrp)
+if instance_exists(var_temp){instance_destroy(var_temp)}
+vrp += 1
+}
+if instance_exists(MeleeWeapon){instance_destroy(MeleeWeapon)}
+GM.floor_number = 0
+GM.player_amount = 0
+GM.player_list = []
+game_paused = false;pause_alpha = 0;audio_stop_all()
+room_goto(r_TitleScreen)
 }

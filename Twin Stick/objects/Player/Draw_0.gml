@@ -1,6 +1,6 @@
 if GM.next_room = -1{
 weapon_yscale = 1
-if weapon_draw_sprite = -99{weapon_draw_sprite = weapon_sprite}
+if weapon_draw_sprite = s_0{weapon_draw_sprite = weapon_sprite}
 
 if aim_string != "U"{draw_self();melee.depth = depth-1}
 //if recoil != 0{gun_angle = aim_direction+recoil}

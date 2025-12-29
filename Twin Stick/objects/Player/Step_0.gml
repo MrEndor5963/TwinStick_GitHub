@@ -2,11 +2,10 @@ if GM.game_paused = true{exit}
 
 depth = -y
 if hp <= 0{
-if GM.player_amount = 1{
-game_restart()}
 sprite_index = asset_get_index("s_"+string(player_name)+"Dead")
 melee_equipped = false
 melee.sprite_index = s_0
+jam_timer = -1
 reload_timer = -1
 }
 else{
@@ -61,7 +60,7 @@ key_knife_pressed = -1
 //var_diff = angle_difference(aim_direction,gun_angle)
 //gun_angle += var_diff * aim_speed;
 #region weapon toggling
-if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0 && deploying = false{
+if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0 && deploying = false && melee_equipped = false{
 key_weapon_toggle_forward = true}
 
 if key_weapon_toggle_back or key_weapon_toggle_forward{
@@ -127,7 +126,7 @@ if key_knife_pressed{melee_equipped = true}
 	
 #region Reload Weapon
 
-	if key_reload or ammo_inmag = 0 && ammo_reserve > 0{
+	if key_reload && ammo_inmag != ammo_inmag_max or ammo_inmag = 0 && ammo_reserve > 0{
 	if reload_timer = -1{
 	play_sfx(reload_sfx)
 	reload_timer = 0}}

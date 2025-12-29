@@ -103,6 +103,11 @@ free_mystery_box_rolls_per_floor = 0
 cryptocoin = 0
 png_explosions = 0
 
+function player_point_change(arg_amount){
+array_insert(point_que,0,arg_amount)
+array_insert(point_draw_timer,0,0)
+}
+
 function get_new_weapon(arg_weapon){
 if array_length(weapon) < weapon_slots{
 saved_ammo_inmag[weapon_number] = ammo_inmag
@@ -124,6 +129,7 @@ ammo_reserve = saved_ammo_reserve[weapon_number]
 
 
 
+//give_all_weapons = true
 give_all_weapons = true
 if give_all_weapons = true{
 weapon = []

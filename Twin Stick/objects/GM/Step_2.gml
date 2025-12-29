@@ -10,9 +10,16 @@ else{window_set_fullscreen(false)}
 
 if keyboard_check_pressed(ord("M")){
 if audio_group_get_gain(audiogroup_default) = 1{
-audio_group_set_gain(audiogroup_default,0,infinity)}
+audio_group_set_gain(audiogroup_default,0,0)
+audio_group_set_gain(audiogroup_sfx,0,0)}
 else{
-audio_group_set_gain(audiogroup_default,1,infinity)}
+audio_group_set_gain(audiogroup_default,1,0)
+audio_group_set_gain(audiogroup_sfx,1,0)}
+
 }
 
+if keyboard_check_pressed(ord("C")){
+if disable_countdown = false{disable_countdown = true}
+else{disable_countdown = false}
+}
 }

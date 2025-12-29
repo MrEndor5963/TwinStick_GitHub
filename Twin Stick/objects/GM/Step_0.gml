@@ -1,11 +1,14 @@
 key_pause = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed_any(gp_start)
+if room = r_TitleScreen or room = r_CharacterSelectScreen{key_pause = -1}
 
 if game_paused = true{
 menu_controls()
 
 if key_enter{
 if menu[menu_cursor] = "Resume"{game_paused = false}
-if menu[menu_cursor] = "Character Select"{game_restart()}
+
+if menu[menu_cursor] = "Main Menu"{goto_main_menu()}
+
 if menu[menu_cursor] = "Exit Game"{game_end()}
 }
 exit}
@@ -124,3 +127,14 @@ room_goto(r_FloorTransition)
 
 
 }
+
+if instance_exists(Player){
+var1 = false;var2 = false;var3 = false;var4 = false
+if player_list[0].hp <= 0{var1 = true}
+if array_length(player_list) < 2 or player_list[1].hp <= 0{var2 = true}
+if array_length(player_list) < 3 or player_list[2].hp <= 0{var3 = true}
+if array_length(player_list) < 4 or player_list[3].hp <= 0{var4 = true}
+
+if var1 = true && var2 = true && var3 = true && var4 = true{game_over = true}
+}
+else{game_over = false}

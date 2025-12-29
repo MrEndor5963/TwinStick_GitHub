@@ -12,21 +12,31 @@ var_xx += 1}
 var_y = 200
 
 
-var_repeat = 0
+vrp = 0
 repeat(4){
-var_x = (screen_width/5)*(var_repeat+1)
-if cursor_control[var_repeat] = -1{
+if vrp = 0{var_x = 0;var_y = 0}
+if vrp = 1{var_x = screen_width/2;var_y = 0}
+if vrp = 2{var_x = 0;var_y = screen_height/2}
+if vrp = 3{var_x = screen_width/2;var_y = screen_height/2}
+var_x = var_x+320
+var_y = var_y+50
+
+if cursor_control[vrp] = -1{
 draw_text(var_x,var_y,string("Press A"))
 }
 else{
-draw_text(var_x,var_y,ds_grid_get(select_menu,cursor_c[var_repeat],cursor_r[var_repeat]))
-var_sprite = asset_get_index("s_"+string(ds_grid_get(select_menu,cursor_c[var_repeat],cursor_r[var_repeat]))+"D")
+draw_text(var_x,var_y,ds_grid_get(select_menu,cursor_c[vrp],cursor_r[vrp]))
+var_sprite = asset_get_index("s_"+string(ds_grid_get(select_menu,cursor_c[vrp],cursor_r[vrp]))+"D")
 draw_sprite(var_sprite,0,var_x,var_y+60)
-if player_selected[var_repeat] != 0{
-if player_ready[var_repeat] = false{draw_text(var_x,var_y+20,"Not Ready")}
+if player_selected[vrp] != 0{
+if player_ready[vrp] = false{draw_text(var_x,var_y+20,"Not Ready")}
 else{draw_text(var_x,var_y+20,"Ready")}
 }
 }
 
-var_repeat += 1
+vrp += 1
 }
+
+if start_timer < 300{
+draw_set_aligns(fa_center,fa_middle)
+draw_text(640,360,(start_timer div 60)+1)}

@@ -42,7 +42,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	var_explosion.damage = var_bullet.explosion_damage
 	}
 	
-	if hp <= 0{
+	if hp <= 0 or x < 0 or x> room_width or y < 0 or y > room_height{
 	repeat(var_bullet.png_explosion_checks){
 	if irandom_range(1,4) = 1{
 	var_explosion = instance_create_depth(var_bullet.x,var_bullet.y,var_bullet.depth-1000,PNGExplosion)

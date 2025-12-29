@@ -15,8 +15,8 @@ exit}
 }
 
 if gamepad_button_check_pressed_any(gp_face2) or keyboard_check_pressed(vk_backspace) or keyboard_check_pressed(vk_escape) or keyboard_check_pressed(ord("X")){
-if cursor_control[0] != vrp && cursor_control[1] != vrp &&
-cursor_control[2] != vrp && cursor_control[3] != vrp{
+if cursor_control[0] = -1 && cursor_control[1] = -1 &&
+cursor_control[2] = -1 && cursor_control[3] = -1{
 room_goto(r_TitleScreen)}
 }
 
@@ -102,7 +102,11 @@ if cursor_control[1] = -1 or player_ready[1] = true{var1 = true}else{var1 = fals
 if cursor_control[2] = -1 or player_ready[2] = true{var2 = true}else{var2 = false}
 if cursor_control[3] = -1 or player_ready[3] = true{var3 = true}else{var3 = false}
 
-if var0 = true && var1 = true && var2 = true && var3 = true && player_amount > 0{
+if var0 = true && var1 = true && var2 = true && var3 = true && player_amount > 0{players_ready = true}else{players_ready = false}
+
+if players_ready = true{start_timer -= 1}else{start_timer = 300;if GM.disable_countdown = true{start_timer = 1}}
+
+if start_timer = 0{
 if player_ready[0] = true{
 var_player = instance_create_depth(300,300,depth,Player)
 var_player.player_name = player_selected[0]
@@ -131,5 +135,6 @@ var_player.input_number = cursor_control[3]
 var_player.player_number = 3
 }
 GM.player_amount = player_amount
-room_goto(r_Floor1_Spawn)
+GM.next_floor = true
+play_msc(msc_Floor1)
 }

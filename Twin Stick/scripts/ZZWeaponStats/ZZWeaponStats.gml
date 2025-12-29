@@ -22,8 +22,8 @@ bullet_sprite = s_Bullet
 reload_time = 60
 bullet_amount = 1
 bullet_spread = 1
-jam_chance = 0.09
-jam_time = 90
+jam_chance = 0.08
+jam_time = 120
 trigger_delay = 0
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
@@ -32,7 +32,7 @@ shoot_amount = 1
 shot_reward = 10
 explosive = false
 explosion_damage = 0
-weapon_draw_sprite = -99
+weapon_draw_sprite = s_0
 slide_sprite = s_0
 hammer_sprite = s_0
 //bullet_xoff = 0
@@ -228,7 +228,7 @@ array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(7,35)
-set_bullet_power(70,2,1)
+set_bullet_power(100,2,1)
 set_gun_handling(85,9,4.4)
 set_deploy_stats(9,-1)
 shoot_delay = 5
@@ -281,7 +281,7 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(6,36)
-set_bullet_power(100,2,2)
+set_bullet_power(110,2,2)
 set_gun_handling(25,10,2.8)
 set_deploy_stats(9,-1)
 shoot_delay = 2
@@ -306,7 +306,7 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,15)
-set_bullet_power(150,2,3)
+set_bullet_power(160,2,3)
 set_gun_handling(90,40,4.8)
 set_deploy_stats(12,-1)
 shoot_delay = 2
@@ -738,12 +738,12 @@ array_push(wallbuy_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
-auto = false
+auto = true
 set_gun_ammo(7,35)
 set_bullet_power(8,2,1)
 set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
-shoot_delay = 45
+shoot_delay = 30
 action_type = s_PumpAction
 set_variable_reload_time(15,60,30)
 bullet_spread = 20
@@ -840,7 +840,7 @@ set_gun_ammo(6,42)
 set_bullet_power(8,1,2)
 set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
-shoot_delay = 30
+shoot_delay = 35
 action_type = s_PumpAction
 set_variable_reload_time(15,45,30)
 bullet_spread = 35
@@ -982,7 +982,7 @@ else{jam_chance = 1}
 jam_time = 720
 reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
-description = ".50 BMG semi auto rifle that would be an ideal head exploding weapon if it wasn't hindered by it's weight, unpleasent shooting, and unreliability. If (or when) this gun jams, you'll need a screwdriver, knife, or some other kind of tool to get the rounds unstuck"
+description = ".50 BMG semi auto rifle that would be an ideal head exploding weapon if it wasn't hindered by it's weight, violent recoil, and unreliability. If (or when) this gun jams, you'll need a screwdriver, knife, or some other kind of tool to get the rounds unstuck"
 }
 
 function wpn_M79(){
@@ -1044,6 +1044,26 @@ array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(4,4)
+set_bullet_power(1,0,1)
+set_gun_handling(0,1,14)
+set_deploy_stats(20,-1)
+shoot_delay = 1
+action_type = s_SemiAuto
+bullet_speed = 0.2
+bullet_sprite = s_SquareGunBullet
+reload_time = 4
+description = "Standard issue Lazer Pistol for Mooninite infantry during the Plutonian conflict"}
+	
+function wpn_LR230(){
+weapon_sprite = s_SquareGun
+weapon_name = "LR 230C"
+cost = 3000
+auto = false
+if object_index = GM{
+//array_push(weapon_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
+exit}
+set_gun_ammo(4,4)
 set_bullet_power(16000,0,4000)
 set_gun_handling(0,96,16)
 set_deploy_stats(20,-1)
@@ -1052,4 +1072,4 @@ action_type = s_SemiAuto
 bullet_speed = 0.2
 bullet_sprite = s_SquareGunBullet
 reload_time = 4
-description = "Standard issue Lazer Pistol for Mooninite infantry during the Plutonian conflict"}
+description = "Lazer Ray 230 Celcius, or as the Americans say, 450 Ferenheit is a 2002 inhouse developed lazer rifle designed for bullet varius immune containment subjects. It's interior is lined with inconel and nemonic to allow the rifle the reach the extreme tempertures. It's quite effective against single targets but may not be ideal against multiple enemies"}
