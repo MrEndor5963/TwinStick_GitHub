@@ -1,29 +1,6 @@
 key_pause = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed_any(gp_start)
 if room = r_TitleScreen or room = r_CharacterSelectScreen{key_pause = -1}
 
-if game_paused = true{
-menu_controls()
-
-if key_enter{
-if menu[menu_cursor] = "Resume"{game_paused = false}
-
-if menu[menu_cursor] = "Main Menu"{goto_main_menu()}
-
-if menu[menu_cursor] = "Exit Game"{game_end()}
-}
-exit}
-
-if key_pause && room != r_TitleScreen{
-if game_paused = false{
-game_paused = true
-
-}
-else{
-game_paused = false
-
-}
-}
-
 set_tileset_collision()
 view_enabled = true
 view_visible[0] = true
@@ -40,6 +17,75 @@ camera_set_view_pos(view_camera[0],round(cam_x),round(cam_y))
 
 cam_x += sign(cam_target_x-cam_x)*cam_speed//clamp(cam_x+cam_move_x,clamp_x1+(cam_size_x/2),clamp_x2-(cam_size_x/2))
 cam_y += sign(cam_target_y-cam_y)*cam_speed//clamp(cam_y+cam_move_y,clamp_y1+(cam_size_y/2),clamp_y2-(cam_size_y/2))
+
+if instance_exists(Player){
+var1 = false;var2 = false;var3 = false;var4 = false
+if player_list[0].hp <= 0{var1 = true}
+if array_length(player_list) < 2 or player_list[1].hp <= 0{var2 = true}
+if array_length(player_list) < 3 or player_list[2].hp <= 0{var3 = true}
+if array_length(player_list) < 4 or player_list[3].hp <= 0{var4 = true}
+
+if var1 = true && var2 = true && var3 = true && var4 = true
+{game_over = true}
+}
+else{game_over = false}
+
+if game_paused = true{
+menu = []
+menu[0]  = "Resume"
+menu[1]  = "Settings"
+menu[2]  = "Main Menu"
+}
+
+if game_over = true{
+menu = []
+menu[0]  = "Retry"
+menu[1]  = "Main Menu"
+}
+
+if game_paused = true or game_over = true{
+menu_controls()
+
+if key_enter{
+if menu[menu_cursor] = "Resume"{game_paused = false}
+
+if menu[menu_cursor] = "Retry"{
+
+repeat (GM.player_amount){
+var1 = player_list[0].player_name
+var2 = player_list[0].input_number
+var3 = player_list[0].player_number
+with player_list[0]{player_destroy_protocol()}
+var_player = instance_create_depth(300,300,depth,Player)
+var_player.player_name = var1
+var_player.input_number = var2
+var_player.player_number = var3
+array_delete(player_list,0,1)}
+
+if instance_exists(Key){instance_destroy(Key)}
+
+
+floor_number = 0
+next_floor = true
+}
+
+if menu[menu_cursor] = "Main Menu"{goto_main_menu()}
+
+if menu[menu_cursor] = "Exit Game"{game_end()}
+menu_cursor = 0
+}
+if game_paused = true{exit}}
+
+if key_pause && room != r_TitleScreen{
+if game_paused = false{
+game_paused = true
+
+}
+else{
+game_paused = false
+
+}
+}
 
 #region Room Transition Code
 if next_room != -1{
@@ -123,18 +169,7 @@ visited_rooms = []
 
 floor_number += 1
 floor_map_create()
-room_goto(r_FloorTransition)
-
+room_goto(spawn_room)
+game_over = false
 
 }
-
-if instance_exists(Player){
-var1 = false;var2 = false;var3 = false;var4 = false
-if player_list[0].hp <= 0{var1 = true}
-if array_length(player_list) < 2 or player_list[1].hp <= 0{var2 = true}
-if array_length(player_list) < 3 or player_list[2].hp <= 0{var3 = true}
-if array_length(player_list) < 4 or player_list[3].hp <= 0{var4 = true}
-
-if var1 = true && var2 = true && var3 = true && var4 = true{game_over = true}
-}
-else{game_over = false}

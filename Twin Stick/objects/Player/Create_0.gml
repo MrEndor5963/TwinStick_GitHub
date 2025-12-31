@@ -1,6 +1,7 @@
 //Object will be created by CharacterSelect
 spawned = false
 array_push(GM.player_list,id)
+set_tileset_collision()
 
 //Gameplay Variables
 input_number = 0//Input number set by CharacterSelect
@@ -15,7 +16,7 @@ weapon_yscale = 1
 
 //Player stats
 player_name = ""
-money = 50000
+money = 500
 mov_spd = 10
 hp = 6;hp_max = 6
 weapon_slots = 2
@@ -128,7 +129,8 @@ ammo_reserve = saved_ammo_reserve[weapon_number]
 }
 
 
-
+weapon = []
+script_execute_wpn(s_m1911)
 //give_all_weapons = true
 give_all_weapons = true
 if give_all_weapons = true{

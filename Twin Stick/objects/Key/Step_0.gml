@@ -1,4 +1,4 @@
-if GM.game_paused = true{exit}
+if GM.game_paused = true or GM.game_over = true{exit}
 
 if !instance_exists(Enemy) && instance_exists(BossDoor){
 move_towards_point(BossDoor.x+32,BossDoor.y+32,10)}else{

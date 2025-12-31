@@ -32,7 +32,7 @@ hitbox.depth = depth+1
 }
 
 function get_move_directions(){
-if instance_exists(Player){
+if instance_exists(Player) && GM.game_over = false{
 	
 i = 0;lowest_value = 1000
 repeat(array_length(GM.player_list)){
@@ -79,6 +79,9 @@ if value < lowest_value{move_direction_h = -1;move_direction_v = +1;}
 value = ds_grid_get(var_grid,node_x+1,node_y+1)
 if value < lowest_value{move_direction_h = 1;move_direction_v = 1;}
 }
+}
+else{
+move_direction_h = 0;move_direction_v = 0
 }
 }
 

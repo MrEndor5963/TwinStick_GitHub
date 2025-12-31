@@ -33,16 +33,20 @@ draw_text(arg_x,arg_y,arg_text)
 }
 
 function goto_main_menu(){
-vrp = 0
-repeat(array_length(GM.persistent_object_list)){
+vrp = 1
+repeat(array_length(GM.persistent_object_list)-1){
 var_temp = array_get(GM.persistent_object_list,vrp)
 if instance_exists(var_temp){instance_destroy(var_temp)}
 vrp += 1
 }
-if instance_exists(MeleeWeapon){instance_destroy(MeleeWeapon)}
+with GM.player_list[0]{player_destroy_protocol()}
+if array_length(GM.player_list) > 1{with GM.player_list[1]{player_destroy_protocol()}}
+if array_length(GM.player_list) > 2{with GM.player_list[2]{player_destroy_protocol()}}
+if array_length(GM.player_list) > 3{with GM.player_list[3]{player_destroy_protocol()}}
 GM.floor_number = 0
 GM.player_amount = 0
 GM.player_list = []
+game_over = false
 game_paused = false;pause_alpha = 0;audio_stop_all()
 room_goto(r_TitleScreen)
 }

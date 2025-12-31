@@ -15,3 +15,6 @@ script_execute_wpn(s_m1911)
 create_text_scroll_variables()
 draw_set_font(text_font)
 draw_set_color(text_color)
+
+key_held_d = 0;key_held_u = 0
+key_held_l = 0;key_held_r = 0

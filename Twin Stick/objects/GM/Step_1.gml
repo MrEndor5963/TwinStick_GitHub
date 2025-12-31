@@ -1,4 +1,4 @@
-if room_start = true{
+if room_start = true && game_mode != "Versus"{
 set_tileset_collision()
 if instance_exists(Player){
 

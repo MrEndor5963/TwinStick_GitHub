@@ -1,3 +1,4 @@
+if spawned = false{exit}
 draw_set_color(c_white)
 
 //else{draw_color = c_red;portrait_sprite = s_JunePortrait}

@@ -1,4 +1,3 @@
-
 draw_set_color(c_white)
 font = f_Main
 draw_set_halign(fa_left)
@@ -27,7 +26,7 @@ var_y = 240+(menu_cursor*(font_get_size(f_Main)*1.5))
 draw_sprite(s_MenuCursor,0,var_x,var_y)
 var_x = (screen_width/2)+32+(string_width(menu[menu_cursor])/2)
 draw_sprite_ext(s_MenuCursor,0,var_x,var_y,-1,1,0,-1,pause_alpha)
-draw_text(screen_width/2,200,"Game Paused"+string(array_length(player_list)))
+draw_text(screen_width/2,200,"Game Paused")
 vrp = 0
 repeat(array_length(menu)){
 draw_text(screen_width/2,240+(vrp*(font_get_size(f_Main)*1.5)),menu[vrp])
@@ -37,20 +36,22 @@ vrp += 1}
 draw_set_alpha(1)
 //end of pause menu
 
-if pause_alpha > 0{
-draw_sprite_ext(s_BlackPixel,0,0,0,screen_width,screen_height,0,-1,pause_alpha/2)
-draw_set_alpha(pause_alpha)
+#region Game Over
+if game_over = true{
+draw_sprite_ext(s_BlackPixel,0,0,0,screen_width,screen_height,0,-1,0.5)
 var_x = (screen_width/2)-32-(string_width(menu[menu_cursor])/2)
 var_y = 240+(menu_cursor*(font_get_size(f_Main)*1.5))
 draw_sprite(s_MenuCursor,0,var_x,var_y)
 var_x = (screen_width/2)+32+(string_width(menu[menu_cursor])/2)
-draw_sprite_ext(s_MenuCursor,0,var_x,var_y,-1,1,0,-1,pause_alpha)
-draw_text(screen_width/2,200,"Game Paused"+string(array_length(player_list)))
+draw_sprite_ext(s_MenuCursor,0,var_x,var_y,-1,1,0,-1,1)
+draw_text(screen_width/2,200,"Game Over")
 vrp = 0
 repeat(array_length(menu)){
 draw_text(screen_width/2,240+(vrp*(font_get_size(f_Main)*1.5)),menu[vrp])
 vrp += 1}
 }
+
+#endregion End of Gmae over
 
 
 //Draw map

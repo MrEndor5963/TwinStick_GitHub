@@ -1,6 +1,6 @@
 if spawned = false{
 if player_name = "Hazel"{
-hp = 4;hp_max = 4
+hp = 1;hp_max = 4
 starting_weapon = s_Taurus92
 mov_spd = 12
 strength = 2

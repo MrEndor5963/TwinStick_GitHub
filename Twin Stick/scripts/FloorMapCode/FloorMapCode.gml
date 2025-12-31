@@ -59,14 +59,16 @@ if instance_exists(var_temp){instance_destroy(var_temp)}
 vrp += 1
 }
 
-i = 0;lowest_value = 1000
-repeat(array_length(GM.player_list)){
-var_player = GM.player_list[i]
-var_player.floor_mystery_box_rolls = 0
-repeat(var_player.cryptocoin){
-with var_player{player_point_change(irandom_range(-10000,10000))}
-}
-i += 1
+if floor_number > 1{
+	i = 0;lowest_value = 1000
+	repeat(array_length(GM.player_list)){
+	var_player = GM.player_list[i]
+	var_player.floor_mystery_box_rolls = 0
+	repeat(var_player.cryptocoin){
+	with var_player{player_point_change(irandom_range(-10000,10000))}
+	}
+	i += 1
+	}
 }
 
 floor_door = true

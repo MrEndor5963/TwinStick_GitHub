@@ -12,5 +12,3 @@ hsp = 0;vsp = 0
 
 node_x = x div 48
 node_y = y div 48
-image_xscale = 2
-image_yscale = 2

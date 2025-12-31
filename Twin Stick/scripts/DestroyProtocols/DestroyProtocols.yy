@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DestroyProtocols",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DestroyProtocols",
+  "parent":{
+    "name":"!Scripts",
+    "path":"folders/!Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

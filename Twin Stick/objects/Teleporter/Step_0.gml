@@ -1,1 +1,1 @@
-if instance_exists(ZombieBoss){sprite_index = s_0}else{sprite_index = s_Teleporter}
+if instance_exists(Enemy){sprite_index = s_0}else{sprite_index = s_Teleporter}

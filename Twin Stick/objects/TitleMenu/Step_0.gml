@@ -4,7 +4,9 @@ key_back = gamepad_button_check_pressed_any(gp_face2) or keyboard_check_pressed(
 
 if key_back{sub_menu = 0;menu_cursor = 0}
 if key_enter{
-if menu[menu_cursor] = "Solo" or menu[menu_cursor] = "Co-op"{room_goto(r_CharacterSelectScreen)}
+if menu[menu_cursor] = "Solo" or menu[menu_cursor] = "Co-op" or menu[menu_cursor] = "Versus"
+{GM.game_mode = menu[menu_cursor]
+room_goto(r_CharacterSelectScreen)}
 sub_menu = menu[menu_cursor]
 menu_cursor = 0
 }
@@ -14,7 +16,7 @@ if sub_menu = 0
 {
 menu[0] = "Solo"
 menu[1] = "Co-op"
-menu[2] = "??????"//Versus
+menu[2] = "Versus"
 menu[3] = "Database"
 menu[4] = "???????????"//Achievments
 menu[5] = "Configuration"

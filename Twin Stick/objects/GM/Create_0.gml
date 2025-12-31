@@ -6,10 +6,12 @@ dev_mode = true
 randomize()
 audio_group_load(audiogroup_sfx)
 audio_group_set_gain(audiogroup_default,0,0)
-audio_group_set_gain(audiogroup_sfx,0,0)
+audio_group_set_gain(audiogroup_sfx,1,0)
 depth = -1000
 screen_width = 1280
 screen_height = 720
+
+game_mode = ""
 
 game_paused = false
 player_amount = 0

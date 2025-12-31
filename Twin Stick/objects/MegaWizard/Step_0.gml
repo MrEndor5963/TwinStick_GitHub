@@ -1,4 +1,4 @@
-if GM.game_paused = true{exit}
+if GM.game_paused = true or GM.game_over = true{exit}
 
 node_x = x div 48
 node_y = y div 48
@@ -19,10 +19,9 @@ exit
 
 get_move_directions()
 
-move_timer -= 1
-if move_timer = 0{move_timer = 50
-hsp = move_direction_h*4;vsp = move_direction_v*4
-}
+
+hsp = move_direction_h*2;vsp = move_direction_v*2
+
 
 shoot_timer -= 1
 if shoot_timer = 0{
@@ -62,7 +61,19 @@ if collision_present(x,y+vsp+vsp_knockback)
 
 y += vsp+vsp_knockback
 
-hsp *= 0.95
-vsp *= 0.95
+if move_direction_h != 0 or move_direction_v != 0{
+
+if abs(move_direction_h) > abs(move_direction_v){
+if move_direction_h < 0{var_string = "L"}
+if move_direction_h > 0{var_string = "R"}}
+else{
+if move_direction_v < 0{var_string = "U"}
+if move_direction_v > 0{var_string = "D"}
+}
+
+
+sprite_string = "s_"+string(object_get_name(object_index))+string(var_string)
+sprite_index = asset_get_index(sprite_string)
+}
 
 move_hitbox()

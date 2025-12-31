@@ -5,7 +5,7 @@ if hp <= 0{
 sprite_index = asset_get_index("s_"+string(player_name)+"Dead")
 melee_equipped = false
 melee.sprite_index = s_0
-jam_timer = -1
+jam_timer = 0
 reload_timer = -1
 }
 else{
@@ -43,7 +43,10 @@ key_weapon_toggle_forward = gamepad_button_check_pressed(input_number,gp_shoulde
 key_knife_pressed = gamepad_button_check_pressed(input_number,gp_face2) or gamepad_button_check_pressed(input_number,gp_stickr)
 if abs(gamepad_axis_value(input_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(input_number,gp_axisrv)) > 0.1{
 aim_x = ((gamepad_axis_value(input_number,gp_axisrh)*10) div 1)
-aim_y = ((gamepad_axis_value(input_number,gp_axisrv)*10) div 1)}
+aim_y = ((gamepad_axis_value(input_number,gp_axisrv)*10) div 1)
+//aim_x = gamepad_axis_value(input_number,gp_axisrh)
+//aim_y = gamepad_axis_value(input_number,gp_axisrv)
+}
 stick_aim_x = gamepad_axis_value(input_number,gp_axisrh)
 stick_aim_y = gamepad_axis_value(input_number,gp_axisrv)
 aim_direction = point_direction(0, 0, aim_x,aim_y)

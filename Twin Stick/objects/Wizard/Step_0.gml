@@ -1,4 +1,4 @@
-if GM.game_paused = true{exit}
+if GM.game_paused = true or GM.game_over = true{exit}
 
 node_x = x div 48
 node_y = y div 48

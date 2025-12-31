@@ -135,6 +135,10 @@ var_player.input_number = cursor_control[3]
 var_player.player_number = 3
 }
 GM.player_amount = player_amount
+if GM.game_mode = "Versus"{
+room_goto(r_Versus1)
+}
+else{
 GM.next_floor = true
-play_msc(msc_Floor1)
+play_msc(msc_Floor1)}
 }
