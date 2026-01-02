@@ -47,6 +47,7 @@ if game_paused = true or game_over = true{
 menu_controls()
 
 if key_enter{
+glitch_intensity += 1
 if menu[menu_cursor] = "Resume"{game_paused = false}
 
 if menu[menu_cursor] = "Retry"{
@@ -169,7 +170,10 @@ visited_rooms = []
 
 floor_number += 1
 floor_map_create()
-room_goto(spawn_room)
+room_goto(r_FloorTransition)
 game_over = false
 
 }
+
+//if room = r_FloorTransition{
+//room_goto(spawn_room)}

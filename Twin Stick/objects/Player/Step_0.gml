@@ -1,4 +1,4 @@
-if GM.game_paused = true{exit}
+if GM.game_paused = true or room = r_FloorTransition{exit}
 
 depth = -y
 if hp <= 0{
@@ -129,7 +129,7 @@ if key_knife_pressed{melee_equipped = true}
 	
 #region Reload Weapon
 
-	if key_reload && ammo_inmag != ammo_inmag_max or ammo_inmag = 0 && ammo_reserve > 0{
+	if key_reload && ammo_inmag != ammo_inmag_max && ammo_reserve > 0 or ammo_inmag = 0 && ammo_reserve > 0{
 	if reload_timer = -1{
 	play_sfx(reload_sfx)
 	reload_timer = 0}}
@@ -254,6 +254,7 @@ sprite_index = asset_get_index(sprite_string)
 
 if place_meeting(x,y,Enemy) && hit_stun = 0{
 hp -= 1;hit_stun = 60;
+GM.glitch_intensity += 1
 ammo_reserve += round(ammo_reserve_max*ammo_recived_when_hurt)
 blood_splatter()
 play_sfx(sfx_PlayerHurt)

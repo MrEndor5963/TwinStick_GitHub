@@ -35,6 +35,7 @@ explosion_damage = 0
 weapon_draw_sprite = s_0
 slide_sprite = s_0
 hammer_sprite = s_0
+pump_sprite = s_0
 //bullet_xoff = 0
 //bullet_yoff = 0
 //
@@ -731,6 +732,9 @@ description = "A finely made skeet shooting double barrel shotgun. Although relo
 function wpn_Ithaca(){
 weapon_sprite = s_Ithaca
 weapon_name = "Ithaca 37"
+weapon_draw_sprite = s_IthacaBase
+pump_sprite = s_IthacaPump
+pump_distance = 20
 cost = 800
 if object_index = GM{
 array_push(weapon_list,weapon_sprite)

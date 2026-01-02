@@ -43,3 +43,20 @@ draw_sprite(weapon_sprite,0,var_x,var_y)
 
 if box_timer_take_weapon > 0{box_timer_take_weapon -= 1}
 if box_timer_take_weapon = 0 && box_timer = 0{box_open = false}
+
+//
+
+font = f_Main;draw_set_color(c_white)
+
+if display_text = true{
+draw_set_aligns(fa_center,fa_middle)
+if box_open = false{var_text = "Press A to open Mystery Box [Cost 950]"}
+if box_open = true && box_timer > 0{var_text = ""}
+if box_open = true && box_timer = 0{script_execute_wpn(weapon_sprite)}
+if box_open = true && box_timer = 0{var_text = "Press A to take "+string(weapon_name)}
+GM.display_text = true
+GM.display_text_x = x+(sprite_width/2)
+GM.display_text_y = y-(font_get_size(font)*2)
+GM.display_text_string = var_text
+}
+display_text = false

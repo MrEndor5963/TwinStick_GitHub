@@ -3,8 +3,8 @@
   "%Name":"sh_HitFlash",
   "name":"sh_HitFlash",
   "parent":{
-    "name":"Shaders",
-    "path":"folders/Shaders.yy",
+    "name":"EShaders",
+    "path":"folders/EShaders.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

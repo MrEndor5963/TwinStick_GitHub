@@ -26,7 +26,9 @@ function type(x, y, arg_text, progress, width){
 	
 	if text_speed = 1{text_progress = round(text_progress)}
 	if sleep > 0{sleep -= 1}
-	if text_progress != text_length && sleep = 0 && text_progress % 1 == 0{play_sfx(text_sound);sleep = 4}
+	if text_progress != text_length && sleep = 0 && text_progress % 1 == 0{
+	play_sfx(text_sound);
+	sleep = 4}
 	
 	for (var i = 1; i <= progress; i+=1) {
 		 char = string_char_at(text, i);

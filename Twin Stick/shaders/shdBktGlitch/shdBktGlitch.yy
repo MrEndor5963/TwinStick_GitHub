@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shdBktGlitch",
+  "name":"shdBktGlitch",
+  "parent":{
+    "name":"EShaders",
+    "path":"folders/EShaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

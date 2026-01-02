@@ -35,7 +35,7 @@ global.collision_grid = ds_grid_create(27,15)
 floor_number = 0
 next_floor = false
 floor_door = true
-map_size = 4
+map_size = 5
 map = ds_grid_create(map_size,map_size)
 draw_map = false
 
@@ -105,3 +105,12 @@ array_push(persistent_object_list,Player)
 array_push(persistent_object_list,MysteryBox)
 array_push(persistent_object_list,WallBuy)
 array_push(persistent_object_list,ShopKeeper)
+
+corp_logo_timer = 0
+
+display_text = false
+description_text = false
+// bktglitch_init()
+//application_surface_draw_enable(false); //disabling automatic redrawing of the application surface
+display_set_gui_size(1280, 720);
+glitch_intensity = 0
