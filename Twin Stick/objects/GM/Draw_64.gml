@@ -14,6 +14,7 @@ bktglitch_set_channel_shift(0.01);
 bktglitch_set_channel_dispersion(.1);
 
 
+
 // Setting the overall intensity of the effect, adding a bit when the ball bounces.
 if glitch_intensity > 0{glitch_intensity -= 0.04}
 if glitch_intensity < 0{glitch_intensity = 0}

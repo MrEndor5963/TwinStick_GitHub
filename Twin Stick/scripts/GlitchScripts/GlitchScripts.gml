@@ -177,7 +177,7 @@ function bktglitch_config_preset(_preset) {
 	    case BktGlitchPreset.B:       
 	        bktglitch_set_intensity(1.000000);
 	        bktglitch_set_line_shift(0.011000);
-	        bktglitch_set_line_speed(0.166667);
+	        bktglitch_set_line_speed(0.1);
 	        bktglitch_set_line_resolution(0.420000);
 	        bktglitch_set_line_drift(0.249702);
 	        bktglitch_set_line_vertical_shift(0.713333);
@@ -188,7 +188,7 @@ function bktglitch_config_preset(_preset) {
 	        bktglitch_set_jumble_shift(0.626667);
 	        bktglitch_set_channel_shift(0.003333);
 	        bktglitch_set_channel_dispersion(0.000000);
-	        bktglitch_set_shakiness(1.733333);
+	        bktglitch_set_shakiness(2);
 	        bktglitch_set_rng_seed(30.000000);
 	    break;    
 	    case BktGlitchPreset.C:   

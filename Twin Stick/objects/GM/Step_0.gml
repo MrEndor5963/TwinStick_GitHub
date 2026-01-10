@@ -47,11 +47,12 @@ if game_paused = true or game_over = true{
 menu_controls()
 
 if key_enter{
-glitch_intensity += 1
+
 if menu[menu_cursor] = "Resume"{game_paused = false}
 
 if menu[menu_cursor] = "Retry"{
 
+glitch_intensity += 1
 repeat (GM.player_amount){
 var1 = player_list[0].player_name
 var2 = player_list[0].input_number
@@ -70,7 +71,7 @@ floor_number = 0
 next_floor = true
 }
 
-if menu[menu_cursor] = "Main Menu"{goto_main_menu()}
+if menu[menu_cursor] = "Main Menu"{goto_main_menu();glitch_intensity += 1}
 
 if menu[menu_cursor] = "Exit Game"{game_end()}
 menu_cursor = 0
