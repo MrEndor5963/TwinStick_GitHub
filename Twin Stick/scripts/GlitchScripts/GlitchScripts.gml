@@ -1,3 +1,37 @@
+///@function fnc_glitch_config(time,noiseSprite,imageWidth,imageHeight,*distortionStrength,*aberrationStrength)
+///@description Function to quickly configure shader values
+
+function fnc_glitch_config(time,noiseSpr,imageW,imageH,distStr=1,abrStr=1){
+	static uni_distortTex=shader_get_sampler_index(shd_glitch,"distortTex")
+	static uni_distortW=shader_get_uniform(shd_glitch,"distortW")
+	static uni_distortH=shader_get_uniform(shd_glitch,"distortH")
+	static uni_time=shader_get_uniform(shd_glitch,"time")
+	static uni_distortSizeH=shader_get_uniform(shd_glitch,"distortSizeH")
+	static uni_pixelW=shader_get_uniform(shd_glitch,"pixelW")
+	static uni_pixelH=shader_get_uniform(shd_glitch,"pixelH")
+	static uni_distStr=shader_get_uniform(shd_glitch,"distortstrength")
+	static uni_abrStr=shader_get_uniform(shd_glitch,"aberrationstrength")
+	
+	if shader_current()!=shd_glitch{
+		show_debug_message("You cannot set uniforms when the shader is not active!")
+		exit
+	}
+	
+	var noiseTex=sprite_get_texture(noiseSpr,0)
+	
+	
+	texture_set_stage(uni_distortTex,noiseTex)
+	shader_set_uniform_f(uni_distortW,texture_get_texel_width(noiseTex))
+	shader_set_uniform_f(uni_distortH,texture_get_texel_height(noiseTex))
+	shader_set_uniform_f(uni_time,floor(time))
+	shader_set_uniform_f(uni_distortSizeH,sprite_get_height(noiseSpr))
+	shader_set_uniform_f(uni_pixelW,1/imageW)
+	shader_set_uniform_f(uni_pixelH,1/imageH)
+	shader_set_uniform_f(uni_distStr,distStr)
+	shader_set_uniform_f(uni_abrStr,abrStr)
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////
 //                              //
 //   bktGlitch 1.3.2            //

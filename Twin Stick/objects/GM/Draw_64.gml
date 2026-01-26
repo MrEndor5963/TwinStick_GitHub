@@ -23,6 +23,25 @@ bktglitch_set_intensity(0.025 + (glitch_intensity));
 
 // Drawing the application surface
 draw_surface(application_surface, 0, 0);
+if display_text = true{
+bktglitch_set_intensity(0.1 + (glitch_intensity))
+_width = string_width(display_text_string)
+_height = string_height(display_text_string)
+_x = display_text_x-(_width/2)
+_y = display_text_y-(_height/2)
+draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)
+}
+display_text = false
+
+if description_text = true{
+bktglitch_set_intensity(0.1 + (glitch_intensity))
+_width = string_width(description_text_string)
+_height = string_height(description_text_string)
+_x = description_text_x-(_width/2)
+_y = description_text_y-(_height/2)
+draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)
+}
+description_text = false
 
 // Done with the shader (this is really just shader_reset)!
 shader_reset()
