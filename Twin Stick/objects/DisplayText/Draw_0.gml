@@ -1,0 +1,7 @@
+draw_set_color(c_black)
+draw_text(x-2,y,text_string)
+draw_text(x+2,y,text_string)
+draw_text(x,y-2,text_string)
+draw_text(x,y+2,text_string)
+draw_set_color(c_white)
+draw_text(x,y,text_string)

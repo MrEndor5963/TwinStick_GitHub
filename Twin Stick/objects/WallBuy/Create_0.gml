@@ -6,6 +6,6 @@ instance_destroy();exit
 
 weapon_list = GM.weapon_list
 weapon_sprite = array_get(weapon_list,(irandom_range(0,array_length(weapon_list)-1)))
-display_text = false
+display_text = -68
 spawned = false
 

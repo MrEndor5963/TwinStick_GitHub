@@ -282,11 +282,10 @@ ds_list_destroy(list_temp)
 #endregion
 
 #region Buyable Stuff
-image_xscale = 1.2
-image_yscale = 1.2
+set_image_scale(1.2)
+
 if place_meeting(x,y,MysteryBox){
 var_object = instance_nearest(x,y,MysteryBox)
-var_object.display_text = true
 if key_interact_pressed && money >= 950 && var_object.box_open = false{
 player_point_change(-950)
 if free_mystery_box_rolls_per_floor > floor_mystery_box_rolls{player_point_change(950)}
@@ -305,7 +304,6 @@ switch_to_weapon(weapon_number)
 	
 if place_meeting(x,y,WallBuy){
 var_object = instance_nearest(x,y,WallBuy)
-var_object.display_text = true
 if key_interact_pressed && money >= var_object.cost{
 player_point_change(-var_object.cost)
 get_new_weapon(var_object.weapon_sprite)
@@ -318,7 +316,6 @@ play_sfx(sfx_Buy)
 
 if place_meeting(x,y,Item){
 var_object = instance_nearest(x,y,Item)
-var_object.display_text = true
 if key_interact_pressed && money >= var_object.cost{
 if var_object.item_is_free = false{player_point_change(-var_object.cost)}
 new_item = var_object.sprite_index
@@ -332,7 +329,7 @@ if place_meeting(x,y,Teleporter) && key_interact{
 Teleporter.teleport_timer += 1
 }
 
-image_xscale = 1;image_yscale = 1
+set_image_scale(1)
 #endregion End Of Buyable Stuff
 
 //end of alive code

@@ -1,3 +1,7 @@
+function set_image_scale(arg_scale){
+image_xscale = arg_scale;image_yscale = arg_scale
+}
+
 function draw_set_aligns(arg_halign,arg_valign){
 draw_set_halign(arg_halign);draw_set_valign(arg_valign)
 }

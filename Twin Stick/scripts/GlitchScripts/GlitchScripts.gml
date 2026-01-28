@@ -12,6 +12,7 @@ function fnc_glitch_config(time,noiseSpr,imageW,imageH,distStr=1,abrStr=1){
 	static uni_distStr=shader_get_uniform(shd_glitch,"distortstrength")
 	static uni_abrStr=shader_get_uniform(shd_glitch,"aberrationstrength")
 	
+	
 	if shader_current()!=shd_glitch{
 		show_debug_message("You cannot set uniforms when the shader is not active!")
 		exit

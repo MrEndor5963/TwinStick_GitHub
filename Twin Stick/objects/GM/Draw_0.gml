@@ -101,26 +101,6 @@ draw_set_alpha(1)
 draw_map = false
 }
 
-////////////////////////
-
-
-
-
-
-
-global.moment += global.spd
-if global.moment >= sprite_get_width(global.noise){
-	global.moment = 0
-}
-
-if display_text = true{draw_text(display_text_x,display_text_y,display_text_string)}
-
-if description_text = true{draw_text(description_text_x,description_text_y,description_text_string)}
-
-shader_reset()
-
-////////////////////////////
-
 if room = r_FloorTransition{
 if gamepad_button_check_pressed_any(gp_face1) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("Z")){
 glitch_intensity += 1

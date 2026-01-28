@@ -18,7 +18,7 @@ set_bullet_power(18,3,1)
 set_gun_handling(2,2,1)
 bullet_speed = 60
 shoot_delay = 12
-bullet_sprite = s_Bullet
+bullet_sprite = s_BulletTracer
 reload_time = 60
 bullet_amount = 1
 bullet_spread = 1

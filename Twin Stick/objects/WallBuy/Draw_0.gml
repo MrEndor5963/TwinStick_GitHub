@@ -13,12 +13,15 @@ draw_sprite_ext(weapon_sprite,0,var_x,var_y,1,1,image_angle,image_blend,image_al
 
 font = f_Main;draw_set_color(c_white)
 
-if display_text = true{
-draw_set_aligns(fa_center,fa_middle)
+
+if place_meeting(x-10,y,Player) or place_meeting(x+10,y,Player) or place_meeting(x,y-10,Player) or place_meeting(x,y+10,Player){
 var_text = "Press A to Buy "+string(weapon_name)+" [Cost "+string(cost)+"]"
-GM.display_text = true
-GM.display_text_x = x+(sprite_width/2)
-GM.display_text_y = y-(font_get_size(font))
-GM.display_text_string = var_text
+if !instance_exists(display_text){
+display_text = instance_create_depth(x+(sprite_width/2),y-(font_get_size(font)),-room_height-100,DisplayText)
+display_text.text_string = var_text
+display_text.creator = id
+display_text.despawn = false
+with DisplayText{draw_set_aligns(fa_center,fa_middle)}
 }
-display_text = false
+}
+else{if instance_exists(display_text){display_text.despawn = true}}

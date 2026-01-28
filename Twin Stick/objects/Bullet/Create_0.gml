@@ -6,3 +6,4 @@ hurts_player = false
 hurts_enemy = true
 damage = 1
 explosive = false
+image_xscale = 0

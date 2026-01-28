@@ -10,8 +10,8 @@
   "name":"Bullet",
   "overriddenProperties":[],
   "parent":{
-    "name":"AObjects",
-    "path":"folders/AObjects.yy",
+    "name":"AMainStuff",
+    "path":"folders/AObjects/AMainStuff.yy",
   },
   "parentObjectId":null,
   "persistent":false,

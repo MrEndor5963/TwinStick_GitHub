@@ -113,15 +113,15 @@ description_text = false
 // bktglitch_init()
 //application_surface_draw_enable(false); //disabling automatic redrawing of the application surface
 display_set_gui_size(1280, 720);
-glitch_intensity = 3
+glitch_intensity = 2
 
 //////////////////////
 ///////////////////////
 ////////////////////////////
-global.moment=0
-global.spd=0.5
-global.distStr=0.5
-global.abrStr=0
+//global.moment=0
+//global.spd=0.5
+//global.distStr=0.5
+//global.abrStr=0
 
-global.noise=spr_noise_4
+//global.noise=spr_noise_4
 

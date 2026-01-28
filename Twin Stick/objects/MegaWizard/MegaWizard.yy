@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
-    "path":"folders/BSprites/UI/Enemies.yy",
+    "path":"folders/AObjects/Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,

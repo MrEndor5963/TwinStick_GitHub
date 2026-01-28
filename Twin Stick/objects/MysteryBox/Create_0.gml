@@ -5,7 +5,7 @@ instance_destroy();exit
 }
 
 weapon_list = GM.weapon_list
-display_text = false
+display_text = -678
 box_open = false
 box_timer = 0
 box_toggle_timer = 0
