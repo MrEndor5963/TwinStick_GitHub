@@ -1,1 +1,0 @@
-weapon_sprite = s_Karabiner98k

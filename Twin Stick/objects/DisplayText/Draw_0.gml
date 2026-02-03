@@ -1,3 +1,4 @@
+draw_set_aligns(fa_center,fa_middle)
 draw_set_color(c_black)
 draw_text(x-2,y,text_string)
 draw_text(x+2,y,text_string)

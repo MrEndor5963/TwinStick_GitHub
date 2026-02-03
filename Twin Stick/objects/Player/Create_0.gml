@@ -104,9 +104,34 @@ free_mystery_box_rolls_per_floor = 0
 cryptocoin = 0
 png_explosions = 0
 
+glitch_int_gun_sprite = 0.0
+glitch_int_reserve = 0.0
+glitch_int_mag = 0.0
+glitch_int_gun_name = 0.0
+glitch_int_portrait = 0.0
+glitch_int_points = 0.0
+glitch_int_item = [] 
+
+
+function glitch_sprite(arg_sprite,arg_x,arg_y){
+_width = sprite_get_width(arg_sprite)
+_height = sprite_get_height(arg_sprite)
+_x = arg_x-(_width/2)
+_y = arg_y-(_height/2)
+draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)}
+
+function glitch_text(arg_x,arg_y,arg_text){
+_width = string_width(arg_text)
+_height = string_height(arg_text)
+_x = arg_x
+if pon_x = -1{_x = arg_x-_width}
+_y = arg_y-(_height/2)
+draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)}
+
 function player_point_change(arg_amount){
 array_insert(point_que,0,arg_amount)
 array_insert(point_draw_timer,0,0)
+glitch_int_points = 1
 }
 
 function get_new_weapon(arg_weapon){
@@ -119,6 +144,8 @@ weapon_sprite = arg_weapon
 script_execute_wpn(arg_weapon)
 saved_ammo_inmag[weapon_number] = ammo_inmag_max
 saved_ammo_reserve[weapon_number] = ammo_reserve_max
+glitch_int_mag = 1;glitch_int_reserve = 1
+glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }
 
 function switch_to_weapon(arg_weapon_number){
@@ -126,13 +153,15 @@ weapon_number = arg_weapon_number
 script_execute_wpn(weapon[weapon_number])
 ammo_inmag = saved_ammo_inmag[weapon_number]
 ammo_reserve = saved_ammo_reserve[weapon_number]
+glitch_int_mag = 1;glitch_int_reserve = 1
+glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }
 
 
 weapon = []
 script_execute_wpn(s_m1911)
+give_all_weapons = false
 //give_all_weapons = true
-give_all_weapons = true
 if give_all_weapons = true{
 weapon = []
 weapon_slots = array_length(GM.weapon_list)

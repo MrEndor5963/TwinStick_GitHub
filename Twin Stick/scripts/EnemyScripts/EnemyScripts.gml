@@ -107,7 +107,7 @@ value = ds_grid_get(var_grid,node_x,node_y)
 if value < lowest_value && var_player.hp > 0{lowest_value = value;player_target = GM.player_list[i]}
 i += 1
 }
-if collision_line(x,y,player_target.x,player_target.y,tiles,false,false) = noone or object_index = SpikeFly{
+if collision_line(x,y,player_target.x,player_target.y,[Collision,tiles_big,tiles_small],false,false) = noone or object_index = SpikeFly{
 direction = point_direction(x,y,player_target.x,player_target.y)
 speed = 1
 move_direction_h = hspeed

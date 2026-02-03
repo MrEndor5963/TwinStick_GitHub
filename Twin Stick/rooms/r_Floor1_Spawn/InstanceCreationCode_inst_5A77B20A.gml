@@ -1,1 +1,0 @@
-weapon_sprite = s_m1911

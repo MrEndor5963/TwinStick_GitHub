@@ -87,7 +87,7 @@ if deploy_timer >= deploy_time{
 	deploying = false;
 	saved_ammo_inmag[weapon_number] = ammo_inmag
 	saved_ammo_reserve[weapon_number] = ammo_reserve
-	switch_to_weapon(next_weapon_number)
+	switch_to_weapon(next_weapon_number);
 	deploy_timer = deploy_time
 }
 
@@ -140,7 +140,9 @@ if key_knife_pressed{melee_equipped = true}
 	
 	if reload_bullet_time != 0{
 	if reload_timer >= reload_startup+((reload_bullet_time*reload_amount)-((ammo_inmag_max-ammo_inmag-1)*reload_bullet_time)) && reload_timer <= reload_time-reload_endlag+reload_speed
-	{ammo_inmag += 1;ammo_reserve -= 1}
+	{ammo_inmag += 1;ammo_reserve -= 1
+	glitch_int_mag = 1;glitch_int_reserve = 1
+	}
 	}
 
 	if reload_timer >= reload_time{
@@ -148,6 +150,8 @@ if key_knife_pressed{melee_equipped = true}
 	if reload_size > ammo_reserve{reload_size = ammo_reserve}
 	ammo_inmag += reload_size
 	ammo_reserve -= reload_size
+	if reload_size > 0{glitch_int_mag = 1;glitch_int_reserve = 1}
+	
 	reload_timer = -1
 	trigger_delay_timer = 0
 	}
@@ -167,7 +171,8 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = fa
 	
 	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && auto = false && trigger_delay_timer = trigger_delay{
 	shoot_timer = shoot_delay
-	ammo_inmag -= 1
+	ammo_inmag -= 1;
+	glitch_int_mag = 0.8
 	direction = aim_direction+recoil
 	var_x = sprite_get_xoffset(weapon_sprite)
 	speed = sprite_get_width(weapon_sprite)-var_x-5
