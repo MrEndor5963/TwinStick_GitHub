@@ -110,7 +110,7 @@ glitch_int_mag = 0.0
 glitch_int_gun_name = 0.0
 glitch_int_portrait = 0.0
 glitch_int_points = 0.0
-glitch_int_item = [] 
+//glitch_int_item = [] 
 
 
 function glitch_sprite(arg_sprite,arg_x,arg_y){

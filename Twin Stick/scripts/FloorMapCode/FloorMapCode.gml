@@ -80,7 +80,11 @@ open_nodes = []
 //child_nodes = []
 //closed_nodes = []
 if floor_number = 1{spawn_room = r_Floor1_Spawn}
-else{spawn_room = r_Floor2_Spawn}
+if floor_number = 2{spawn_room = r_Floor2_Spawn}
+if floor_number = 3{spawn_room = r_Floor3_Spawn}
+if floor_number = 4{spawn_room = r_Floor4_Spawn}
+if floor_number = 5{spawn_room = r_Floor5_Spawn}
+if floor_number > 5{spawn_room = r_Floor5_Spawn}
 ds_grid_clear(map,0)
 ds_grid_set(map,map_x,map_y,spawn_room)
 array_push(open_nodes,x_plus_y(map_x,map_y))
