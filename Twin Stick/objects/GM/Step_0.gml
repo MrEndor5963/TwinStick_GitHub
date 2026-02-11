@@ -178,3 +178,5 @@ game_over = false
 
 //if room = r_FloorTransition{
 //room_goto(spawn_room)}
+
+time_in_room +=	1;if time_in_room > 999998{time_in_room = 999998}

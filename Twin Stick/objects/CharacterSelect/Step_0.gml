@@ -112,6 +112,7 @@ var_player = instance_create_depth(300,300,depth,Player)
 var_player.player_name = player_selected[0]
 var_player.input_number = cursor_control[0]
 var_player.player_number = 0
+
 }
 
 if player_ready[1] = true{

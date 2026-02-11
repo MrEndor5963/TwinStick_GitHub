@@ -13,7 +13,7 @@ if melee_equipped = false && hp > 0{
 direction = gun_angle;speed = 1
 
 if hammer_sprite != s_0{
-hammer_angle_offset = (trigger_delay_timer*12)*weapon_yscale
+hammer_angle_offset = ((trigger_delay_timer*12)*weapon_yscale)*revolver_hammer_time_divider
 if trigger_delay_timer >= trigger_delay{hammer_angle_offset = 0}
 hammer_x_offset = hspeed*(sprite_get_xoffset(hammer_sprite)-sprite_get_xoffset(weapon_draw_sprite))
 hammer_y_offset = vspeed*(sprite_get_xoffset(hammer_sprite)-sprite_get_xoffset(weapon_draw_sprite))//xoffset*vspeed works I guess?

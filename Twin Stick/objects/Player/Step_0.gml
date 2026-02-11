@@ -1,5 +1,18 @@
 if GM.game_paused = true or room = r_FloorTransition{exit}
 
+if new_floor = true{
+i = 0
+repeat(array_length(weapon)){
+if array_contains(item_list,s_item_HammerAndSickle) && array_contains(GM.soviet_list,weapon[i]){
+switch_to_weapon(i)
+ammo_inmag = ammo_inmag_max
+ammo_reserve = ammo_reserve_max
+}
+i += 1}
+floor_mystery_box_rolls = 0
+repeat(cryptocoin){player_point_change(irandom_range(-10000,10000))}
+new_floor = false
+}
 depth = -y
 if hp <= 0{
 sprite_index = asset_get_index("s_"+string(player_name)+"Dead")
@@ -97,34 +110,8 @@ if key_knife_pressed{melee_equipped = true}
 
 	#region Weapon damage
 	script_execute_wpn(weapon_sprite)
-	shoot_amount = 1
-	spread_increase = 0
-	spread_mult = 1
-	damage_mult = 1
-	recoil_mult = 1
-	knockback_mult = 1
-	bullet_mult = 1
-	shot_reward += shot_reward_increase
-	if array_contains(GM.handgun_list,weapon_sprite){
-	damage_mult += handgun_damage_mult
-	recoil_mult += handgun_recoil_mult
-	knockback_mult += handgun_knockback_mult
-	}
-	if array_contains(GM.shotgun_list,weapon_sprite){
-	spread_mult += shotgun_spread_mult
-	bullet_mult += shotgun_bullet_mult
-	}
-	if array_contains(GM.sniper_list,weapon_sprite){
-	spread_increase += sniper_spread_increase
-	damage_mult += sniper_damage_mult
-	}
-	
-	weapon_damage = round(weapon_damage*damage_mult)
-	knockback = knockback*knockback_mult
-	gun_recoil = gun_recoil*recoil_mult
-	bullet_spread = (bullet_spread*spread_mult)+spread_increase
-	shoot_amount = shoot_amount+shoot_amount_increase
-	
+	if array_contains(item_list,s_item_HammerAndSickle) && array_contains(GM.soviet_list,weapon_sprite){
+	shot_reward = 0;kill_reward = 0}
 	#endregion End of weapon damage
 	
 #region Reload Weapon
@@ -189,6 +176,7 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = fa
 	_bullet.sprite_index = bullet_sprite
 	_bullet.creator = id
 	_bullet.shot_reward = shot_reward
+	_bullet.kill_reward = kill_reward
 	_bullet.explosive = explosive
 	_bullet.explosion_damage = explosion_damage
 	_bullet.png_explosion_checks = png_explosions
@@ -220,9 +208,11 @@ else{melee.sprite_index = s_0}
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
-var_move = mov_spd-clamp(weapon_weight/strength,0,100)
+var_move = (mov_spd*mov_mult)-clamp(weapon_weight/strength,0,100)
 if var_move<0{var_move = 0}
-if var_move > mov_spd{var_move = mov_spd}
+if var_move > (mov_spd*mov_mult){var_move = mov_spd}
+
+if GM.time_in_room < rage_spell_time{var_move *= 2}
 
 hsp = (key_right-key_left)*var_move
 hsp += hsp_knockback

@@ -31,10 +31,20 @@ display_text = instance_create_depth(x+(sprite_width/2),y-(font_get_size(font)),
 display_text.text_string = var_text
 display_text.creator = id
 display_text.despawn = false
-with DisplayText{draw_set_aligns(fa_center,fa_middle)}
+with display_text{draw_set_aligns(fa_center,fa_middle)}
+
+description_text = instance_create_depth(x+(sprite_width/2),y,-room_height-100,DisplayText)
+description_text.text_string = description
+description_text.creator = id
+description_text.despawn = false
+description_text.textbox = true
+with description_text{draw_set_aligns(fa_center,fa_middle)}
 }
 }
-else{if instance_exists(display_text){display_text.despawn = true}}
+else{
+if instance_exists(display_text){display_text.despawn = true}
+if instance_exists(description_text){description_text.despawn = true}
+}
 
 
 

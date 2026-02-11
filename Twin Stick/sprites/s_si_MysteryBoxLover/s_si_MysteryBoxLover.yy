@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"ItemCodeToDoList",
-    "path":"folders/BSprites/ShopItemSprites/ItemCodeToDoList.yy",
+    "path":"folders/BSprites/ItemSprites/ItemCodeToDoList.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

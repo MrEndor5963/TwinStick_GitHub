@@ -30,6 +30,7 @@ shoot_sfx = sfx_m1911Shoot
 reload_bullet_time = 0
 shoot_amount = 1
 shot_reward = 10
+kill_reward = 100
 explosive = false
 explosion_damage = 0
 weapon_draw_sprite = s_0
@@ -42,6 +43,58 @@ pump_sprite = s_0
 description = ""
 var_string = string_delete(sprite_get_name(arg_weapon_sprite),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
+
+
+	if object_index = Player{
+	
+	shoot_amount = 1
+	spread_increase = 0
+	spread_mult = 1
+	damage_mult = 1+player_damage_mult
+	recoil_mult = 1
+	knockback_mult = 1
+	bullet_mult = 1
+	weight_mult = 1
+	reload_mult = 1+player_reload_mult
+	if string_starts_with(weapon_name,"S") or string_starts_with(weapon_name,"s"){
+	ammo_reserve_max += round(ammo_reserve_max*cool_s_mult)
+	reload_mult += cool_s_mult
+	recoil_mult -= cool_s_mult
+	knockback_mult -= cool_s_mult
+	weight_mult -= cool_s_mult
+	}
+	shot_reward += shot_reward_increase
+	if array_contains(GM.handgun_list,weapon_sprite){
+	damage_mult += handgun_damage_mult
+	recoil_mult += handgun_recoil_mult
+	knockback_mult += handgun_knockback_mult
+	}
+	if array_contains(GM.revolver_list,weapon_sprite){
+	trigger_delay /= revolver_hammer_time_divider;trigger_delay = round(trigger_delay)
+	deploy_time /= revolver_hammer_time_divider;deploy_time = round(deploy_time)
+	reload_mult += revolver_reload_mult
+	}
+	if array_contains(GM.shotgun_list,weapon_sprite){
+	spread_mult += shotgun_spread_mult
+	bullet_mult += shotgun_bullet_mult
+	}
+	if array_contains(GM.sniper_list,weapon_sprite){
+	spread_increase += sniper_spread_increase
+	damage_mult += sniper_damage_mult
+	}
+	
+	if array_contains(GM.soviet_list,weapon_sprite){
+	ammo_reserve_max += round(ammo_reserve_max*soviet_ammo_mult)}
+	
+	
+	weapon_damage = round(weapon_damage*damage_mult)
+	knockback = knockback*knockback_mult
+	gun_recoil = gun_recoil*recoil_mult
+	weapon_weight = weapon_weight*weight_mult;if weapon_weight < 0{weapon_weight = 0}
+	bullet_spread = (bullet_spread*spread_mult)+spread_increase
+	shoot_amount = shoot_amount+shoot_amount_increase
+	reload_speed = reload_mult
+	}
 }
 
 function set_gun_ammo(arg_ammo_inmag_max,arg_ammo_reserve_max){
@@ -588,6 +641,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
+array_push(soviet_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,60)
@@ -693,6 +747,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(lmg_list,weapon_sprite)
+array_push(soviet_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(100,100)
@@ -734,7 +789,7 @@ weapon_sprite = s_Ithaca
 weapon_name = "Ithaca 37"
 weapon_draw_sprite = s_IthacaBase
 pump_sprite = s_IthacaPump
-pump_distance = 20
+//pump_distance = 20
 cost = 800
 if object_index = GM{
 array_push(weapon_list,weapon_sprite)
@@ -1021,6 +1076,7 @@ if object_index = GM{
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
+array_push(soviet_list,weapon_sprite)
 exit}
 set_gun_ammo(1,1)
 set_bullet_power(500,0,1)

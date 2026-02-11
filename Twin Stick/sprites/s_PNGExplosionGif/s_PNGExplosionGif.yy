@@ -41,8 +41,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"BSprites",
-    "path":"folders/BSprites.yy",
+    "name":"SpritesFromItemSpawnedObjects",
+    "path":"folders/BSprites/ItemSprites/SpritesFromItemSpawnedObjects.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

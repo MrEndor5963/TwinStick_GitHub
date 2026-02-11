@@ -11,3 +11,4 @@ contact_list = []
 shot_reward = 10
 png_explosion_checks = 0
 explosive = false
+kill_reward = 100

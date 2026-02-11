@@ -103,8 +103,14 @@ draw_map = false
 
 if room = r_FloorTransition{
 if gamepad_button_check_pressed_any(gp_face1) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("Z")){
-glitch_intensity += 1
-room_goto(spawn_room)}
+	glitch_intensity += 1
+	i = 0
+	repeat(array_length(player_list)){
+			var_player = player_list[i]
+			var_player.new_floor = true
+			i += 1}
+	room_goto(spawn_room)
+}
 
 corp_logo_timer += 0.03
 yoff =  1*sin(corp_logo_timer)

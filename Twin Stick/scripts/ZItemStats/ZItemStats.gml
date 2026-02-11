@@ -4,19 +4,20 @@ var_string = string_delete(sprite_get_name(arg_item_sprite),1,7)
 script_execute(asset_get_index("item_"+string(var_string)))
 }
 
+
 function reference_items(){
 item_Heart()
 item_SuperMushroom()
 item_Move()
 item_WeaponSlots()
-item_DoubleTap()
+//item_DoubleTap()
 item_SpeedCola()
 item_BloodBullets()
 item_MLGNoScoper()
 item_DamageUp()
 item_ShotGunner()
-item_PoundOfFeathers()
-item_WeightedBelt()
+//item_PoundOfFeathers()
+//item_WeightedBelt()
 item_HandgunHavoc()
 item_NoobiniPizzanini()
 item_TeddyBear()
@@ -26,6 +27,11 @@ item_MetalDetector()
 item_CryptoCoin()
 item_ChoccyMilk()
 item_PNGExplosion()
+item_DinoChickenNuggies()
+item_CoolLookingS()
+item_CowboyHat()
+item_RageSpell()
+item_HammerAndSickle()
 }
 
 function item_Heart(){
@@ -92,14 +98,14 @@ shoot_amount_increase += 1
 
 function item_SpeedCola(){
 item_sprite = s_item_SpeedCola
-item_name = "Speed Cola"
+item_name = "Speed Soda"
 cost = 3000
-description = "Increased players reload speed"
+description = "Increased reload speed on all guns by 100%"
 if object_index = GM{
 array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
-reload_speed += 1
+player_reload_mult += 1
 }
 }
 
@@ -123,7 +129,7 @@ item_name = "Damage Up"
 cost = 1200
 description = "All weapons do 10% more damage"
 if object_index = Player && new_item != -1{
-damage_mult += 0.1
+player_damage_mult += 0.1
 }
 }
 
@@ -131,7 +137,7 @@ function item_BloodBullets(){
 item_sprite = s_item_BloodBullets
 item_name = "Blood Bullets"
 cost = 1200
-description = "Get some extra ammo when hurt"
+description = "Refill 20% of your max ammo reserve when getting hurt"
 if object_index = GM{
 array_push(item_list,item_sprite)
 exit}
@@ -201,7 +207,7 @@ handgun_knockback_mult += 1
 function item_NoobiniPizzanini(){
 item_sprite = s_item_NoobiniPizzanini
 item_name = "Noobini Pizzanini"
-cost = 500
+cost = 250
 description = "Earn an extra $1 per bullet hit enemy"
 if object_index = GM{
 array_push(item_list,item_sprite)
@@ -240,8 +246,8 @@ wall_ammo_multiplier += 0.5
 function item_Wallnut(){
 item_sprite = s_item_Wallnut
 item_name = "Wallnut"
-cost = 1600
-description = "Max HP +3"
+cost = 500
+description = "Max HP +2"
 if object_index = GM{
 array_push(item_list,item_sprite)
 exit}
@@ -279,14 +285,14 @@ cryptocoin += 1
 function item_ChoccyMilk(){
 item_sprite = s_item_ChoccyMilk
 item_name = "Choccy Milk"
-cost = 1500
+cost = 1400
 description = "+1 speed, +10% reload speed, and +2 hp"
 if object_index = GM{
 array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
 mov_spd += 1
-reload_speed += 0.1
+player_reload_mult += 0.1
 hp += 2;if hp > hp_max{hp = hp_max}
 }
 }
@@ -301,5 +307,71 @@ array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
 png_explosions += 1
+}
+}
+
+function item_DinoChickenNuggies(){
+item_sprite = s_item_DinoChickenNuggies
+item_name = "Dino Chicken Nuggies"
+cost = 1000
+description = "+5% damage, +5% move speed, +5% reload speed"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+damage_mult += 0.05;mov_mult += 5;player_reload_mult += 0.05
+}
+}
+
+function item_CoolLookingS(){
+item_sprite = s_item_CoolLookingS
+item_name = "Cool Looking S"
+cost = 1900
+description = "Guns with names that start with S get -19% recoil, -19% knockback, -19% weight, +19% max reserve ammo, and +19% reload speed"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+cool_s_mult += 0.19
+}
+}
+
+function item_CowboyHat(){
+item_sprite = s_item_CowboyHat
+item_name = "Cowboy Hat"
+cost = 1800
+description = "All revolvers draw and shoot twice as fast and get +100% reload speed"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+revolver_deploy_time_divider *= 2;revolver_hammer_time_divider *= 2
+;revolver_reload_mult += 1
+}
+}
+
+function item_RageSpell(){
+item_sprite = s_item_RageSpell
+item_name = "Rage Spell"
+cost = 850
+description = "Move at 2x speed for 4.5 seconds after entering a new room"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+rage_spell_time += 270
+}
+}
+
+function item_HammerAndSickle(){
+item_sprite = s_item_HammerAndSickle
+item_name = "Hammer & Sickle"
+cost = 1922
+description = "All Soviet invented weaponry gets +100% max reserve ammo and a full ammo refill at the start of each floor but give no shot or kill reward"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+soviet_ammo_mult += 1
 }
 }

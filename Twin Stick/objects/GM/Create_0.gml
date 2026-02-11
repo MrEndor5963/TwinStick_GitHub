@@ -24,6 +24,7 @@ next_room = -1
 room_start = true
 disable_countdown = true
 game_over = false
+time_in_room = 0
 
 cam_size_x = 1280;cam_size_y = 720
 camera_set_view_size(view_camera[0],cam_size_x,cam_size_y)
@@ -91,6 +92,7 @@ full_ar_list = []
 lmg_list = []
 shotgun_list = []
 sniper_list = []
+soviet_list = []
 nazi_list = []
 
 referece_weapons()

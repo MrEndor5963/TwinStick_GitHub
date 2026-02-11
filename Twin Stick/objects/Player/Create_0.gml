@@ -1,5 +1,6 @@
 //Object will be created by CharacterSelect
 spawned = false
+new_floor = false
 array_push(GM.player_list,id)
 set_tileset_collision()
 
@@ -78,16 +79,24 @@ item_list = []
 new_item = -1
 item_draw_y = 0
 
-damage_mult = 1
+mov_mult = 1
+
+player_damage_mult = 0
+player_reload_mult = 0
 knockback_mult = 1
 
 handgun_damage_mult = 0
 handgun_recoil_mult = 0
 handgun_knockback_mult = 0
+revolver_reload_mult = 0
+revolver_hammer_time_divider = 1
+revolver_deploy_time_divider = 1
 shotgun_spread_mult = 0
 shotgun_bullet_mult = 0
 sniper_damage_mult = 0
 sniper_spread_increase = 0
+
+soviet_ammo_mult = 0
 
 shoot_amount = 1
 shoot_amount_increase = 0
@@ -96,13 +105,19 @@ ammo_recived_when_hurt = 0
 wall_ammo_multiplier = 0
 bullets_per_new_room = 0
 
+//player_shot_reward_mult = 1
+//player_kill_reward_mult = 1
 shot_reward = 10
+kill_reward = 100
 shot_reward_increase = 0
 floor_mystery_box_rolls = 0
 total_mystery_box_rolls = 0
 free_mystery_box_rolls_per_floor = 0
 cryptocoin = 0
 png_explosions = 0
+rage_spell_time = 0
+
+cool_s_mult = 0
 
 glitch_int_gun_sprite = 0.0
 glitch_int_reserve = 0.0
@@ -161,7 +176,7 @@ glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 weapon = []
 script_execute_wpn(s_m1911)
 give_all_weapons = false
-//give_all_weapons = true
+give_all_weapons = true
 if give_all_weapons = true{
 weapon = []
 weapon_slots = array_length(GM.weapon_list)
