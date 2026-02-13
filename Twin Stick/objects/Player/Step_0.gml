@@ -315,6 +315,7 @@ if key_interact_pressed && money >= var_object.cost{
 if var_object.item_is_free = false{player_point_change(-var_object.cost)}
 new_item = var_object.sprite_index
 if var_object.consumable = false{array_push(GM.items_bought,var_object.sprite_index)}
+with var_object{instance_destroy()}
 play_sfx(sfx_Buy)
 }
 

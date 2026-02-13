@@ -1,3 +1,6 @@
+if image_xscale = 0{spawn_penetration = penetration}
+damage = damage/(spawn_penetration/penetration)
+
 if GM.game_paused = true{speed = 0;exit}
 
 direction = image_angle

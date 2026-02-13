@@ -57,7 +57,7 @@ function type(x, y, arg_text, progress, width){
 				word_width += string_width(word_char);
 				if (draw_x + word_width > width) {
 					draw_x = 0;
-					draw_y += string_height("A")*1.2;;text_rows += 1
+					draw_y += string_height("A");;text_rows += 1
 					break;
 				}
 			}

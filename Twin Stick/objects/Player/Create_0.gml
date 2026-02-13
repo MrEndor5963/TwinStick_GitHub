@@ -91,8 +91,10 @@ handgun_knockback_mult = 0
 revolver_reload_mult = 0
 revolver_hammer_time_divider = 1
 revolver_deploy_time_divider = 1
+smg_shot_delay_decrease = 0
 shotgun_spread_mult = 0
 shotgun_bullet_mult = 0
+twelve_bonus_ammo = 0
 sniper_damage_mult = 0
 sniper_spread_increase = 0
 
@@ -176,7 +178,7 @@ glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 weapon = []
 script_execute_wpn(s_m1911)
 give_all_weapons = false
-give_all_weapons = true
+//give_all_weapons = true
 if give_all_weapons = true{
 weapon = []
 weapon_slots = array_length(GM.weapon_list)

@@ -18,7 +18,7 @@ mov_spd = 12
 strength = 5
 player_weight = 1.29
 //reload_speed = 0.75
-healthcare = 500
+healthcare = 2000
 draw_color = c_aqua
 player_age = 19
 }
@@ -30,19 +30,19 @@ mov_spd = 6
 strength = 17
 player_weight = 2.85
 //reload_speed = 1.2
-healthcare = 12000
+healthcare = 195000
 draw_color = $FF00A9
 player_age = 26
 }
 
 if player_name = "Nia"{	
-hp = 10;hp_max = 10
+hp = 8;hp_max = 8
 starting_weapon = s_VzSkorpion
 mov_spd = 7
 strength = 4
 player_weight = 1.23
 //reload_speed = 1.5
-healthcare = 4000
+healthcare = 5000
 draw_color = $3B00FF
 player_age = 23
 }
@@ -54,7 +54,7 @@ mov_spd = 10
 strength = 12
 player_weight = 1.48
 //reload_speed = 0.95
-healthcare = 1500
+healthcare = 3000
 draw_color = c_orange
 player_age = 29
 }

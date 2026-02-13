@@ -23,7 +23,7 @@ reload_time = 60
 bullet_amount = 1
 bullet_spread = 1
 jam_chance = 0.08
-jam_time = 120
+jam_time = 150
 trigger_delay = 0
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
@@ -63,7 +63,9 @@ script_execute(asset_get_index("wpn_"+string(var_string)))
 	knockback_mult -= cool_s_mult
 	weight_mult -= cool_s_mult
 	}
-	shot_reward += shot_reward_increase
+	if string_digits(weapon_name) = "12" or string_digits(weapon_name) = "1216"{
+	ammo_reserve_max += twelve_bonus_ammo;}
+	
 	if array_contains(GM.handgun_list,weapon_sprite){
 	damage_mult += handgun_damage_mult
 	recoil_mult += handgun_recoil_mult
@@ -74,6 +76,11 @@ script_execute(asset_get_index("wpn_"+string(var_string)))
 	deploy_time /= revolver_hammer_time_divider;deploy_time = round(deploy_time)
 	reload_mult += revolver_reload_mult
 	}
+	
+	if array_contains(GM.smg_list,weapon_sprite){
+	shoot_delay -= smg_shot_delay_decrease;if shoot_delay < 1{shoot_delay = 1}
+	}
+	
 	if array_contains(GM.shotgun_list,weapon_sprite){
 	spread_mult += shotgun_spread_mult
 	bullet_mult += shotgun_bullet_mult
@@ -94,18 +101,25 @@ script_execute(asset_get_index("wpn_"+string(var_string)))
 	bullet_spread = (bullet_spread*spread_mult)+spread_increase
 	shoot_amount = shoot_amount+shoot_amount_increase
 	reload_speed = reload_mult
+	shot_reward += shot_reward_increase
 	}
 }
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 
 function set_gun_ammo(arg_ammo_inmag_max,arg_ammo_reserve_max){
 ammo_inmag_max = arg_ammo_inmag_max
 ammo_reserve_max = arg_ammo_reserve_max
 }
 
-function set_bullet_power(arg_bullet_damage,arg_bullet_knockback,arg_bullet_penetration){
-weapon_damage = arg_bullet_damage
-bullet_knockback = arg_bullet_knockback
-penetration = arg_bullet_penetration
+//function set_bullet_power(arg_bullet_damage,arg_bullet_knockback,arg_bullet_penetration){
+//weapon_damage = arg_bullet_damage
+//bullet_knockback = arg_bullet_knockback
+//penetration = arg_bullet_penetration
+//}
+
+function set_bullet_power(arg_caliber,arg_barrel_length){
+
 }
 
 function set_gun_handling(arg_gun_recoil,arg_gun_knockback,arg_gun_weight){
@@ -134,8 +148,10 @@ function referece_weapons(){
 //Melee
 wpn_Knife()
 //Pistols
-wpn_m1911()
+wpn_Glock18()
 wpn_Taurus92()
+wpn_m1911()
+wpn_FiveSeven()
 wpn_DEagle()
 wpn_Zip22()
 //Revolvers
@@ -154,6 +170,7 @@ wpn_spectre()
 wpn_MP40()
 wpn_Thompson()
 wpn_KrissVector()
+wpn_PPSh41()
 //Semi Auto AR's
 wpn_M14()
 //Full Auto AR's
@@ -161,16 +178,20 @@ wpn_AK47()
 wpn_AN94()
 wpn_Xiuhcoatl()
 wpn_Galil()
+wpn_ScarH()
 //LMG's
+wpn_M60()
 wpn_RPD()
 wpn_Lewis()
+wpn_MG42()
 //Shotguns
 wpn_Olympia()
 wpn_Ithaca()
 wpn_Remi870()
+wpn_Winchester1897()
+wpn_KS23()
 wpn_Spaz12()
 wpn_AA12()
-wpn_Winchester1897()
 //Sniper Rifles
 wpn_Karabiner98k()
 wpn_MosinNagat()
@@ -205,31 +226,6 @@ reload_time = 0
 weapon_weight = 0.5
 }
 
-function wpn_m1911(){
-weapon_sprite = s_m1911;
-weapon_draw_sprite = s_m1911Base
-slide_sprite = s_m1911Slide;slide_distance = -8
-weapon_name = "m1911"
-cost = 250
-if object_index = GM{
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(handgun_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(8,72)
-set_bullet_power(18,3,1)
-set_gun_handling(8,2,2.4)
-set_deploy_stats(7,-1)
-shoot_delay = 8
-action_type = s_SemiAuto
-reload_time = 65
-reload_sfx = sfx_m1911Reload
-shoot_sfx = sfx_m1911Shoot
-description = "Iconic, reliable, and accurate WW1 pistol still manufactured today"
-}
-
 //function wpn_Beretta92(){
 //weapon_sprite = s_Taurus92
 //weapon_name = "Beretta 92"
@@ -249,7 +245,29 @@ description = "Iconic, reliable, and accurate WW1 pistol still manufactured toda
 //shoot_sfx = sfx_m1911Shoot
 //description = ""
 //}
-	
+
+function wpn_Glock18(){
+weapon_sprite = s_Glock18
+weapon_name = "Glock 18"
+cost = 350
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(19,76)
+set_bullet_power(18,2,1)
+set_gun_handling(11,1.5,1.3)
+set_deploy_stats(6,-1)
+shoot_delay = 4
+action_type = s_SemiAuto
+reload_time = 75
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+description = ""
+}
+
 function wpn_Taurus92(){
 weapon_sprite = s_Taurus92
 weapon_name = "Taurus 92"
@@ -260,7 +278,7 @@ array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(17,85)
-set_bullet_power(22,4,1)
+set_bullet_power(20,3,1)
 set_gun_handling(12,2.5,2.1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
@@ -269,6 +287,53 @@ reload_time = 90
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = "Effective sidearm based on the Berretta 92, used by many Brazilian police and military"
+}
+
+function wpn_m1911(){
+weapon_sprite = s_m1911;
+weapon_draw_sprite = s_m1911Base
+slide_sprite = s_m1911Slide;slide_distance = -8
+weapon_name = "m1911"
+cost = 250
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(8,72)
+set_bullet_power(25,5,1)
+set_gun_handling(8,2,2.4)
+set_deploy_stats(8,-1)
+shoot_delay = 8
+action_type = s_SemiAuto
+reload_time = 65
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+description = "Iconic, reliable, and accurate WW1 pistol still manufactured today"
+}
+
+function wpn_FiveSeven(){
+weapon_sprite = s_FiveSeven
+weapon_name = "Five Seven"
+cost = 1350
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(20,80)
+set_bullet_power(38,5.5,1.5)
+set_gun_handling(8,3,1.6)
+set_deploy_stats(7,-1)
+shoot_delay = 5
+action_type = s_SemiAuto
+reload_time = 75
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+description = ""
 }
 	
 function wpn_DEagle(){
@@ -572,15 +637,15 @@ shoot_sfx = sfx_mp5Shoot
 function wpn_Thompson(){
 weapon_sprite = s_Thompson
 weapon_name = "Thompson"
-cost = 3200
+cost = 2700
 if object_index = GM{
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(100,200)
-set_bullet_power(14,2,1)
+set_gun_ammo(100,100)
+set_bullet_power(25,4,1)
 set_gun_handling(-6,3,10.8)
 set_deploy_stats(20,1)
 shoot_delay = 4
@@ -611,6 +676,30 @@ reload_time = 140
 bullet_spread = 0
 shoot_sfx = sfx_mp5Shoot
 }
+	
+function wpn_PPSh41(){
+weapon_sprite = s_PPSh41
+weapon_name = "PPSh41"
+cost = 3400
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(smg_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(71,142)
+set_bullet_power(28,2,1)
+set_gun_handling(-6,2.5,8)
+set_deploy_stats(14,1)
+shoot_delay = 3
+action_type = s_FullAuto
+reload_time = 140
+bullet_spread = 3
+shoot_sfx = sfx_mp5Shoot
+jam_chance = 1.2
+if jam_timer = 0{jam_time = irandom_range(120,180)}
+description = "Soviet Bullet Hose, typically a reliable weapon but the drum magazine sacrifices a bit of reliability for magazine capacity"
+}
 
 function wpn_M14(){
 weapon_sprite = s_M14
@@ -623,7 +712,7 @@ array_push(semi_ar_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(8,88)
-set_bullet_power(28,8,1)
+set_bullet_power(45,8,1)
 set_gun_handling(4,5,9)
 set_deploy_stats(18,1)
 shoot_delay = 7
@@ -701,7 +790,7 @@ description = "Mexican produced AR for the Mexican military. Xiuhcoatl translate
 function wpn_Galil(){
 weapon_sprite = s_Galil
 weapon_name = "Galil"
-cost = 3300
+cost = 2800
 if object_index = GM{
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -715,6 +804,47 @@ set_deploy_stats(18,1)
 shoot_delay = 7
 action_type = s_FullAuto
 reload_time = 130
+shoot_sfx = sfx_AK47Shoot
+}
+
+function wpn_ScarH(){
+weapon_sprite = s_ScarH
+weapon_name = "Scar H"
+cost = 2900
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(full_ar_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(20,80)
+set_bullet_power(45,6,2)
+set_gun_handling(-7,6,8.6)
+set_deploy_stats(18,1)
+shoot_delay = 6
+action_type = s_FullAuto
+reload_time = 130
+shoot_sfx = sfx_AK47Shoot
+}
+
+function wpn_M60(){
+weapon_sprite = s_M60
+weapon_name = "M60 Rambo"
+cost = 1500
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(lmg_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(100,0)
+set_bullet_power(38,10,1)
+set_gun_handling(-8,7,19);if object_index = Player{weapon_weight += ((ammo_inmag+ammo_reserve)*0.056)}
+set_deploy_stats(30,-1)
+shoot_delay = 6
+action_type = s_FullAuto
+reload_time = 180
 shoot_sfx = sfx_AK47Shoot
 }
 
@@ -750,11 +880,33 @@ array_push(lmg_list,weapon_sprite)
 array_push(soviet_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(100,100)
-set_bullet_power(28,10,1)
+set_gun_ammo(100,50)
+set_bullet_power(45,10,1)
 set_gun_handling(-9,9,16.3)
 set_deploy_stats(30,-1)
 shoot_delay = 5
+action_type = s_FullAuto
+reload_time = 300
+shoot_sfx = sfx_AK47Shoot
+}
+
+function wpn_MG42(){
+weapon_sprite = s_MG42
+weapon_name = "MG42 Buzzsaw"
+cost = 3200
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(lmg_list,weapon_sprite)
+array_push(nazi_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(50,100)
+set_bullet_power(38,10,1)
+set_gun_handling(-8,7,25.6)
+set_deploy_stats(30,-1)
+shoot_delay = 3
 action_type = s_FullAuto
 reload_time = 300
 shoot_sfx = sfx_AK47Shoot
@@ -835,6 +987,57 @@ shoot_sfx = sfx_IthacaShoot
 shot_reward = 5
 }
 
+function wpn_Winchester1897(){
+weapon_sprite = s_Winchester1897
+weapon_name = "1897 Trench Gun"
+cost = 1150
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(shotgun_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(6,42)
+set_bullet_power(8,1,2)
+set_gun_handling(25,42,8.4)
+set_deploy_stats(14,-1)
+shoot_delay = 35
+action_type = s_PumpAction
+set_variable_reload_time(15,45,30)
+bullet_spread = 35
+bullet_amount = 12
+shoot_sfx = sfx_IthacaShoot
+shot_reward = 5
+description = "What used to be a missionary of firearms design is now an antique overshadowed by more modern shotguns. However should the trench gun need to come out of retirement it can get the job done, though it may be uncomfortable to shoot."
+}
+
+function wpn_KS23(){
+weapon_sprite = s_KS23
+weapon_name = "KS23"
+cost = 2300
+if object_index = GM{
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(shotgun_list,weapon_sprite)
+array_push(soviet_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(4,16)
+set_bullet_power(8,1,1)
+set_gun_handling(25,36,8.5)
+set_deploy_stats(14,-1)
+shoot_delay = 45
+action_type = s_PumpAction
+set_variable_reload_time(15,60,30)
+bullet_spread = 30
+bullet_amount = 32
+shoot_sfx = sfx_IthacaShoot
+shot_reward = 4
+description = "4 gadge shotgun made out of whatever spare parts the soviets had laying around"
+}
+
 function wpn_Spaz12(){
 weapon_sprite = s_Spaz12
 weapon_name = "Spas 12"
@@ -884,31 +1087,6 @@ shoot_sfx = sfx_OlympiaShoot
 shot_reward = 5
 }
 
-function wpn_Winchester1897(){
-weapon_sprite = s_Winchester1897
-weapon_name = "1897 Trench Gun"
-cost = 1150
-if object_index = GM{
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(shotgun_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(6,42)
-set_bullet_power(8,1,2)
-set_gun_handling(25,42,8.4)
-set_deploy_stats(14,-1)
-shoot_delay = 35
-action_type = s_PumpAction
-set_variable_reload_time(15,45,30)
-bullet_spread = 35
-bullet_amount = 12
-shoot_sfx = sfx_IthacaShoot
-shot_reward = 5
-description = "What used to be a missionary of firearms design is now an antique overshadowed by more modern shotguns. However should the trench gun need to come out of retirement it can get the job done, though it may be uncomfortable to shoot."
-}
-
 function wpn_Karabiner98k(){
 weapon_sprite = s_Karabiner98k
 weapon_name = "Karabiner98k"
@@ -918,6 +1096,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
+array_push(nazi_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,80)
@@ -1103,9 +1282,9 @@ if object_index = GM{
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 exit}
-set_gun_ammo(4,4)
-set_bullet_power(1,0,1)
-set_gun_handling(0,1,14)
+set_gun_ammo(4,0)
+set_bullet_power(16000,0,4000)
+set_gun_handling(0,96,16)
 set_deploy_stats(20,-1)
 shoot_delay = 1
 action_type = s_SemiAuto
@@ -1118,18 +1297,18 @@ function wpn_LR230(){
 weapon_sprite = s_SquareGun
 weapon_name = "LR 230C"
 cost = 3000
-auto = false
+auto = true
 if object_index = GM{
 //array_push(weapon_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
 exit}
-set_gun_ammo(4,4)
-set_bullet_power(16000,0,4000)
-set_gun_handling(0,96,16)
-set_deploy_stats(20,-1)
-shoot_delay = 4
-action_type = s_SemiAuto
-bullet_speed = 0.2
+set_gun_ammo(1000,1000)
+set_bullet_power(2,1,1)
+set_gun_handling(0,4,15)
+set_deploy_stats(30,1)
+shoot_delay = 1
+action_type = s_FullAuto
+bullet_speed = 1
 bullet_sprite = s_SquareGunBullet
-reload_time = 4
-description = "Lazer Ray 230 Celcius, or as the Americans say, 450 Ferenheit is a 2002 inhouse developed lazer rifle designed for bullet varius immune containment subjects. It's interior is lined with inconel and nemonic to allow the rifle the reach the extreme tempertures. It's quite effective against single targets but may not be ideal against multiple enemies"}
+reload_time = 120
+description = "Lazer Ray 230 Celcius, or as the Americans say, 450 Ferenheit is a 2002 inhouse developed lazer rifle designed for bullet varius immune containment subjects. It's interior is lined with inconel and nemonic to allow the rifle the reach the extreme tempertures. It's highly effective against single targets but may not be ideal against multiple enemies"}

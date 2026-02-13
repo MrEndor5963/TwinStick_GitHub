@@ -10,7 +10,7 @@ item_Heart()
 item_SuperMushroom()
 item_Move()
 item_WeaponSlots()
-//item_DoubleTap()
+item_FastFire()
 item_SpeedCola()
 item_BloodBullets()
 item_MLGNoScoper()
@@ -32,21 +32,27 @@ item_CoolLookingS()
 item_CowboyHat()
 item_RageSpell()
 item_HammerAndSickle()
+item_DozenEggs()
 }
 
 function item_Heart(){
-item_name = "HP Max Up"
+item_name = "Medkit"
 cost = 500
-description = "Heals 1 HP"
+description = "Heals all HP"
+if GM.player_amount > 1{description = "Heals HP of all players"}
 consumable = true
 if object_index = Player && new_item != -1{
-hp += 1;if hp > hp_max{hp = hp_max}
+i = 0
+repeat(GM.player_amount){
+with GM.player_list[i]{hp = hp_max}
+
+i += 1}
 }
 }
 
 function item_SuperMushroom(){
 item_sprite = s_item_SuperMushroom
-item_name = "SuperMushroom"
+item_name = "Super Mushroom"
 cost = 500
 description = "Max HP +1 and Heals 1 HP"
 if object_index = GM{
@@ -54,6 +60,19 @@ array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
 hp_max += 1;hp += 1
+}
+}
+
+function item_WeaponSlots(){
+item_sprite = s_item_WeaponSlots
+item_name = "Weapon Slots Up"
+cost = 5000
+description = "Carry an extra gun"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+weapon_slots += 1
 }
 }
 
@@ -70,29 +89,16 @@ mov_spd += 1
 }
 }
 
-function item_WeaponSlots(){
-item_sprite = s_item_WeaponSlots
-item_name = "Weapon Slots Up"
-cost = 4000
-description = "Carry an extra gun"
-if object_index = GM{
-array_push(item_list,item_sprite)
-exit}
-if object_index = Player && new_item != -1{
-weapon_slots += 1
-}
-}
-
-function item_DoubleTap(){
-item_sprite = s_item_DoubleTap
-item_name = "Double tap"
+function item_FastFire(){
+item_sprite = s_item_FastFire
+item_name = "Fast fire"
 cost = 2000
-description = "Weapons shoot one more bullet at a time"
+description = "Increases the fire rate of all smg's"
 if object_index = GM{
 array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
-shoot_amount_increase += 1
+smg_shot_delay_decrease += 2
 }
 }
 
@@ -319,7 +325,7 @@ if object_index = GM{
 array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
-damage_mult += 0.05;mov_mult += 5;player_reload_mult += 0.05
+damage_mult += 0.05;mov_mult += 0.05;player_reload_mult += 0.05
 }
 }
 
@@ -373,5 +379,18 @@ array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
 soviet_ammo_mult += 1
+}
+}
+
+function item_DozenEggs(){
+item_sprite = s_item_DozenEggs
+item_name = "A dozen eggs"
+cost = 1200
+description = "All guns with 12 in their name get +12 max reserve ammo"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+twelve_bonus_ammo += 12
 }
 }

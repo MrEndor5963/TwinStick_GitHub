@@ -55,7 +55,7 @@ if box_open = true && box_timer > 0{var_text = ""}
 if box_open = true && box_timer = 0{script_execute_wpn(weapon_sprite)}
 if box_open = true && box_timer = 0{var_text = "Press A to take "+string(weapon_name)}
 if !instance_exists(display_text){
-display_text = instance_create_depth(x+(sprite_width/2),y-(font_get_size(font)),-room_height-100,DisplayText)
+display_text = instance_create_depth(x+(sprite_width/2)-(string_width(var_text)/2),y-(font_get_size(font)),-room_height-100,DisplayText)
 display_text.text_string = var_text
 display_text.creator = id
 display_text.despawn = false

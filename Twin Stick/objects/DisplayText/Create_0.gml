@@ -1,3 +1,4 @@
 glitch_intensity = 1
+description = -1
 despawn = false
-textbox = false
+create_text_scroll_variables()

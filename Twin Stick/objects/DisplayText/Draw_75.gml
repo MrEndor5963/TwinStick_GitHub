@@ -1,7 +1,8 @@
 if despawn = false{
 if glitch_intensity > 0{glitch_intensity -= 0.05}
 if glitch_intensity < 0{glitch_intensity = 0}}
-else{
+
+if despawn = true or !instance_exists(creator){
 if glitch_intensity < 1{glitch_intensity += 0.1}
 if glitch_intensity >= 0.8{instance_destroy();}
 }
@@ -22,17 +23,12 @@ bktglitch_set_channel_shift(0.0);
 bktglitch_set_channel_dispersion(0);
 
 bktglitch_set_intensity(0.1 + (glitch_intensity))
-if textbox = false{
-_width = string_width(text_string)
-_height = string_height(text_string)
-_x = x-(_width/2)
-_y = y-(_height/2)
-draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)}
-if textbox = true{
+
 _width = sprite_width
 _height = sprite_height
 _x = x
 _y = y
 draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)
-}
+
+
 shader_reset()
