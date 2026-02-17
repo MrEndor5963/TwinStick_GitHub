@@ -162,7 +162,7 @@ array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
 sniper_damage_mult += 0.42
-sniper_spread_increase += 15
+sniper_spread_increase += 25
 }
 }
 
@@ -213,7 +213,7 @@ handgun_knockback_mult += 1
 function item_NoobiniPizzanini(){
 item_sprite = s_item_NoobiniPizzanini
 item_name = "Noobini Pizzanini"
-cost = 250
+cost = 500
 description = "Earn an extra $1 per bullet hit enemy"
 if object_index = GM{
 array_push(item_list,item_sprite)

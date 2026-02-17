@@ -66,7 +66,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	instance_destroy();
 	ds_list_destroy(list_temp)
 	var_player.kills += 1
-	kill_reward = var_bullet.kill_reward
+	if var_bullet.hurts_enemy = true{kill_reward = var_bullet.kill_reward}
 	with var_player{player_point_change(other.kill_reward)}
 	var_bullet.penetration -= 1
 	if var_bullet.penetration <= 0{instance_destroy(var_bullet)}

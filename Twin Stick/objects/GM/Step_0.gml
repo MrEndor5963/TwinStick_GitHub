@@ -180,3 +180,40 @@ game_over = false
 //room_goto(spawn_room)}
 
 time_in_room +=	1;if time_in_room > 999998{time_in_room = 999998}
+weapon_tiers = []
+if floor_number = 1{
+array_push(weapon_tiers,1)
+}
+
+if floor_number = 2 or floor_number = 3{
+array_push(weapon_tiers,1)
+array_push(weapon_tiers,2)
+}
+
+if floor_number = 4 or floor_number = 5{
+array_push(weapon_tiers,1)
+array_push(weapon_tiers,2)
+array_push(weapon_tiers,3)
+}
+
+if floor_number = 6 or floor_number = 7{
+array_push(weapon_tiers,1)
+array_push(weapon_tiers,2)
+array_push(weapon_tiers,3)
+array_push(weapon_tiers,4)
+}
+
+if floor_number >= 8{
+array_push(weapon_tiers,1)
+array_push(weapon_tiers,2)
+array_push(weapon_tiers,3)
+array_push(weapon_tiers,4)
+array_push(weapon_tiers,5)
+}
+
+//Standard Procedure
+//Security
+//Lethal Intent
+//Security Breach
+//Total Containment Failure
+//Protocol [Redacted]

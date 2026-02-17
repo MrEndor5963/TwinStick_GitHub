@@ -72,7 +72,7 @@ vrp += 1
 
 enemy_list = []
 //array_push(enemy_list,Zombie)
-array_push(enemy_list,StickBlade)
+//array_push(enemy_list,StickBlade)
 array_push(enemy_list,SpikeFly)
 //array_push(enemy_list,ZombieShooter)
 //array_push(enemy_list,Hellhound)
@@ -95,12 +95,20 @@ sniper_list = []
 soviet_list = []
 nazi_list = []
 
+tier_1_gun_list = []
+tier_2_gun_list = []
+tier_3_gun_list = []
+tier_4_gun_list = []
+tier_5_gun_list = []
+
 referece_weapons()
 
 
 item_list = []
 reference_items()
 items_bought = []
+
+wallguns_on_map = []
 
 persistent_object_list = []
 array_push(persistent_object_list,Player)

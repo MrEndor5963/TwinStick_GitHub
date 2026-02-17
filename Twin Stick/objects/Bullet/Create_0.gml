@@ -7,3 +7,5 @@ hurts_enemy = true
 damage = 1
 explosive = false
 image_xscale = 0
+kill_reward = 100
+shot_reward = 10

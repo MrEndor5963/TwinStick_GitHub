@@ -14,7 +14,7 @@ nazi_list = []
 */
 function script_execute_wpn(arg_weapon_sprite){
 set_gun_ammo(8,72)
-set_bullet_power(18,3,1)
+set_bullet_power(s_9x19mmParabellum,4)
 set_gun_handling(2,2,1)
 bullet_speed = 60
 shoot_delay = 12
@@ -119,6 +119,42 @@ ammo_reserve_max = arg_ammo_reserve_max
 //}
 
 function set_bullet_power(arg_caliber,arg_barrel_length){
+caliber = arg_caliber
+barrel_length = arg_barrel_length
+switch (caliber) {
+case s_22LR: set_caliber_stats(40+(10*barrel_length),1.5,0.5,0.006,0.2,".22LR") break;
+case s_32ACP: set_caliber_stats(60+(7*barrel_length),1.5,1,0.026,0.26,".32 ACP") break;
+//9x18mm makarov is 30+8?
+case s_9x19mmParabellum: set_caliber_stats(75+(8*barrel_length),1.5,1,0.028,0.2,"9x19mm Parabellum") break;
+case s_57x28mm: set_caliber_stats(65+(12*barrel_length),1.5,1.5,0.013,0.2,"5.7x28mm") break;
+case s_762x25mmTokarev: set_caliber_stats(75+(15*barrel_length),1.5,1.5,0.022,0.2,"7.62x25mm Tokarev") break;
+case s_45ACP: set_caliber_stats(100+(6*barrel_length),1.5,1,0.05,0.2,".45 ACP") break;
+case s_357Magnum: set_caliber_stats(110+(25*barrel_length),1.5,1.9,0.04,0.2,".357 Magnum") break;
+case s_50AE: set_caliber_stats(180+(35*barrel_length),1.5,1.6,0.075,0.2,".50 AE") break;
+case s_500SAWMagnum: set_caliber_stats(350+(60*barrel_length),1.5,2.5,0.01,0.2,".500 S&W Magnum") break;
+case s_545x39mm: set_caliber_stats(180+(20*barrel_length),1.5,1,0.022,0.2,"5.45x39mm") break;
+case s_556x45mmNATO: set_caliber_stats(220+(25*barrel_length),1.5,1,0.027,0.2,"5.56x45mm NATO") break;
+case s_762x39mm: set_caliber_stats(300+(18*barrel_length),1.5,1,0.036,0.2,"7.62x39mm") break;
+case s_762x51NATO: set_caliber_stats(450+(30*barrel_length),1.5,1,0.058,0.2,"7.62x51mm NATO") break;
+case s_308WinchesterMagnum: set_caliber_stats(600+(40*barrel_length),2,4,0.07,0.2,".308 Winchester Magnum") break;
+case s_762x54R: set_caliber_stats(500+(28*barrel_length),1.5,1,0.05,0.2,"7.62x54R") break;
+case s_79257mmMauser: set_caliber_stats(550+(30*barrel_length),1.5,1,0.06,0.2,"7.92x57mm Mauser") break;
+case s_303British: set_caliber_stats(460+(25*barrel_length),1.5,1,0.06,0.2,".303 British") break;
+case s_50BMG: set_caliber_stats(1800+(70*barrel_length),1.5,1,0.26,0.2,".50 BMG") break;
+case s_12GadgeBuckshot: set_caliber_stats((450/9)+(1.5*barrel_length),1.5,1,0.1,0.2,"12 Gadge Buckshot") break;
+case s_23mm: set_caliber_stats((1200/32)+(1.1*barrel_length),1.5,1,0.4,0.2,"23mm") break;
+}
+weapon_damage = round(weapon_damage)
+}
+
+function set_caliber_stats(arg_damge,arg_knockback,arg_penetration,arg_weight,arg_price,arg_name){
+weapon_damage = arg_damge
+bullet_knockback = arg_knockback
+penetration = arg_penetration
+bullet_weight = arg_weight
+bullet_price = arg_price;bullet_price = bullet_price
+caliber_name = arg_name;caliber_name = caliber_name
+///*temporary damage calculation until I get a better grip on stuff*/weapon_damage = bullet_weight*500
 
 }
 
@@ -200,10 +236,10 @@ wpn_AWP()
 wpn_DSR50()
 wpn_GM6Lynx()
 //Explosive
-wpn_M79()
-wpn_RPG7()
+//wpn_M79()
+//wpn_RPG7()
 //Other
-wpn_SquareGun()
+//wpn_SquareGun()
 //Note weapons are roughly organized by power
 }
 
@@ -251,13 +287,14 @@ weapon_sprite = s_Glock18
 weapon_name = "Glock 18"
 cost = 350
 if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(19,76)
-set_bullet_power(18,2,1)
+set_bullet_power(s_9x19mmParabellum,4.49)
 set_gun_handling(11,1.5,1.3)
 set_deploy_stats(6,-1)
 shoot_delay = 4
@@ -273,12 +310,13 @@ weapon_sprite = s_Taurus92
 weapon_name = "Taurus 92"
 cost = 350
 if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(17,85)
-set_bullet_power(20,3,1)
+set_bullet_power(s_9x19mmParabellum,4.9)
 set_gun_handling(12,2.5,2.1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
@@ -296,6 +334,7 @@ slide_sprite = s_m1911Slide;slide_distance = -8
 weapon_name = "m1911"
 cost = 250
 if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -303,7 +342,7 @@ array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(8,72)
-set_bullet_power(25,5,1)
+set_bullet_power(s_45ACP,5)
 set_gun_handling(8,2,2.4)
 set_deploy_stats(8,-1)
 shoot_delay = 8
@@ -319,13 +358,14 @@ weapon_sprite = s_FiveSeven
 weapon_name = "Five Seven"
 cost = 1350
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(20,80)
-set_bullet_power(38,5.5,1.5)
+set_bullet_power(s_57x28mm,4.8)
 set_gun_handling(8,3,1.6)
 set_deploy_stats(7,-1)
 shoot_delay = 5
@@ -341,13 +381,14 @@ weapon_sprite = s_DEagle
 weapon_name = "DEagle"
 cost = 1250
 if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(7,35)
-set_bullet_power(100,2,1)
+set_bullet_power(s_50AE,6)
 set_gun_handling(85,9,4.4)
 set_deploy_stats(9,-1)
 shoot_delay = 5
@@ -363,6 +404,7 @@ weapon_sprite = s_Zip22
 weapon_name = "Zip 22"
 cost = 22
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
@@ -370,7 +412,7 @@ exit}
 if object_index != Player{exit}
 auto = false
 set_gun_ammo(25,125)
-set_bullet_power(12,2,1)
+set_bullet_power(s_22LR,4)
 set_gun_handling(12,1.5,1)
 set_deploy_stats(11,-1)
 shoot_delay = 1
@@ -392,6 +434,7 @@ hammer_sprite = s_PythonHammer
 weapon_name = "Python"
 cost = 1700
 if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
@@ -400,7 +443,7 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(6,36)
-set_bullet_power(110,2,2)
+set_bullet_power(s_357Magnum,6)
 set_gun_handling(25,10,2.8)
 set_deploy_stats(9,-1)
 shoot_delay = 2
@@ -417,6 +460,7 @@ weapon_sprite = s_SnW500
 weapon_name = "S&W500"
 cost = 2500
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
@@ -425,11 +469,11 @@ array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,15)
-set_bullet_power(160,2,3)
+set_bullet_power(s_500SAWMagnum,8.4)
 set_gun_handling(90,40,4.8)
 set_deploy_stats(12,-1)
 shoot_delay = 2
-trigger_delay = 24
+trigger_delay = 20
 action_type = s_DoubleAction
 set_variable_reload_time(45,40,30)
 reload_sfx = sfx_DEagleReload
@@ -448,7 +492,7 @@ if object_index = GM{
 exit}
 auto = false
 set_gun_ammo(5,5)
-set_bullet_power(240,20,6)
+set_bullet_power(s_500SAWMagnum,8)
 set_gun_handling(180,64,4.2)
 set_deploy_stats(20,-1)
 shoot_delay = 60
@@ -464,6 +508,7 @@ weapon_sprite = s_CZ75Auto
 weapon_name = "CZ75 Auto"
 cost = 400
 if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
@@ -471,7 +516,7 @@ array_push(machine_pistol_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(16,64)
-set_bullet_power(17,4,1)
+set_bullet_power(s_9x19mmParabellum,4.7)
 set_gun_handling(-10,0.8,2.4)
 set_deploy_stats(7,-1)
 shoot_delay = 4
@@ -487,6 +532,7 @@ weapon_sprite = s_Luty
 weapon_name = "Luty"
 cost = 80
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -494,7 +540,7 @@ array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(18,162)
-set_bullet_power(12,2,1)
+set_bullet_power(s_9x19mmParabellum,12)
 set_gun_handling(-25,1,6.6)
 set_deploy_stats(11,1)
 shoot_delay = 4
@@ -513,13 +559,14 @@ weapon_sprite = s_VzSkorpion
 weapon_name = "Vz Škorpion"
 cost = 700
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(20,180)
-set_bullet_power(12,0.4,1)
+set_bullet_power(s_32ACP,5.9)
 set_gun_handling(-3,1.5,2.9)
 set_deploy_stats(8,-1)
 shoot_delay = 3
@@ -534,13 +581,14 @@ weapon_sprite = s_Uzi
 weapon_name = "Uzi"
 cost = 800
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(25,175)
-set_bullet_power(18,2,1)
+set_bullet_power(s_9x19mmParabellum,10.5)
 set_gun_handling(-12,3,7.7)
 set_deploy_stats(11,-1)
 shoot_delay = 6
@@ -555,13 +603,14 @@ weapon_sprite = s_spectre
 weapon_name = "spectre"
 cost = 850
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,150)
-set_bullet_power(12,1,1)
+set_bullet_power(s_45ACP,8.9)
 set_gun_handling(-5,1,6.6)
 set_deploy_stats(9,-1)
 shoot_delay = 4
@@ -576,6 +625,7 @@ weapon_sprite = s_MP40
 weapon_name = "MP40"
 cost = 1040
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
@@ -583,7 +633,7 @@ array_push(nazi_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(32,192)
-set_bullet_power(13,3,1)
+set_bullet_power(s_9x19mmParabellum,9.1)
 set_gun_handling(-3,2,8.8)
 set_deploy_stats(10,-1)
 shoot_delay = 8
@@ -598,13 +648,14 @@ weapon_sprite = s_PPBison
 weapon_name = "PP Bison"
 cost = 1350
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(64,192)
-set_bullet_power(12,2,1)
+set_bullet_power(s_9x19mmParabellum,6.7)
 set_gun_handling(-5,2,4.6)
 set_deploy_stats(14,-1)
 shoot_delay = 5
@@ -619,13 +670,14 @@ weapon_sprite = s_mp5
 weapon_name = "mp5"
 cost = 2000
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,150)
-set_bullet_power(18,2,1)
+set_bullet_power(s_9x19mmParabellum,8.9)
 set_gun_handling(-3,2,5.5)
 set_deploy_stats(12,-1)
 shoot_delay = 5
@@ -639,13 +691,14 @@ weapon_sprite = s_Thompson
 weapon_name = "Thompson"
 cost = 2700
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(100,100)
-set_bullet_power(25,4,1)
+set_bullet_power(s_45ACP,12)
 set_gun_handling(-6,3,10.8)
 set_deploy_stats(20,1)
 shoot_delay = 4
@@ -661,13 +714,14 @@ weapon_sprite = s_KrissVector
 weapon_name = "Vector 45"
 cost = 4800
 if object_index = GM{
+//array_push(tier_3_gun_list,weapon_sprite)
 //array_push(weapon_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
 //array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(40,160)
-set_bullet_power(18,2,1)
+//set_bullet_power(18,2,1)
 set_gun_handling(-5,3,6)
 set_deploy_stats(18,-1)
 shoot_delay = 2
@@ -682,13 +736,14 @@ weapon_sprite = s_PPSh41
 weapon_name = "PPSh41"
 cost = 3400
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(71,142)
-set_bullet_power(28,2,1)
+set_bullet_power(s_762x25mmTokarev,6.7)
 set_gun_handling(-6,2.5,8)
 set_deploy_stats(14,1)
 shoot_delay = 3
@@ -697,7 +752,7 @@ reload_time = 140
 bullet_spread = 3
 shoot_sfx = sfx_mp5Shoot
 jam_chance = 1.2
-if jam_timer = 0{jam_time = irandom_range(120,180)}
+if object_index = Player && jam_timer = 0{jam_time = irandom_range(120,180)}
 description = "Soviet Bullet Hose, typically a reliable weapon but the drum magazine sacrifices a bit of reliability for magazine capacity"
 }
 
@@ -706,13 +761,14 @@ weapon_sprite = s_M14
 weapon_name = "M14"
 cost = 400
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 //array_push(wallbuy_list,weapon_sprite)
 array_push(semi_ar_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(8,88)
-set_bullet_power(45,8,1)
+set_bullet_power(s_762x51NATO,22)
 set_gun_handling(4,5,9)
 set_deploy_stats(18,1)
 shoot_delay = 7
@@ -726,6 +782,7 @@ weapon_sprite = s_AK47
 weapon_name = "AK-47"
 cost = 1500
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -734,7 +791,7 @@ array_push(soviet_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,60)
-set_bullet_power(45,10,2)
+set_bullet_power(s_762x39mm,16.3)
 set_gun_handling(-30,11,8.4)
 set_deploy_stats(20,1)
 shoot_delay = 8
@@ -749,13 +806,14 @@ weapon_sprite = s_AN94
 weapon_name = "AN-94"
 cost = 2790
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,60)
-set_bullet_power(35,6,2)
+set_bullet_power(s_545x39mm,18.3)
 set_gun_handling(-6,7,8.6)
 set_deploy_stats(16,1)
 shoot_delay = 6
@@ -771,13 +829,14 @@ weapon_sprite = s_Xiuhcoatl
 weapon_name = "Xiuhcoatl"
 cost = 1450
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(30,60)
-set_bullet_power(29,5,2)
+set_bullet_power(s_556x45mmNATO,16.3)
 set_gun_handling(-9,8,8.6)
 set_deploy_stats(15,1)
 shoot_delay = 4
@@ -792,13 +851,14 @@ weapon_sprite = s_Galil
 weapon_name = "Galil"
 cost = 2800
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(35,105)
-set_bullet_power(25,6,2)
+set_bullet_power(s_556x45mmNATO,16.3)
 set_gun_handling(-5,6,9.5)
 set_deploy_stats(18,1)
 shoot_delay = 7
@@ -812,13 +872,14 @@ weapon_sprite = s_ScarH
 weapon_name = "Scar H"
 cost = 2900
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(20,80)
-set_bullet_power(45,6,2)
+set_bullet_power(s_762x51NATO,16)
 set_gun_handling(-7,6,8.6)
 set_deploy_stats(18,1)
 shoot_delay = 6
@@ -832,6 +893,7 @@ weapon_sprite = s_M60
 weapon_name = "M60 Rambo"
 cost = 1500
 if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -839,7 +901,7 @@ array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(100,0)
-set_bullet_power(38,10,1)
+set_bullet_power(s_762x51NATO,22.2)
 set_gun_handling(-8,7,19);if object_index = Player{weapon_weight += ((ammo_inmag+ammo_reserve)*0.056)}
 set_deploy_stats(30,-1)
 shoot_delay = 6
@@ -859,7 +921,7 @@ array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(47,141)
-set_bullet_power(40,9,3)
+set_bullet_power(s_303British,26)
 set_gun_handling(-5,3,28)
 set_deploy_stats(35,-1)
 shoot_delay = 8
@@ -873,6 +935,7 @@ weapon_sprite = s_RPD
 weapon_name = "RPD"
 cost = 2900
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -881,7 +944,7 @@ array_push(soviet_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(100,50)
-set_bullet_power(45,10,1)
+set_bullet_power(s_762x39mm,18)
 set_gun_handling(-9,9,16.3)
 set_deploy_stats(30,-1)
 shoot_delay = 5
@@ -895,6 +958,7 @@ weapon_sprite = s_MG42
 weapon_name = "MG42 Buzzsaw"
 cost = 3200
 if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -903,7 +967,7 @@ array_push(nazi_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(50,100)
-set_bullet_power(38,10,1)
+set_bullet_power(s_79257mmMauser,25.2)
 set_gun_handling(-8,7,25.6)
 set_deploy_stats(30,-1)
 shoot_delay = 3
@@ -917,20 +981,21 @@ weapon_sprite = s_Olympia
 weapon_name = "Olympia 72"
 cost = 400
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(2,44)
-set_bullet_power(8,1.5,1)
+set_bullet_power(s_12GadgeBuckshot,19)
 set_gun_handling(14,5,9.7)
 set_deploy_stats(12,-1)
 shoot_delay = 1
 action_type = s_DoubleBarrel
 reload_time = 120
 bullet_spread = 6
-bullet_amount = 10
+bullet_amount = 9
 shoot_sfx = sfx_OlympiaShoot
 shot_reward = 5
 description = "A finely made skeet shooting double barrel shotgun. Although reloading will be frequent and it lacks firepower compared to other shotguns, it's excellent handling and accuracy makes it a favorite for some"
@@ -944,6 +1009,7 @@ pump_sprite = s_IthacaPump
 //pump_distance = 20
 cost = 800
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 //array_push(box_list,weapon_sprite)
@@ -951,14 +1017,14 @@ array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(7,35)
-set_bullet_power(8,2,1)
+set_bullet_power(s_12GadgeBuckshot,22)
 set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
 shoot_delay = 30
 action_type = s_PumpAction
 set_variable_reload_time(15,60,30)
 bullet_spread = 20
-bullet_amount = 15
+bullet_amount = 9
 shoot_sfx = sfx_IthacaShoot
 shot_reward = 5
 }
@@ -968,6 +1034,7 @@ weapon_sprite = s_Remi870
 weapon_name = "Remi 870 Marine"
 cost = 2500
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -975,14 +1042,14 @@ array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(7,28)
-set_bullet_power(10,2,2)
+set_bullet_power(s_12GadgeBuckshot,28)
 set_gun_handling(70,25,8)
 set_deploy_stats(25,1)
 shoot_delay = 30
 action_type = s_PumpAction
 set_variable_reload_time(15,55,30)
 bullet_spread = 35
-bullet_amount = 15
+bullet_amount = 9
 shoot_sfx = sfx_IthacaShoot
 shot_reward = 5
 }
@@ -992,6 +1059,7 @@ weapon_sprite = s_Winchester1897
 weapon_name = "1897 Trench Gun"
 cost = 1150
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -999,14 +1067,14 @@ array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(6,42)
-set_bullet_power(8,1,2)
+set_bullet_power(s_12GadgeBuckshot,30)
 set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
 shoot_delay = 35
 action_type = s_PumpAction
 set_variable_reload_time(15,45,30)
 bullet_spread = 35
-bullet_amount = 12
+bullet_amount = 9
 shoot_sfx = sfx_IthacaShoot
 shot_reward = 5
 description = "What used to be a missionary of firearms design is now an antique overshadowed by more modern shotguns. However should the trench gun need to come out of retirement it can get the job done, though it may be uncomfortable to shoot."
@@ -1017,6 +1085,7 @@ weapon_sprite = s_KS23
 weapon_name = "KS23"
 cost = 2300
 if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -1025,14 +1094,14 @@ array_push(soviet_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(4,16)
-set_bullet_power(8,1,1)
+set_bullet_power(s_23mm,15.7)
 set_gun_handling(25,36,8.5)
 set_deploy_stats(14,-1)
 shoot_delay = 45
 action_type = s_PumpAction
 set_variable_reload_time(15,60,30)
 bullet_spread = 30
-bullet_amount = 32
+bullet_amount = 40
 shoot_sfx = sfx_IthacaShoot
 shot_reward = 4
 description = "4 gadge shotgun made out of whatever spare parts the soviets had laying around"
@@ -1043,20 +1112,21 @@ weapon_sprite = s_Spaz12
 weapon_name = "Spas 12"
 cost = 2600
 if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(8,40)
-set_bullet_power(8,1,1)
+set_bullet_power(s_12GadgeBuckshot,15.7)
 set_gun_handling(95,20,9.7)
 set_deploy_stats(15,-1)
 shoot_delay = 5
 action_type = s_SemiAuto
 reload_time = 190
 bullet_spread = 30
-bullet_amount = 12
+bullet_amount = 9
 set_variable_reload_time(30,45,30)
 shoot_sfx = sfx_OlympiaShoot
 jam_chance = 3
@@ -1069,20 +1139,21 @@ weapon_sprite = s_AA12
 weapon_name = "AA12"
 cost = 3120
 if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
 set_gun_ammo(20,40)
-set_bullet_power(8,1,1)
+set_bullet_power(s_12GadgeBuckshot,18.5)
 set_gun_handling(15,5,11.5)
 set_deploy_stats(12,-1)
 shoot_delay = 12
 action_type = s_FullAuto
 reload_time = 190
 bullet_spread = 20
-bullet_amount = 10
+bullet_amount = 9
 shoot_sfx = sfx_OlympiaShoot
 shot_reward = 5
 }
@@ -1092,6 +1163,7 @@ weapon_sprite = s_Karabiner98k
 weapon_name = "Karabiner98k"
 cost = 400
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -1100,7 +1172,7 @@ array_push(nazi_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,80)
-set_bullet_power(50,12,1)
+set_bullet_power(s_79257mmMauser,23.6)
 set_gun_handling(12,4,9)
 set_deploy_stats(10,1)
 shoot_delay = 60
@@ -1115,6 +1187,7 @@ weapon_sprite = s_MosinNagat
 weapon_name = "Mosin Nagat"
 cost = 150
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -1122,7 +1195,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,55)
-set_bullet_power(60,12,1)
+set_bullet_power(s_762x54R,29)
 set_gun_handling(15,4,8.8)
 set_deploy_stats(15,1)
 shoot_delay = 60
@@ -1139,13 +1212,14 @@ weapon_sprite = s_SSG08
 weapon_name = "SSG-08"
 cost = 750
 if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(10,90)
-set_bullet_power(100,12,1)
+set_bullet_power(s_762x51NATO,27.9)
 set_gun_handling(15,4,13.4)
 set_deploy_stats(15,1)
 shoot_delay = 60
@@ -1160,6 +1234,7 @@ weapon_sprite = s_AWP
 weapon_name = "AWP"
 cost = 4750
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
@@ -1167,7 +1242,7 @@ array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(5,35)
-set_bullet_power(205,14,4)
+set_bullet_power(s_308WinchesterMagnum,24)
 set_gun_handling(30,16,14.3)
 set_deploy_stats(20,1)
 shoot_delay = 70
@@ -1182,13 +1257,14 @@ weapon_sprite = s_DSR50
 weapon_name = "DSR-50"
 cost = 5000
 if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
 set_gun_ammo(4,28)
-set_bullet_power(310,16,8)
+set_bullet_power(s_50BMG,20)
 set_gun_handling(60,32,13.9)
 set_deploy_stats(28,1)
 shoot_delay = 80
@@ -1204,12 +1280,13 @@ weapon_name = "GM6 Lynx"
 cost = 14000
 auto = false
 if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 set_gun_ammo(5,30)
-set_bullet_power(280,12,4)
+set_bullet_power(s_50BMG,29)
 set_gun_handling(135,72,26.5)
 set_deploy_stats(36,1)
 shoot_delay = 14
@@ -1229,11 +1306,12 @@ weapon_name = "M79 Thumper"
 cost = 3000
 auto = false
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(1,8)
-set_bullet_power(150,0,1)
+//set_bullet_power(150,0,1)
 set_gun_handling(5,2,6)
 set_deploy_stats(10,-1)
 shoot_delay = 15
@@ -1252,13 +1330,14 @@ weapon_name = "RPG-7"
 cost = 5500
 auto = false
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(soviet_list,weapon_sprite)
 exit}
 set_gun_ammo(1,1)
-set_bullet_power(500,0,1)
+//set_bullet_power(500,0,1)
 set_gun_handling(-5,0,15.4)
 set_deploy_stats(30,1)
 shoot_delay = 15
@@ -1279,11 +1358,12 @@ weapon_name = "Quad Lazer"
 cost = 6666333325
 auto = false
 if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(4,0)
-set_bullet_power(16000,0,4000)
+//set_bullet_power(16000,0,4000)
 set_gun_handling(0,96,16)
 set_deploy_stats(20,-1)
 shoot_delay = 1
@@ -1303,7 +1383,7 @@ if object_index = GM{
 //array_push(box_list,weapon_sprite)
 exit}
 set_gun_ammo(1000,1000)
-set_bullet_power(2,1,1)
+//set_bullet_power(2,1,1)
 set_gun_handling(0,4,15)
 set_deploy_stats(30,1)
 shoot_delay = 1

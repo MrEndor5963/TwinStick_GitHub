@@ -64,6 +64,7 @@ map_x = irandom_range(0,map_size-1)
 map_y = irandom_range(0,map_size-1)
 rooms_in_use = []
 map_visited = []
+wallguns_on_map = []
 open_nodes = []
 //child_nodes = []
 //closed_nodes = []
