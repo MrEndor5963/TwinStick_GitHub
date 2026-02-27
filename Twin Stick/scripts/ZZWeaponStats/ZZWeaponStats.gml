@@ -122,25 +122,25 @@ function set_bullet_power(arg_caliber,arg_barrel_length){
 caliber = arg_caliber
 barrel_length = arg_barrel_length
 switch (caliber) {
-case s_22LR: set_caliber_stats(40+(10*barrel_length),1.5,0.5,0.006,0.2,".22LR") break;
+case s_22LR: set_caliber_stats(40+(10*barrel_length),1,0.5,0.006,0.2,".22LR") break;
 case s_32ACP: set_caliber_stats(60+(7*barrel_length),1.5,1,0.026,0.26,".32 ACP") break;
 //9x18mm makarov is 30+8?
-case s_9x19mmParabellum: set_caliber_stats(75+(8*barrel_length),1.5,1,0.028,0.2,"9x19mm Parabellum") break;
+case s_9x19mmParabellum: set_caliber_stats(75+(8*barrel_length),3,1,0.028,0.2,"9x19mm Parabellum") break;
 case s_57x28mm: set_caliber_stats(65+(12*barrel_length),1.5,1.5,0.013,0.2,"5.7x28mm") break;
 case s_762x25mmTokarev: set_caliber_stats(75+(15*barrel_length),1.5,1.5,0.022,0.2,"7.62x25mm Tokarev") break;
-case s_45ACP: set_caliber_stats(100+(6*barrel_length),1.5,1,0.05,0.2,".45 ACP") break;
-case s_357Magnum: set_caliber_stats(110+(25*barrel_length),1.5,1.9,0.04,0.2,".357 Magnum") break;
-case s_50AE: set_caliber_stats(180+(35*barrel_length),1.5,1.6,0.075,0.2,".50 AE") break;
-case s_500SAWMagnum: set_caliber_stats(350+(60*barrel_length),1.5,2.5,0.01,0.2,".500 S&W Magnum") break;
+case s_45ACP: set_caliber_stats(100+(6*barrel_length),6,1,0.05,0.2,".45 ACP") break;
+case s_357Magnum: set_caliber_stats(110+(25*barrel_length),1.5,2.1,0.04,0.2,".357 Magnum") break;
+case s_50AE: set_caliber_stats(180+(35*barrel_length),8,1.6,0.075,0.2,".50 AE") break;
+case s_500SAWMagnum: set_caliber_stats(350+(60*barrel_length),1.5,3.3,0.01,0.2,".500 S&W Magnum") break;
 case s_545x39mm: set_caliber_stats(180+(20*barrel_length),1.5,1,0.022,0.2,"5.45x39mm") break;
 case s_556x45mmNATO: set_caliber_stats(220+(25*barrel_length),1.5,1,0.027,0.2,"5.56x45mm NATO") break;
 case s_762x39mm: set_caliber_stats(300+(18*barrel_length),1.5,1,0.036,0.2,"7.62x39mm") break;
 case s_762x51NATO: set_caliber_stats(450+(30*barrel_length),1.5,1,0.058,0.2,"7.62x51mm NATO") break;
-case s_308WinchesterMagnum: set_caliber_stats(600+(40*barrel_length),2,4,0.07,0.2,".308 Winchester Magnum") break;
+case s_308WinchesterMagnum: set_caliber_stats(600+(40*barrel_length),2,4.5,0.07,0.2,".308 Winchester Magnum") break;
 case s_762x54R: set_caliber_stats(500+(28*barrel_length),1.5,1,0.05,0.2,"7.62x54R") break;
 case s_79257mmMauser: set_caliber_stats(550+(30*barrel_length),1.5,1,0.06,0.2,"7.92x57mm Mauser") break;
-case s_303British: set_caliber_stats(460+(25*barrel_length),1.5,1,0.06,0.2,".303 British") break;
-case s_50BMG: set_caliber_stats(1800+(70*barrel_length),1.5,1,0.26,0.2,".50 BMG") break;
+case s_303British: set_caliber_stats(460+(25*barrel_length),1.5,3.3,0.06,0.2,".303 British") break;
+case s_50BMG: set_caliber_stats(1800+(70*barrel_length),1.5,9,0.26,0.2,".50 BMG") break;
 case s_12GadgeBuckshot: set_caliber_stats((450/9)+(1.5*barrel_length),1.5,1,0.1,0.2,"12 Gadge Buckshot") break;
 case s_23mm: set_caliber_stats((1200/32)+(1.1*barrel_length),1.5,1,0.4,0.2,"23mm") break;
 }
@@ -181,66 +181,67 @@ deploy_direction = arg_deploy_direction
 }
 
 function referece_weapons(){
+//Ordered by tier -> gun class -> gun power
+//Pistol, Revolvers, Machine pistol, smg, Assault rifle, LMG's, Shotguns, Sniper Rifles
+
+
 //Melee
 wpn_Knife()
-//Pistols
-wpn_Glock18()
-wpn_Taurus92()
-wpn_m1911()
+//Tier D, Tier 1
+wpn_Glock18()//Starter
+wpn_Taurus92()//Starter
+wpn_m1911()//Starter
+//P320//Starter
+//Beretta 93
 wpn_FiveSeven()
 wpn_DEagle()
-wpn_Zip22()
-//Revolvers
 wpn_Python()
-wpn_SnW500()
-wpn_BFR500()
-//Machine Pistols
 wpn_CZ75Auto()
-//SMG's
+//Tier C, Tier 2
+wpn_SnW500()
 wpn_Luty()
 wpn_VzSkorpion()
 wpn_Uzi()
 wpn_mp5()
 wpn_PPBison()
-wpn_spectre()
 wpn_MP40()
+wpn_Olympia()
+wpn_Ithaca()
+wpn_Spaz12()
+//Tier B, Tier 3
 wpn_Thompson()
 wpn_KrissVector()
 wpn_PPSh41()
-//Semi Auto AR's
-wpn_M14()
-//Full Auto AR's
 wpn_AK47()
-wpn_AN94()
-wpn_Xiuhcoatl()
 wpn_Galil()
-wpn_ScarH()
-//LMG's
-wpn_M60()
-wpn_RPD()
-wpn_Lewis()
-wpn_MG42()
-//Shotguns
-wpn_Olympia()
-wpn_Ithaca()
 wpn_Remi870()
 wpn_Winchester1897()
-wpn_KS23()
-wpn_Spaz12()
-wpn_AA12()
-//Sniper Rifles
 wpn_Karabiner98k()
 wpn_MosinNagat()
 wpn_SSG08()
+//Tier A, Tier 4
+wpn_Zip22()
+wpn_M14()
+wpn_AN94()
+wpn_Xiuhcoatl()
+wpn_ScarH()
+wpn_RPD()
 wpn_AWP()
+//Tier S, Tier 5
+wpn_spectre()
+wpn_M60()
+wpn_Lewis()
+wpn_MG42()
 wpn_DSR50()
 wpn_GM6Lynx()
+wpn_KS23()
+wpn_AA12()
 //Explosive
 //wpn_M79()
 //wpn_RPG7()
 //Other
 //wpn_SquareGun()
-//Note weapons are roughly organized by power
+//Note weapons are organized by tier
 }
 
 function wpn_Knife(){
@@ -281,6 +282,8 @@ weapon_weight = 0.5
 //shoot_sfx = sfx_m1911Shoot
 //description = ""
 //}
+
+// D Tier, tier 1
 
 function wpn_Glock18(){
 weapon_sprite = s_Glock18
@@ -332,7 +335,7 @@ weapon_sprite = s_m1911;
 weapon_draw_sprite = s_m1911Base
 slide_sprite = s_m1911Slide;slide_distance = -8
 weapon_name = "m1911"
-cost = 250
+cost = 200
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -379,7 +382,7 @@ description = ""
 function wpn_DEagle(){
 weapon_sprite = s_DEagle
 weapon_name = "DEagle"
-cost = 1250
+cost = 700
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -399,40 +402,12 @@ shoot_sfx = sfx_DEagleShoot
 description = "Desert Eagle or Deagle for short, a very powerful yet heavy magnum pistol with high recoil"
 }
 	
-function wpn_Zip22(){
-weapon_sprite = s_Zip22
-weapon_name = "Zip 22"
-cost = 22
-if object_index = GM{
-array_push(tier_3_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(handgun_list,weapon_sprite)
-exit}
-if object_index != Player{exit}
-auto = false
-set_gun_ammo(25,125)
-set_bullet_power(s_22LR,4)
-set_gun_handling(12,1.5,1)
-set_deploy_stats(11,-1)
-shoot_delay = 1
-action_type = s_SemiAuto
-if reload_timer = -1{reload_time = irandom_range(120,210)}
-reload_sfx = sfx_m1911Reload
-shoot_sfx = sfx_m1911Shoot
-bullet_spread = 4
-trigger_delay = 2
-jam_chance = 40
-if jam_timer = 0{jam_time = irandom_range(30,122)}
-description = ""
-}
-
 function wpn_Python(){
 weapon_sprite = s_Python
 weapon_draw_sprite = s_PythonBase
 hammer_sprite = s_PythonHammer
 weapon_name = "Python"
-cost = 1700
+cost = 1900
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -454,55 +429,7 @@ reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
 description = "Colt Python Luxery Revolver, considered by some to be one of the finest revolvers on the market with a refined balance between power, accuracy, and handling"
 }
-
-function wpn_SnW500(){
-weapon_sprite = s_SnW500
-weapon_name = "S&W500"
-cost = 2500
-if object_index = GM{
-array_push(tier_2_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-//array_push(box_list,weapon_sprite)
-array_push(handgun_list,weapon_sprite)
-array_push(revolver_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(5,15)
-set_bullet_power(s_500SAWMagnum,8.4)
-set_gun_handling(90,40,4.8)
-set_deploy_stats(12,-1)
-shoot_delay = 2
-trigger_delay = 20
-action_type = s_DoubleAction
-set_variable_reload_time(45,40,30)
-reload_sfx = sfx_DEagleReload
-shoot_sfx = sfx_DEagleShoot
-description = "Immensely powerful magnum revolver that lays down large enemies with few shots, but has quite intense recoil and knockback"
-}
-
-function wpn_BFR500(){
-weapon_sprite = s_BFR500
-weapon_name = "BFR 500"
-cost = 2780
-if object_index = GM{
-//array_push(weapon_list,weapon_sprite)
-//array_push(box_list,weapon_sprite)
-//array_push(revolver_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(5,5)
-set_bullet_power(s_500SAWMagnum,8)
-set_gun_handling(180,64,4.2)
-set_deploy_stats(20,-1)
-shoot_delay = 60
-action_type = s_SingleAction
-set_variable_reload_time(45,30,45)
-reload_sfx = sfx_DEagleReload
-shoot_sfx = sfx_DEagleShoot
-//description = "Unnecessarily large revolver with power that questionably compensates it's uncontrollable recoil and knockback"
-}
-
+	
 function wpn_CZ75Auto(){
 weapon_sprite = s_CZ75Auto
 weapon_name = "CZ75 Auto"
@@ -526,7 +453,10 @@ reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = ""
 }
+	
+//End of D Tier, tier 1
 
+// C Tier, tier 2
 function wpn_Luty(){
 weapon_sprite = s_Luty
 weapon_name = "Luty"
@@ -598,28 +528,6 @@ shoot_sfx = sfx_mp5Shoot
 description = ""
 }
 
-function wpn_spectre(){
-weapon_sprite = s_spectre
-weapon_name = "spectre"
-cost = 850
-if object_index = GM{
-array_push(tier_2_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(smg_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(30,150)
-set_bullet_power(s_45ACP,8.9)
-set_gun_handling(-5,1,6.6)
-set_deploy_stats(9,-1)
-shoot_delay = 4
-action_type = s_FullAuto
-reload_time = 75
-shoot_sfx = sfx_mp5Shoot
-description = ""
-}
-
 function wpn_MP40(){
 weapon_sprite = s_MP40
 weapon_name = "MP40"
@@ -636,7 +544,7 @@ set_gun_ammo(32,192)
 set_bullet_power(s_9x19mmParabellum,9.1)
 set_gun_handling(-3,2,8.8)
 set_deploy_stats(10,-1)
-shoot_delay = 8
+shoot_delay = 7
 action_type = s_FullAuto
 reload_time = 120
 shoot_sfx = sfx_mp5Shoot
@@ -664,7 +572,7 @@ reload_time = 90
 shoot_sfx = sfx_mp5Shoot
 description = "Light SMG with a spiral magazine allowing for a weapon with good handling and lots of bullets"
 }
-
+	
 function wpn_mp5(){
 weapon_sprite = s_mp5
 weapon_name = "mp5"
@@ -684,6 +592,115 @@ shoot_delay = 5
 action_type = s_FullAuto
 reload_time = 90
 shoot_sfx = sfx_mp5Shoot
+}
+	
+function wpn_Olympia(){
+weapon_sprite = s_Olympia
+weapon_name = "Olympia 72"
+cost = 400
+if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(shotgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(2,44)
+set_bullet_power(s_12GadgeBuckshot,19)
+set_gun_handling(14,5,9.7)
+set_deploy_stats(12,-1)
+shoot_delay = 1
+action_type = s_DoubleBarrel
+reload_time = 120
+bullet_spread = 6
+bullet_amount = 9
+shoot_sfx = sfx_OlympiaShoot
+shot_reward = 5
+description = "A finely made skeet shooting double barrel shotgun. Although reloading will be frequent and it lacks firepower compared to other shotguns, it's excellent handling and accuracy makes it a favorite for some"
+}
+
+function wpn_Ithaca(){
+weapon_sprite = s_Ithaca
+weapon_name = "Ithaca 37"
+weapon_draw_sprite = s_IthacaBase
+pump_sprite = s_IthacaPump
+//pump_distance = 20
+cost = 800
+if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
+array_push(shotgun_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(7,35)
+set_bullet_power(s_12GadgeBuckshot,22)
+set_gun_handling(40,18,7)
+set_deploy_stats(15,-1)
+shoot_delay = 30
+action_type = s_PumpAction
+set_variable_reload_time(15,60,30)
+bullet_spread = 20
+bullet_amount = 9
+shoot_sfx = sfx_IthacaShoot
+shot_reward = 5
+}
+
+function wpn_Spaz12(){
+weapon_sprite = s_Spaz12
+weapon_name = "Spas 12"
+cost = 2600
+if object_index = GM{
+array_push(tier_2_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(shotgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(8,40)
+set_bullet_power(s_12GadgeBuckshot,15.7)
+set_gun_handling(95,20,9.7)
+set_deploy_stats(15,-1)
+shoot_delay = 5
+action_type = s_SemiAuto
+reload_time = 190
+bullet_spread = 30
+bullet_amount = 9
+set_variable_reload_time(30,45,30)
+shoot_sfx = sfx_OlympiaShoot
+jam_chance = 3
+jam_time = 130
+shot_reward = 5
+}
+	
+//End of C tier, tier 2
+
+//B Tier, tier 3
+function wpn_SnW500(){
+weapon_sprite = s_SnW500
+weapon_name = "S&W500"
+cost = 900
+if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+array_push(revolver_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(5,20)
+set_bullet_power(s_500SAWMagnum,8.4)
+set_gun_handling(90,40,4.8)
+set_deploy_stats(12,-1)
+shoot_delay = 2
+trigger_delay = 20
+action_type = s_DoubleAction
+set_variable_reload_time(45,40,30)
+reload_sfx = sfx_DEagleReload
+shoot_sfx = sfx_DEagleShoot
+description = "Immensely powerful magnum revolver that lays down large enemies with few shots, but has quite intense recoil and knockback"
 }
 	
 function wpn_Thompson(){
@@ -756,27 +773,6 @@ if object_index = Player && jam_timer = 0{jam_time = irandom_range(120,180)}
 description = "Soviet Bullet Hose, typically a reliable weapon but the drum magazine sacrifices a bit of reliability for magazine capacity"
 }
 
-function wpn_M14(){
-weapon_sprite = s_M14
-weapon_name = "M14"
-cost = 400
-if object_index = GM{
-array_push(tier_4_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-//array_push(wallbuy_list,weapon_sprite)
-array_push(semi_ar_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(8,88)
-set_bullet_power(s_762x51NATO,22)
-set_gun_handling(4,5,9)
-set_deploy_stats(18,1)
-shoot_delay = 7
-action_type = s_SemiAuto
-reload_time = 70
-shoot_sfx = sfx_AK47Shoot
-}
-
 function wpn_AK47(){
 weapon_sprite = s_AK47
 weapon_name = "AK-47"
@@ -801,51 +797,6 @@ shoot_sfx = sfx_AK47Shoot
 description = "Most produced firearm in the world as it's a cheap and simple, yet deadly weapon. High power but known for it's inaccuracy due to subpar recoil control"
 }
 
-function wpn_AN94(){
-weapon_sprite = s_AN94
-weapon_name = "AN-94"
-cost = 2790
-if object_index = GM{
-array_push(tier_4_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(full_ar_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(30,60)
-set_bullet_power(s_545x39mm,18.3)
-set_gun_handling(-6,7,8.6)
-set_deploy_stats(16,1)
-shoot_delay = 6
-action_type = s_FullAuto
-reload_time = 110
-if object_index != Player{exit}
-if trigger_delay_timer < 2 && ammo_inmag > 1{shoot_amount = 2;gun_recoil = 2}else{shoot_amount = 1}
-description = "Russian assault rifle with good handling and a unique firing system that allows the first 2 shots after a trigger pull to shoot at a faster rate of fire"
-}
-
-function wpn_Xiuhcoatl(){
-weapon_sprite = s_Xiuhcoatl
-weapon_name = "Xiuhcoatl"
-cost = 1450
-if object_index = GM{
-array_push(tier_4_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-//array_push(box_list,weapon_sprite)
-array_push(full_ar_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(30,60)
-set_bullet_power(s_556x45mmNATO,16.3)
-set_gun_handling(-9,8,8.6)
-set_deploy_stats(15,1)
-shoot_delay = 4
-action_type = s_FullAuto
-reload_time = 110
-shoot_sfx = sfx_AK47Shoot
-description = "Mexican produced AR for the Mexican military. Xiuhcoatl translates to Fire Serpant and is named such for it's high fire rate for"
-}
-
 function wpn_Galil(){
 weapon_sprite = s_Galil
 weapon_name = "Galil"
@@ -867,168 +818,6 @@ reload_time = 130
 shoot_sfx = sfx_AK47Shoot
 }
 
-function wpn_ScarH(){
-weapon_sprite = s_ScarH
-weapon_name = "Scar H"
-cost = 2900
-if object_index = GM{
-array_push(tier_4_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(full_ar_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(20,80)
-set_bullet_power(s_762x51NATO,16)
-set_gun_handling(-7,6,8.6)
-set_deploy_stats(18,1)
-shoot_delay = 6
-action_type = s_FullAuto
-reload_time = 130
-shoot_sfx = sfx_AK47Shoot
-}
-
-function wpn_M60(){
-weapon_sprite = s_M60
-weapon_name = "M60 Rambo"
-cost = 1500
-if object_index = GM{
-array_push(tier_5_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(lmg_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(100,0)
-set_bullet_power(s_762x51NATO,22.2)
-set_gun_handling(-8,7,19);if object_index = Player{weapon_weight += ((ammo_inmag+ammo_reserve)*0.056)}
-set_deploy_stats(30,-1)
-shoot_delay = 6
-action_type = s_FullAuto
-reload_time = 180
-shoot_sfx = sfx_AK47Shoot
-}
-
-function wpn_Lewis(){
-weapon_sprite = s_Lewis
-weapon_name = "Lewis"
-cost = 2150
-if object_index = GM{
-array_push(weapon_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(lmg_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(47,141)
-set_bullet_power(s_303British,26)
-set_gun_handling(-5,3,28)
-set_deploy_stats(35,-1)
-shoot_delay = 8
-action_type = s_FullAuto
-reload_time = 170
-shoot_sfx = sfx_AK47Shoot
-}
-
-function wpn_RPD(){
-weapon_sprite = s_RPD
-weapon_name = "RPD"
-cost = 2900
-if object_index = GM{
-array_push(tier_4_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(lmg_list,weapon_sprite)
-array_push(soviet_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(100,50)
-set_bullet_power(s_762x39mm,18)
-set_gun_handling(-9,9,16.3)
-set_deploy_stats(30,-1)
-shoot_delay = 5
-action_type = s_FullAuto
-reload_time = 300
-shoot_sfx = sfx_AK47Shoot
-}
-
-function wpn_MG42(){
-weapon_sprite = s_MG42
-weapon_name = "MG42 Buzzsaw"
-cost = 3200
-if object_index = GM{
-array_push(tier_5_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(lmg_list,weapon_sprite)
-array_push(nazi_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(50,100)
-set_bullet_power(s_79257mmMauser,25.2)
-set_gun_handling(-8,7,25.6)
-set_deploy_stats(30,-1)
-shoot_delay = 3
-action_type = s_FullAuto
-reload_time = 300
-shoot_sfx = sfx_AK47Shoot
-}
-
-function wpn_Olympia(){
-weapon_sprite = s_Olympia
-weapon_name = "Olympia 72"
-cost = 400
-if object_index = GM{
-array_push(tier_2_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(shotgun_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(2,44)
-set_bullet_power(s_12GadgeBuckshot,19)
-set_gun_handling(14,5,9.7)
-set_deploy_stats(12,-1)
-shoot_delay = 1
-action_type = s_DoubleBarrel
-reload_time = 120
-bullet_spread = 6
-bullet_amount = 9
-shoot_sfx = sfx_OlympiaShoot
-shot_reward = 5
-description = "A finely made skeet shooting double barrel shotgun. Although reloading will be frequent and it lacks firepower compared to other shotguns, it's excellent handling and accuracy makes it a favorite for some"
-}
-
-function wpn_Ithaca(){
-weapon_sprite = s_Ithaca
-weapon_name = "Ithaca 37"
-weapon_draw_sprite = s_IthacaBase
-pump_sprite = s_IthacaPump
-//pump_distance = 20
-cost = 800
-if object_index = GM{
-array_push(tier_2_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-//array_push(box_list,weapon_sprite)
-array_push(shotgun_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(7,35)
-set_bullet_power(s_12GadgeBuckshot,22)
-set_gun_handling(40,18,7)
-set_deploy_stats(15,-1)
-shoot_delay = 30
-action_type = s_PumpAction
-set_variable_reload_time(15,60,30)
-bullet_spread = 20
-bullet_amount = 9
-shoot_sfx = sfx_IthacaShoot
-shot_reward = 5
-}
-	
 function wpn_Remi870(){
 weapon_sprite = s_Remi870
 weapon_name = "Remi 870 Marine"
@@ -1079,6 +868,332 @@ shoot_sfx = sfx_IthacaShoot
 shot_reward = 5
 description = "What used to be a missionary of firearms design is now an antique overshadowed by more modern shotguns. However should the trench gun need to come out of retirement it can get the job done, though it may be uncomfortable to shoot."
 }
+	
+function wpn_Karabiner98k(){
+weapon_sprite = s_Karabiner98k
+weapon_name = "Karabiner98k"
+cost = 1000
+if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(sniper_list,weapon_sprite)
+array_push(nazi_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(5,50)
+set_bullet_power(s_79257mmMauser,23.6)
+set_gun_handling(12,4,9)
+set_deploy_stats(10,1)
+shoot_delay = 60
+action_type = s_BoltAction
+reload_time = 95
+reload_sfx = sfx_AWPReload
+shoot_sfx = sfx_SSG08Shoot
+}
+
+function wpn_MosinNagat(){
+weapon_sprite = s_MosinNagat
+weapon_name = "Mosin Nagat"
+cost = 150
+if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(sniper_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(5,30)
+set_bullet_power(s_762x54R,29)
+set_gun_handling(15,4,8.8)
+set_deploy_stats(15,1)
+shoot_delay = 60
+action_type = s_BoltAction
+reload_time = 95
+reload_sfx = sfx_AWPReload
+shoot_sfx = sfx_SSG08Shoot
+var_string = current_year-1891
+description = "This unassuming broom closet rifle has somehow managed to weasel it's way into any major or minor conflict for the last "+string(var_string)+" years, examples being the russo-japanese war, WW1, Russian Civil, Finnish Civil, Spanish Civil, WW2, 1950's Korean War, Vietnam resistence War against USA, Afgan Civil, Chechen War 1 and 2, Iraq Wars, Ukraine Vs Russia, various African conflicts, and so many other conflicts you and I have never heard of and I bet as I'm typing this there's probably another war starting, god knows where, and some guy is gonna use their grandad's Mosin Nagat that he got from some guy he killed in some other war and... war never changes does it?"
+}
+
+function wpn_SSG08(){
+weapon_sprite = s_SSG08
+weapon_name = "SSG-08"
+cost = 750
+if object_index = GM{
+array_push(tier_3_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(sniper_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(10,60)
+set_bullet_power(s_762x51NATO,27.9)
+set_gun_handling(15,4,13.4)
+set_deploy_stats(15,1)
+shoot_delay = 60
+action_type = s_BoltAction
+reload_time = 95
+reload_sfx = sfx_AWPReload
+shoot_sfx = sfx_SSG08Shoot
+}
+
+//End of B Tier 3
+
+//A Tier, tier 4
+function wpn_Zip22(){
+weapon_sprite = s_Zip22
+weapon_name = "Zip 22"
+cost = 22
+if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
+if object_index != Player{exit}
+auto = false
+set_gun_ammo(25,125)
+set_bullet_power(s_22LR,4)
+set_gun_handling(12,1.5,1)
+set_deploy_stats(11,-1)
+shoot_delay = 1
+action_type = s_SemiAuto
+if reload_timer = -1{reload_time = irandom_range(120,210)}
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+bullet_spread = 4
+trigger_delay = 2
+jam_chance = 40
+if jam_timer = 0{jam_time = irandom_range(30,122)}
+description = ""
+}
+
+function wpn_M14(){
+weapon_sprite = s_M14
+weapon_name = "M14"
+cost = 400
+if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+//array_push(wallbuy_list,weapon_sprite)
+array_push(semi_ar_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(8,88)
+set_bullet_power(s_762x51NATO,22)
+set_gun_handling(4,5,9)
+set_deploy_stats(18,1)
+shoot_delay = 7
+action_type = s_SemiAuto
+reload_time = 70
+shoot_sfx = sfx_AK47Shoot
+}
+
+function wpn_AN94(){
+weapon_sprite = s_AN94
+weapon_name = "AN-94"
+cost = 2790
+if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(full_ar_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(30,60)
+set_bullet_power(s_545x39mm,18.3)
+set_gun_handling(-6,7,8.6)
+set_deploy_stats(16,1)
+shoot_delay = 6
+action_type = s_FullAuto
+reload_time = 110
+if object_index != Player{exit}
+if trigger_delay_timer < 2 && ammo_inmag > 1{shoot_amount = 2;gun_recoil = 2}else{shoot_amount = 1}
+description = "Russian assault rifle with good handling and a unique firing system that allows the first 2 shots after a trigger pull to shoot at a faster rate of fire"
+}
+
+function wpn_Xiuhcoatl(){
+weapon_sprite = s_Xiuhcoatl
+weapon_name = "Xiuhcoatl"
+cost = 1450
+if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
+array_push(full_ar_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(30,60)
+set_bullet_power(s_556x45mmNATO,16.3)
+set_gun_handling(-9,8,8.6)
+set_deploy_stats(15,1)
+shoot_delay = 4
+action_type = s_FullAuto
+reload_time = 110
+shoot_sfx = sfx_AK47Shoot
+description = "Mexican produced AR for the Mexican military. Xiuhcoatl translates to Fire Serpant and is named such for it's high fire rate for"
+}
+
+function wpn_ScarH(){
+weapon_sprite = s_ScarH
+weapon_name = "Scar H"
+cost = 2900
+if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(full_ar_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(20,80)
+set_bullet_power(s_762x51NATO,16)
+set_gun_handling(-7,6,8.6)
+set_deploy_stats(18,1)
+shoot_delay = 6
+action_type = s_FullAuto
+reload_time = 130
+shoot_sfx = sfx_AK47Shoot
+}
+	
+function wpn_RPD(){
+weapon_sprite = s_RPD
+weapon_name = "RPD"
+cost = 2900
+if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(lmg_list,weapon_sprite)
+array_push(soviet_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(100,50)
+set_bullet_power(s_762x39mm,18)
+set_gun_handling(-9,9,16.3)
+set_deploy_stats(30,-1)
+shoot_delay = 5
+action_type = s_FullAuto
+reload_time = 300
+shoot_sfx = sfx_AK47Shoot
+}
+	
+function wpn_AWP(){
+weapon_sprite = s_AWP
+weapon_name = "AWP"
+cost = 4750
+if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(sniper_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(5,35)
+set_bullet_power(s_308WinchesterMagnum,24)
+set_gun_handling(30,16,14.3)
+set_deploy_stats(20,1)
+shoot_delay = 70
+action_type = s_BoltAction
+reload_time = 100
+reload_sfx = sfx_AWPReload
+shoot_sfx = sfx_AWPShoot
+}
+
+//End of A tier
+
+//S tier , Tier 5
+function wpn_spectre(){
+weapon_sprite = s_spectre
+weapon_name = "spectre"
+cost = 850
+if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(smg_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(30,150)
+set_bullet_power(s_45ACP,8.9)
+set_gun_handling(-5,1,6.6)
+set_deploy_stats(9,-1)
+shoot_delay = 4
+action_type = s_FullAuto
+reload_time = 75
+shoot_sfx = sfx_mp5Shoot
+description = ""
+}
+
+function wpn_M60(){
+weapon_sprite = s_M60
+weapon_name = "M60 Rambo"
+cost = 1500
+if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(lmg_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(100,0)
+set_bullet_power(s_762x51NATO,22.2)
+set_gun_handling(-8,7,19);if object_index = Player{weapon_weight += ((ammo_inmag+ammo_reserve)*0.056)}
+set_deploy_stats(30,-1)
+shoot_delay = 6
+action_type = s_FullAuto
+reload_time = 180
+shoot_sfx = sfx_AK47Shoot
+}
+
+function wpn_Lewis(){
+weapon_sprite = s_Lewis
+weapon_name = "Lewis"
+cost = 2150
+if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(lmg_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(47,141)
+set_bullet_power(s_303British,26)
+set_gun_handling(-5,3,28)
+set_deploy_stats(35,-1)
+shoot_delay = 8
+action_type = s_FullAuto
+reload_time = 170
+shoot_sfx = sfx_AK47Shoot
+}
+
+function wpn_MG42(){
+weapon_sprite = s_MG42
+weapon_name = "MG42 Buzzsaw"
+cost = 3200
+if object_index = GM{
+array_push(tier_5_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(lmg_list,weapon_sprite)
+array_push(nazi_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(50,100)
+set_bullet_power(s_79257mmMauser,25.2)
+set_gun_handling(-8,7,25.6)
+set_deploy_stats(30,-1)
+shoot_delay = 3
+action_type = s_FullAuto
+reload_time = 300
+shoot_sfx = sfx_AK47Shoot
+}
 
 function wpn_KS23(){
 weapon_sprite = s_KS23
@@ -1107,33 +1222,6 @@ shot_reward = 4
 description = "4 gadge shotgun made out of whatever spare parts the soviets had laying around"
 }
 
-function wpn_Spaz12(){
-weapon_sprite = s_Spaz12
-weapon_name = "Spas 12"
-cost = 2600
-if object_index = GM{
-array_push(tier_2_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(shotgun_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(8,40)
-set_bullet_power(s_12GadgeBuckshot,15.7)
-set_gun_handling(95,20,9.7)
-set_deploy_stats(15,-1)
-shoot_delay = 5
-action_type = s_SemiAuto
-reload_time = 190
-bullet_spread = 30
-bullet_amount = 9
-set_variable_reload_time(30,45,30)
-shoot_sfx = sfx_OlympiaShoot
-jam_chance = 3
-jam_time = 130
-shot_reward = 5
-}
-
 function wpn_AA12(){
 weapon_sprite = s_AA12
 weapon_name = "AA12"
@@ -1156,100 +1244,6 @@ bullet_spread = 20
 bullet_amount = 9
 shoot_sfx = sfx_OlympiaShoot
 shot_reward = 5
-}
-
-function wpn_Karabiner98k(){
-weapon_sprite = s_Karabiner98k
-weapon_name = "Karabiner98k"
-cost = 400
-if object_index = GM{
-array_push(tier_3_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(sniper_list,weapon_sprite)
-array_push(nazi_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(5,80)
-set_bullet_power(s_79257mmMauser,23.6)
-set_gun_handling(12,4,9)
-set_deploy_stats(10,1)
-shoot_delay = 60
-action_type = s_BoltAction
-reload_time = 95
-reload_sfx = sfx_AWPReload
-shoot_sfx = sfx_SSG08Shoot
-}
-
-function wpn_MosinNagat(){
-weapon_sprite = s_MosinNagat
-weapon_name = "Mosin Nagat"
-cost = 150
-if object_index = GM{
-array_push(tier_3_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(sniper_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(5,55)
-set_bullet_power(s_762x54R,29)
-set_gun_handling(15,4,8.8)
-set_deploy_stats(15,1)
-shoot_delay = 60
-action_type = s_BoltAction
-reload_time = 95
-reload_sfx = sfx_AWPReload
-shoot_sfx = sfx_SSG08Shoot
-var_string = current_year-1891
-description = "This unassuming broom closet rifle has somehow managed to weasel it's way into any major or minor conflict for the last "+string(var_string)+" years, examples being the russo-japanese war, WW1, Russian Civil, Finnish Civil, Spanish Civil, WW2, 1950's Korean War, Vietnam resistence War against USA, Afgan Civil, Chechen War 1 and 2, Iraq Wars, Ukraine Vs Russia, various African conflicts, and so many other conflicts you and I have never heard of and I bet as I'm typing this there's probably another war starting, god knows where, and some guy is gonna use their grandad's Mosin Nagat that he got from some guy he killed in some other war and... war never changes does it?"
-}
-
-function wpn_SSG08(){
-weapon_sprite = s_SSG08
-weapon_name = "SSG-08"
-cost = 750
-if object_index = GM{
-array_push(tier_3_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(sniper_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(10,90)
-set_bullet_power(s_762x51NATO,27.9)
-set_gun_handling(15,4,13.4)
-set_deploy_stats(15,1)
-shoot_delay = 60
-action_type = s_BoltAction
-reload_time = 95
-reload_sfx = sfx_AWPReload
-shoot_sfx = sfx_SSG08Shoot
-}
-
-function wpn_AWP(){
-weapon_sprite = s_AWP
-weapon_name = "AWP"
-cost = 4750
-if object_index = GM{
-array_push(tier_4_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(sniper_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(5,35)
-set_bullet_power(s_308WinchesterMagnum,24)
-set_gun_handling(30,16,14.3)
-set_deploy_stats(20,1)
-shoot_delay = 70
-action_type = s_BoltAction
-reload_time = 100
-reload_sfx = sfx_AWPReload
-shoot_sfx = sfx_AWPShoot
 }
 
 function wpn_DSR50(){
@@ -1299,7 +1293,7 @@ reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
 description = ".50 BMG semi auto rifle that would be an ideal head exploding weapon if it wasn't hindered by it's weight, violent recoil, and unreliability. If (or when) this gun jams, you'll need a screwdriver, knife, or some other kind of tool to get the rounds unstuck"
 }
-
+/*
 function wpn_M79(){
 weapon_sprite = s_M79
 weapon_name = "M79 Thumper"
@@ -1351,14 +1345,14 @@ explosive = true
 explosion_damage = 600
 description = ""
 }
-
+/*
 function wpn_SquareGun(){
 weapon_sprite = s_SquareGun
 weapon_name = "Quad Lazer"
 cost = 6666333325
 auto = false
 if object_index = GM{
-array_push(tier_4_gun_list,weapon_sprite)
+array_push(tier_6_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 exit}
@@ -1392,3 +1386,25 @@ bullet_speed = 1
 bullet_sprite = s_SquareGunBullet
 reload_time = 120
 description = "Lazer Ray 230 Celcius, or as the Americans say, 450 Ferenheit is a 2002 inhouse developed lazer rifle designed for bullet varius immune containment subjects. It's interior is lined with inconel and nemonic to allow the rifle the reach the extreme tempertures. It's highly effective against single targets but may not be ideal against multiple enemies"}
+
+function wpn_BFR500(){
+weapon_sprite = s_BFR500
+weapon_name = "BFR 500"
+cost = 2780
+if object_index = GM{
+//array_push(weapon_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
+//array_push(revolver_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(5,5)
+set_bullet_power(s_500SAWMagnum,8)
+set_gun_handling(180,64,4.2)
+set_deploy_stats(20,-1)
+shoot_delay = 60
+action_type = s_SingleAction
+set_variable_reload_time(45,30,45)
+reload_sfx = sfx_DEagleReload
+shoot_sfx = sfx_DEagleShoot
+//description = "Unnecessarily large revolver with power that questionably compensates it's uncontrollable recoil and knockback"
+}

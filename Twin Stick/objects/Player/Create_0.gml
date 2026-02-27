@@ -24,6 +24,10 @@ weapon_slots = 2
 strength = 2
 reload_speed = 1
 
+debt_limit = 0
+loan_fish = 0
+loan_timer_frames = 0
+loan_timer_seconds = 5
 //Weapon variables
 ammo_inmag = 30
 ammo_reserve = 30
@@ -80,6 +84,7 @@ new_item = -1
 item_draw_y = 0
 
 mov_mult = 1
+turtle_mov_mult = 0
 
 player_damage_mult = 0
 player_reload_mult = 0

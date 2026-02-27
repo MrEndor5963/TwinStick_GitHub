@@ -24,4 +24,8 @@ if keyboard_check_pressed(ord("C")){
 if disable_countdown = false{disable_countdown = true}
 else{disable_countdown = false}
 }
+
+if keyboard_check_pressed(ord("B")){
+if room != r_Floor1_Boss{room = r_Floor1_Boss}
+}
 }

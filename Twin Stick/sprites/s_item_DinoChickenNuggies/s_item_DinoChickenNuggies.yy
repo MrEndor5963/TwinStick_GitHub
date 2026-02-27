@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"ItemCodeToDoList",
-    "path":"folders/BSprites/ItemSprites/ItemCodeToDoList.yy",
+    "name":"ItemSprites",
+    "path":"folders/BSprites/ItemSprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

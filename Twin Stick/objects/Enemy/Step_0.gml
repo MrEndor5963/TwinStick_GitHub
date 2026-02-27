@@ -10,6 +10,8 @@ instance_destroy();exit
 }
 
 if x < 0 or y < 0 or x > room_width or y > room_height{hp = 0}
-enemy_damage_check()
+
+if creator.object_index != ClawpeedeBody{
+enemy_damage_check()}
 
 while array_length(contact_list) > 100{array_pop(contact_list)}

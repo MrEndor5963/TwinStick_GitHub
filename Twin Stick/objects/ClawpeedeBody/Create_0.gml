@@ -1,0 +1,20 @@
+home_x = GM.map_x
+home_y = GM.map_y
+if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
+instance_destroy();exit
+}
+hp = 20000
+hp += round((GM.player_amount-1)*0.2)
+hp_max = hp
+move_timer = 1
+shoot_timer = 90
+create_enemy()
+hsp = 0;vsp = 0
+
+node_x = x div 48
+node_y = y div 48
+
+image_xscale = irandom_range(-1,1)
+while image_xscale = 0{image_xscale = irandom_range(-1,1)}
+move_direction_h  = image_xscale
+move_direction_v = 0

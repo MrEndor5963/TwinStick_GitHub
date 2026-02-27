@@ -186,34 +186,27 @@ array_push(weapon_tiers,1)
 }
 
 if floor_number = 2 or floor_number = 3{
-array_push(weapon_tiers,1)
 array_push(weapon_tiers,2)
 }
 
 if floor_number = 4 or floor_number = 5{
-array_push(weapon_tiers,1)
-array_push(weapon_tiers,2)
 array_push(weapon_tiers,3)
 }
 
 if floor_number = 6 or floor_number = 7{
-array_push(weapon_tiers,1)
-array_push(weapon_tiers,2)
-array_push(weapon_tiers,3)
 array_push(weapon_tiers,4)
 }
 
 if floor_number >= 8{
-array_push(weapon_tiers,1)
-array_push(weapon_tiers,2)
-array_push(weapon_tiers,3)
-array_push(weapon_tiers,4)
 array_push(weapon_tiers,5)
 }
 
-//Standard Procedure
-//Security
-//Lethal Intent
-//Security Breach
-//Total Containment Failure
-//Protocol [Redacted]
+//floor 9, tiers 1-5
+//floor 10, tiers 1-6
+
+//Civilian - D tier
+//Security - C tier
+//Soldier - B tier
+//Elite Ops - A tier
+//Containment Breach - S tier
+//Classified - Z tier

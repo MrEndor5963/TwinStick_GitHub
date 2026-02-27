@@ -33,6 +33,8 @@ item_CowboyHat()
 item_RageSpell()
 item_HammerAndSickle()
 item_DozenEggs()
+item_PetTurtle()
+item_LoanFish()
 }
 
 function item_Heart(){
@@ -394,3 +396,61 @@ if object_index = Player && new_item != -1{
 twelve_bonus_ammo += 12
 }
 }
+
+function item_PetTurtle(){
+item_sprite = s_item_PetTurtle
+item_name = "Pet Tortoise"
+cost = 1600
+description = "+4 HP and Max HP but -60% move speed while enemies are in the room"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+hp += 4;hp_max += 4;turtle_mov_mult += 0.5
+}
+}
+
+function item_LoanFish(){
+item_sprite = s_item_LoanFish
+item_name = "Loan Fish"
+cost = 2500
+description = "Go an extra -15000$ in debt but for every 50 seconds in debt, lose 1 or more HP (HP loss multiplies by 2 every additional 50 seconds in debt)"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+debt_limit += 10000
+loan_fish += 1
+}
+}
+
+/*
+function item_FutbolBall(){
+item_sprite = s_item_FutbolBall
+item_name = "Fútbol Ball"
+cost = 2000
+
+description = "Spawns a Fútbol Ball you can kick to damage enemies, with power depending on how good your character is at Fútbol"
+Player.money += 1
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+
+}
+}
+
+/*
+//I should wait until I can do something unique for this one
+function item_CursedIdol(){
+item_sprite = s_item_CursedIdol
+item_name = "Cursed Idol"
+cost = 5000
+description = "+25000$ but tougher enemies become more common"
+if object_index = GM{
+array_push(item_list,item_sprite)
+exit}
+if object_index = Player && new_item != -1{
+hp += 4;hp_max += 4;turtle_mov_mult += 0.5
+}
+}*/
