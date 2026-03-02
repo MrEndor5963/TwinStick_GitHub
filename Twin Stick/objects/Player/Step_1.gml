@@ -39,7 +39,7 @@ if player_name = "Craig"{
 country = "USA"
 hp = 15;hp_max = 15
 starting_weapon = s_m1911
-money = 400
+money = 420
 mov_spd = 7
 strength = 17
 player_weight = 2.85
@@ -54,15 +54,15 @@ gambling_degeneracy = 18
 }
 
 if player_name = "Nia"{
-country = "Canada"//Maybe switch to poland or something else
+country = "Canada"
 hp = 8;hp_max = 8
-starting_weapon = s_CZ75Auto
-money = 6500
+starting_weapon = s_P320
+money = 6800
 mov_spd = 7
 strength = 4
 player_weight = 1.23
 //reload_speed = 1.5
-healthcare = 3000//Heals everyone except Craig
+healthcare = 3500//Heals everyone except Craig
 draw_color = $3B00FF
 player_age = 23
 futbol_skill = 15
@@ -91,7 +91,7 @@ if player_name = "Muhammad"{
 country = "Saudi Arabia"	
 hp = 4;hp_max = 4
 starting_weapon = s_mp5
-money = 12890000000
+money = 2290000000
 mov_spd = 6
 strength = 2.5
 player_weight = 1.48
@@ -130,7 +130,7 @@ if player_name = "Talya"{
 country = "Russia"
 hp = 7;hp_max = 7
 starting_weapon = s_mp5
-money = 340
+money = 400
 mov_spd = 8
 strength = 4.5
 player_weight = 1.33

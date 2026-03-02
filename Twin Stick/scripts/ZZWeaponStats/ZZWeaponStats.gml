@@ -141,6 +141,7 @@ case s_762x54R: set_caliber_stats(500+(28*barrel_length),1.5,1,0.05,0.2,"7.62x54
 case s_79257mmMauser: set_caliber_stats(550+(30*barrel_length),1.5,1,0.06,0.2,"7.92x57mm Mauser") break;
 case s_303British: set_caliber_stats(460+(25*barrel_length),1.5,3.3,0.06,0.2,".303 British") break;
 case s_50BMG: set_caliber_stats(1800+(70*barrel_length),1.5,9,0.26,0.2,".50 BMG") break;
+case s_410Bore: set_caliber_stats((400/9)+(1.5*barrel_length),1.5,1,0.1,0.2,".410 Bore") break;
 case s_12GadgeBuckshot: set_caliber_stats((450/9)+(1.5*barrel_length),1.5,1,0.1,0.2,"12 Gadge Buckshot") break;
 case s_23mm: set_caliber_stats((1200/32)+(1.1*barrel_length),1.5,1,0.4,0.2,"23mm") break;
 }
@@ -152,7 +153,7 @@ weapon_damage = arg_damge
 bullet_knockback = arg_knockback
 penetration = arg_penetration
 bullet_weight = arg_weight
-bullet_price = arg_price;bullet_price = bullet_price
+bullet_price = 100///arg_price;
 caliber_name = arg_name;caliber_name = caliber_name
 ///*temporary damage calculation until I get a better grip on stuff*/weapon_damage = bullet_weight*500
 
@@ -184,18 +185,20 @@ function referece_weapons(){
 //Ordered by tier -> gun class -> gun power
 //Pistol, Revolvers, Machine pistol, smg, Assault rifle, LMG's, Shotguns, Sniper Rifles
 
-
 //Melee
 wpn_Knife()
+//Tier E, Tier 0
+wpn_Taurus92()
+wpn_m1911()
+wpn_P320()
+//Beretta 92
 //Tier D, Tier 1
-wpn_Glock18()//Starter
-wpn_Taurus92()//Starter
-wpn_m1911()//Starter
-//P320//Starter
-//Beretta 93
+wpn_Glock18()
+wpn_Alien()
 wpn_FiveSeven()
 wpn_DEagle()
 wpn_Python()
+wpn_RagingJudge()
 wpn_CZ75Auto()
 //Tier C, Tier 2
 wpn_SnW500()
@@ -283,8 +286,78 @@ weapon_weight = 0.5
 //description = ""
 //}
 
-// D Tier, tier 1
+// E Tier, Tier 0
+function wpn_m1911(){
+weapon_sprite = s_m1911;
+weapon_draw_sprite = s_m1911Base
+slide_sprite = s_m1911Slide;slide_distance = -8
+weapon_name = "m1911"
+cost = 200
+if object_index = GM{
+array_push(tier_0_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(8,72)
+set_bullet_power(s_45ACP,5)
+set_gun_handling(8,2,2.4)
+set_deploy_stats(8,-1)
+shoot_delay = 8
+action_type = s_SemiAuto
+reload_time = 65
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+description = "Iconic, reliable, and accurate WW1 pistol still manufactured today"
+}
 
+function wpn_Taurus92(){
+weapon_sprite = s_Taurus92
+weapon_name = "Taurus 92"
+cost = 350
+if object_index = GM{
+array_push(tier_0_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(17,85)
+set_bullet_power(s_9x19mmParabellum,4.9)
+set_gun_handling(12,2.5,2.1)
+set_deploy_stats(7,-1)
+shoot_delay = 4
+action_type = s_SemiAuto
+reload_time = 90
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+description = "Effective sidearm based on the Berretta 92, used by many Brazilian police and military"
+}
+
+function wpn_P320(){
+weapon_sprite = s_P320
+weapon_name = "P320"
+cost = 320
+if object_index = GM{
+array_push(tier_0_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(17,102)
+set_bullet_power(s_9x19mmParabellum,4.7)
+set_gun_handling(12,2.5,2.1)
+set_deploy_stats(7,-1)
+shoot_delay = 4
+action_type = s_SemiAuto
+reload_time = 90
+reload_sfx = sfx_m1911Reload
+shoot_sfx = sfx_m1911Shoot
+description = ""
+}
+
+// D Tier, tier 1
 function wpn_Glock18(){
 weapon_sprite = s_Glock18
 weapon_name = "Glock 18"
@@ -307,53 +380,28 @@ reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = ""
 }
-
-function wpn_Taurus92(){
-weapon_sprite = s_Taurus92
-weapon_name = "Taurus 92"
-cost = 350
+	
+function wpn_Alien(){
+weapon_sprite = s_Alien
+weapon_name = "Alien"
+cost = 7500
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,85)
-set_bullet_power(s_9x19mmParabellum,4.9)
-set_gun_handling(12,2.5,2.1)
-set_deploy_stats(7,-1)
-shoot_delay = 4
+set_gun_ammo(17,68)
+set_bullet_power(s_9x19mmParabellum,4.8)
+set_gun_handling(0,2.5,2.47)
+set_deploy_stats(6,-1)
+bullet_spread = 0
+shoot_delay = 3
 action_type = s_SemiAuto
-reload_time = 90
+reload_time = 75
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
-description = "Effective sidearm based on the Berretta 92, used by many Brazilian police and military"
-}
-
-function wpn_m1911(){
-weapon_sprite = s_m1911;
-weapon_draw_sprite = s_m1911Base
-slide_sprite = s_m1911Slide;slide_distance = -8
-weapon_name = "m1911"
-cost = 200
-if object_index = GM{
-array_push(tier_1_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(handgun_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(8,72)
-set_bullet_power(s_45ACP,5)
-set_gun_handling(8,2,2.4)
-set_deploy_stats(8,-1)
-shoot_delay = 8
-action_type = s_SemiAuto
-reload_time = 65
-reload_sfx = sfx_m1911Reload
-shoot_sfx = sfx_m1911Shoot
-description = "Iconic, reliable, and accurate WW1 pistol still manufactured today"
+description = ""
 }
 
 function wpn_FiveSeven(){
@@ -417,17 +465,47 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(6,36)
+set_gun_ammo(6,42)
 set_bullet_power(s_357Magnum,6)
 set_gun_handling(25,10,2.8)
 set_deploy_stats(9,-1)
 shoot_delay = 2
-trigger_delay = 8
+trigger_delay = 7
 action_type = s_DoubleAction
 set_variable_reload_time(30,35,45)
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
 description = "Colt Python Luxery Revolver, considered by some to be one of the finest revolvers on the market with a refined balance between power, accuracy, and handling"
+}
+
+function wpn_RagingJudge(){
+weapon_sprite = s_RagingJudge
+//weapon_draw_sprite = s_PythonBase
+//hammer_sprite = s_PythonHammer
+weapon_name = "Raging Judge"
+cost = 1200
+if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+//array_push(box_list,weapon_sprite)
+array_push(handgun_list,weapon_sprite)
+array_push(revolver_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(6,36)
+set_bullet_power(s_410Bore,6.5)
+set_gun_handling(30,11,4.5)
+set_deploy_stats(12,-1)
+shoot_delay = 2
+bullet_amount = 5
+bullet_spread = 12
+trigger_delay = 12
+action_type = s_DoubleAction
+set_variable_reload_time(30,35,45)
+reload_sfx = sfx_DEagleReload
+shoot_sfx = sfx_DEagleShoot
+description = "shotgun revolver"
 }
 	
 function wpn_CZ75Auto(){

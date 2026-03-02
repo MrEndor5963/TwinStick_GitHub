@@ -7,6 +7,8 @@ script_execute(asset_get_index("item_"+string(var_string)))
 
 function reference_items(){
 item_Heart()
+item_AmmoRefill()
+
 item_SuperMushroom()
 item_Move()
 item_WeaponSlots()
@@ -49,6 +51,17 @@ repeat(GM.player_amount){
 with GM.player_list[i]{hp = hp_max}
 
 i += 1}
+}
+}
+
+function item_AmmoRefill(){
+item_name = "Ammo Refill"
+cost = 500
+description = "Refills ammo reserve"
+rebuyable = true
+consumable = true
+if object_index = Player && new_item != -1{
+ammo_reserve = ammo_reserve_max
 }
 }
 
@@ -375,12 +388,12 @@ function item_HammerAndSickle(){
 item_sprite = s_item_HammerAndSickle
 item_name = "Hammer & Sickle"
 cost = 1922
-description = "All Soviet invented weaponry gets +100% max reserve ammo and a full ammo refill at the start of each floor but give no shot or kill reward"
+description = "All Soviet invented weaponry gets +50% max reserve ammo and a full ammo refill at the start of each floor but give no shot or kill reward"
 if object_index = GM{
 array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
-soviet_ammo_mult += 1
+soviet_ammo_mult += 0.50
 }
 }
 

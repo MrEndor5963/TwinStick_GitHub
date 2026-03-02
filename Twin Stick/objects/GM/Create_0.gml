@@ -95,6 +95,7 @@ sniper_list = []
 soviet_list = []
 nazi_list = []
 
+tier_0_gun_list = []
 tier_1_gun_list = []
 tier_2_gun_list = []
 tier_3_gun_list = []
