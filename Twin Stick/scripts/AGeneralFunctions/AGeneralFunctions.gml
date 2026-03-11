@@ -7,13 +7,11 @@ draw_set_halign(arg_halign);draw_set_valign(arg_valign)
 }
 
 function set_tileset_collision(){
-tiles_big = layer_tilemap_get_id("TilesBig")
-tiles_small = layer_tilemap_get_id("TilesSmall")
-tiles_other = layer_tilemap_get_id("TileMap")
+tiles = layer_tilemap_get_id("TileMap")
 }
 
 function collision_present(x_place,y_place){
-if place_meeting(x_place,y_place,[Collision,tiles_big,tiles_small,tiles_other]){return true}
+if place_meeting(x_place,y_place,[Collision,tiles]){return true}
 return false
 }
 

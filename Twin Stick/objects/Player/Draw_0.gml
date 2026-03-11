@@ -3,7 +3,11 @@ if GM.next_room = -1{
 weapon_yscale = 1
 if weapon_draw_sprite = s_0{weapon_draw_sprite = weapon_sprite}
 
-if aim_string != "U"{draw_self();melee.depth = depth-1}
+if hit_stun % 5 == 1{}else{
+
+if aim_string != "U"{
+draw_self()
+;melee.depth = depth-1}
 //if recoil != 0{gun_angle = aim_direction+recoil}
 //else{gun_angle = aim_direction+recoil_cooldown}
 if aim_direction > 90 && aim_direction < 270{weapon_yscale = -1}else{weapon_yscale = 1}
@@ -36,13 +40,21 @@ draw_sprite_ext(pump_sprite,0,x+(pump_offset*hspeed),y+(pump_offset*vspeed),1,we
 speed = 0}
 
 
-if aim_string = "U"{draw_self();melee.depth = depth+1}
+if aim_string = "U"{
+draw_self()
+;melee.depth = depth+1}
 
 image_xscale = 1;image_yscale = 1
 }
 
+
+}
+
 depth_saved = depth
 depth = -12000
+
+
+
 #region Player UI{
 draw_set_color(c_white)
 

@@ -6,7 +6,7 @@ dev_mode = true
 randomize()
 audio_group_load(audiogroup_sfx)
 audio_group_set_gain(audiogroup_default,0,0)
-audio_group_set_gain(audiogroup_sfx,0,0)
+//audio_group_set_gain(audiogroup_sfx,0,0)
 depth = -1000
 screen_width = 1280
 screen_height = 720
@@ -125,6 +125,7 @@ description_text = false
 //application_surface_draw_enable(false); //disabling automatic redrawing of the application surface
 display_set_gui_size(1280, 720);
 glitch_intensity = 2
+glitch_sound = -22
 
 //////////////////////
 ///////////////////////

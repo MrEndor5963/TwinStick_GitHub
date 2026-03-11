@@ -4,7 +4,9 @@ if glitch_intensity < 0{glitch_intensity = 0}}
 
 if despawn = true or !instance_exists(creator){
 if glitch_intensity < 1{glitch_intensity += 0.1}
-if glitch_intensity >= 0.8{instance_destroy();}
+if glitch_intensity >= 0.8{
+play_sfx(sfx_TextboxSpawn)
+;instance_destroy();}
 }
 
 bktglitch_activate(1280,720);

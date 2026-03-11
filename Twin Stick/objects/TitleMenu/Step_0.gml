@@ -1,5 +1,5 @@
 menu_controls()
-if key_up_pressed or key_down_pressed{text_progress = 0}
+if key_up_pressed or key_down_pressed{play_sfx(sfx_Cursor)}
 key_back = gamepad_button_check_pressed_any(gp_face2) or keyboard_check_pressed(vk_backspace) or keyboard_check_pressed(vk_escape) or keyboard_check_pressed(ord("X"))
 
 if key_back{sub_menu = 0;menu_cursor = 0}

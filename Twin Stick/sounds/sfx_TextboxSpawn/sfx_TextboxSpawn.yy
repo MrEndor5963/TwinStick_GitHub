@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_TextboxSpawn",
+  "audioGroupId":{
+    "name":"audiogroup_sfx",
+    "path":"audiogroups/audiogroup_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.60480726,
+  "name":"sfx_TextboxSpawn",
+  "parent":{
+    "name":"UISounds",
+    "path":"folders/DSounds/UISounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_TextboxSpawn.ogg",
+  "type":0,
+  "volume":1.0,
+}

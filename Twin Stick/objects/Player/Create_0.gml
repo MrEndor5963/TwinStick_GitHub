@@ -179,11 +179,10 @@ glitch_int_mag = 1;glitch_int_reserve = 1
 glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }
 
-
 weapon = []
 script_execute_wpn(s_m1911)
 give_all_weapons = false
-give_all_weapons = true
+//give_all_weapons = true
 if give_all_weapons = true{
 weapon = []
 weapon_slots = array_length(GM.weapon_list)

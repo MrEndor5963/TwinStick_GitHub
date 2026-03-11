@@ -28,4 +28,23 @@ else{disable_countdown = false}
 if keyboard_check_pressed(ord("B")){
 if room != r_Floor1_Boss{room = r_Floor1_Boss}
 }
+
+if keyboard_check_pressed(ord("G")){
+if instance_exists(Player){
+with Player{
+weapon = []
+script_execute_wpn(s_m1911)
+
+weapon = []
+weapon_slots = array_length(GM.weapon_list)
+vrp = 0
+repeat(weapon_slots){
+get_new_weapon(GM.weapon_list[vrp])
+switch_to_weapon(vrp)
+vrp += 1
+}
+
+}
+}
+}
 }
