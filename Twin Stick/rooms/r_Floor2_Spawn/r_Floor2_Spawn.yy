@@ -71,8 +71,8 @@
   ],
   "name":"r_Floor2_Spawn",
   "parent":{
-    "name":"CRooms",
-    "path":"folders/CRooms.yy",
+    "name":"Floorspecificrooms",
+    "path":"folders/CRooms/Floorspecificrooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

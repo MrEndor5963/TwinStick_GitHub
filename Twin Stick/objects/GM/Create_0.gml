@@ -54,7 +54,7 @@ key_held_r = 0
 
 room_list_1 = []
 vrp = 1
-repeat(20){
+repeat(10){
 if vrp < 10{var_string = "0"+string(vrp)}else{var_string = vrp}
 var_temp = asset_get_index("r_Floor1_Main"+string(var_string))
 array_push(room_list_1,var_temp)
@@ -71,11 +71,11 @@ vrp += 1
 }
 
 enemy_list = []
-//array_push(enemy_list,Zombie)
+array_push(enemy_list,Zombie)
 //array_push(enemy_list,StickBlade)
 array_push(enemy_list,SpikeFly)
-//array_push(enemy_list,ZombieShooter)
-//array_push(enemy_list,Hellhound)
+array_push(enemy_list,Wizard)
+array_push(enemy_list,Hellhound)
 
 
 weapon_list = []

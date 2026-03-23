@@ -1,4 +1,3 @@
-buffer = 0
 players_ready = false
 start_timer = 300
 screen_width = GM.screen_width

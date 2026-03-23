@@ -68,8 +68,8 @@
   ],
   "name":"r_Floor1_Boss",
   "parent":{
-    "name":"CRooms",
-    "path":"folders/CRooms.yy",
+    "name":"Floorspecificrooms",
+    "path":"folders/CRooms/Floorspecificrooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

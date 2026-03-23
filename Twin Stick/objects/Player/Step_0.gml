@@ -279,7 +279,7 @@ ds_list_destroy(list_temp)
 #endregion
 
 #region Buyable Stuff
-set_image_scale(1.2)
+set_image_scale(1.4)
 useable_money = money+debt_limit
 
 if place_meeting(x,y,MysteryBox){

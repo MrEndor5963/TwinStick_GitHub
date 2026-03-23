@@ -122,28 +122,28 @@ function set_bullet_power(arg_caliber,arg_barrel_length){
 caliber = arg_caliber
 barrel_length = arg_barrel_length
 switch (caliber) {
-case s_22LR: set_caliber_stats(40+(10*barrel_length),1,0.5,0.006,0.2,".22LR") break;
-case s_32ACP: set_caliber_stats(60+(7*barrel_length),1.5,1,0.026,0.26,".32 ACP") break;
+case s_22LR: set_caliber_stats(40+(10*barrel_length),1,0.5,0.006,3,".22LR") break;
+case s_32ACP: set_caliber_stats(60+(7*barrel_length),1.5,1,0.026,4,".32 ACP") break;
 //9x18mm makarov is 30+8?
-case s_9x19mmParabellum: set_caliber_stats(75+(8*barrel_length),3,1,0.028,0.2,"9x19mm Parabellum") break;
-case s_57x28mm: set_caliber_stats(65+(12*barrel_length),1.5,1.5,0.013,0.2,"5.7x28mm") break;
-case s_762x25mmTokarev: set_caliber_stats(75+(15*barrel_length),1.5,1.5,0.022,0.2,"7.62x25mm Tokarev") break;
-case s_45ACP: set_caliber_stats(100+(6*barrel_length),6,1,0.05,0.2,".45 ACP") break;
-case s_357Magnum: set_caliber_stats(110+(25*barrel_length),1.5,2.1,0.04,0.2,".357 Magnum") break;
-case s_50AE: set_caliber_stats(180+(35*barrel_length),8,1.6,0.075,0.2,".50 AE") break;
-case s_500SAWMagnum: set_caliber_stats(350+(60*barrel_length),1.5,3.3,0.01,0.2,".500 S&W Magnum") break;
-case s_545x39mm: set_caliber_stats(180+(20*barrel_length),1.5,1,0.022,0.2,"5.45x39mm") break;
-case s_556x45mmNATO: set_caliber_stats(220+(25*barrel_length),1.5,1,0.027,0.2,"5.56x45mm NATO") break;
-case s_762x39mm: set_caliber_stats(300+(18*barrel_length),1.5,1,0.036,0.2,"7.62x39mm") break;
-case s_762x51NATO: set_caliber_stats(450+(30*barrel_length),1.5,1,0.058,0.2,"7.62x51mm NATO") break;
-case s_308WinchesterMagnum: set_caliber_stats(600+(40*barrel_length),2,4.5,0.07,0.2,".308 Winchester Magnum") break;
-case s_762x54R: set_caliber_stats(500+(28*barrel_length),1.5,1,0.05,0.2,"7.62x54R") break;
-case s_79257mmMauser: set_caliber_stats(550+(30*barrel_length),1.5,1,0.06,0.2,"7.92x57mm Mauser") break;
-case s_303British: set_caliber_stats(460+(25*barrel_length),1.5,3.3,0.06,0.2,".303 British") break;
-case s_50BMG: set_caliber_stats(1800+(70*barrel_length),1.5,9,0.26,0.2,".50 BMG") break;
-case s_410Bore: set_caliber_stats((400/9)+(1.5*barrel_length),1.5,1,0.1,0.2,".410 Bore") break;
-case s_12GadgeBuckshot: set_caliber_stats((450/9)+(1.5*barrel_length),1.5,1,0.1,0.2,"12 Gadge Buckshot") break;
-case s_23mm: set_caliber_stats((1200/32)+(1.1*barrel_length),1.5,1,0.4,0.2,"23mm") break;
+case s_9x19mmParabellum: set_caliber_stats(75+(8*barrel_length),2.5,1,0.028,2.2,"9x19mm Parabellum") break;
+case s_57x28mm: set_caliber_stats(65+(12*barrel_length),1.5,1.5,0.013,7.5,"5.7x28mm") break;
+case s_762x25mmTokarev: set_caliber_stats(75+(15*barrel_length),1.5,1.5,0.022,5,"7.62x25mm Tokarev") break;
+case s_45ACP: set_caliber_stats(100+(6*barrel_length),5,1,0.05,4.5,".45 ACP") break;
+case s_357Magnum: set_caliber_stats(110+(25*barrel_length),5,2.1,0.04,8.5,".357 Magnum") break;
+case s_50AE: set_caliber_stats(180+(35*barrel_length),8,1.6,0.075,18,".50 AE") break;
+case s_500SAWMagnum: set_caliber_stats(350+(60*barrel_length),10,3.3,0.01,38,".500 S&W Magnum") break;
+case s_545x39mm: set_caliber_stats(180+(20*barrel_length),1.5,1,0.022,4,"5.45x39mm") break;
+case s_556x45mmNATO: set_caliber_stats(220+(25*barrel_length),1.5,1,0.027,5.5,"5.56x45mm NATO") break;
+case s_762x39mm: set_caliber_stats(300+(18*barrel_length),1.5,1,0.036,6,"7.62x39mm") break;
+case s_762x51NATO: set_caliber_stats(450+(30*barrel_length),1.5,1,0.058,9.5,"7.62x51mm NATO") break;
+case s_308WinchesterMagnum: set_caliber_stats(600+(40*barrel_length),2,4.5,0.07,22,".308 Winchester Magnum") break;
+case s_762x54R: set_caliber_stats(500+(28*barrel_length),1.5,1,0.05,7.5,"7.62x54R") break;
+case s_79257mmMauser: set_caliber_stats(550+(30*barrel_length),1.5,1,0.06,12,"7.92x57mm Mauser") break;
+case s_303British: set_caliber_stats(460+(25*barrel_length),1.5,3.3,0.06,16,".303 British") break;
+case s_50BMG: set_caliber_stats(1800+(70*barrel_length),1.5,9,0.26,40,".50 BMG") break;
+case s_410Bore: set_caliber_stats((400/9)+(1.5*barrel_length),1.5,1,0.1,8,".410 Bore") break;
+case s_12GadgeBuckshot: set_caliber_stats((450/9)+(1.5*barrel_length),1.5,1,0.1,10,"12 Gadge Buckshot") break;
+case s_23mm: set_caliber_stats((1200/32)+(1.1*barrel_length),1.5,1,0.4,500,"23mm") break;
 }
 weapon_damage = round(weapon_damage)
 }
@@ -153,7 +153,7 @@ weapon_damage = arg_damge
 bullet_knockback = arg_knockback
 penetration = arg_penetration
 bullet_weight = arg_weight
-bullet_price = 100///arg_price;
+bullet_price = arg_price*3;
 caliber_name = arg_name;caliber_name = caliber_name
 ///*temporary damage calculation until I get a better grip on stuff*/weapon_damage = bullet_weight*500
 
