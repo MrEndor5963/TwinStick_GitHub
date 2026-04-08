@@ -1,3 +1,5 @@
+if GM.map_x != home_x or GM.map_y != home_y or bought = true{exit}
+
 if spawned = false{
 script_execute_item(sprite_index)
 if item_is_free = true{cost = 0}
@@ -31,8 +33,6 @@ if value > highest_value {highest_value = value}
 cost = ceil(highest_value)
 ds_list_destroy(list_temp)
 }
-
-if array_contains(GM.items_bought,sprite_index) = true{instance_destroy()}
 
 font = f_Main;draw_set_color(c_white)
 

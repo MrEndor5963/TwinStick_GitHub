@@ -11,12 +11,14 @@ else{window_set_fullscreen(false)}
 }
 
 if keyboard_check_pressed(ord("M")){
-if audio_group_get_gain(audiogroup_default) = 1{
-audio_group_set_gain(audiogroup_default,0,0)
-audio_group_set_gain(audiogroup_sfx,0,0)}
+if sfx_gain_saved = 0{
+sfx_gain_saved = 1
+msc_gain_saved = 1
+}
 else{
-audio_group_set_gain(audiogroup_default,1,0)
-audio_group_set_gain(audiogroup_sfx,1,0)}
+sfx_gain_saved = 0
+msc_gain_saved = 0
+}
 
 }
 

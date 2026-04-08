@@ -18,6 +18,7 @@ particle = instance_create_depth(x,y,depth-1,ParticleEffect)
 while particle.hsp > -1 && particle.hsp < 1{particle.hsp = random_range(-12,12)}
 particle.vsp = random_range(-24,-4)
 particle.timer += 10
+particle.draw_color = blood_color
 }
 }
 
@@ -33,15 +34,21 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	
 
 	repeat(4){
-	if var_bullet.object_index = MeleeWeapon{particle = instance_create_depth(x,y,depth-100,ParticleEffect)}
-	else{particle = instance_create_depth(var_bullet.x,var_bullet.y,depth-100,ParticleEffect)}
+	if var_bullet.object_index = MeleeWeapon or var_bullet.object_index = PNGExplosion{particle = instance_create_depth(x,y,depth-100,ParticleEffect)}
+	else{
+	real_bullet_x = var_bullet.x + ((var_bullet.hspeed/var_bullet.speed)*(var_bullet.image_xscale*100))
+	real_bullet_y = var_bullet.y + ((var_bullet.vspeed/var_bullet.speed)*(var_bullet.image_yscale*100))
+	particle = instance_create_depth(real_bullet_x,real_bullet_y,depth-100,ParticleEffect)}
 	particle.hsp = random_range(-12,12)
-	particle.vsp = random_range(-18,4)}
+	particle.vsp = random_range(-18,4)
+	particle.draw_color = blood_color
+	}
 
 	hit_stun = 2
 	var_player = var_bullet.creator
 	bullet_reward = var_bullet.shot_reward
-	with var_player{player_point_change(other.bullet_reward)}
+	if instance_exists(var_player) && var_player.object_index = Player{
+	with var_player{player_point_change(other.bullet_reward)}}
 
 	hp -= var_bullet.damage
 	direction = var_bullet.direction
@@ -65,9 +72,10 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	instance_destroy(creator);
 	instance_destroy();
 	ds_list_destroy(list_temp)
+	if object_exists(var_player) && var_player.object_index = Player{
 	var_player.kills += 1
 	if var_bullet.hurts_enemy = true{kill_reward = var_bullet.kill_reward}
-	with var_player{player_point_change(other.kill_reward)}
+	with var_player{player_point_change(other.kill_reward)}}
 	var_bullet.penetration -= 1
 	if var_bullet.penetration <= 0{instance_destroy(var_bullet)}
 	blood_splatter()

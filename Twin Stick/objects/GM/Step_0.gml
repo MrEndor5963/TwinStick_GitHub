@@ -47,8 +47,8 @@ if game_paused = true or game_over = true{
 menu_controls()
 
 if key_enter{
-
-if menu[menu_cursor] = "Resume"{game_paused = false}
+	
+if menu[menu_cursor] = "Resume"{glitch_intensity = 0.5;game_paused = false}
 
 if menu[menu_cursor] = "Retry"{
 
@@ -76,21 +76,32 @@ if menu[menu_cursor] = "Main Menu"{goto_main_menu();glitch_intensity += 1}
 if menu[menu_cursor] = "Exit Game"{game_end()}
 menu_cursor = 0
 }
-if game_paused = true{exit}}
+//if game_paused = true{exit}
+}
 
-if key_pause && room != r_TitleScreen{
+if game_paused = false && game_over = false{
+	
+audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
+audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
+}
+else{
+if audio_group_get_gain(audiogroup_default) = msc_gain_saved{
+audio_group_set_gain(audiogroup_default,msc_gain_saved/3,1000)}
+}
+
+if key_pause && room != r_TitleScreen && room != r_FloorTransition && next_room = -1{
 if game_paused = false{
 game_paused = true
 
 }
 else{
 game_paused = false
-
 }
+GM.glitch_intensity = 0.5
 }
 
 #region Room Transition Code
-if next_room != -1{
+if next_room != -1 && game_paused = false{
 
 array_push(map_visited,x_plus_y(map_x,map_y))	
 
@@ -181,19 +192,19 @@ game_over = false
 
 time_in_room +=	1;if time_in_room > 999998{time_in_room = 999998}
 weapon_tiers = []
-if floor_number = 1{
+if floor_number >= 1{
 array_push(weapon_tiers,1)
 }
 
-if floor_number = 2 or floor_number = 3{
+if floor_number >= 2{
 array_push(weapon_tiers,2)
 }
 
-if floor_number = 4 or floor_number = 5{
+if floor_number >= 4{
 array_push(weapon_tiers,3)
 }
 
-if floor_number = 6 or floor_number = 7{
+if floor_number >= 6{
 array_push(weapon_tiers,4)
 }
 
@@ -204,9 +215,22 @@ array_push(weapon_tiers,5)
 //floor 9, tiers 1-5
 //floor 10, tiers 1-6
 
+if audio_is_playing(floor_music_id){
+pitch = audio_sound_get_pitch(floor_music_id)
+
+if pause_alpha > 0 && pitch > 0.7{pitch -= 0.01}
+if pitch < 1 && glitch_intensity = 0 && pause_alpha = 0{pitch += 0.01}
+
+audio_sound_pitch(floor_music_id,pitch)
+}
+
+
+
+
+
 //Civilian - D tier
 //Security - C tier
 //Soldier - B tier
-//Elite Ops - A tier
+//Elite Op - A tier
 //Containment Breach - S tier
 //Classified - Z tier

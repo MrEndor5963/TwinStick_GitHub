@@ -79,7 +79,17 @@ key_knife_pressed = -1
 if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0 && deploying = false && melee_equipped = false{
 key_weapon_toggle_forward = true}
 
+if array_length(weapon) = 1 && melee_equipped = false{
+key_weapon_toggle_back = false
+key_weapon_toggle_forward = false}
+
+
 if key_weapon_toggle_back or key_weapon_toggle_forward{
+if melee_equipped = true{
+melee_equipped = false
+key_weapon_toggle_back = false
+key_weapon_toggle_forward = false = false
+}
 if deploying = false{
 next_weapon_number = weapon_number
 deploying = true}
@@ -162,12 +172,12 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = fa
 	glitch_int_mag = 0.8
 	direction = aim_direction+recoil
 	var_x = sprite_get_xoffset(weapon_sprite)
-	speed = sprite_get_width(weapon_sprite)-var_x-5
+	speed = sprite_get_width(weapon_sprite)-var_x
 	var_x = x+(hspeed)
 	var_y = y+(vspeed)
 	speed = 0
 	repeat(round(bullet_amount)){
-	_bullet = instance_create_depth(var_x,var_y,depth+1,Bullet)
+	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
 	_bullet.image_angle = aim_direction+recoil+irandom_range(-bullet_spread,bullet_spread)
 	_bullet.damage = weapon_damage
 	_bullet.penetration = penetration
@@ -249,18 +259,25 @@ if aim_direction  >= 315 or aim_direction  <= 45{aim_string = "R"}
 sprite_string = "s_"+string(player_name)+string(aim_string)
 sprite_index = asset_get_index(sprite_string)
 
-if place_meeting(x,y,Enemy) && hit_stun = 0{
+
+
+if place_meeting(x,y,Enemy) && hit_stun = 0 or place_meeting(x,y,PNGExplosion) && hit_stun = 0{
 hp -= 1;hit_stun = 60;
 GM.glitch_intensity += 1
 ammo_reserve += round(ammo_reserve_max*ammo_recived_when_hurt)
 blood_splatter()
 play_sfx(sfx_PlayerHurt)
 }
+if hit_stun > 40 && GM.game_paused = false{
+audio_sound_pitch(GM.floor_music_id,1-((60-hit_stun)/50))
+//game_set_speed(60-(hit_stun*0.5),gamespeed_fps)
+//change pitch from 0.01 each to 0.02 each
+}
 if hit_stun > 0{hit_stun -= 1}
 
 if aim_object != 0{
 aim_object.x = x;aim_object.y = y;aim_object.image_angle = aim_direction}
-sprite_set_bbox(sprite_index,(sprite_width/2)-20,(sprite_height/2)-20,(sprite_width/2)+20,sprite_height)
+sprite_set_bbox(sprite_index,30,50,(sprite_width)-30,sprite_height)
 
 if key_map{GM.draw_map = true}
 #region Revive players
@@ -279,7 +296,7 @@ ds_list_destroy(list_temp)
 #endregion
 
 #region Buyable Stuff
-set_image_scale(1.4)
+set_image_scale(2)
 useable_money = money+debt_limit
 
 if place_meeting(x,y,MysteryBox){
@@ -320,6 +337,7 @@ if var_object.item_is_free = false{player_point_change(-var_object.cost)}
 new_item = var_object.sprite_index
 if var_object.consumable = false{array_push(GM.items_bought,var_object.sprite_index)}
 if var_object.rebuyable = false{with var_object{instance_destroy()}}
+with var_object{bought = true}
 play_sfx(sfx_Buy)
 }
 

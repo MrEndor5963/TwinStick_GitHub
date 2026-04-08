@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"msc_TitleScreen",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":3,
+  "conversionMode":0,
+  "duration":225.07101,
+  "name":"msc_TitleScreen",
+  "parent":{
+    "name":"Music",
+    "path":"folders/DSounds/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"msc_TitleScreen.mp3",
+  "type":0,
+  "volume":1.0,
+}

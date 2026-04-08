@@ -14,6 +14,8 @@ hsp = 0;vsp = 0
 node_x = x div 48
 node_y = y div 48
 
+blood_color = c_gray
+
 image_xscale = irandom_range(-1,1)
 while image_xscale = 0{image_xscale = irandom_range(-1,1)}
 move_direction_h  = image_xscale

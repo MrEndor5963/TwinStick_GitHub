@@ -20,9 +20,9 @@ draw_set_halign(fa_left)
 draw_set_aligns(fa_center,fa_middle)
 
 if game_paused = true{
-if pause_alpha < 1{pause_alpha += 0.05}}
+if pause_alpha < 1{pause_alpha += 0.2}}
 else{
-if pause_alpha > 0{pause_alpha -= 0.05}}
+if pause_alpha > 0{pause_alpha -= 0.2}}
 
 
 if pause_alpha > 0{
@@ -81,7 +81,8 @@ draw_sprite(s_Visited,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 else{draw_sprite(s_UnVisited,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 }
 
-if room_type = r_Floor1_Boss{draw_sprite(s_BossMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
+if room_type = r_Floor1_Boss or room_type = r_Floor2_Boss
+{draw_sprite(s_BossMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 if room_type = r_Floor1_Spawn{draw_sprite(s_SpawnMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 if room_type = r_Key{draw_sprite(s_KeyRoomMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 if room_type = r_Shop{draw_sprite(s_ShopMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
@@ -103,6 +104,7 @@ draw_map = false
 }
 
 if room = r_FloorTransition{
+audio_stop_all()
 if gamepad_button_check_pressed_any(gp_face1) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("Z")){
 	glitch_intensity += 1
 	i = 0
@@ -110,6 +112,7 @@ if gamepad_button_check_pressed_any(gp_face1) or keyboard_check_pressed(vk_space
 			var_player = player_list[i]
 			var_player.new_floor = true
 			i += 1}
+	floor_music_id = play_msc(floor_music)
 	room_goto(spawn_room)
 }
 

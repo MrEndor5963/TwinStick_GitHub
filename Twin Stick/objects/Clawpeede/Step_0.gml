@@ -16,7 +16,7 @@ exit
 }
 
 
-hsp = move_direction_h*8;vsp = move_direction_v*8
+hsp = move_direction_h*7;vsp = move_direction_v*7
 
 
 if hsp != 0{image_angle = 0;image_xscale = sign(hsp)}

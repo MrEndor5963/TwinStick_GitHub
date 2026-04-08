@@ -303,7 +303,7 @@ exit}
 auto = false
 set_gun_ammo(8,72)
 set_bullet_power(s_45ACP,5)
-set_gun_handling(8,2,2.4)
+set_gun_handling(16,2,2.4)
 set_deploy_stats(8,-1)
 shoot_delay = 8
 action_type = s_SemiAuto
@@ -325,7 +325,7 @@ exit}
 auto = false
 set_gun_ammo(17,85)
 set_bullet_power(s_9x19mmParabellum,4.9)
-set_gun_handling(12,2.5,2.1)
+set_gun_handling(24,2.5,2.1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
@@ -347,7 +347,7 @@ exit}
 auto = false
 set_gun_ammo(17,102)
 set_bullet_power(s_9x19mmParabellum,4.7)
-set_gun_handling(12,2.5,2.1)
+set_gun_handling(20,2.5,2.1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
@@ -371,7 +371,7 @@ exit}
 auto = false
 set_gun_ammo(19,76)
 set_bullet_power(s_9x19mmParabellum,4.49)
-set_gun_handling(11,1.5,1.3)
+set_gun_handling(22,1.5,1.3)
 set_deploy_stats(6,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
@@ -393,7 +393,7 @@ exit}
 auto = false
 set_gun_ammo(17,68)
 set_bullet_power(s_9x19mmParabellum,4.8)
-set_gun_handling(0,2.5,2.47)
+set_gun_handling(5,2.5,2.47)
 set_deploy_stats(6,-1)
 bullet_spread = 0
 shoot_delay = 3
@@ -417,7 +417,7 @@ exit}
 auto = false
 set_gun_ammo(20,80)
 set_bullet_power(s_57x28mm,4.8)
-set_gun_handling(8,3,1.6)
+set_gun_handling(15,3,1.6)
 set_deploy_stats(7,-1)
 shoot_delay = 5
 action_type = s_SemiAuto
@@ -467,7 +467,7 @@ exit}
 auto = false
 set_gun_ammo(6,42)
 set_bullet_power(s_357Magnum,6)
-set_gun_handling(25,10,2.8)
+set_gun_handling(31,10,2.8)
 set_deploy_stats(9,-1)
 shoot_delay = 2
 trigger_delay = 7
@@ -495,7 +495,7 @@ exit}
 auto = false
 set_gun_ammo(6,36)
 set_bullet_power(s_410Bore,6.5)
-set_gun_handling(30,11,4.5)
+set_gun_handling(35,11,4.5)
 set_deploy_stats(12,-1)
 shoot_delay = 2
 bullet_amount = 5
@@ -520,9 +520,9 @@ array_push(handgun_list,weapon_sprite)
 array_push(machine_pistol_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(16,64)
+set_gun_ammo(16,32)
 set_bullet_power(s_9x19mmParabellum,4.7)
-set_gun_handling(-10,0.8,2.4)
+set_gun_handling(-18,0.8,2.4)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_FullAuto

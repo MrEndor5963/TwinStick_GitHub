@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Clawpeede",
-    "path":"folders/BSprites/EnemySprites/Clawpeede.yy",
+    "path":"folders/BSprites/EnemySprites/!BossSprites/Clawpeede.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

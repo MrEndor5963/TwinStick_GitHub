@@ -4,4 +4,4 @@ draw_sprite_ext(s_ReloadBar,0,x-48,y-(sprite_height/2)-20,-draw_revive,-1,0,draw
 draw_sprite(s_ReloadBarOutline,0,x,y-(sprite_height/2)-20)
 }
 
-if teleport_timer >= teleport_time{GM.next_floor = true}
+if teleport_timer >= teleport_time{GM.glitch_intensity = 1;GM.next_floor = true}

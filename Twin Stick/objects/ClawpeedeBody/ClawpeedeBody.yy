@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_ClawpedeHead",
-    "path":"sprites/s_ClawpedeHead/s_ClawpedeHead.yy",
+    "name":"s_ClawpedeBody",
+    "path":"sprites/s_ClawpedeBody/s_ClawpedeBody.yy",
   },
   "spriteMaskId":null,
   "visible":true,

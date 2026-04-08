@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"MegaWizard",
-    "path":"folders/BSprites/EnemySprites/MegaWizard.yy",
+    "path":"folders/BSprites/EnemySprites/!BossSprites/MegaWizard.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

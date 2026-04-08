@@ -3,7 +3,7 @@ home_y = GM.map_y
 if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
-hp = 20000
+hp = 16000
 hp += round((GM.player_amount-1)*0.2)
 hp_max = hp
 move_timer = 1
@@ -13,6 +13,8 @@ hsp = 0;vsp = 0
 
 node_x = x div 48
 node_y = y div 48
+
+blood_color = c_orange
 
 image_xscale = irandom_range(-1,1)
 while image_xscale = 0{image_xscale = irandom_range(-1,1)}
@@ -27,7 +29,7 @@ record_angle[i] = image_angle
 }
 
 var_i = 1
-repeat(7){
+repeat(6){
 body = instance_create_depth(x,y,depth+1,ClawpeedeBody)
 body.creator = id
 body.record = 12*var_i

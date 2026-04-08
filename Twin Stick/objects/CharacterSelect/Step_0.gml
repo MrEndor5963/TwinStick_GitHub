@@ -141,6 +141,6 @@ room_goto(r_Versus1)
 }
 else{
 GM.next_floor = true
-GM.glitch_intensity += 1
-play_msc(msc_Floor1)}
+audio_stop_all()
+GM.glitch_intensity += 1}
 }

@@ -14,6 +14,7 @@ recoil = 0
 aim_direction = 0;aim_x = 0;aim_y = 0
 stick_aim_x = 0;stick_aim_y = 0
 weapon_yscale = 1
+blood_color = $FF00FF
 
 //Player stats
 player_name = ""

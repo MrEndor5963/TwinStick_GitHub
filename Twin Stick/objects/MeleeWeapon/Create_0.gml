@@ -1,4 +1,4 @@
-damage = 200
+damage = 100
 knockback = 0
 attacking = false
 attack_timer = 0

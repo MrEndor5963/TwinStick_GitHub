@@ -5,8 +5,10 @@ if instance_number(GM) > 1{instance_destroy();exit}
 dev_mode = true
 randomize()
 audio_group_load(audiogroup_sfx)
+msc_gain_saved = 0
+sfx_gain_saved = 0
 audio_group_set_gain(audiogroup_default,0,0)
-//audio_group_set_gain(audiogroup_sfx,0,0)
+audio_group_set_gain(audiogroup_sfx,0,0)
 depth = -1000
 screen_width = 1280
 screen_height = 720
@@ -33,10 +35,11 @@ clamp_x1 = 0;clamp_x2 = room_width
 clamp_y1 = 0;clamp_y2 = room_height
 
 global.collision_grid = ds_grid_create(27,15)
+floor_music_id = -1
 floor_number = 0
 next_floor = false
 floor_door = true
-map_size = 5
+map_size = 6
 map = ds_grid_create(map_size,map_size)
 draw_map = false
 
@@ -72,10 +75,11 @@ vrp += 1
 
 enemy_list = []
 array_push(enemy_list,Zombie)
-//array_push(enemy_list,StickBlade)
 array_push(enemy_list,SpikeFly)
+array_push(enemy_list,Lewt)
 array_push(enemy_list,Wizard)
 array_push(enemy_list,Hellhound)
+
 
 
 weapon_list = []
@@ -115,7 +119,8 @@ persistent_object_list = []
 array_push(persistent_object_list,Player)
 array_push(persistent_object_list,MysteryBox)
 array_push(persistent_object_list,WallBuy)
-array_push(persistent_object_list,ShopKeeper)
+array_push(persistent_object_list,Item)
+array_push(persistent_object_list,Key)
 
 corp_logo_timer = 0
 

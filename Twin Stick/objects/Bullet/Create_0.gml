@@ -9,3 +9,4 @@ explosive = false
 image_xscale = 0
 kill_reward = 100
 shot_reward = 10
+destroy_bullet = false

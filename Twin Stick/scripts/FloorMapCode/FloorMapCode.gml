@@ -68,12 +68,23 @@ wallguns_on_map = []
 open_nodes = []
 //child_nodes = []
 //closed_nodes = []
-if floor_number = 1{spawn_room = r_Floor1_Spawn}
-if floor_number = 2{spawn_room = r_Floor2_Spawn}
-if floor_number = 3{spawn_room = r_Floor3_Spawn}
-if floor_number = 4{spawn_room = r_Floor4_Spawn}
-if floor_number = 5{spawn_room = r_Floor5_Spawn}
-if floor_number > 5{spawn_room = r_Floor5_Spawn}
+if floor_number = 1{
+enemy_list = []
+array_push(enemy_list,Zombie)
+array_push(enemy_list,SpikeFly)
+array_push(enemy_list,Wizard)
+array_push(enemy_list,Lewt)
+array_push(enemy_list,Hellhound)
+}
+if floor_number = 2{
+array_push(enemy_list,StickBlade)
+array_push(enemy_list,BombTosser)
+array_delete(enemy_list,1,1)
+}
+
+
+spawn_room = asset_get_index("r_Floor"+string(floor_number)+"_Spawn")
+floor_music = asset_get_index("msc_Floor"+string(floor_number))
 ds_grid_clear(map,0)
 ds_grid_set(map,map_x,map_y,spawn_room)
 array_push(open_nodes,x_plus_y(map_x,map_y))
@@ -90,6 +101,7 @@ set_room_with_path(r_Treasure)
 //if irandom_range(1,2) = 1{set_room_with_path(r_FastFood)}
 //else{set_room_with_path(r_Casino)}
 set_room_with_path(r_Key)
-set_room_with_path(r_Floor1_Boss)
+if floor_number = 1{set_room_with_path(r_Floor1_Boss)}
+else{set_room_with_path(r_Floor2_Boss)}
 
 }

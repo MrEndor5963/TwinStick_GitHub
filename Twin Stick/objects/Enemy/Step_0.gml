@@ -1,5 +1,7 @@
 if GM.game_paused = true{exit}
 
+if creator != -1{blood_color = creator.blood_color}
+
 if hit_stun != 0{creator.hit_stun = hit_stun;hit_stun = 0}
 
 if spawn_enemy = true{
