@@ -1,13 +1,18 @@
 Make player vs player gamemode
 
 make UI look cooler (Player, character select,Pause menu)
-add sound slider in settings
+-note ui has been made to look cooler but we should make it look even cooler
+Ui to improve - Title menu, character select,different ui based on 1, 2, or more players
 
-Main Menu
+More detailed Tileset/enviornment
 
-enemy and player spritework
+more sfx
+
+Teleporters to shop, boss room, gun shop and 4th room (medbay or other) in spawn room,
 
 1-4 player balacing (adding more enemies the more players there are)
+
+enemy and player spritework/animation(long term)
 
 >Means Priority<
 
@@ -24,3 +29,6 @@ LR 230C
 Dualies of some kind
 Crossbow
 Charleville 1763
+
+
+Complete: add sound slider in settings

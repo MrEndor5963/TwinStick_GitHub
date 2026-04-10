@@ -32,6 +32,7 @@ if array_contains(contact_list,var_bullet) = false && var_bullet.hurts_enemy = t
 var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_contains(var_bullet.contact_list,id) = false
 {
 	
+	if var_bullet.object_index = MeleeWeapon{play_sfx(sfx_KnifeStab)}
 
 	repeat(4){
 	if var_bullet.object_index = MeleeWeapon or var_bullet.object_index = PNGExplosion{particle = instance_create_depth(x,y,depth-100,ParticleEffect)}
@@ -80,6 +81,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	if var_bullet.penetration <= 0{instance_destroy(var_bullet)}
 	blood_splatter()
 	play_sfx(sfx_EnemyDeath)
+	//freeze_frame(200)
 	exit
 	}
 

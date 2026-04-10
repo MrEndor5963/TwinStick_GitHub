@@ -21,11 +21,12 @@ true lab undertale
 
 Floor1 - Minimum Security
 Floor2 - Financing department
-Floor25 - Food Court
 Floor3 - Dissection Bay
-Floor35 - Plant Dome
-Floor4 - Arctic Containment
-Floor45 - Weapon Assembly
 Floor5 - Maximum Security
+
+Floor2B - Plant Dome
+Floor3B - Food Court
+Floor3B - Arctic Containment
+Floor4 - Weapons Testing
 
 Floor Final - Classified

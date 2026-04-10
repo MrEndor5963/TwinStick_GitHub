@@ -125,10 +125,10 @@ switch (caliber) {
 case s_22LR: set_caliber_stats(40+(10*barrel_length),1,0.5,0.006,3,".22LR") break;
 case s_32ACP: set_caliber_stats(60+(7*barrel_length),1.5,1,0.026,4,".32 ACP") break;
 //9x18mm makarov is 30+8?
-case s_9x19mmParabellum: set_caliber_stats(75+(8*barrel_length),2.5,1,0.028,2.2,"9x19mm Parabellum") break;
-case s_57x28mm: set_caliber_stats(65+(12*barrel_length),1.5,1.5,0.013,7.5,"5.7x28mm") break;
+case s_9x19mmParabellum: set_caliber_stats(75+(8*barrel_length),2.5,1,0.028,1,"9x19mm Parabellum") break;
+case s_57x28mm: set_caliber_stats(65+(12*barrel_length),1.5,1.5,0.013,3,"5.7x28mm") break;
 case s_762x25mmTokarev: set_caliber_stats(75+(15*barrel_length),1.5,1.5,0.022,5,"7.62x25mm Tokarev") break;
-case s_45ACP: set_caliber_stats(100+(6*barrel_length),5,1,0.05,4.5,".45 ACP") break;
+case s_45ACP: set_caliber_stats(100+(6*barrel_length),5,1,0.05,1.2,".45 ACP") break;
 case s_357Magnum: set_caliber_stats(110+(25*barrel_length),5,2.1,0.04,8.5,".357 Magnum") break;
 case s_50AE: set_caliber_stats(180+(35*barrel_length),8,1.6,0.075,18,".50 AE") break;
 case s_500SAWMagnum: set_caliber_stats(350+(60*barrel_length),10,3.3,0.01,38,".500 S&W Magnum") break;
@@ -493,7 +493,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(6,36)
+set_gun_ammo(6,48)
 set_bullet_power(s_410Bore,6.5)
 set_gun_handling(35,11,4.5)
 set_deploy_stats(12,-1)
@@ -530,6 +530,31 @@ reload_time = 55
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = ""
+}
+	
+function wpn_Olympia(){
+weapon_sprite = s_Olympia
+weapon_name = "Olympia 72"
+cost = 2000
+if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(shotgun_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(2,36)
+set_bullet_power(s_12GadgeBuckshot,19)
+set_gun_handling(14,5,9.7)
+set_deploy_stats(12,-1)
+shoot_delay = 1
+action_type = s_DoubleBarrel
+reload_time = 120
+bullet_spread = 6
+bullet_amount = 9
+shoot_sfx = sfx_OlympiaShoot
+shot_reward = 5
+description = "A finely made skeet shooting double barrel shotgun. Although reloading will be frequent and it lacks firepower compared to other shotguns, it's excellent handling and accuracy makes it a favorite for some"
 }
 	
 //End of D Tier, tier 1
@@ -670,31 +695,6 @@ shoot_delay = 5
 action_type = s_FullAuto
 reload_time = 90
 shoot_sfx = sfx_mp5Shoot
-}
-	
-function wpn_Olympia(){
-weapon_sprite = s_Olympia
-weapon_name = "Olympia 72"
-cost = 400
-if object_index = GM{
-array_push(tier_2_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(shotgun_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(2,44)
-set_bullet_power(s_12GadgeBuckshot,19)
-set_gun_handling(14,5,9.7)
-set_deploy_stats(12,-1)
-shoot_delay = 1
-action_type = s_DoubleBarrel
-reload_time = 120
-bullet_spread = 6
-bullet_amount = 9
-shoot_sfx = sfx_OlympiaShoot
-shot_reward = 5
-description = "A finely made skeet shooting double barrel shotgun. Although reloading will be frequent and it lacks firepower compared to other shotguns, it's excellent handling and accuracy makes it a favorite for some"
 }
 
 function wpn_Ithaca(){

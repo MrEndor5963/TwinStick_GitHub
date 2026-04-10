@@ -78,7 +78,7 @@ record_x[i] = x;record_y[i] = y}
 
 pathfinding_grid = ds_grid_create(27,15)
 //set_player_grid()
-
+take_damage = false
 //Item variables
 item_list = []
 new_item = -1

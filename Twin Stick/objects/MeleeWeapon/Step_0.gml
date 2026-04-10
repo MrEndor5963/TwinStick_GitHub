@@ -13,7 +13,7 @@ contact_list = []
 }
 
 if attacking = true{
-if attack_timer = -1{attack_timer = 12}
+if attack_timer = -1{attack_timer = 12;play_sfx(sfx_KnifeSwing)}
 angleoff = (-25*(3-attack_timer))*image_yscale
 
 direction = image_angle+angleoff

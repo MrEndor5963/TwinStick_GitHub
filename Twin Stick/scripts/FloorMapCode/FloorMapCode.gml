@@ -42,9 +42,9 @@ do {
 	if move_direction = "Up"{current_y -= 1};
 	if move_direction = "Down"{current_y += 1}
 	if ds_grid_get(map,current_x,current_y) = 0{
-	if floor_number = 1{
-	var_room = room_list_1[irandom_range(0,array_length(room_list_1)-1)]}
-	else{var_room = room_list_2[irandom_range(0,array_length(room_list_2)-1)]}
+	
+	var_room = room_list_1[irandom_range(0,array_length(room_list_1)-1)]
+	//else{var_room = room_list_2[irandom_range(0,array_length(room_list_2)-1)]}
 	ds_grid_set(map,current_x,current_y,var_room)
 	array_push(rooms_in_use,var_room)
 	}
@@ -71,7 +71,6 @@ open_nodes = []
 if floor_number = 1{
 enemy_list = []
 array_push(enemy_list,Zombie)
-array_push(enemy_list,SpikeFly)
 array_push(enemy_list,Wizard)
 array_push(enemy_list,Lewt)
 array_push(enemy_list,Hellhound)
@@ -79,7 +78,8 @@ array_push(enemy_list,Hellhound)
 if floor_number = 2{
 array_push(enemy_list,StickBlade)
 array_push(enemy_list,BombTosser)
-array_delete(enemy_list,1,1)
+array_push(enemy_list,Slugee)
+
 }
 
 

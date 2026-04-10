@@ -10,8 +10,8 @@
   "name":"CharacterSelect",
   "overriddenProperties":[],
   "parent":{
-    "name":"Menus",
-    "path":"folders/AObjects/Menus.yy",
+    "name":"AObjects",
+    "path":"folders/AObjects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

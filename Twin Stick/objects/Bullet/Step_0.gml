@@ -22,7 +22,8 @@ else{image_xscale = 1}
 if hurts_player = true && place_meeting(x,y,Player){
 var_player = instance_nearest(x,y,Player)
 if var_player.hit_stun = 0 && var_player.hp > 0{
-var_player.hp -= 1;destroy_bullet = true;exit}
+var_player.take_damage = true
+destroy_bullet = true;exit}
 }
 
 if hurts_enemy && place_meeting(x,y,Enemy){

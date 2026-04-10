@@ -36,6 +36,11 @@ draw_set_color(arg_color)
 draw_text(arg_x,arg_y,arg_text)
 }
 
+function freeze_frame(arg_freeze_time){
+var _t = current_time+arg_freeze_time
+while current_time < _t{}
+}
+
 function goto_main_menu(){
 vrp = 1
 repeat(array_length(GM.persistent_object_list)-1){

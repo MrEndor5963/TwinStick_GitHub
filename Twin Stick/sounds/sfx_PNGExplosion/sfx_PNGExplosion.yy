@@ -12,8 +12,8 @@
   "duration":2.04,
   "name":"sfx_PNGExplosion",
   "parent":{
-    "name":"DSounds",
-    "path":"folders/DSounds.yy",
+    "name":"OtherAttackSounds",
+    "path":"folders/DSounds/OtherAttackSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

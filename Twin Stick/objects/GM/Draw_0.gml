@@ -122,3 +122,6 @@ if yoff >=0{
 draw_sprite_ext(s_RedactedCorp,0,1280-96,720-96,yoff,1,0,-1,1)}
 else{draw_sprite_ext(s_RedactedCorpBack,0,1280-96,720-96,yoff,1,0,-1,1)}
 }
+/*
+if room != r_TitleScreen && room != r_FloorTransition && room != r_CharacterSelectScreen{
+draw_sprite(s_Cursor,0,mouse_x,mouse_y)}

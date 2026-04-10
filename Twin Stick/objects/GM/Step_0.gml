@@ -224,10 +224,6 @@ if pitch < 1 && glitch_intensity = 0 && pause_alpha = 0{pitch += 0.01}
 audio_sound_pitch(floor_music_id,pitch)
 }
 
-
-
-
-
 //Civilian - D tier
 //Security - C tier
 //Soldier - B tier

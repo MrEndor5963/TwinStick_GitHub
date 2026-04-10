@@ -12,9 +12,11 @@ if menu[menu_cursor] = "Solo" or menu[menu_cursor] = "Co-op" or menu[menu_cursor
 {
 GM.game_mode = menu[menu_cursor]
 GM.glitch_intensity = 1
+play_sfx(sfx_MenuClick)
 room_goto(r_CharacterSelectScreen)}
 sub_menu = menu[menu_cursor]
 if sub_menu != 0 && GM.glitch_intensity != 1{
+play_sfx(sfx_MenuClick)
 GM.glitch_intensity = 0.5
 }
 menu_cursor = 0
@@ -52,8 +54,8 @@ if sub_menu = "Database"
 {
 menu[0] = "Weaponry"
 menu[1] = "Items"
-menu[2] = "Enemies"
-menu[3] = "??????????"//Characters
+menu[2] = "Test Subjects A"
+menu[3] = "Test Subjects B"//Characters
 }
 
 if sub_menu = "Weaponry"{

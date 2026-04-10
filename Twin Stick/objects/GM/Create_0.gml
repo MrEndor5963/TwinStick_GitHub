@@ -1,14 +1,13 @@
 //GM = Game manager
 //Operates various game data,Save data, pause menu, and floor map
-
 if instance_number(GM) > 1{instance_destroy();exit}
 dev_mode = true
 randomize()
 audio_group_load(audiogroup_sfx)
 msc_gain_saved = 0
 sfx_gain_saved = 0
-audio_group_set_gain(audiogroup_default,0,0)
-audio_group_set_gain(audiogroup_sfx,0,0)
+audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
+audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
 depth = -1000
 screen_width = 1280
 screen_height = 720
@@ -64,6 +63,7 @@ array_push(room_list_1,var_temp)
 vrp += 1
 }
 
+/*
 room_list_2 = []
 vrp = 1
 repeat(10){
@@ -71,7 +71,7 @@ if vrp < 10{var_string = "0"+string(vrp)}else{var_string = vrp}
 var_temp = asset_get_index("r_Floor2_Main"+string(var_string))
 array_push(room_list_2,var_temp)
 vrp += 1
-}
+}*/
 
 enemy_list = []
 array_push(enemy_list,Zombie)
@@ -142,3 +142,8 @@ glitch_sound = -22
 
 //global.noise=spr_noise_4
 
+tile_landlocked = -1//Landlocked tile
+tile_wall_down = -1//Wall Facing Down
+tile_wall_up = -1//Wall Facing Up
+tile_wall_right = -1//Wall Facing Right
+tile_wall_left = -1//Wall Facing Left

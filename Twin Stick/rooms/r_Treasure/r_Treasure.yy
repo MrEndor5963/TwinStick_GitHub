@@ -61,7 +61,7 @@
           -8,47,4,24,0,0,16,-14,47,8,4,28,38,0,0,40,28,8,-8,47,1,4,-3,28,1,38,-6,0,1,40,-3,28,1,8,-3,47,2,4,38,
           -14,0,5,40,8,47,28,38,-16,0,2,40,28,-40,0,2,20,36,-16,0,5,34,20,47,2,36,-14,0,2,34,1,-3,47,1,2,-3,20,
           1,36,-6,0,1,34,-3,20,1,1,-8,47,8,2,20,36,0,0,34,20,1,-14,47,4,24,0,0,16,-8,47,
-        ],"TileDataFormat":1,},"tilesetId":{"name":"t_Walls","path":"tilesets/t_Walls/t_Walls.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+        ],"TileDataFormat":1,},"tilesetId":{"name":"t_WallsF1","path":"tilesets/t_WallsF1/t_WallsF1.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":12.0,"animationSpeedType":0,"colour":4294967295,"depth":500,"effectEnabled":true,"effectType":null,"gridX":4,"gridY":4,"hierarchyFrozen":false,"hspeed":0.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":{"name":"s_Background","path":"sprites/s_Background/s_Background.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":true,"x":0,"y":0,},
   ],
   "name":"r_Treasure",

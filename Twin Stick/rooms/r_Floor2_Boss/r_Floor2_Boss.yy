@@ -67,7 +67,7 @@
           47,24,0,0,40,38,-5,0,4,16,47,28,38,-4,0,3,40,28,38,-9,0,2,40,28,-15,0,1,46,-24,0,5,20,36,0,0,46,-13,
           0,4,34,20,47,24,-9,0,3,34,20,36,-4,0,4,16,47,47,24,-5,0,7,34,36,0,0,16,47,24,-4,0,4,16,47,47,2,-5,20,
           7,1,24,0,0,16,47,2,-4,20,1,1,-9,47,4,24,0,0,16,-8,47,
-        ],"TileDataFormat":1,},"tilesetId":{"name":"t_Walls","path":"tilesets/t_Walls/t_Walls.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+        ],"TileDataFormat":1,},"tilesetId":{"name":"t_WallsF1","path":"tilesets/t_WallsF1/t_WallsF1.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":12.0,"animationSpeedType":0,"colour":4294967295,"depth":500,"effectEnabled":true,"effectType":null,"gridX":4,"gridY":4,"hierarchyFrozen":false,"hspeed":0.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":{"name":"s_Background","path":"sprites/s_Background/s_Background.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":true,"x":0,"y":0,},
   ],
   "name":"r_Floor2_Boss",

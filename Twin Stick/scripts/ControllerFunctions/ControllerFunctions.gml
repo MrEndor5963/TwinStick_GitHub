@@ -26,10 +26,10 @@ else{return false}
 }
 
 function menu_controls(){
-key_left = gamepad_axis_value_any(gp_axislh,false) or keyboard_check(vk_left)
-key_right = gamepad_axis_value_any(gp_axislh,true) or keyboard_check(vk_right)
-key_up = gamepad_axis_value_any(gp_axislv,false) or keyboard_check(vk_up)
-key_down = gamepad_axis_value_any(gp_axislv,true) or keyboard_check(vk_down)
+key_left = gamepad_axis_value_any(gp_axislh,false) or keyboard_check(vk_left) or keyboard_check(ord("A"))
+key_right = gamepad_axis_value_any(gp_axislh,true) or keyboard_check(vk_right) or keyboard_check(ord("D"))
+key_up = gamepad_axis_value_any(gp_axislv,false) or keyboard_check(vk_up) or keyboard_check(ord("W"))
+key_down = gamepad_axis_value_any(gp_axislv,true) or keyboard_check(vk_down) or keyboard_check(ord("S"))
 key_enter = gamepad_button_check_pressed_any(gp_face1) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("Z"))
 
 key_left_pressed = false;key_right_pressed = false;key_up_pressed = false;key_down_pressed = false
