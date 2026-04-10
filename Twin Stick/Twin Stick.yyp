@@ -96,7 +96,6 @@
     {"id":{"name":"n_randomCode","path":"notes/n_randomCode/n_randomCode.yy",},},
     {"id":{"name":"n_SubjectInterviews","path":"notes/n_SubjectInterviews/n_SubjectInterviews.yy",},},
     {"id":{"name":"n_ToDoList","path":"notes/n_ToDoList/n_ToDoList.yy",},},
-    {"id":{"name":"BackgroundObject","path":"objects/BackgroundObject/BackgroundObject.yy",},},
     {"id":{"name":"BigBack","path":"objects/BigBack/BigBack.yy",},},
     {"id":{"name":"BombTosser","path":"objects/BombTosser/BombTosser.yy",},},
     {"id":{"name":"BombTosserBomb","path":"objects/BombTosserBomb/BombTosserBomb.yy",},},
@@ -150,6 +149,7 @@
     {"id":{"name":"r_Floor1_Main08","path":"rooms/r_Floor1_Main08/r_Floor1_Main08.yy",},},
     {"id":{"name":"r_Floor1_Main09","path":"rooms/r_Floor1_Main09/r_Floor1_Main09.yy",},},
     {"id":{"name":"r_Floor1_Main10","path":"rooms/r_Floor1_Main10/r_Floor1_Main10.yy",},},
+    {"id":{"name":"r_Floor1_Spawn_tall","path":"rooms/r_Floor1_Spawn_tall/r_Floor1_Spawn_tall.yy",},},
     {"id":{"name":"r_Floor1_Spawn","path":"rooms/r_Floor1_Spawn/r_Floor1_Spawn.yy",},},
     {"id":{"name":"r_Floor2_Boss","path":"rooms/r_Floor2_Boss/r_Floor2_Boss.yy",},},
     {"id":{"name":"r_Floor2_Spawn","path":"rooms/r_Floor2_Spawn/r_Floor2_Spawn.yy",},},
@@ -489,7 +489,7 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"r_TitleScreen","path":"rooms/r_TitleScreen/r_TitleScreen.yy",},},
     {"roomId":{"name":"r_CharacterSelectScreen","path":"rooms/r_CharacterSelectScreen/r_CharacterSelectScreen.yy",},},
-    {"roomId":{"name":"r_Floor1_Spawn","path":"rooms/r_Floor1_Spawn/r_Floor1_Spawn.yy",},},
+    {"roomId":{"name":"r_Floor1_Spawn_tall","path":"rooms/r_Floor1_Spawn_tall/r_Floor1_Spawn_tall.yy",},},
     {"roomId":{"name":"r_FloorTransition","path":"rooms/r_FloorTransition/r_FloorTransition.yy",},},
     {"roomId":{"name":"r_Gauntlet","path":"rooms/r_Gauntlet/r_Gauntlet.yy",},},
     {"roomId":{"name":"r_BoxRoom","path":"rooms/r_BoxRoom/r_BoxRoom.yy",},},
@@ -515,6 +515,7 @@
     {"roomId":{"name":"r_Floor4_Spawn","path":"rooms/r_Floor4_Spawn/r_Floor4_Spawn.yy",},},
     {"roomId":{"name":"r_Floor5_Spawn","path":"rooms/r_Floor5_Spawn/r_Floor5_Spawn.yy",},},
     {"roomId":{"name":"r_Versus1","path":"rooms/r_Versus1/r_Versus1.yy",},},
+    {"roomId":{"name":"r_Floor1_Spawn","path":"rooms/r_Floor1_Spawn/r_Floor1_Spawn.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

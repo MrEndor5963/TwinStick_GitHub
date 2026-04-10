@@ -1,5 +1,13 @@
 if instance_exists(Player){room_start = true}
+
 if layer_exists("TileMap"){
+if room != r_FloorTransition{
+var_bg = layer_get_id("Background")
+var_bg = layer_background_get_id(var_bg)
+var_bg_sprite = asset_get_index("s_BackgroundF"+string(floor_number))
+layer_background_change(var_bg,var_bg_sprite)
+}
+
 var lay_id = layer_get_id("TileMap");
 var tile_id = layer_tilemap_get_id(lay_id);
 var correct_tiles = asset_get_index("t_WallsF"+string(floor_number))

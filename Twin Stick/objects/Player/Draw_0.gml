@@ -67,41 +67,39 @@ draw_set_alpha(1)
 
 
 if player_number = 0{
-draw_origin_x = 0
-draw_origin_y = 0
+draw_gui_origin_x = 0
+draw_gui_origin_y = 0
 pon_x = 1
 pon_y = 1
 portrait_x_scale = 1
 }
 
 if player_number = 1{
-draw_origin_x = screen_width
-draw_origin_y = 0
+draw_gui_origin_x = screen_width
+draw_gui_origin_y = 0
 pon_x = -1
 pon_y = 1
 portrait_x_scale = -1
 }
 
 if player_number = 2{
-draw_origin_x = 0
-draw_origin_y = screen_height
+draw_gui_origin_x = 0
+draw_gui_origin_y = screen_height
 pon_x = 1
 pon_y = -1
 portrait_x_scale = 1
 }
 
 if player_number = 3{
-draw_origin_x = screen_width
-draw_origin_y = screen_height
+draw_gui_origin_x = screen_width
+draw_gui_origin_y = screen_height
 pon_x = -1
 pon_y = -1
 portrait_x_scale = -1
 }
 
-
-
-
-
+draw_origin_x = draw_gui_origin_x+GM.cam_x
+draw_origin_y = draw_gui_origin_y+GM.cam_y
 
 //item draw
 item_draw_y += 0.04

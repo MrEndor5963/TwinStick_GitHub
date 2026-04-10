@@ -1,9 +1,15 @@
 depth = -15990
 draw_set_color(c_black)
-draw_rectangle(0-cam_size_x,0,0,cam_size_y,false)
-draw_rectangle(room_width,0,room_width+cam_size_x,cam_size_y,false)
-draw_rectangle(0,0-cam_size_y,cam_size_x,0,false)
-draw_rectangle(0,room_height,cam_size_x,room_height+cam_size_y,false)
+if cam_x < 0{draw_rectangle(0-cam_size_x,0,0,room_height,false)
+draw_rectangle(0-cam_size_x,0-cam_size_y,0,0,false)
+draw_rectangle(0-cam_size_x,room_height,0,room_height+cam_size_y,false)
+}
+if cam_x > 0{draw_rectangle(room_width,0,room_width+cam_size_x,room_height,false)
+draw_rectangle(room_width,0-cam_size_y,room_width+cam_size_x,0,false)
+draw_rectangle(room_width,room_height,room_width+cam_size_y,room_height+cam_size_y,false)	
+}
+if cam_y < 0{draw_rectangle(0,0-cam_size_y,room_width,0,false)}
+if cam_y > 0{draw_rectangle(0,room_height,room_width,room_height+cam_size_y,false)}
 
 draw_set_color(c_white)
 font = f_Main
@@ -28,15 +34,15 @@ if pause_alpha > 0{pause_alpha -= 0.2}}
 if pause_alpha > 0{
 draw_sprite_ext(s_BlackPixel,0,0,0,screen_width,screen_height,0,-1,pause_alpha/2)
 draw_set_alpha(pause_alpha)
-var_x = (screen_width/2)-32-(string_width(menu[menu_cursor])/2)
-var_y = 240+(menu_cursor*(font_get_size(f_Main)*1.5))
+var_x = (screen_width/2)-32-(string_width(menu[menu_cursor])/2)+cam_x
+var_y = 240+(menu_cursor*(font_get_size(f_Main)*1.5))+cam_y
 draw_sprite(s_MenuCursor,0,var_x,var_y)
-var_x = (screen_width/2)+32+(string_width(menu[menu_cursor])/2)
+var_x = (screen_width/2)+32+(string_width(menu[menu_cursor])/2)+cam_x
 draw_sprite_ext(s_MenuCursor,0,var_x,var_y,-1,1,0,-1,pause_alpha)
 draw_text(screen_width/2,200,"Game Paused")
 vrp = 0
 repeat(array_length(menu)){
-draw_text(screen_width/2,240+(vrp*(font_get_size(f_Main)*1.5)),menu[vrp])
+draw_text(cam_x+(screen_width/2),cam_y+(240+(vrp*(font_get_size(f_Main)*1.5))),menu[vrp])
 vrp += 1}
 }
 
@@ -46,15 +52,15 @@ draw_set_alpha(1)
 #region Game Over
 if game_over = true{
 draw_sprite_ext(s_BlackPixel,0,0,0,screen_width,screen_height,0,-1,0.5)
-var_x = (screen_width/2)-32-(string_width(menu[menu_cursor])/2)
-var_y = 240+(menu_cursor*(font_get_size(f_Main)*1.5))
+var_x = cam_x+(screen_width/2)-32-(string_width(menu[menu_cursor])/2)
+var_y = cam_y+(240+(menu_cursor*(font_get_size(f_Main)*1.5)))
 draw_sprite(s_MenuCursor,0,var_x,var_y)
-var_x = (screen_width/2)+32+(string_width(menu[menu_cursor])/2)
+var_x = cam_x+(screen_width/2)+32+(string_width(menu[menu_cursor])/2)
 draw_sprite_ext(s_MenuCursor,0,var_x,var_y,-1,1,0,-1,1)
-draw_text(screen_width/2,200,"Game Over")
+draw_text(cam_x+(screen_width/2),cam_y+200,"Game Over")
 vrp = 0
 repeat(array_length(menu)){
-draw_text(screen_width/2,240+(vrp*(font_get_size(f_Main)*1.5)),menu[vrp])
+draw_text(cam_x+(screen_width/2),cam_y+240+(vrp*(font_get_size(f_Main)*1.5)),menu[vrp])
 vrp += 1}
 }
 

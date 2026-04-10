@@ -28,6 +28,7 @@ key_left = keyboard_check(vk_left) or keyboard_check(ord("A"))
 key_right = keyboard_check(vk_right) or keyboard_check(ord("D"))
 key_up = keyboard_check(vk_up) or keyboard_check(ord("W"))
 key_down = keyboard_check(vk_down) or keyboard_check(ord("S"))
+key_aim = mouse_check_button(mb_right)
 key_shoot = mouse_check_button(mb_left)
 key_shoot_pressed = mouse_check_button_pressed(mb_left)
 key_interact = keyboard_check(ord("E"))
@@ -45,6 +46,7 @@ key_left = -gamepad_axis_value(input_number,gp_axislh);if key_left < 0.2{key_lef
 key_right = gamepad_axis_value(input_number,gp_axislh);if key_right < 0.2{key_right = 0}
 key_up = -gamepad_axis_value(input_number,gp_axislv);if key_up < 0.2{key_up = 0}
 key_down = gamepad_axis_value(input_number,gp_axislv);if key_down < 0.2{key_down = 0}
+key_aim = gamepad_button_check(input_number,gp_shoulderlb)
 key_shoot = gamepad_button_check(input_number,gp_shoulderrb)
 key_shoot_pressed = gamepad_button_check_pressed(input_number,gp_shoulderrb)
 key_interact = gamepad_button_check(input_number,gp_face1)
@@ -180,7 +182,8 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = fa
 	flash.image_angle = aim_direction+recoil
 	repeat(round(bullet_amount)){
 	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
-	_bullet.image_angle = aim_direction+recoil+irandom_range(-bullet_spread,bullet_spread)
+	var_spread = bullet_spread+clamp(recoil/5,0,5)
+	_bullet.image_angle = aim_direction+recoil+irandom_range(-var_spread,var_spread)
 	_bullet.damage = weapon_damage
 	_bullet.penetration = penetration
 	_bullet.bullet_speed = bullet_speed
@@ -199,6 +202,8 @@ if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = fa
 	speed = knockback/player_weight
 	hsp_knockback += hspeed
 	vsp_knockback += vspeed
+	GM.cam_shake_x += hspeed*4
+	GM.cam_shake_y += vspeed*4
 	speed = 0
 	recoil += gun_recoil*weapon_yscale
 	current_shoot_sfx = play_sfx(shoot_sfx)

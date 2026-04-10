@@ -407,7 +407,7 @@ description = ""
 function wpn_FiveSeven(){
 weapon_sprite = s_FiveSeven
 weapon_name = "Five Seven"
-cost = 1350
+cost = 980
 if object_index = GM{
 array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)

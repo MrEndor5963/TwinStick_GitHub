@@ -20,7 +20,10 @@ player_list = []
 //room_goto(r_Floor1_Spawn)
 cam_x = 0;cam_y = 0
 cam_target_x = 0;cam_target_y = 0
-cam_speed = 40
+cam_speed = 0
+cam_shake_x = 0
+cam_shake_y = 0
+free_camera = true
 next_room = -1
 room_start = true
 disable_countdown = true

@@ -13,7 +13,7 @@ draw_color = $00CC00
 //favorite_gun = s_SMT9
 //Ex occupation - Unemployed
 /*
-Subject was picked up outside a house party in Sao Palo at 7:09AM.
+Subject was picked up outside a house party at 7:09AM.
 Subject asked no questions while being apprehended and was "oddly calm" about the situation
 */
 player_age = 20

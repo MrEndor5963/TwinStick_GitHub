@@ -58,6 +58,8 @@ can_control = true
 
 shoot_timer = 0
 
+key_aim = false
+
 weapon_number = 0
 weapon = []
 
