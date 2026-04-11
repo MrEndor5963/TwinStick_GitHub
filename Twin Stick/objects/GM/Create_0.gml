@@ -23,6 +23,7 @@ cam_target_x = 0;cam_target_y = 0
 cam_speed = 0
 cam_shake_x = 0
 cam_shake_y = 0
+cam_angle = 0
 free_camera = true
 next_room = -1
 room_start = true

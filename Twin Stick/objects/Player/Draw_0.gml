@@ -146,7 +146,7 @@ draw_sprite_ext(portrait_sprite,0,draw_origin_x+(48*pon_x),draw_origin_y+(48*pon
 
 //draw hp
 draw_hp = clamp(1/(hp_max/hp),0,1)
-draw_circular_Fill_HP(draw_origin_x+(48*pon_x),draw_origin_y+(pon_y*192),hp,hp_max,draw_color,40,1)
+draw_circular_Fill_HP(draw_origin_x+(48*pon_x),draw_origin_y+(pon_y*192),hp,hp_max,draw_color,39,1)
 draw_sprite(s_HPBarOutline,0,draw_origin_x+(48*pon_x),draw_origin_y+(pon_y*192))
 
 draw_set_aligns(fa_center,fa_middle)

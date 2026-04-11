@@ -67,6 +67,8 @@ if abs(cam_x-cam_target_x) < 10 && abs(cam_y-cam_target_y) < 10{
 	free_camera = false
 	cam_x = -cam_x
 	cam_y = -cam_y
+	
+	array_push(map_visited,x_plus_y(map_x,map_y))
 
 	if next_room = "Left"{map_x -= 1}
 	if next_room = "Right"{map_x += 1}
@@ -115,7 +117,9 @@ cam_y += cam_shake_y
 cam_shake_x *= 0.8
 cam_shake_y *= 0.8
 
-//camera_set_view_angle(view_camera[0],Player.hit_stun/4)
+
+camera_set_view_angle(view_camera[0],cam_angle)
+cam_angle*=0.8
 camera_set_view_size(view_camera[0],cam_size_x,cam_size_y)
 camera_set_view_pos(view_camera[0],round(cam_x),round(cam_y))
 
@@ -248,7 +252,7 @@ array_push(weapon_tiers,5)
 if audio_is_playing(floor_music_id){
 pitch = audio_sound_get_pitch(floor_music_id)
 
-if pause_alpha > 0 && pitch > 0.7{pitch -= 0.01}
+if pause_alpha > 0 or game_over = true {if pitch > 0.7{pitch -= 0.01}}
 if pitch < 1 && glitch_intensity = 0 && pause_alpha = 0{pitch += 0.01}
 
 audio_sound_pitch(floor_music_id,pitch)

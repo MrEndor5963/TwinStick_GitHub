@@ -1,15 +1,16 @@
 depth = -15990
 draw_set_color(c_black)
-if cam_x < 0{draw_rectangle(0-cam_size_x,0,0,room_height,false)
+
+if cam_x < 0 or cam_angle != 0{draw_rectangle(0-cam_size_x,0,0,room_height,false)
 draw_rectangle(0-cam_size_x,0-cam_size_y,0,0,false)
 draw_rectangle(0-cam_size_x,room_height,0,room_height+cam_size_y,false)
 }
-if cam_x > 0{draw_rectangle(room_width,0,room_width+cam_size_x,room_height,false)
+if cam_x > 0 or cam_angle != 0{draw_rectangle(room_width,0,room_width+cam_size_x,room_height,false)
 draw_rectangle(room_width,0-cam_size_y,room_width+cam_size_x,0,false)
 draw_rectangle(room_width,room_height,room_width+cam_size_y,room_height+cam_size_y,false)	
 }
-if cam_y < 0{draw_rectangle(0,0-cam_size_y,room_width,0,false)}
-if cam_y > 0{draw_rectangle(0,room_height,room_width,room_height+cam_size_y,false)}
+if cam_y < 0 or cam_angle != 0{draw_rectangle(0,0-cam_size_y,room_width,0,false)}
+if cam_y > 0 or cam_angle != 0{draw_rectangle(0,room_height,room_width,room_height+cam_size_y,false)}
 
 draw_set_color(c_white)
 font = f_Main
@@ -32,7 +33,7 @@ if pause_alpha > 0{pause_alpha -= 0.2}}
 
 
 if pause_alpha > 0{
-draw_sprite_ext(s_BlackPixel,0,0,0,screen_width,screen_height,0,-1,pause_alpha/2)
+draw_sprite_ext(s_BlackPixel,0,cam_x-100,cam_y-100,screen_width+200,screen_height+200,cam_angle,-1,pause_alpha/2)
 draw_set_alpha(pause_alpha)
 var_x = (screen_width/2)-32-(string_width(menu[menu_cursor])/2)+cam_x
 var_y = 240+(menu_cursor*(font_get_size(f_Main)*1.5))+cam_y

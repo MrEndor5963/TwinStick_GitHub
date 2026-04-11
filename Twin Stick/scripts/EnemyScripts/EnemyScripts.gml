@@ -7,6 +7,10 @@ hitbox.creator = id
 hitbox.spawn_enemy = false
 set_tileset_collision()
 spawn_timer = 60
+hitbox.enemy_weight = 1.00
+hitbox.hsp_knockback = 0
+hitbox.vsp_knockback = 0
+enemy_weight = 1.00
 
 hsp_knockback = 0;vsp_knockback = 0
 hsp = 0;vsp = 0
@@ -32,7 +36,14 @@ if array_contains(contact_list,var_bullet) = false && var_bullet.hurts_enemy = t
 var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_contains(var_bullet.contact_list,id) = false
 {
 	
-	if var_bullet.object_index = MeleeWeapon{play_sfx(sfx_KnifeStab)}
+	if var_bullet.object_index = MeleeWeapon{
+	var_thing = instance_nearest(x,y,MeleeWeapon)
+	direction = point_direction(x,y,var_thing.x,var_thing.y)+180
+	speed = var_thing.knockback/enemy_weight
+	hsp_knockback += hspeed
+	vsp_knockback += vspeed
+	speed = 0
+	play_sfx(sfx_KnifeStab)}
 
 	repeat(4){
 	if var_bullet.object_index = MeleeWeapon or var_bullet.object_index = PNGExplosion{particle = instance_create_depth(x,y,depth-100,ParticleEffect)}
@@ -73,8 +84,8 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	instance_destroy(creator);
 	instance_destroy();
 	ds_list_destroy(list_temp)
-	if object_exists(var_player) && var_player.object_index = Player{
-	var_player.kills += 1
+	if var_player.object_index = Player{
+	var_player.kills += 1;//throw("")
 	if var_bullet.hurts_enemy = true{kill_reward = var_bullet.kill_reward}
 	with var_player{player_point_change(other.kill_reward)}}
 	var_bullet.penetration -= 1

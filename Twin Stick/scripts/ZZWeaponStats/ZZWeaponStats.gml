@@ -361,7 +361,7 @@ description = ""
 function wpn_Glock18(){
 weapon_sprite = s_Glock18
 weapon_name = "Glock 18"
-cost = 350
+cost = 300
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -407,7 +407,7 @@ description = ""
 function wpn_FiveSeven(){
 weapon_sprite = s_FiveSeven
 weapon_name = "Five Seven"
-cost = 980
+cost = 800
 if object_index = GM{
 array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -430,7 +430,7 @@ description = ""
 function wpn_DEagle(){
 weapon_sprite = s_DEagle
 weapon_name = "DEagle"
-cost = 700
+cost = 900
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -455,7 +455,7 @@ weapon_sprite = s_Python
 weapon_draw_sprite = s_PythonBase
 hammer_sprite = s_PythonHammer
 weapon_name = "Python"
-cost = 1900
+cost = 1700
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -465,7 +465,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(6,42)
+set_gun_ammo(6,48)
 set_bullet_power(s_357Magnum,6)
 set_gun_handling(31,10,2.8)
 set_deploy_stats(9,-1)
@@ -483,7 +483,7 @@ weapon_sprite = s_RagingJudge
 //weapon_draw_sprite = s_PythonBase
 //hammer_sprite = s_PythonHammer
 weapon_name = "Raging Judge"
-cost = 1200
+cost = 1100
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -493,7 +493,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(6,48)
+set_gun_ammo(6,42)
 set_bullet_power(s_410Bore,6.5)
 set_gun_handling(35,11,4.5)
 set_deploy_stats(12,-1)
@@ -520,7 +520,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(machine_pistol_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(16,32)
+set_gun_ammo(16,48)
 set_bullet_power(s_9x19mmParabellum,4.7)
 set_gun_handling(-18,0.8,2.4)
 set_deploy_stats(7,-1)
@@ -530,6 +530,29 @@ reload_time = 55
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = ""
+}
+
+function wpn_MP40(){
+weapon_sprite = s_MP40
+weapon_name = "MP40"
+cost = 2500
+if object_index = GM{
+array_push(tier_1_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(smg_list,weapon_sprite)
+array_push(nazi_list,weapon_sprite)
+exit}
+auto = true
+set_gun_ammo(32,192)
+set_bullet_power(s_9x19mmParabellum,9.1)
+set_gun_handling(-3,2,8.8)
+set_deploy_stats(10,-1)
+shoot_delay = 7
+action_type = s_FullAuto
+reload_time = 120
+shoot_sfx = sfx_mp5Shoot
+description = "Nazi SMG during WW2 with slower fire rate making for exceptional handling"
 }
 	
 function wpn_Olympia(){
@@ -629,29 +652,6 @@ action_type = s_FullAuto
 reload_time = 60
 shoot_sfx = sfx_mp5Shoot
 description = ""
-}
-
-function wpn_MP40(){
-weapon_sprite = s_MP40
-weapon_name = "MP40"
-cost = 1040
-if object_index = GM{
-array_push(tier_2_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(smg_list,weapon_sprite)
-array_push(nazi_list,weapon_sprite)
-exit}
-auto = true
-set_gun_ammo(32,192)
-set_bullet_power(s_9x19mmParabellum,9.1)
-set_gun_handling(-3,2,8.8)
-set_deploy_stats(10,-1)
-shoot_delay = 7
-action_type = s_FullAuto
-reload_time = 120
-shoot_sfx = sfx_mp5Shoot
-description = "Nazi SMG during WW2 with slower fire rate making for exceptional handling"
 }
 
 function wpn_PPBison(){
@@ -768,7 +768,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(5,20)
+set_gun_ammo(5,25)
 set_bullet_power(s_500SAWMagnum,8.4)
 set_gun_handling(90,40,4.8)
 set_deploy_stats(12,-1)
@@ -971,31 +971,6 @@ reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_SSG08Shoot
 }
 
-function wpn_MosinNagat(){
-weapon_sprite = s_MosinNagat
-weapon_name = "Mosin Nagat"
-cost = 150
-if object_index = GM{
-array_push(tier_3_gun_list,weapon_sprite)
-array_push(weapon_list,weapon_sprite)
-array_push(wallbuy_list,weapon_sprite)
-array_push(box_list,weapon_sprite)
-array_push(sniper_list,weapon_sprite)
-exit}
-auto = false
-set_gun_ammo(5,30)
-set_bullet_power(s_762x54R,29)
-set_gun_handling(15,4,8.8)
-set_deploy_stats(15,1)
-shoot_delay = 60
-action_type = s_BoltAction
-reload_time = 95
-reload_sfx = sfx_AWPReload
-shoot_sfx = sfx_SSG08Shoot
-var_string = current_year-1891
-description = "This unassuming broom closet rifle has somehow managed to weasel it's way into any major or minor conflict for the last "+string(var_string)+" years, examples being the russo-japanese war, WW1, Russian Civil, Finnish Civil, Spanish Civil, WW2, 1950's Korean War, Vietnam resistence War against USA, Afgan Civil, Chechen War 1 and 2, Iraq Wars, Ukraine Vs Russia, various African conflicts, and so many other conflicts you and I have never heard of and I bet as I'm typing this there's probably another war starting, god knows where, and some guy is gonna use their grandad's Mosin Nagat that he got from some guy he killed in some other war and... war never changes does it?"
-}
-
 function wpn_SSG08(){
 weapon_sprite = s_SSG08
 weapon_name = "SSG-08"
@@ -1157,6 +1132,31 @@ shoot_delay = 5
 action_type = s_FullAuto
 reload_time = 300
 shoot_sfx = sfx_AK47Shoot
+}
+
+function wpn_MosinNagat(){
+weapon_sprite = s_MosinNagat
+weapon_name = "Mosin Nagat"
+cost = 400
+if object_index = GM{
+array_push(tier_4_gun_list,weapon_sprite)
+array_push(weapon_list,weapon_sprite)
+array_push(wallbuy_list,weapon_sprite)
+array_push(box_list,weapon_sprite)
+array_push(sniper_list,weapon_sprite)
+exit}
+auto = false
+set_gun_ammo(5,30)
+set_bullet_power(s_762x54R,29)
+set_gun_handling(15,4,8.8)
+set_deploy_stats(15,1)
+shoot_delay = 60
+action_type = s_BoltAction
+reload_time = 95
+reload_sfx = sfx_AWPReload
+shoot_sfx = sfx_SSG08Shoot
+var_string = current_year-1891
+description = "This unassuming broom closet rifle has somehow managed to weasel it's way into any major or minor conflict for the last "+string(var_string)+" years, examples being the russo-japanese war, WW1, Russian Civil, Finnish Civil, Spanish Civil, WW2, 1950's Korean War, Vietnam resistence War against USA, Afgan Civil, Chechen War 1 and 2, Iraq Wars, Ukraine Vs Russia, various African conflicts, and so many other conflicts you and I have never heard of and I bet as I'm typing this there's probably another war starting, god knows where, and some guy is gonna use their grandad's Mosin Nagat that he got from some guy he killed in some other war and... war never changes does it?"
 }
 	
 function wpn_AWP(){

@@ -22,7 +22,7 @@ jam_timer = 0
 reload_timer = -1
 }
 else{
-if can_control = true{
+if can_control = true && hit_stun < 60{
 if input_number = "Keyboard"{
 key_left = keyboard_check(vk_left) or keyboard_check(ord("A"))
 key_right = keyboard_check(vk_right) or keyboard_check(ord("D"))
@@ -270,7 +270,17 @@ sprite_set_bbox(sprite_index,30,50,(sprite_width)-30,sprite_height)
 
 
 if place_meeting(x,y,[Enemy,PNGExplosion,SlugeeTrail]) && hit_stun = 0 or take_damage = true{
-hp -= 1;hit_stun = 60;
+if place_meeting(x,y,Enemy) or place_meeting(x,y,PNGExplosion){
+if place_meeting(x,y,Enemy){var_thing = instance_nearest(x,y,Enemy)}
+if place_meeting(x,y,PNGExplosion){var_thing = instance_nearest(x,y,PNGExplosion)}
+direction = point_direction(x,y,var_thing.x,var_thing.y)+180
+	speed = 30/player_weight
+	hsp_knockback += hspeed
+	vsp_knockback += vspeed
+	GM.cam_angle = -hspeed
+speed = 0
+}
+hp -= 1;hit_stun = 90;
 GM.glitch_intensity += 1
 ammo_reserve += round(ammo_reserve_max*ammo_recived_when_hurt)
 blood_splatter()
@@ -279,8 +289,8 @@ play_sfx(sfx_PlayerHurt)
 take_damage = false
 
 }
-if hit_stun > 40 && GM.game_paused = false{
-audio_sound_pitch(GM.floor_music_id,1-((60-hit_stun)/50))
+if hit_stun > 70 && GM.game_paused = false{
+audio_sound_pitch(GM.floor_music_id,1-((90-hit_stun)/50))
 //room_speed = 60-(hit_stun*0.5)
 //change pitch from 0.01 each to 0.02 each
 }//else{if room_speed < 60{room_speed += 1}}

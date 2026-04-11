@@ -24,19 +24,19 @@ gambling_degeneracy = 4
 
 if player_name = "Justin"{
 country = "Mexico"
-hp = 6;hp_max = 6
+hp = 5;hp_max = 5
 starting_weapon = s_m1911
 money = 12
 mov_spd = 12
 strength = 5
 player_weight = 1.25
 //reload_speed = 0.75
-healthcare = 2000//Heals everyone except Craig
+healthcare = 1200//Heals everyone except Craig
 draw_color = c_aqua
 favorite_gun = s_Xiuhcoatl//Cartel Killer
 //Ex occupation - Student
 /*
-Subject was captured at a shopping mall after evading capture for 3 days by 2 Special Operatives.
+Subject was detained at a shopping mall after evading a team of two Special Operatives for 3 days by .
 Subject then negotiated the operatives to take him out the eat at a local restaurant and then go to
 an assosiates quinceanera with subject before officially going into CADE custody
 */
@@ -67,7 +67,7 @@ multiple gunshot wounds
 player_age = 26
 futbol_skill = 60
 liquor_tolorance = 0.32
-gambling_degeneracy = 18
+gambling_degeneracy = 12
 }
 
 if player_name = "Nia"{
@@ -101,7 +101,7 @@ gambling_degeneracy = 6
 if player_name = "Christos"{	
 country = "Spain"
 hp = 8;hp_max = 8
-starting_weapon = s_mp5
+starting_weapon = s_P320
 money = 2000
 mov_spd = 10
 strength = 11

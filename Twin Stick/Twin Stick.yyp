@@ -105,7 +105,6 @@
     {"id":{"name":"CharacterSelect","path":"objects/CharacterSelect/CharacterSelect.yy",},},
     {"id":{"name":"Clawpeede","path":"objects/Clawpeede/Clawpeede.yy",},},
     {"id":{"name":"ClawpeedeBody","path":"objects/ClawpeedeBody/ClawpeedeBody.yy",},},
-    {"id":{"name":"Collision_1","path":"objects/Collision_1/Collision_1.yy",},},
     {"id":{"name":"Collision","path":"objects/Collision/Collision.yy",},},
     {"id":{"name":"DisplayText","path":"objects/DisplayText/DisplayText.yy",},},
     {"id":{"name":"ElectricMouseZap","path":"objects/ElectricMouseZap/ElectricMouseZap.yy",},},
