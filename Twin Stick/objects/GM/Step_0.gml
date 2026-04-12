@@ -234,15 +234,15 @@ if floor_number >= 2{
 array_push(weapon_tiers,2)
 }
 
-if floor_number >= 4{
+if floor_number >= 3{
 array_push(weapon_tiers,3)
 }
 
-if floor_number >= 6{
+if floor_number >= 4{
 array_push(weapon_tiers,4)
 }
 
-if floor_number >= 8{
+if floor_number >= 5{
 array_push(weapon_tiers,5)
 }
 

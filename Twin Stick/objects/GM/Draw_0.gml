@@ -33,6 +33,8 @@ if pause_alpha > 0{pause_alpha -= 0.2}}
 
 
 if pause_alpha > 0{
+
+
 draw_sprite_ext(s_BlackPixel,0,cam_x-100,cam_y-100,screen_width+200,screen_height+200,cam_angle,-1,pause_alpha/2)
 draw_set_alpha(pause_alpha)
 var_x = (screen_width/2)-32-(string_width(menu[menu_cursor])/2)+cam_x

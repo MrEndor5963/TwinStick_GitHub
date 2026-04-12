@@ -84,7 +84,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	instance_destroy(creator);
 	instance_destroy();
 	ds_list_destroy(list_temp)
-	if var_player.object_index = Player{
+	if instance_exists(var_player) && var_player.object_index = Player{
 	var_player.kills += 1;//throw("")
 	if var_bullet.hurts_enemy = true{kill_reward = var_bullet.kill_reward}
 	with var_player{player_point_change(other.kill_reward)}}

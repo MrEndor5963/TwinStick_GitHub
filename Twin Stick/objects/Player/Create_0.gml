@@ -41,6 +41,7 @@ jam_timer = 0
 jam_time = 60
 trigger_delay = 0
 trigger_delay_timer = 0
+trigger_needs_reset = false
 
 
 //

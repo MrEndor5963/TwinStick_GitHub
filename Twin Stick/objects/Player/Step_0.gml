@@ -141,6 +141,7 @@ if key_knife_pressed{melee_equipped = true}
 	if reload_timer >= reload_startup+((reload_bullet_time*reload_amount)-((ammo_inmag_max-ammo_inmag-1)*reload_bullet_time)) && reload_timer <= reload_time-reload_endlag+reload_speed
 	{ammo_inmag += 1;ammo_reserve -= 1
 	glitch_int_mag = 1;glitch_int_reserve = 1
+	if array_contains(GM.shotgun_list,weapon_sprite){play_sfx(sfx_ShotgunShellReload)}
 	}
 	}
 
@@ -164,7 +165,15 @@ if recoil < 0.5 && recoil > -0.5{recoil = 0}
 
 if shoot_timer > 0{shoot_timer -= 1}
 
-if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0}
+if key_shoot{trigger_delay_timer += 1
+if trigger_delay_timer = 1{
+if weapon_sprite = s_Python or weapon_sprite = s_SnW500 or weapon_sprite = s_RagingJudge{play_sfx(sfx_HammerPull)}
+}	
+}else{
+trigger_delay_timer = 0
+//if trigger_delay_timer > 0{
+//trigger_delay_timer -= 1}
+}
 
 if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay && deploy_timer = 0{
 	

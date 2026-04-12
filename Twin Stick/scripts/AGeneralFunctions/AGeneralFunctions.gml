@@ -59,3 +59,55 @@ game_over = false
 game_paused = false;pause_alpha = 0;audio_stop_all()
 room_goto(r_TitleScreen)
 }
+
+function settings_menu(){
+menu[0] = "Sound"
+menu[1] = "Music"
+if window_get_fullscreen() = true{menu[2] = "Fullscreen: Enabled"}
+else{menu[2] = "Fullscreen: Disabled"}
+
+if menu_cursor = 0{
+if key_left_pressed{GM.sfx_gain_saved -= 0.1}
+if key_right_pressed{GM.sfx_gain_saved += 0.1}
+}
+
+if menu_cursor = 1{
+if key_left_pressed{GM.msc_gain_saved -= 0.1}
+if key_right_pressed{GM.msc_gain_saved += 0.1}
+}
+	
+if menu_cursor = 2 && key_enter{//fullscreen
+if window_get_fullscreen() = false{
+window_set_fullscreen(true)}
+else{window_set_fullscreen(false)}
+}
+
+var_x = menu_x-32
+var_y = menu_y+(menu_cursor*text_gap)
+draw_sprite(s_MenuCursor,0,var_x,var_y)
+var_x = menu_x+32+(string_width(menu[menu_cursor]))
+if menu_cursor > 1{draw_sprite_ext(s_MenuCursor,0,var_x,var_y,-1,1,0,-1,1)}
+vrp = 0
+repeat(array_length(menu)){
+draw_text(menu_x,menu_y+(vrp*text_gap),menu[vrp])
+
+if vrp = 0{
+i = 0
+repeat(10){
+if GM.sfx_gain_saved*10 <= i{var_index = 1}else{var_index = 0}
+draw_sprite(s_AudioSquare,var_index,menu_x+string_width("Sound ")+(i*26),menu_y+(vrp*text_gap))
+i+= 1}
+}
+
+if vrp = 1{
+i = 0
+repeat(10){
+if GM.msc_gain_saved*10 <= i{var_index = 1}else{var_index = 0}
+draw_sprite(s_AudioSquare,var_index,menu_x+string_width("Music ")+(i*26),menu_y+(vrp*text_gap))
+
+i+= 1}
+}
+
+vrp += 1
+}
+}

@@ -301,7 +301,7 @@ array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,72)
+set_gun_ammo(8,64)
 set_bullet_power(s_45ACP,5)
 set_gun_handling(16,2,2.4)
 set_deploy_stats(8,-1)
@@ -323,7 +323,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,85)
+set_gun_ammo(17,68)
 set_bullet_power(s_9x19mmParabellum,4.9)
 set_gun_handling(24,2.5,2.1)
 set_deploy_stats(7,-1)
@@ -345,7 +345,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,102)
+set_gun_ammo(17,85)
 set_bullet_power(s_9x19mmParabellum,4.7)
 set_gun_handling(20,2.5,2.1)
 set_deploy_stats(7,-1)
@@ -391,7 +391,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,68)
+set_gun_ammo(17,102)
 set_bullet_power(s_9x19mmParabellum,4.8)
 set_gun_handling(5,2.5,2.47)
 set_deploy_stats(6,-1)
@@ -544,7 +544,7 @@ array_push(smg_list,weapon_sprite)
 array_push(nazi_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(32,192)
+set_gun_ammo(32,128)
 set_bullet_power(s_9x19mmParabellum,9.1)
 set_gun_handling(-3,2,8.8)
 set_deploy_stats(10,-1)
@@ -643,7 +643,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(25,175)
+set_gun_ammo(25,150)
 set_bullet_power(s_9x19mmParabellum,10.5)
 set_gun_handling(-12,3,7.7)
 set_deploy_stats(11,-1)
@@ -657,7 +657,7 @@ description = ""
 function wpn_PPBison(){
 weapon_sprite = s_PPBison
 weapon_name = "PP Bison"
-cost = 1350
+cost = 2350
 if object_index = GM{
 array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -703,7 +703,7 @@ weapon_name = "Ithaca 37"
 weapon_draw_sprite = s_IthacaBase
 pump_sprite = s_IthacaPump
 //pump_distance = 20
-cost = 800
+cost = 900
 if object_index = GM{
 array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -728,7 +728,7 @@ shot_reward = 5
 function wpn_Spaz12(){
 weapon_sprite = s_Spaz12
 weapon_name = "Spas 12"
-cost = 2600
+cost = 1200
 if object_index = GM{
 array_push(tier_2_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -736,7 +736,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,40)
+set_gun_ammo(8,32)
 set_bullet_power(s_12GadgeBuckshot,15.7)
 set_gun_handling(95,20,9.7)
 set_deploy_stats(15,-1)

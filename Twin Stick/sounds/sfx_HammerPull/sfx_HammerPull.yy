@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_HammerPull",
+  "audioGroupId":{
+    "name":"audiogroup_sfx",
+    "path":"audiogroups/audiogroup_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.62265307,
+  "name":"sfx_HammerPull",
+  "parent":{
+    "name":"GunSounds",
+    "path":"folders/DSounds/GunSounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_HammerPull.mp3",
+  "type":0,
+  "volume":1.0,
+}

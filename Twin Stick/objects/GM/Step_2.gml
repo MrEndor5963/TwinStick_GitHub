@@ -1,14 +1,13 @@
-
-if keyboard_check(vk_control) && dev_mode = true{
-if keyboard_check_pressed(ord("R")){game_restart()}
-
-if keyboard_check_pressed(ord("4")){Player.money += 2000}
-
 if keyboard_check_pressed(ord("F")){
 if window_get_fullscreen() = false{
 window_set_fullscreen(true)}
 else{window_set_fullscreen(false)}
 }
+
+if keyboard_check(vk_control) && dev_mode = true{
+if keyboard_check_pressed(ord("R")){game_restart()}
+
+if keyboard_check_pressed(ord("4")){Player.money += 2000}
 
 if keyboard_check_pressed(ord("M")){
 if sfx_gain_saved = 0{

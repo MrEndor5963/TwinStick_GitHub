@@ -12,14 +12,18 @@ if menu[menu_cursor] = "Solo" or menu[menu_cursor] = "Co-op" or menu[menu_cursor
 {
 GM.game_mode = menu[menu_cursor]
 GM.glitch_intensity = 1
-play_sfx(sfx_MenuClick)
 room_goto(r_CharacterSelectScreen)}
-sub_menu = menu[menu_cursor]
-if sub_menu != 0 && GM.glitch_intensity != 1{
+
+
+if GM.glitch_intensity != 1{
 play_sfx(sfx_MenuClick)
 GM.glitch_intensity = 0.5
 }
-menu_cursor = 0
+
+if sub_menu != "Configuration"{
+sub_menu = menu[menu_cursor]
+menu_cursor = 0}
+play_sfx(sfx_MenuClick)
 }
 
 menu = []
@@ -31,23 +35,6 @@ menu[2] = "Versus"
 menu[3] = "Database"
 menu[4] = "???????????"//Achievments
 menu[5] = "Configuration"
-}
-
-if sub_menu = "Configuration"{
-menu[0] = "Sound"
-menu[1] = "Music"
-
-if menu_cursor = 0{
-if key_left_pressed{GM.sfx_gain_saved -= 0.1}
-if key_right_pressed{GM.sfx_gain_saved += 0.1}
-}
-
-if menu_cursor = 1{
-if key_left_pressed{GM.msc_gain_saved -= 0.1}
-if key_right_pressed{GM.msc_gain_saved += 0.1}
-}
-
-
 }
 
 if sub_menu = "Database"
