@@ -1,3 +1,4 @@
+/// @description Console commands
 if keyboard_check_pressed(ord("F")){
 if window_get_fullscreen() = false{
 window_set_fullscreen(true)}
@@ -36,10 +37,10 @@ with Player{
 weapon = []
 script_execute_wpn(s_m1911)
 
-weapon = []
-weapon_slots = array_length(GM.weapon_list)
+weapons_held = []
+weapon_slots_max = array_length(GM.weapon_list)
 vrp = 0
-repeat(weapon_slots){
+repeat(weapon_slots_max){
 get_new_weapon(GM.weapon_list[vrp])
 switch_to_weapon(vrp)
 vrp += 1

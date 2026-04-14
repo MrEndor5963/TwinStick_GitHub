@@ -179,9 +179,9 @@ gambling_degeneracy = 15
 
 
 portrait_sprite = asset_get_index("s_"+string(player_name)+"Portrait")
-if give_all_weapons = true{weapon_slots += 1;weapon_number = weapon_slots}
+if give_all_weapons = true{weapon_slots_max += 1;weapon_equipped = weapon_slots_max}
 get_new_weapon(starting_weapon)
-switch_to_weapon(array_length(weapon)-1)
+switch_to_weapon(array_length(weapons_held)-1)
 
 spawned = true
 }

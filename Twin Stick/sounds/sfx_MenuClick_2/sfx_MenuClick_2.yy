@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"sfx_CameraStaticAlt",
+  "%Name":"sfx_MenuClick_2",
   "audioGroupId":{
     "name":"audiogroup_sfx",
     "path":"audiogroups/audiogroup_sfx",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.0,
-  "name":"sfx_CameraStaticAlt",
+  "duration":0.42099774,
+  "name":"sfx_MenuClick_2",
   "parent":{
     "name":"UISounds",
     "path":"folders/DSounds/UISounds.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_CameraStaticAlt.ogg",
+  "soundFile":"sfx_MenuClick_2.mp3",
   "type":0,
   "volume":1.0,
 }

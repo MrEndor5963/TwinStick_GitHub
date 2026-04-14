@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_KnifeAttack",
-    "path":"sprites/s_KnifeAttack/s_KnifeAttack.yy",
+    "name":"s_Knife",
+    "path":"sprites/s_Knife/s_Knife.yy",
   },
   "spriteMaskId":null,
   "visible":true,

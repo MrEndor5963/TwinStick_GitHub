@@ -1,56 +1,146 @@
-if player_number = 1{
-draw_sprite(portrait_sprite,0,screen_width-92,0+48)
-draw_set_aligns(fa_center,fa_middle)
-draw_text(screen_width-48,0+120,string(hp)+"/"+string(hp_max))
-draw_sprite(s_HPBarOutline,0,screen_width-48,0+288)
-draw_hp = clamp(1/(hp_max/hp),0,1)
-draw_sprite_ext(s_HPBar,0,screen_width-48,0+288,1,-draw_hp,0,draw_color,1)
+#region menus
+	if game_paused = true or game_over = true or room = r_TitleScreen{
+	menu_controls()
 
-var_x = screen_width-288-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
-var_y = 0+48-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
-draw_sprite(weapon_sprite,0,var_x,var_y)
-draw_sprite(s_WeaponNameBox,0,192,48)
-draw_text(screen_width-288,0+24,weapon_name)
-draw_text(screen_width-288,0+72,string(ammo_inmag)+"/"+string(ammo_reserve))
 
-draw_set_halign(fa_right)
-draw_text(screen_width-432,0+48,"$"+string(money))
-}
 
-if player_number = 2{
-draw_sprite(portrait_sprite,0,0+92,screen_height-48)
-draw_set_aligns(fa_center,fa_middle)
-draw_text(0+48,screen_height-120,string(hp)+"/"+string(hp_max))
-draw_sprite(s_HPBarOutline,0,0+48,screen_height-288+144)
-draw_hp = clamp(1/(hp_max/hp),0,1)
-draw_sprite_ext(s_HPBar,0,0+48,screen_height-288+144,1,-draw_hp,0,draw_color,1)
+	if key_enter{
+	if sub_menu != "Configuration"{sub_menu = menu[menu_cursor];menu_cursor = 0}
 
-var_x = 0+288-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
-var_y = screen_height-48-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
-draw_sprite(weapon_sprite,0,var_x,var_y)
-draw_sprite(s_WeaponNameBox,0,192,48)
-draw_text(0+288,screen_height-24,weapon_name)
-draw_text(0+288,screen_height-72,string(ammo_inmag)+"/"+string(ammo_reserve))
+	if sub_menu = "Resume"{glitch_intensity = 0.5;game_paused = false}
 
-draw_set_halign(fa_left)
-draw_text(0+432,screen_height-48,"$"+string(money))
-}
+	if sub_menu = "Retry"{
 
-if player_number = 3{
-draw_sprite(portrait_sprite,0,screen_width-92,screen_height-48)
-draw_set_aligns(fa_center,fa_middle)
-draw_text(screen_width-48,screen_height-120,string(hp)+"/"+string(hp_max))
-draw_sprite(s_HPBarOutline,0,screen_width-48,screen_height-288+144)
-draw_hp = clamp(1/(hp_max/hp),0,1)
-draw_sprite_ext(s_HPBar,0,screen_width-48,screen_height-288+144,1,-draw_hp,0,draw_color,1)
+	glitch_intensity += 1
+	repeat (GM.player_amount){
+	var1 = player_list[0].player_name
+	var2 = player_list[0].input_number
+	var3 = player_list[0].player_number
+	with player_list[0]{player_destroy_protocol()}
+	var_player = instance_create_depth(300,300,depth,Player)
+	var_player.player_name = var1
+	var_player.input_number = var2
+	var_player.player_number = var3
+	array_delete(player_list,0,1)}
 
-var_x = screen_width-288-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
-var_y = screen_height-48-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
-draw_sprite(weapon_sprite,0,var_x,var_y)
-draw_sprite(s_WeaponNameBox,0,192,48)
-draw_text(screen_width-288,screen_height-24,weapon_name)
-draw_text(screen_width-288,screen_height-72,string(ammo_inmag)+"/"+string(ammo_reserve))
+	if instance_exists(Key){instance_destroy(Key)}
 
-draw_set_halign(fa_right)
-draw_text(screen_width-432,screen_height-48,"$"+string(money))
-}
+
+	floor_number = 0
+	next_floor = true
+	}
+
+	if sub_menu = "Main Menu"{goto_main_menu();glitch_intensity += 1}
+
+	if sub_menu = "Exit Game"{game_end()}
+	}
+	//if game_paused = true{exit}
+	}
+
+	if game_paused = false && game_over = false{
+	
+	audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
+	audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
+	}
+	else{
+	if audio_group_get_gain(audiogroup_default) = msc_gain_saved{
+	audio_group_set_gain(audiogroup_default,msc_gain_saved/3,1000)}
+	}
+
+	if key_pause && room != r_TitleScreen && room != r_FloorTransition && next_room = -1{
+	
+	if game_paused = false{
+	game_paused = true
+	}
+	else{
+	if sub_menu = 0{game_paused = false}else{sub_menu = 0}
+	}
+	GM.glitch_intensity = 0.5
+	}
+
+	if room = r_TitleScreen{
+		if key_up_pressed or key_down_pressed{play_sfx(sfx_Cursor)}
+	key_back = gamepad_button_check_pressed_any(gp_face2) or keyboard_check_pressed(vk_backspace) or keyboard_check_pressed(vk_escape) or keyboard_check_pressed(ord("X"))
+
+	if key_back{
+	if sub_menu != 0{GM.glitch_intensity = 0.5}
+	sub_menu = 0;menu_cursor = 0}
+	if key_enter{
+	if menu[menu_cursor] = "Solo" or menu[menu_cursor] = "Co-op" or menu[menu_cursor] = "Versus"
+	{
+	GM.game_mode = menu[menu_cursor]
+	GM.glitch_intensity = 1
+	room_goto(r_CharacterSelectScreen)}
+
+
+	if GM.glitch_intensity != 1{
+	play_sfx(sfx_MenuClick)
+	GM.glitch_intensity = 0.5
+	}
+
+	if sub_menu != "Configuration"{
+	sub_menu = menu[menu_cursor]
+	menu_cursor = 0}
+	play_sfx(sfx_MenuClick)
+	}
+
+	menu = []
+	if sub_menu = 0
+	{
+	menu[0] = "Solo"
+	menu[1] = "Co-op"
+	menu[2] = "Versus"
+	menu[3] = "Database"
+	menu[4] = "???????????"//Achievments
+	menu[5] = "Configuration"
+	}
+
+	if sub_menu = "Database"
+	{
+	menu[0] = "Weaponry"
+	menu[1] = "Items"
+	menu[2] = "Test Subjects A"
+	menu[3] = "Test Subjects B"//Characters
+	}
+
+	if sub_menu = "Weaponry"{
+	vrp = 0
+	repeat(array_length(GM.weapon_list)){
+	menu[vrp] = GM.weapon_list[vrp]
+	vrp += 1}
+
+	script_execute_wpn(menu[menu_cursor])
+
+	}
+
+	if sub_menu = "Items"{
+	vrp = 0
+	repeat(array_length(GM.item_list)){
+	menu[vrp] = GM.item_list[vrp]
+	vrp += 1}
+
+	script_execute_item(menu[menu_cursor])
+
+	}
+	}
+
+	if game_paused = true{
+	menu = []
+	menu[0]  = "Resume"
+	menu[1]  = "Main Menu"
+	menu[2]  = "Configuration"
+	}
+
+	if game_over = true{
+	menu = []
+	menu[0]  = "Retry"
+	menu[1]  = "Main Menu"
+	}
+	#endregion menus
+	
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////

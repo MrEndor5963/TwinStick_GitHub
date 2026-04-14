@@ -21,7 +21,7 @@ player_name = ""
 money = 500
 mov_spd = 10
 hp = 6;hp_max = 6
-weapon_slots = 2
+weapon_slots_max = 2
 strength = 2
 reload_speed = 1
 
@@ -50,6 +50,8 @@ refresh_grid = 60
 slide_offset = 0
 
 aim_object = 0//instance_create_depth(x,y,depth,PlayerAim)
+p_weapon = instance_create_depth(x,y,depth-1,PlayerWeapon)
+p_weapon.player_id = id
 melee = instance_create_depth(x,y,depth-1,MeleeWeapon)
 melee.creator = id
 melee_equipped = false
@@ -61,8 +63,8 @@ shoot_timer = 0
 
 key_aim = false
 
-weapon_number = 0
-weapon = []
+weapon_equipped = 0
+weapons_held = []
 
 deploy_time = 15
 deploy_timer = 0
@@ -161,37 +163,37 @@ glitch_int_points = 1
 }
 
 function get_new_weapon(arg_weapon){
-if array_length(weapon) < weapon_slots{
-saved_ammo_inmag[weapon_number] = ammo_inmag
-saved_ammo_reserve[weapon_number] = ammo_reserve
-weapon_number = array_length(weapon)}
-weapon[weapon_number] = arg_weapon
+if array_length(weapons_held) < weapon_slots_max{
+saved_ammo_inmag[weapon_equipped] = ammo_inmag
+saved_ammo_reserve[weapon_equipped] = ammo_reserve
+weapon_equipped = array_length(weapons_held)}
+weapons_held[weapon_equipped] = arg_weapon
 weapon_sprite = arg_weapon
 script_execute_wpn(arg_weapon)
-saved_ammo_inmag[weapon_number] = ammo_inmag_max
-saved_ammo_reserve[weapon_number] = ammo_reserve_max
+saved_ammo_inmag[weapon_equipped] = ammo_inmag_max
+saved_ammo_reserve[weapon_equipped] = ammo_reserve_max
 glitch_int_mag = 1;glitch_int_reserve = 1
 glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }
 
-function switch_to_weapon(arg_weapon_number){
-weapon_number = arg_weapon_number
-script_execute_wpn(weapon[weapon_number])
-ammo_inmag = saved_ammo_inmag[weapon_number]
-ammo_reserve = saved_ammo_reserve[weapon_number]
+function switch_to_weapon(arg_weapon_equipped){
+weapon_equipped = arg_weapon_equipped
+script_execute_wpn(weapons_held[weapon_equipped])
+ammo_inmag = saved_ammo_inmag[weapon_equipped]
+ammo_reserve = saved_ammo_reserve[weapon_equipped]
 glitch_int_mag = 1;glitch_int_reserve = 1
 glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }
 
-weapon = []
+weapons_held = []
 script_execute_wpn(s_m1911)
 give_all_weapons = false
 //give_all_weapons = true
 if give_all_weapons = true{
-weapon = []
-weapon_slots = array_length(GM.weapon_list)
+weapons_held = []
+weapon_slots_max = array_length(GM.weapon_list)
 vrp = 0
-repeat(weapon_slots){
+repeat(weapon_slots_max){
 get_new_weapon(GM.weapon_list[vrp])
 switch_to_weapon(vrp)
 vrp += 1

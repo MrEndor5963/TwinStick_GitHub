@@ -332,7 +332,7 @@ action_type = s_SemiAuto
 reload_time = 90
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
-description = "Effective sidearm based on the Berretta 92, used by many Brazilian police and military"
+description = "Effective sidearm based on the Berretta 92, mostly used by the Brazilian police and military"
 }
 
 function wpn_P320(){

@@ -2,8 +2,8 @@ if GM.game_paused = true or room = r_FloorTransition{exit}
 
 if new_floor = true{
 i = 0
-repeat(array_length(weapon)){
-if array_contains(item_list,s_item_HammerAndSickle) && array_contains(GM.soviet_list,weapon[i]){
+repeat(array_length(weapons_held)){
+if array_contains(item_list,s_item_HammerAndSickle) && array_contains(GM.soviet_list,weapons_held[i]){
 switch_to_weapon(i)
 ammo_inmag = ammo_inmag_max
 ammo_reserve = ammo_reserve_max
@@ -13,6 +13,7 @@ floor_mystery_box_rolls = 0
 repeat(cryptocoin){player_point_change(irandom_range(-10000,10000))}
 new_floor = false
 }
+
 depth = -y
 if hp <= 0{
 sprite_index = asset_get_index("s_"+string(player_name)+"Dead")
@@ -81,7 +82,7 @@ key_knife_pressed = -1
 if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0 && deploying = false && melee_equipped = false{
 key_weapon_toggle_forward = true}
 
-if array_length(weapon) = 1 && melee_equipped = false{
+if array_length(weapons_held) = 1 && melee_equipped = false{
 key_weapon_toggle_back = false
 key_weapon_toggle_forward = false}
 
@@ -90,14 +91,14 @@ if key_weapon_toggle_back or key_weapon_toggle_forward{
 if melee_equipped = true{
 melee_equipped = false
 key_weapon_toggle_back = false
-key_weapon_toggle_forward = false = false
+key_weapon_toggle_forward = false
 }
 if deploying = false{
-next_weapon_number = weapon_number
+next_weapon_equipped = weapon_equipped
 deploying = true}
 reload_timer = -1
-if key_weapon_toggle_back{next_weapon_number -= 1;if next_weapon_number < 0{next_weapon_number = array_length(weapon)-1}}
-if key_weapon_toggle_forward{next_weapon_number += 1;if next_weapon_number = array_length(weapon){next_weapon_number = 0}}
+if key_weapon_toggle_back{next_weapon_equipped -= 1;if next_weapon_equipped < 0{next_weapon_equipped = array_length(weapons_held)-1}}
+if key_weapon_toggle_forward{next_weapon_equipped += 1;if next_weapon_equipped = array_length(weapons_held){next_weapon_equipped = 0}}
 melee_equipped = false
 }
 
@@ -105,14 +106,14 @@ if deploying = false{if deploy_timer > 0{deploy_timer -= 1}}
 if deploy_timer < 0{deploy_timer = 0}
 if deploying = true{
 if deploy_timer < deploy_time{deploy_timer += 1}
-if next_weapon_number = weapon_number{deploying = false}}
+if next_weapon_equipped = weapon_equipped{deploying = false}}
 
 if deploy_timer >= deploy_time{
 	reload_timer = -1
 	deploying = false;
-	saved_ammo_inmag[weapon_number] = ammo_inmag
-	saved_ammo_reserve[weapon_number] = ammo_reserve
-	switch_to_weapon(next_weapon_number);
+	saved_ammo_inmag[weapon_equipped] = ammo_inmag
+	saved_ammo_reserve[weapon_equipped] = ammo_reserve
+	switch_to_weapon(next_weapon_equipped);
 	deploy_timer = deploy_time
 }
 
@@ -137,9 +138,9 @@ if key_knife_pressed{melee_equipped = true}
 	if reload_timer > -1{
 	reload_timer += reload_speed
 	
-	if reload_bullet_time != 0{
-	if reload_timer >= reload_startup+((reload_bullet_time*reload_amount)-((ammo_inmag_max-ammo_inmag-1)*reload_bullet_time)) && reload_timer <= reload_time-reload_endlag+reload_speed
-	{ammo_inmag += 1;ammo_reserve -= 1
+	if reload_bullet_time != 0 && reload_timer > 0{
+	if reload_timer >= reload_startup+((reload_bullet_time*reload_amount)-((ammo_inmag_max-ammo_inmag-1)*reload_bullet_time)) && reload_timer <= reload_time-reload_endlag+reload_speed{
+	ammo_inmag += 1;ammo_reserve -= 1
 	glitch_int_mag = 1;glitch_int_reserve = 1
 	if array_contains(GM.shotgun_list,weapon_sprite){play_sfx(sfx_ShotgunShellReload)}
 	}
@@ -165,21 +166,27 @@ if recoil < 0.5 && recoil > -0.5{recoil = 0}
 
 if shoot_timer > 0{shoot_timer -= 1}
 
-if key_shoot{trigger_delay_timer += 1
+if key_shoot && trigger_needs_reset = false{
+if trigger_delay_timer < trigger_delay{trigger_delay_timer += 1}
 if trigger_delay_timer = 1{
 if weapon_sprite = s_Python or weapon_sprite = s_SnW500 or weapon_sprite = s_RagingJudge{play_sfx(sfx_HammerPull)}
 }	
 }else{
-trigger_delay_timer = 0
-//if trigger_delay_timer > 0{
-//trigger_delay_timer -= 1}
+if key_shoot = false{trigger_needs_reset = false}
+if trigger_delay_timer > 0{
+trigger_delay_timer -= 1}
 }
 
 if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay && deploy_timer = 0{
 	
-	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && auto = false && trigger_delay_timer = trigger_delay{
+	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && auto = false && trigger_delay_timer = trigger_delay && trigger_needs_reset = false{
 	shoot_timer = shoot_delay
 	ammo_inmag -= 1;
+	if auto = false{
+	trigger_delay_timer = 0
+	trigger_needs_reset = true
+	}
+
 	glitch_int_mag = 0.8
 	direction = aim_direction+recoil
 	var_x = sprite_get_xoffset(weapon_sprite)
@@ -325,60 +332,86 @@ ds_list_destroy(list_temp)
 #endregion
 
 #region Buyable Stuff
-set_image_scale(1.5)
-useable_money = money+debt_limit
+	set_image_scale(1.5)
+	useable_money = money+debt_limit
 
-if place_meeting(x,y,MysteryBox){
-var_object = instance_nearest(x,y,MysteryBox)
-if key_interact_pressed && useable_money >= 950 && var_object.box_open = false{
-player_point_change(-950)
-if free_mystery_box_rolls_per_floor > floor_mystery_box_rolls{player_point_change(950)}
-var_object.activate_box = true
-play_sfx(sfx_Buy)
-floor_mystery_box_rolls += 1
-total_mystery_box_rolls += 1
-}
+	if place_meeting(x,y,MysteryBox){
+	var_object = instance_nearest(x,y,MysteryBox)
+	if key_interact_pressed && useable_money >= 950 && var_object.box_open = false{
+	player_point_change(-950)
+	if free_mystery_box_rolls_per_floor > floor_mystery_box_rolls{player_point_change(950)}
+	var_object.activate_box = true
+	play_sfx(sfx_Buy)
+	floor_mystery_box_rolls += 1
+	total_mystery_box_rolls += 1
+	}
 
-if key_interact_pressed && var_object.box_open = true && var_object.box_timer = 0{
-var_object.box_open = false
-get_new_weapon(var_object.weapon_sprite)
-switch_to_weapon(weapon_number)
-}
-}
+	if key_interact_pressed && var_object.box_open = true && var_object.box_timer = 0{
+	var_object.box_open = false
+	get_new_weapon(var_object.weapon_sprite)
+	switch_to_weapon(weapon_equipped)
+	}
+	}
 
-useable_money = money+debt_limit
-if place_meeting(x,y-10,WallBuy){
-var_object = instance_nearest(x,y-10,WallBuy)
-if key_interact_pressed && useable_money >= var_object.cost{
-player_point_change(-var_object.cost)
-get_new_weapon(var_object.weapon_sprite)
-saved_ammo_reserve[weapon_number] += round(ammo_reserve_max*wall_ammo_multiplier)
-switch_to_weapon(weapon_number)
-play_sfx(sfx_Buy)
-}
-}
+	useable_money = money+debt_limit
+	if place_meeting(x,y-10,WallBuy){
+	var_object = instance_nearest(x,y-10,WallBuy)
+	if key_interact_pressed && useable_money >= var_object.cost{
+	if array_length(weapons_held) = weapon_slots_max{
+	floor_gun = instance_create_depth(x,y,depth+10,FloorGun)
+	//do - sprite_width/2 and stuff
+	floor_gun.weapon_sprite = weapon_sprite
+	floor_gun.saved_ammo_inmag = ammo_inmag
+	floor_gun.saved_ammo_reserve = ammo_reserve
+	floor_gun.floor_y = y+(sprite_height/8)}
+	player_point_change(-var_object.cost)
+	get_new_weapon(var_object.weapon_sprite)
+	saved_ammo_reserve[weapon_equipped] += round(ammo_reserve_max*wall_ammo_multiplier)
+	switch_to_weapon(weapon_equipped)
+	play_sfx(sfx_Buy)
+	with var_object{instance_destroy()}
+	}
+	}
 
-useable_money = money+debt_limit
-if place_meeting(x,y,Item){
-var_object = instance_nearest(x,y,Item)
-if key_interact_pressed && useable_money >= var_object.cost{
-if var_object.item_is_free = false{player_point_change(-var_object.cost)}
-new_item = var_object.sprite_index
-if var_object.consumable = false{array_push(GM.items_bought,var_object.sprite_index)}
-if var_object.rebuyable = false{with var_object{instance_destroy()}}
-with var_object{bought = true}
-play_sfx(sfx_Buy)
-}
+	useable_money = money+debt_limit
+	if place_meeting(x,y,Item){
+	var_object = instance_nearest(x,y,Item)
+	if key_interact_pressed && useable_money >= var_object.cost{
+	if var_object.item_is_free = false{player_point_change(-var_object.cost)}
+	new_item = var_object.sprite_index
+	if var_object.consumable = false{array_push(GM.items_bought,var_object.sprite_index)}
+	if var_object.rebuyable = false{with var_object{instance_destroy()}}
+	with var_object{bought = true}
+	play_sfx(sfx_Buy)
+	}
 
-}
+	}
 
-if place_meeting(x,y,Teleporter) && key_interact{
-Teleporter.teleport_timer += 1
-}
+	if place_meeting(x,y,Teleporter) && key_interact{
+	Teleporter.teleport_timer += 1
+	}
 
-set_image_scale(1)
+	set_image_scale(1)
 #endregion End Of Buyable Stuff
 
+
+	if place_meeting(x,y,FloorGun){
+	var_object = instance_nearest(x,y,FloorGun)
+	if key_interact_pressed && var_object.y >= var_object.floor_y{
+	if array_length(weapons_held) = weapon_slots_max{
+	floor_gun = instance_create_depth(x,y,depth+10,FloorGun)
+	floor_gun.weapon_sprite = weapon_sprite
+	floor_gun.saved_ammo_inmag = ammo_inmag
+	floor_gun.saved_ammo_reserve = ammo_reserve
+	floor_gun.floor_y = var_object.y}
+	get_new_weapon(var_object.weapon_sprite)
+	saved_ammo_reserve[weapon_equipped] = var_object.ammo_reserve
+	ammo_inmag[weapon_equipped] = var_object.ammo_inmag
+	switch_to_weapon(weapon_equipped)
+	//play_sfx(sfx_Buy)
+	with var_object{instance_destroy()}
+	}
+	}
 //end of alive code
 }
 

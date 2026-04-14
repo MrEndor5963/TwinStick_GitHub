@@ -1,5 +1,4 @@
 // Activating the shader
-display_set_gui_size(1280,720)
 if glitch_intensity > 0{
 bktglitch_activate(1280,720);
 

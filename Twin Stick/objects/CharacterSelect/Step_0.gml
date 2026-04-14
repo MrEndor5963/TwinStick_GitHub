@@ -1,7 +1,9 @@
-key_enter = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("E"))
+key_enter = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("Z"))
 
 if key_enter
-{var_player = -1
+{
+play_sfx(sfx_MenuClick)
+var_player = -1
 if cursor_control[3] = -1{var_player = 3}
 if cursor_control[2] = -1{var_player = 2}
 if cursor_control[1] = -1{var_player = 1}
@@ -17,12 +19,14 @@ exit}
 if gamepad_button_check_pressed_any(gp_face2) or keyboard_check_pressed(vk_backspace) or keyboard_check_pressed(vk_escape) or keyboard_check_pressed(ord("X")){
 if cursor_control[0] = -1 && cursor_control[1] = -1 &&
 cursor_control[2] = -1 && cursor_control[3] = -1{
+GM.glitch_intensity = 1
 room_goto(r_TitleScreen)}
 }
 
 vrp = 0;
 repeat(4){
 if gamepad_button_check_pressed(vrp,gp_face1) or gamepad_button_check_pressed(vrp,gp_start) or gamepad_button_check_pressed(vrp,gp_select){
+play_sfx(sfx_MenuClick)
 var_player = -1
 if cursor_control[3] = -1{var_player = 3}
 if cursor_control[2] = -1{var_player = 2}
@@ -52,10 +56,10 @@ if gamepad_button_check_pressed(cursor_control[vrp],gp_face2){key_back[vrp] = tr
 
 }
 else{
-key_left[vrp] = keyboard_check(vk_left)
-key_right[vrp] = keyboard_check(vk_right)
-key_up[vrp] = keyboard_check(vk_up)
-key_down[vrp] = keyboard_check(vk_down)
+key_left[vrp] = keyboard_check(vk_left) or keyboard_check(ord("A"))
+key_right[vrp] = keyboard_check(vk_right) or keyboard_check(ord("D"))
+key_up[vrp] = keyboard_check(vk_up) or keyboard_check(ord("W"))
+key_down[vrp] = keyboard_check(vk_down) or keyboard_check(ord("S"))
 key_back[vrp] = keyboard_check_pressed(vk_escape) or keyboard_check_pressed(vk_backspace) or keyboard_check_pressed(ord("X"))
 key_enter[vrp] = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or keyboard_check_pressed(ord("Z"))
 }
@@ -72,11 +76,12 @@ if key_held_u[vrp] = 0{key_held_u[vrp] = -12;key_up_pressed[vrp] = true}
 if key_down[vrp]{key_held_d[vrp] += 1}else{key_held_d[vrp] = -1};
 if key_held_d[vrp] = 0{key_held_d[vrp] = -12;key_down_pressed[vrp] = true}
 
-if key_left_pressed[vrp] = true{cursor_c[vrp]-= 1};if cursor_c[vrp] < 0{cursor_c[vrp] = ds_grid_width(select_menu)-1}
-if key_right_pressed[vrp] = true{cursor_c[vrp] += 1};if cursor_c[vrp] > ds_grid_width(select_menu)-1{cursor_c[vrp] = 0}
+if key_left_pressed[vrp] = true{cursor_c[vrp]-= 1;play_sfx(sfx_Cursor)};if cursor_c[vrp] < 0{cursor_c[vrp] = ds_grid_width(select_menu)-1}
+if key_right_pressed[vrp] = true{cursor_c[vrp] += 1;play_sfx(sfx_Cursor)};if cursor_c[vrp] > ds_grid_width(select_menu)-1{cursor_c[vrp] = 0}
 }
 
 if key_enter[vrp] = true{
+play_sfx(sfx_MenuClick)
 if player_selected[vrp] = 0{
 player_selected[vrp] = ds_grid_get(select_menu,cursor_c[vrp],cursor_r[vrp])}
 else{player_ready[vrp] = true}
@@ -112,7 +117,6 @@ var_player = instance_create_depth(300,300,depth,Player)
 var_player.player_name = player_selected[0]
 var_player.input_number = cursor_control[0]
 var_player.player_number = 0
-
 }
 
 if player_ready[1] = true{

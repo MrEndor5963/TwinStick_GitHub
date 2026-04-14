@@ -5,7 +5,7 @@ dev_mode = true
 randomize()
 audio_group_load(audiogroup_sfx)
 msc_gain_saved = 0
-sfx_gain_saved = 0
+sfx_gain_saved = 1
 audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
 audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
 depth = -1000
@@ -46,17 +46,15 @@ map_size = 6
 map = ds_grid_create(map_size,map_size)
 draw_map = false
 
+
 pause_alpha = 0
 menu_cursor = 0
 menu[0] = "Resume"
-menu[1] = "Settings"
-menu[2] = "Main Menu"
-menu[3] = "Exit Game"
 key_held_u = 0
 key_held_d = 0
 key_held_l = 0
 key_held_r = 0
-
+sub_menu = 0
 
 room_list_1 = []
 vrp = 1

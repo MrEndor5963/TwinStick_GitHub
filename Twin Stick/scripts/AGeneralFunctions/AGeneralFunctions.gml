@@ -61,26 +61,7 @@ room_goto(r_TitleScreen)
 }
 
 function settings_menu(){
-menu[0] = "Sound"
-menu[1] = "Music"
-if window_get_fullscreen() = true{menu[2] = "Fullscreen: Enabled"}
-else{menu[2] = "Fullscreen: Disabled"}
 
-if menu_cursor = 0{
-if key_left_pressed{GM.sfx_gain_saved -= 0.1}
-if key_right_pressed{GM.sfx_gain_saved += 0.1}
-}
-
-if menu_cursor = 1{
-if key_left_pressed{GM.msc_gain_saved -= 0.1}
-if key_right_pressed{GM.msc_gain_saved += 0.1}
-}
-	
-if menu_cursor = 2 && key_enter{//fullscreen
-if window_get_fullscreen() = false{
-window_set_fullscreen(true)}
-else{window_set_fullscreen(false)}
-}
 
 var_x = menu_x-32
 var_y = menu_y+(menu_cursor*text_gap)
