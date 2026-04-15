@@ -107,9 +107,10 @@ script_execute(asset_get_index("wpn_"+string(var_string)))
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-function set_gun_ammo(arg_ammo_inmag_max,arg_ammo_reserve_max){
+function set_gun_ammo(arg_ammo_inmag_max,arg_ammo_reserve_max,arg_magazine_reload){
 ammo_inmag_max = arg_ammo_inmag_max
 ammo_reserve_max = arg_ammo_reserve_max
+reload_type = arg_magazine_reload
 }
 
 //function set_bullet_power(arg_bullet_damage,arg_bullet_knockback,arg_bullet_penetration){
@@ -185,7 +186,72 @@ function referece_weapons(){
 //Ordered by tier -> gun class -> gun power
 //Pistol, Revolvers, Machine pistol, smg, Assault rifle, LMG's, Shotguns, Sniper Rifles
 
-//Melee
+//Non gun weapon ideas
+//Brass knuckles
+//Sickle
+//Spoon
+//Fork
+//Wrench
+//Sythe
+//Sword
+//Nunchucks
+//Brick
+//Fire extinguisher
+//Screwdriver
+//Metel pipe
+//Lead pole
+//Floor Tile
+//Grenade
+//C4
+//Sticky grenade
+//Baseball bat
+//Machete
+//Katana
+//Hammer
+//Broom
+//Broom Handle
+//Mop
+//Mop Handle
+//Bone Saw
+//Chainsaw
+//Sissors
+//Scapel
+//Human Bone
+//Alien Bone
+//Alien Claw
+//Thermostat
+//Glass bottle
+//Broken Bottle
+//Crowbar
+//Piece of glass
+//Baseball
+//Walke talke
+//Cellphone
+//Telephone
+//Mug
+//Chair
+//Potted Plant
+//Potato
+//Iron cuffs
+//Watering can
+//Monitor
+//Moltov
+//Incediary grenade
+//Acid grenade
+//Canned drinks
+//Fire Axe
+//Garbage can
+//Chain whip
+//Nunchucks
+//Pen
+//Laser Sword
+//Laser Knife
+	//Cafeteria stuff
+	//Frying pan
+	//Pot
+	//Serving tray
+//Desklamp
+
 wpn_Knife()
 //Tier E, Tier 0
 wpn_Taurus92()
@@ -301,7 +367,7 @@ array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,64)
+set_gun_ammo(8,9,true)
 set_bullet_power(s_45ACP,5)
 set_gun_handling(16,2,2.4)
 set_deploy_stats(8,-1)
@@ -323,7 +389,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,68)
+set_gun_ammo(17,5,true)
 set_bullet_power(s_9x19mmParabellum,4.9)
 set_gun_handling(24,2.5,2.1)
 set_deploy_stats(7,-1)
@@ -345,7 +411,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,85)
+set_gun_ammo(17,5,true)
 set_bullet_power(s_9x19mmParabellum,4.7)
 set_gun_handling(20,2.5,2.1)
 set_deploy_stats(7,-1)
@@ -369,7 +435,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(19,76)
+set_gun_ammo(19,4,true)
 set_bullet_power(s_9x19mmParabellum,4.49)
 set_gun_handling(22,1.5,1.3)
 set_deploy_stats(6,-1)
@@ -391,7 +457,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,102)
+set_gun_ammo(17,6,true)
 set_bullet_power(s_9x19mmParabellum,4.8)
 set_gun_handling(5,2.5,2.47)
 set_deploy_stats(6,-1)
@@ -415,7 +481,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(20,80)
+set_gun_ammo(20,3,true)
 set_bullet_power(s_57x28mm,4.8)
 set_gun_handling(15,3,1.6)
 set_deploy_stats(7,-1)
@@ -438,7 +504,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(7,35)
+set_gun_ammo(7,4,true)
 set_bullet_power(s_50AE,6)
 set_gun_handling(85,9,4.4)
 set_deploy_stats(9,-1)
@@ -465,7 +531,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(6,48)
+set_gun_ammo(6,50,false)
 set_bullet_power(s_357Magnum,6)
 set_gun_handling(31,10,2.8)
 set_deploy_stats(9,-1)
@@ -483,7 +549,7 @@ weapon_sprite = s_RagingJudge
 //weapon_draw_sprite = s_PythonBase
 //hammer_sprite = s_PythonHammer
 weapon_name = "Raging Judge"
-cost = 1100
+cost = 1000
 if object_index = GM{
 array_push(tier_1_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -493,7 +559,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(6,42)
+set_gun_ammo(6,25,false)
 set_bullet_power(s_410Bore,6.5)
 set_gun_handling(35,11,4.5)
 set_deploy_stats(12,-1)
@@ -520,7 +586,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(machine_pistol_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(16,48)
+set_gun_ammo(16,3,true)
 set_bullet_power(s_9x19mmParabellum,4.7)
 set_gun_handling(-18,0.8,2.4)
 set_deploy_stats(7,-1)
@@ -544,7 +610,7 @@ array_push(smg_list,weapon_sprite)
 array_push(nazi_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(32,128)
+set_gun_ammo(32,3,true)
 set_bullet_power(s_9x19mmParabellum,9.1)
 set_gun_handling(-3,2,8.8)
 set_deploy_stats(10,-1)
@@ -566,7 +632,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(2,36)
+set_gun_ammo(2,25,false)
 set_bullet_power(s_12GadgeBuckshot,19)
 set_gun_handling(14,5,9.7)
 set_deploy_stats(12,-1)
@@ -595,7 +661,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(18,162)
+set_gun_ammo(18,9,true)
 set_bullet_power(s_9x19mmParabellum,12)
 set_gun_handling(-25,1,6.6)
 set_deploy_stats(11,1)
@@ -621,7 +687,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(20,180)
+set_gun_ammo(20,8,true)
 set_bullet_power(s_32ACP,5.9)
 set_gun_handling(-3,1.5,2.9)
 set_deploy_stats(8,-1)
@@ -643,7 +709,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(25,150)
+set_gun_ammo(25,6,true)
 set_bullet_power(s_9x19mmParabellum,10.5)
 set_gun_handling(-12,3,7.7)
 set_deploy_stats(11,-1)
@@ -665,7 +731,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(64,192)
+set_gun_ammo(64,3,true)
 set_bullet_power(s_9x19mmParabellum,6.7)
 set_gun_handling(-5,2,4.6)
 set_deploy_stats(14,-1)
@@ -687,7 +753,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(30,150)
+set_gun_ammo(30,5,true)
 set_bullet_power(s_9x19mmParabellum,8.9)
 set_gun_handling(-3,2,5.5)
 set_deploy_stats(12,-1)
@@ -712,7 +778,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(7,35)
+set_gun_ammo(7,25,false)
 set_bullet_power(s_12GadgeBuckshot,22)
 set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
@@ -736,7 +802,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,32)
+set_gun_ammo(8,25,false)
 set_bullet_power(s_12GadgeBuckshot,15.7)
 set_gun_handling(95,20,9.7)
 set_deploy_stats(15,-1)
@@ -768,7 +834,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(revolver_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(5,25)
+set_gun_ammo(5,20,false)
 set_bullet_power(s_500SAWMagnum,8.4)
 set_gun_handling(90,40,4.8)
 set_deploy_stats(12,-1)
@@ -792,7 +858,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(100,100)
+set_gun_ammo(100,1,true)
 set_bullet_power(s_45ACP,12)
 set_gun_handling(-6,3,10.8)
 set_deploy_stats(20,1)
@@ -815,7 +881,7 @@ if object_index = GM{
 //array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(40,160)
+set_gun_ammo(40,3,true)
 //set_bullet_power(18,2,1)
 set_gun_handling(-5,3,6)
 set_deploy_stats(18,-1)
@@ -837,7 +903,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(71,142)
+set_gun_ammo(71,2,true)
 set_bullet_power(s_762x25mmTokarev,6.7)
 set_gun_handling(-6,2.5,8)
 set_deploy_stats(14,1)
@@ -864,7 +930,7 @@ array_push(full_ar_list,weapon_sprite)
 array_push(soviet_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(30,60)
+set_gun_ammo(30,2,true)
 set_bullet_power(s_762x39mm,16.3)
 set_gun_handling(-30,11,8.4)
 set_deploy_stats(20,1)
@@ -886,7 +952,7 @@ array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(35,105)
+set_gun_ammo(35,2,true)
 set_bullet_power(s_556x45mmNATO,16.3)
 set_gun_handling(-5,6,9.5)
 set_deploy_stats(18,1)
@@ -908,7 +974,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(7,28)
+set_gun_ammo(7,25,false)
 set_bullet_power(s_12GadgeBuckshot,28)
 set_gun_handling(70,25,8)
 set_deploy_stats(25,1)
@@ -933,7 +999,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(6,42)
+set_gun_ammo(6,25,false)
 set_bullet_power(s_12GadgeBuckshot,30)
 set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
@@ -960,7 +1026,7 @@ array_push(sniper_list,weapon_sprite)
 array_push(nazi_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(5,50)
+set_gun_ammo(5,6,true)
 set_bullet_power(s_79257mmMauser,23.6)
 set_gun_handling(12,4,9)
 set_deploy_stats(10,1)
@@ -982,7 +1048,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(10,60)
+set_gun_ammo(10,6,true)
 set_bullet_power(s_762x51NATO,27.9)
 set_gun_handling(15,4,13.4)
 set_deploy_stats(15,1)
@@ -1008,7 +1074,7 @@ array_push(handgun_list,weapon_sprite)
 exit}
 if object_index != Player{exit}
 auto = false
-set_gun_ammo(25,125)
+set_gun_ammo(25,4,true)
 set_bullet_power(s_22LR,4)
 set_gun_handling(12,1.5,1)
 set_deploy_stats(11,-1)
@@ -1035,7 +1101,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(semi_ar_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,88)
+set_gun_ammo(8,8,true)
 set_bullet_power(s_762x51NATO,22)
 set_gun_handling(4,5,9)
 set_deploy_stats(18,1)
@@ -1056,7 +1122,7 @@ array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(30,60)
+set_gun_ammo(30,2,true)
 set_bullet_power(s_545x39mm,18.3)
 set_gun_handling(-6,7,8.6)
 set_deploy_stats(16,1)
@@ -1079,7 +1145,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(30,60)
+set_gun_ammo(30,2,true)
 set_bullet_power(s_556x45mmNATO,16.3)
 set_gun_handling(-9,8,8.6)
 set_deploy_stats(15,1)
@@ -1101,7 +1167,7 @@ array_push(box_list,weapon_sprite)
 array_push(full_ar_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(20,80)
+set_gun_ammo(20,4,true)
 set_bullet_power(s_762x51NATO,16)
 set_gun_handling(-7,6,8.6)
 set_deploy_stats(18,1)
@@ -1124,7 +1190,7 @@ array_push(lmg_list,weapon_sprite)
 array_push(soviet_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(100,50)
+set_gun_ammo(100,1,true)
 set_bullet_power(s_762x39mm,18)
 set_gun_handling(-9,9,16.3)
 set_deploy_stats(30,-1)
@@ -1146,7 +1212,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(5,30)
+set_gun_ammo(5,30,false)
 set_bullet_power(s_762x54R,29)
 set_gun_handling(15,4,8.8)
 set_deploy_stats(15,1)
@@ -1171,7 +1237,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(5,35)
+set_gun_ammo(5,5,true)
 set_bullet_power(s_308WinchesterMagnum,24)
 set_gun_handling(30,16,14.3)
 set_deploy_stats(20,1)
@@ -1196,7 +1262,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(30,150)
+set_gun_ammo(30,5,true)
 set_bullet_power(s_45ACP,8.9)
 set_gun_handling(-5,1,6.6)
 set_deploy_stats(9,-1)
@@ -1219,7 +1285,7 @@ array_push(box_list,weapon_sprite)
 array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(100,0)
+set_gun_ammo(100,0,true)
 set_bullet_power(s_762x51NATO,22.2)
 set_gun_handling(-8,7,19);if object_index = Player{weapon_weight += ((ammo_inmag+ammo_reserve)*0.056)}
 set_deploy_stats(30,-1)
@@ -1240,7 +1306,7 @@ array_push(box_list,weapon_sprite)
 array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(47,141)
+set_gun_ammo(47,2,true)
 set_bullet_power(s_303British,26)
 set_gun_handling(-5,3,28)
 set_deploy_stats(35,-1)
@@ -1263,7 +1329,7 @@ array_push(lmg_list,weapon_sprite)
 array_push(nazi_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(50,100)
+set_gun_ammo(50,1,true)
 set_bullet_power(s_79257mmMauser,25.2)
 set_gun_handling(-8,7,25.6)
 set_deploy_stats(30,-1)
@@ -1286,7 +1352,7 @@ array_push(shotgun_list,weapon_sprite)
 array_push(soviet_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(4,16)
+set_gun_ammo(4,12,false)
 set_bullet_power(s_23mm,15.7)
 set_gun_handling(25,36,8.5)
 set_deploy_stats(14,-1)
@@ -1311,7 +1377,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(20,40)
+set_gun_ammo(20,2,true)
 set_bullet_power(s_12GadgeBuckshot,18.5)
 set_gun_handling(15,5,11.5)
 set_deploy_stats(12,-1)
@@ -1335,7 +1401,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(4,28)
+set_gun_ammo(4,4,true)
 set_bullet_power(s_50BMG,20)
 set_gun_handling(60,32,13.9)
 set_deploy_stats(28,1)
@@ -1357,7 +1423,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
-set_gun_ammo(5,30)
+set_gun_ammo(5,3,true)
 set_bullet_power(s_50BMG,29)
 set_gun_handling(135,72,26.5)
 set_deploy_stats(36,1)

@@ -52,8 +52,6 @@ slide_offset = 0
 aim_object = 0//instance_create_depth(x,y,depth,PlayerAim)
 p_weapon = instance_create_depth(x,y,depth-1,PlayerWeapon)
 p_weapon.player_id = id
-melee = instance_create_depth(x,y,depth-1,MeleeWeapon)
-melee.creator = id
 melee_equipped = false
 
 trigger_delay_timer = 0

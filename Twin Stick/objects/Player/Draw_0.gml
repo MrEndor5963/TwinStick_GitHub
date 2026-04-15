@@ -5,14 +5,11 @@ if weapon_draw_sprite = s_0{weapon_draw_sprite = weapon_sprite}
 
 if hit_stun % 5 == 1{}else{
 
-if aim_string != "U"{
-draw_self()
-;melee.depth = depth-1}
+
 //if recoil != 0{gun_angle = aim_direction+recoil}
 //else{gun_angle = aim_direction+recoil_cooldown}
-if aim_direction > 90 && aim_direction < 270{weapon_yscale = -1}else{weapon_yscale = 1}
-gun_angle = aim_direction+recoil+((deploy_timer*(90/deploy_time))*(weapon_yscale*deploy_direction))
 
+/*
 if melee_equipped = false && hp > 0{
 direction = gun_angle;speed = 1
 
@@ -38,13 +35,9 @@ draw_sprite_ext(pump_sprite,0,x+(pump_offset*hspeed),y+(pump_offset*vspeed),1,we
 }
 
 speed = 0}
+*/
 
-
-if aim_string = "U"{
 draw_self()
-;melee.depth = depth+1}
-
-image_xscale = 1;image_yscale = 1
 }
 
 

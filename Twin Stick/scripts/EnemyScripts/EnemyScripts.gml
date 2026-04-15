@@ -57,7 +57,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	}
 
 	hit_stun = 2
-	var_player = var_bullet.creator
+	var_player = var_bullet.player_id
 	bullet_reward = var_bullet.shot_reward
 	if instance_exists(var_player) && var_player.object_index = Player{
 	with var_player{player_point_change(other.bullet_reward)}}
@@ -70,7 +70,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	speed = 0
 	if var_bullet.object_index != PNGExplosion && var_bullet.explosive = true{
 	var_explosion = instance_create_depth(var_bullet.x,var_bullet.y,var_bullet.depth-1000,PNGExplosion)
-	var_explosion.creator = var_bullet.creator
+	var_explosion.creator = var_bullet.player_id
 	var_explosion.damage = var_bullet.explosion_damage
 	}
 	
@@ -78,7 +78,7 @@ var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_co
 	repeat(var_bullet.png_explosion_checks){
 	if irandom_range(1,4) = 1{
 	var_explosion = instance_create_depth(var_bullet.x,var_bullet.y,var_bullet.depth-1000,PNGExplosion)
-	var_explosion.creator = var_bullet.creator
+	var_explosion.creator = var_bullet.player_id
 	}
 	}
 	instance_destroy(creator);

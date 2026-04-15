@@ -117,126 +117,7 @@ if deploy_timer >= deploy_time{
 	deploy_timer = deploy_time
 }
 
-if key_knife_pressed{melee_equipped = true}
-
 #endregion End of Weapon toggling
-
-	#region Weapon damage
-	script_execute_wpn(weapon_sprite)
-	if array_contains(item_list,s_item_HammerAndSickle) && array_contains(GM.soviet_list,weapon_sprite){
-	shot_reward = 0;kill_reward = 0}
-	#endregion End of weapon damage
-	
-#region Reload Weapon
-
-	if key_reload && ammo_inmag != ammo_inmag_max && ammo_reserve > 0 or ammo_inmag = 0 && ammo_reserve > 0{
-	if reload_timer = -1{
-	play_sfx(reload_sfx)
-	reload_timer = 0}}
-	
-	if reload_timer = -1{if audio_exists(reload_sfx){audio_stop_sound(reload_sfx)}}
-	if reload_timer > -1{
-	reload_timer += reload_speed
-	
-	if reload_bullet_time != 0 && reload_timer > 0{
-	if reload_timer >= reload_startup+((reload_bullet_time*reload_amount)-((ammo_inmag_max-ammo_inmag-1)*reload_bullet_time)) && reload_timer <= reload_time-reload_endlag+reload_speed{
-	ammo_inmag += 1;ammo_reserve -= 1
-	glitch_int_mag = 1;glitch_int_reserve = 1
-	if array_contains(GM.shotgun_list,weapon_sprite){play_sfx(sfx_ShotgunShellReload)}
-	}
-	}
-
-	if reload_timer >= reload_time{
-	reload_size = ammo_inmag_max-ammo_inmag
-	if reload_size > ammo_reserve{reload_size = ammo_reserve}
-	ammo_inmag += reload_size
-	ammo_reserve -= reload_size
-	if reload_size > 0{glitch_int_mag = 1;glitch_int_reserve = 1}
-	
-	reload_timer = -1
-	trigger_delay_timer = 0
-	}
-}
-#endregion End of Reload weapon
-
-if jam_timer > 0{jam_timer += reload_speed;if jam_timer >= jam_time{jam_timer = 0;trigger_delay_timer = 0}}
-
-if abs(recoil) > 10{recoil *= 0.92}else{recoil *= 0.9}
-if recoil < 0.5 && recoil > -0.5{recoil = 0}
-
-if shoot_timer > 0{shoot_timer -= 1}
-
-if key_shoot && trigger_needs_reset = false{
-if trigger_delay_timer < trigger_delay{trigger_delay_timer += 1}
-if trigger_delay_timer = 1{
-if weapon_sprite = s_Python or weapon_sprite = s_SnW500 or weapon_sprite = s_RagingJudge{play_sfx(sfx_HammerPull)}
-}	
-}else{
-if key_shoot = false{trigger_needs_reset = false}
-if trigger_delay_timer > 0{
-trigger_delay_timer -= 1}
-}
-
-if shoot_timer <= 0 && ammo_inmag > 0 && reload_timer < 0 && melee_equipped = false && jam_timer = 0 && trigger_delay_timer >= trigger_delay && deploy_timer = 0{
-	
-	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && auto = false && trigger_delay_timer = trigger_delay && trigger_needs_reset = false{
-	shoot_timer = shoot_delay
-	ammo_inmag -= 1;
-	if auto = false{
-	trigger_delay_timer = 0
-	trigger_needs_reset = true
-	}
-
-	glitch_int_mag = 0.8
-	direction = aim_direction+recoil
-	var_x = sprite_get_xoffset(weapon_sprite)
-	speed = sprite_get_width(weapon_sprite)-var_x-5
-	var_x = x+(hspeed)
-	var_y = y+(vspeed)
-	speed = 0
-	flash = instance_create_depth(var_x,var_y,depth-2,MuzzleFlash)
-	flash.image_angle = aim_direction+recoil
-	repeat(round(bullet_amount)){
-	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
-	var_spread = bullet_spread+clamp(recoil/5,0,5)
-	_bullet.image_angle = aim_direction+recoil+irandom_range(-var_spread,var_spread)
-	_bullet.damage = weapon_damage
-	_bullet.penetration = penetration
-	_bullet.bullet_speed = bullet_speed
-	_bullet.knockback = bullet_knockback
-	_bullet.sprite_index = bullet_sprite
-	_bullet.creator = id
-	_bullet.shot_reward = shot_reward
-	_bullet.kill_reward = kill_reward
-	_bullet.explosive = explosive
-	_bullet.explosion_damage = explosion_damage
-	_bullet.png_explosion_checks = png_explosions
-	}
-
-	if knockback < 0{knockback = 0}
-	direction = aim_direction+recoil+180
-	speed = knockback/player_weight
-	hsp_knockback += hspeed
-	vsp_knockback += vspeed
-	GM.cam_shake_x += hspeed*4
-	GM.cam_shake_y += vspeed*4
-	speed = 0
-	recoil += gun_recoil*weapon_yscale
-	current_shoot_sfx = play_sfx(shoot_sfx)
-	audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.045))
-	if jam_chance != 0 && random_range(0,100) <= jam_chance{jam_timer += 1}
-	}
-	
-	
-}
-
-
-if melee_equipped = true{
-if key_knife_pressed or key_shoot_pressed{
-if melee.attacking = false{melee.attacking = true}
-}
-}
-else{melee.sprite_index = s_0}
 
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
@@ -290,7 +171,7 @@ if place_meeting(x,y,Enemy) or place_meeting(x,y,PNGExplosion){
 if place_meeting(x,y,Enemy){var_thing = instance_nearest(x,y,Enemy)}
 if place_meeting(x,y,PNGExplosion){var_thing = instance_nearest(x,y,PNGExplosion)}
 direction = point_direction(x,y,var_thing.x,var_thing.y)+180
-	speed = 30/player_weight
+	speed = 30/weight
 	hsp_knockback += hspeed
 	vsp_knockback += vspeed
 	GM.cam_angle = -hspeed
