@@ -1,3 +1,18 @@
 key_shoot = -1;key_shoot_pressed = -1
 recoil = 0
 png_explosions = 0
+shoot_timer = 0
+trigger_delay_timer = 0
+trigger_needs_reset = false
+reload_timer = -1
+jam_timer = -1
+
+contact_list = []
+attack_timer = -1
+xoff = 0
+yoff = 0
+angleoff = 0
+melee_attack = false
+hurtbox_active = false
+hurts_enemy = true
+damage = 25

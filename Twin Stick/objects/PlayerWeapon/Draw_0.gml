@@ -1,15 +1,7 @@
 if GM.game_paused = true or room = r_FloorTransition{exit}
 
-x = player_id.x
-y = player_id.y
-aim_direction = player_id.aim_direction
-image_angle = aim_direction+recoil
-depth = player_id.depth-1
-if player_id.aim_string = "U"{depth += 2}
-if aim_direction > 90 && aim_direction < 270{image_yscale = -1}else{image_yscale = 1}
+
 //gun_angle = aim_direction+recoil+((deploy_timer*(90/deploy_time))*(image_yscale*deploy_direction))
-sprite_index = player_id.weapons_held[player_id.weapon_equipped]
-script_execute_wpn(sprite_index)
 
 weapon_draw_sprite = sprite_index
 

@@ -13,7 +13,6 @@ kills = 0
 recoil = 0
 aim_direction = 0;aim_x = 0;aim_y = 0
 stick_aim_x = 0;stick_aim_y = 0
-weapon_yscale = 1
 blood_color = $FF00FF
 
 //Player stats
@@ -21,7 +20,7 @@ player_name = ""
 money = 500
 mov_spd = 10
 hp = 6;hp_max = 6
-weapon_slots_max = 2
+weapon_slots_max = 3
 strength = 2
 reload_speed = 1
 
@@ -47,12 +46,8 @@ trigger_needs_reset = false
 //
 refresh_grid = 60
 
-slide_offset = 0
-
-aim_object = 0//instance_create_depth(x,y,depth,PlayerAim)
 p_weapon = instance_create_depth(x,y,depth-1,PlayerWeapon)
 p_weapon.player_id = id
-melee_equipped = false
 
 trigger_delay_timer = 0
 can_control = true
@@ -67,7 +62,6 @@ weapons_held = []
 deploy_time = 15
 deploy_timer = 0
 deploying = false
-gun_angle = 0
 //aim_speed = 0.5
 
 point_que = []
@@ -118,9 +112,7 @@ bullets_per_new_room = 0
 
 //player_shot_reward_mult = 1
 //player_kill_reward_mult = 1
-shot_reward = 10
-kill_reward = 100
-shot_reward_increase = 0
+hit_reward_increase = 0
 floor_mystery_box_rolls = 0
 total_mystery_box_rolls = 0
 free_mystery_box_rolls_per_floor = 0

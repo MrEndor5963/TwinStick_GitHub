@@ -77,10 +77,10 @@ vrp += 1
 
 enemy_list = []
 array_push(enemy_list,Zombie)
-array_push(enemy_list,SpikeFly)
-array_push(enemy_list,Lewt)
-array_push(enemy_list,Wizard)
-array_push(enemy_list,Hellhound)
+//array_push(enemy_list,SpikeFly)
+//array_push(enemy_list,Lewt)
+//array_push(enemy_list,Wizard)
+//array_push(enemy_list,Hellhound)
 
 
 

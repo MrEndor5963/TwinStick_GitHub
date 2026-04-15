@@ -9,8 +9,6 @@ array_push(visited_rooms,x_plus_y(map_x,map_y))
 vrp = 0;
 repeat(array_length(player_list)){
 var_player = player_list[vrp]
-if var_player.weapon_sprite != s_SquareGun && var_player.melee_equipped = false{
-var_player.ammo_reserve += var_player.bullets_per_new_room}
 vrp += 1
 }
 

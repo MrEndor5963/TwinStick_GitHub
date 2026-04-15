@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_MuzzleFlashImport",
-    "path":"sprites/s_MuzzleFlashImport/s_MuzzleFlashImport.yy",
+    "name":"s_Bullet",
+    "path":"sprites/s_Bullet/s_Bullet.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -13,7 +13,8 @@ sniper_list = []
 nazi_list = []
 */
 function script_execute_wpn(arg_weapon_sprite){
-set_gun_ammo(8,72)
+set_melee_attack(50,7)
+set_gun_ammo(8,6,true)
 set_bullet_power(s_9x19mmParabellum,4)
 set_gun_handling(2,2,1)
 bullet_speed = 60
@@ -29,7 +30,7 @@ reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 reload_bullet_time = 0
 shoot_amount = 1
-shot_reward = 10
+hit_reward = 10
 kill_reward = 100
 explosive = false
 explosion_damage = 0
@@ -101,16 +102,20 @@ script_execute(asset_get_index("wpn_"+string(var_string)))
 	bullet_spread = (bullet_spread*spread_mult)+spread_increase
 	shoot_amount = shoot_amount+shoot_amount_increase
 	reload_speed = reload_mult
-	shot_reward += shot_reward_increase
+	hit_reward += hit_reward_increase
 	}
 }
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+function set_melee_attack(arg_melee_damage,arg_melee_knockback){
+melee_damage = arg_melee_damage
+melee_knockback = arg_melee_knockback
+}
 
 function set_gun_ammo(arg_ammo_inmag_max,arg_ammo_reserve_max,arg_magazine_reload){
 ammo_inmag_max = arg_ammo_inmag_max
 ammo_reserve_max = arg_ammo_reserve_max
-reload_type = arg_magazine_reload
+magazine_reload = arg_magazine_reload
 }
 
 //function set_bullet_power(arg_bullet_damage,arg_bullet_knockback,arg_bullet_penetration){
@@ -175,11 +180,12 @@ reload_endlag = arg_reload_endlag
 
 if reload_timer = -1{reload_amount = ammo_inmag_max-ammo_inmag}
 reload_time = reload_startup+reload_endlag+(reload_bullet_time*(reload_amount))
+reload_time = reload_bullet_time
 }
 
 function set_deploy_stats(arg_deploy_time,arg_deploy_direction){
 deploy_time = arg_deploy_time
-deploy_direction = arg_deploy_direction
+//deploy_direction = arg_deploy_direction
 }
 
 function referece_weapons(){
@@ -367,7 +373,7 @@ array_push(box_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,9,true)
+set_gun_ammo(8,6,true)
 set_bullet_power(s_45ACP,5)
 set_gun_handling(16,2,2.4)
 set_deploy_stats(8,-1)
@@ -389,7 +395,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,5,true)
+set_gun_ammo(17,3,true)
 set_bullet_power(s_9x19mmParabellum,4.9)
 set_gun_handling(24,2.5,2.1)
 set_deploy_stats(7,-1)
@@ -411,7 +417,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,5,true)
+set_gun_ammo(17,3,true)
 set_bullet_power(s_9x19mmParabellum,4.7)
 set_gun_handling(20,2.5,2.1)
 set_deploy_stats(7,-1)
@@ -435,7 +441,7 @@ array_push(handgun_list,weapon_sprite)
 array_push(wallbuy_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(19,4,true)
+set_gun_ammo(19,3,true)
 set_bullet_power(s_9x19mmParabellum,4.49)
 set_gun_handling(22,1.5,1.3)
 set_deploy_stats(6,-1)
@@ -457,7 +463,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(handgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(17,6,true)
+set_gun_ammo(17,5,true)
 set_bullet_power(s_9x19mmParabellum,4.8)
 set_gun_handling(5,2.5,2.47)
 set_deploy_stats(6,-1)
@@ -632,7 +638,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(2,25,false)
+set_gun_ammo(220,false)
 set_bullet_power(s_12GadgeBuckshot,19)
 set_gun_handling(14,5,9.7)
 set_deploy_stats(12,-1)
@@ -642,7 +648,7 @@ reload_time = 120
 bullet_spread = 6
 bullet_amount = 9
 shoot_sfx = sfx_OlympiaShoot
-shot_reward = 5
+hit_reward = 5
 description = "A finely made skeet shooting double barrel shotgun. Although reloading will be frequent and it lacks firepower compared to other shotguns, it's excellent handling and accuracy makes it a favorite for some"
 }
 	
@@ -661,7 +667,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(18,9,true)
+set_gun_ammo(18,7,true)
 set_bullet_power(s_9x19mmParabellum,12)
 set_gun_handling(-25,1,6.6)
 set_deploy_stats(11,1)
@@ -687,7 +693,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(20,8,true)
+set_gun_ammo(20,5,true)
 set_bullet_power(s_32ACP,5.9)
 set_gun_handling(-3,1.5,2.9)
 set_deploy_stats(8,-1)
@@ -709,7 +715,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(25,6,true)
+set_gun_ammo(25,4,true)
 set_bullet_power(s_9x19mmParabellum,10.5)
 set_gun_handling(-12,3,7.7)
 set_deploy_stats(11,-1)
@@ -731,7 +737,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(64,3,true)
+set_gun_ammo(64,1,true)
 set_bullet_power(s_9x19mmParabellum,6.7)
 set_gun_handling(-5,2,4.6)
 set_deploy_stats(14,-1)
@@ -753,7 +759,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(30,5,true)
+set_gun_ammo(30,3,true)
 set_bullet_power(s_9x19mmParabellum,8.9)
 set_gun_handling(-3,2,5.5)
 set_deploy_stats(12,-1)
@@ -778,7 +784,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(7,25,false)
+set_gun_ammo(720,false)
 set_bullet_power(s_12GadgeBuckshot,22)
 set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
@@ -788,7 +794,7 @@ set_variable_reload_time(15,60,30)
 bullet_spread = 20
 bullet_amount = 9
 shoot_sfx = sfx_IthacaShoot
-shot_reward = 5
+hit_reward = 5
 }
 
 function wpn_Spaz12(){
@@ -802,7 +808,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,25,false)
+set_gun_ammo(820,false)
 set_bullet_power(s_12GadgeBuckshot,15.7)
 set_gun_handling(95,20,9.7)
 set_deploy_stats(15,-1)
@@ -815,7 +821,7 @@ set_variable_reload_time(30,45,30)
 shoot_sfx = sfx_OlympiaShoot
 jam_chance = 3
 jam_time = 130
-shot_reward = 5
+hit_reward = 5
 }
 	
 //End of C tier, tier 2
@@ -850,7 +856,7 @@ description = "Immensely powerful magnum revolver that lays down large enemies w
 function wpn_Thompson(){
 weapon_sprite = s_Thompson
 weapon_name = "Thompson"
-cost = 2700
+cost = 3400
 if object_index = GM{
 array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -895,7 +901,7 @@ shoot_sfx = sfx_mp5Shoot
 function wpn_PPSh41(){
 weapon_sprite = s_PPSh41
 weapon_name = "PPSh41"
-cost = 3400
+cost = 2950
 if object_index = GM{
 array_push(tier_3_gun_list,weapon_sprite)
 array_push(weapon_list,weapon_sprite)
@@ -903,7 +909,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(71,2,true)
+set_gun_ammo(71,1,true)
 set_bullet_power(s_762x25mmTokarev,6.7)
 set_gun_handling(-6,2.5,8)
 set_deploy_stats(14,1)
@@ -974,9 +980,9 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(7,25,false)
+set_gun_ammo(720,false)
 set_bullet_power(s_12GadgeBuckshot,28)
-set_gun_handling(70,25,8)
+set_gun_handling(7020,8)
 set_deploy_stats(25,1)
 shoot_delay = 30
 action_type = s_PumpAction
@@ -984,7 +990,7 @@ set_variable_reload_time(15,55,30)
 bullet_spread = 35
 bullet_amount = 9
 shoot_sfx = sfx_IthacaShoot
-shot_reward = 5
+hit_reward = 5
 }
 
 function wpn_Winchester1897(){
@@ -999,7 +1005,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(6,25,false)
+set_gun_ammo(620,false)
 set_bullet_power(s_12GadgeBuckshot,30)
 set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
@@ -1009,7 +1015,7 @@ set_variable_reload_time(15,45,30)
 bullet_spread = 35
 bullet_amount = 9
 shoot_sfx = sfx_IthacaShoot
-shot_reward = 5
+hit_reward = 5
 description = "What used to be a missionary of firearms design is now an antique overshadowed by more modern shotguns. However should the trench gun need to come out of retirement it can get the job done, though it may be uncomfortable to shoot."
 }
 	
@@ -1026,7 +1032,7 @@ array_push(sniper_list,weapon_sprite)
 array_push(nazi_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(5,6,true)
+set_gun_ammo(5,28,false)
 set_bullet_power(s_79257mmMauser,23.6)
 set_gun_handling(12,4,9)
 set_deploy_stats(10,1)
@@ -1048,7 +1054,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(10,6,true)
+set_gun_ammo(10,3,true)
 set_bullet_power(s_762x51NATO,27.9)
 set_gun_handling(15,4,13.4)
 set_deploy_stats(15,1)
@@ -1101,7 +1107,7 @@ array_push(weapon_list,weapon_sprite)
 array_push(semi_ar_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,8,true)
+set_gun_ammo(8,4,true)
 set_bullet_power(s_762x51NATO,22)
 set_gun_handling(4,5,9)
 set_deploy_stats(18,1)
@@ -1212,7 +1218,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(5,30,false)
+set_gun_ammo(5,25,false)
 set_bullet_power(s_762x54R,29)
 set_gun_handling(15,4,8.8)
 set_deploy_stats(15,1)
@@ -1262,7 +1268,7 @@ array_push(box_list,weapon_sprite)
 array_push(smg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(30,5,true)
+set_gun_ammo(30,4,true)
 set_bullet_power(s_45ACP,8.9)
 set_gun_handling(-5,1,6.6)
 set_deploy_stats(9,-1)
@@ -1306,7 +1312,7 @@ array_push(box_list,weapon_sprite)
 array_push(lmg_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(47,2,true)
+set_gun_ammo(47,1,true)
 set_bullet_power(s_303British,26)
 set_gun_handling(-5,3,28)
 set_deploy_stats(35,-1)
@@ -1362,7 +1368,7 @@ set_variable_reload_time(15,60,30)
 bullet_spread = 30
 bullet_amount = 40
 shoot_sfx = sfx_IthacaShoot
-shot_reward = 4
+hit_reward = 4
 description = "4 gadge shotgun made out of whatever spare parts the soviets had laying around"
 }
 
@@ -1377,7 +1383,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(20,2,true)
+set_gun_ammo(20,1,true)
 set_bullet_power(s_12GadgeBuckshot,18.5)
 set_gun_handling(15,5,11.5)
 set_deploy_stats(12,-1)
@@ -1387,7 +1393,7 @@ reload_time = 190
 bullet_spread = 20
 bullet_amount = 9
 shoot_sfx = sfx_OlympiaShoot
-shot_reward = 5
+hit_reward = 5
 }
 
 function wpn_DSR50(){

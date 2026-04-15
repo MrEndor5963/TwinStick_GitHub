@@ -17,8 +17,6 @@ new_floor = false
 depth = -y
 if hp <= 0{
 sprite_index = asset_get_index("s_"+string(player_name)+"Dead")
-melee_equipped = false
-melee.sprite_index = s_0
 jam_timer = 0
 reload_timer = -1
 }
@@ -38,7 +36,7 @@ key_reload = keyboard_check_pressed(ord("R"))
 key_map = keyboard_check(vk_tab)
 key_weapon_toggle_back = mouse_wheel_up()
 key_weapon_toggle_forward = mouse_wheel_down()
-key_knife_pressed = mouse_check_button_pressed(mb_middle)
+key_melee_pressed = mouse_check_button_pressed(mb_middle)
 aim_direction = point_direction(x, y, mouse_x,mouse_y)
 }
 else{//Controller Controls
@@ -56,7 +54,7 @@ key_reload = gamepad_button_check_pressed(input_number,gp_face3)
 key_map = gamepad_button_check(input_number,gp_select)
 key_weapon_toggle_back = gamepad_button_check_pressed(input_number,gp_shoulderl)
 key_weapon_toggle_forward = gamepad_button_check_pressed(input_number,gp_shoulderr) or gamepad_button_check_pressed(input_number,gp_face4)
-key_knife_pressed = gamepad_button_check_pressed(input_number,gp_face2) or gamepad_button_check_pressed(input_number,gp_stickr)
+key_melee_pressed = gamepad_button_check_pressed(input_number,gp_face2) or gamepad_button_check_pressed(input_number,gp_stickr)
 if abs(gamepad_axis_value(input_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(input_number,gp_axisrv)) > 0.1{
 aim_x = ((gamepad_axis_value(input_number,gp_axisrh)*10) div 1)
 aim_y = ((gamepad_axis_value(input_number,gp_axisrv)*10) div 1)
@@ -74,32 +72,25 @@ key_shoot = -1;key_shoot_pressed = -1
 key_interact = -1;key_interact_pressed = -1;
 key_reload = -1
 key_weapon_toggle_back = -1;key_weapon_toggle_forward = -1
-key_knife_pressed = -1
+key_melee_pressed = -1
 }
+
+if key_map{GM.draw_map = true}
 //var_diff = angle_difference(aim_direction,gun_angle)
 //gun_angle += var_diff * aim_speed;
 #region weapon toggling
-if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0 && deploying = false && melee_equipped = false{
-key_weapon_toggle_forward = true}
-
-if array_length(weapons_held) = 1 && melee_equipped = false{
+if array_length(weapons_held) = 1{
 key_weapon_toggle_back = false
 key_weapon_toggle_forward = false}
 
 
 if key_weapon_toggle_back or key_weapon_toggle_forward{
-if melee_equipped = true{
-melee_equipped = false
-key_weapon_toggle_back = false
-key_weapon_toggle_forward = false
-}
 if deploying = false{
 next_weapon_equipped = weapon_equipped
 deploying = true}
 reload_timer = -1
 if key_weapon_toggle_back{next_weapon_equipped -= 1;if next_weapon_equipped < 0{next_weapon_equipped = array_length(weapons_held)-1}}
 if key_weapon_toggle_forward{next_weapon_equipped += 1;if next_weapon_equipped = array_length(weapons_held){next_weapon_equipped = 0}}
-melee_equipped = false
 }
 
 if deploying = false{if deploy_timer > 0{deploy_timer -= 1}}
@@ -166,10 +157,10 @@ sprite_set_bbox(sprite_index,30,50,(sprite_width)-30,sprite_height)
 
 
 
-if place_meeting(x,y,[Enemy,PNGExplosion,SlugeeTrail]) && hit_stun = 0 or take_damage = true{
-if place_meeting(x,y,Enemy) or place_meeting(x,y,PNGExplosion){
+if place_meeting(x,y,[Enemy,Explosion,SlugeeTrail]) && hit_stun = 0 or take_damage = true{
+if place_meeting(x,y,Enemy) or place_meeting(x,y,Explosion){
 if place_meeting(x,y,Enemy){var_thing = instance_nearest(x,y,Enemy)}
-if place_meeting(x,y,PNGExplosion){var_thing = instance_nearest(x,y,PNGExplosion)}
+if place_meeting(x,y,Explosion){var_thing = instance_nearest(x,y,Explosion)}
 direction = point_direction(x,y,var_thing.x,var_thing.y)+180
 	speed = 30/weight
 	hsp_knockback += hspeed
@@ -193,10 +184,6 @@ audio_sound_pitch(GM.floor_music_id,1-((90-hit_stun)/50))
 }//else{if room_speed < 60{room_speed += 1}}
 if hit_stun > 0{hit_stun -= 1}
 
-if aim_object != 0{
-aim_object.x = x;aim_object.y = y;aim_object.image_angle = aim_direction}
-
-if key_map{GM.draw_map = true}
 #region Revive players
 list_temp = ds_list_create()
 instance_place_list(x,y,Player,list_temp,false)
@@ -309,16 +296,6 @@ record_x[i] = record_x[i-1];record_x[0] = x
 record_y[i] = record_y[i-1];record_y[0] = y
 }
 #endregion End Of Record Data
-
-#region
-camera_box = instance_place(x,y,CameraBox)
-if camera_box != noone{
-GM.clamp_x1 = camera_box.clamp_x1;
-GM.clamp_x2 = camera_box.clamp_x2
-GM.clamp_y1 = camera_box.clamp_y1
-GM.clamp_y2 = camera_box.clamp_y2
-}
-#endregion
 
 //Item data
 if new_item != -1{

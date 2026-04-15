@@ -7,3 +7,4 @@ hurts_enemy = true
 hurts_player = false
 penetration = 9999
 explosive = false
+player_id = -1

@@ -2,18 +2,27 @@ function create_enemy(){
 hit_stun = 0
 hitbox = instance_create_depth(x,y,depth+1,Enemy)
 hitbox.sprite_index = sprite_index
-hitbox.hp = hp
-hitbox.creator = id
-hitbox.spawn_enemy = false
+hitbox.enemy_id = id
 set_tileset_collision()
 spawn_timer = 60
-hitbox.enemy_weight = 1.00
-hitbox.hsp_knockback = 0
-hitbox.vsp_knockback = 0
-enemy_weight = 1.00
+//enemy_weight = 1.00
 
 hsp_knockback = 0;vsp_knockback = 0
 hsp = 0;vsp = 0
+hurt_by_id = -1
+}
+
+function draw_enemy(){
+if hit_stun > 0{
+shader_set(sh_HitFlash)}
+draw_self()
+shader_reset()
+
+if hp <= 0{
+blood_splatter()
+play_sfx(sfx_EnemyDeath)
+instance_destroy(hitbox)
+instance_destroy()}
 }
 
 function blood_splatter(){
@@ -24,88 +33,6 @@ particle.vsp = random_range(-24,-4)
 particle.timer += 10
 particle.draw_color = blood_color
 }
-}
-
-function enemy_damage_check(){
-list_temp = ds_list_create() 
-instance_place_list(x,y,[Bullet,MeleeWeapon,PNGExplosion],list_temp,false)
-var_repeat = 0
-repeat(ds_list_size(list_temp)){
-var_bullet = ds_list_find_value(list_temp,var_repeat)
-if array_contains(contact_list,var_bullet) = false && var_bullet.hurts_enemy = true && var_bullet.object_index != MeleeWeapon or
-var_bullet.object_index = MeleeWeapon && var_bullet.attacking = true && array_contains(var_bullet.contact_list,id) = false
-{
-	
-	if var_bullet.object_index = MeleeWeapon{
-	var_thing = instance_nearest(x,y,MeleeWeapon)
-	direction = point_direction(x,y,var_thing.x,var_thing.y)+180
-	speed = var_thing.knockback/enemy_weight
-	hsp_knockback += hspeed
-	vsp_knockback += vspeed
-	speed = 0
-	play_sfx(sfx_KnifeStab)}
-
-	repeat(4){
-	if var_bullet.object_index = MeleeWeapon or var_bullet.object_index = PNGExplosion{particle = instance_create_depth(x,y,depth-100,ParticleEffect)}
-	else{
-	real_bullet_x = var_bullet.x + ((var_bullet.hspeed/var_bullet.speed)*(var_bullet.image_xscale*100))
-	real_bullet_y = var_bullet.y + ((var_bullet.vspeed/var_bullet.speed)*(var_bullet.image_yscale*100))
-	particle = instance_create_depth(real_bullet_x,real_bullet_y,depth-100,ParticleEffect)}
-	particle.hsp = random_range(-12,12)
-	particle.vsp = random_range(-18,4)
-	particle.draw_color = blood_color
-	}
-
-	hit_stun = 2
-	var_player = var_bullet.player_id
-	bullet_reward = var_bullet.shot_reward
-	if instance_exists(var_player) && var_player.object_index = Player{
-	with var_player{player_point_change(other.bullet_reward)}}
-
-	hp -= var_bullet.damage
-	direction = var_bullet.direction
-	speed = 1;
-	creator.hsp_knockback = hspeed*var_bullet.knockback
-	creator.vsp_knockback = vspeed*var_bullet.knockback
-	speed = 0
-	if var_bullet.object_index != PNGExplosion && var_bullet.explosive = true{
-	var_explosion = instance_create_depth(var_bullet.x,var_bullet.y,var_bullet.depth-1000,PNGExplosion)
-	var_explosion.creator = var_bullet.player_id
-	var_explosion.damage = var_bullet.explosion_damage
-	}
-	
-	if hp <= 0 or x < 0 or x> room_width or y < 0 or y > room_height{
-	repeat(var_bullet.png_explosion_checks){
-	if irandom_range(1,4) = 1{
-	var_explosion = instance_create_depth(var_bullet.x,var_bullet.y,var_bullet.depth-1000,PNGExplosion)
-	var_explosion.creator = var_bullet.player_id
-	}
-	}
-	instance_destroy(creator);
-	instance_destroy();
-	ds_list_destroy(list_temp)
-	if instance_exists(var_player) && var_player.object_index = Player{
-	var_player.kills += 1;//throw("")
-	if var_bullet.hurts_enemy = true{kill_reward = var_bullet.kill_reward}
-	with var_player{player_point_change(other.kill_reward)}}
-	var_bullet.penetration -= 1
-	if var_bullet.penetration <= 0{instance_destroy(var_bullet)}
-	blood_splatter()
-	play_sfx(sfx_EnemyDeath)
-	//freeze_frame(200)
-	exit
-	}
-
-		if var_bullet.object_index = MeleeWeapon{array_push(var_bullet.contact_list,id)}
-	var_bullet.penetration -= 1
-	if var_bullet.penetration <= 0{instance_destroy(var_bullet)}
-	else{array_insert(contact_list,0,var_bullet)}
-}
-
-var_repeat += 1
-}
-
-ds_list_destroy(list_temp)
 }
 
 function move_hitbox(){
@@ -197,6 +124,49 @@ if !collision_present(x-1,y-i){x-=i;while collision_present(x,y){y-= 1};corner_c
 if !collision_present(x-1,y+i){x-=i;while collision_present(x,y){y+=1};corner_cut = true;break}
 }
 }
+}
+
+}
+	
+function enemy_damage_check(){
+hit_stun = 2
+
+if hurt_by_id.object_index = Bullet{
+particle_spawn_x = hurt_by_id.x + ((hurt_by_id.hspeed/hurt_by_id.speed)*(hurt_by_id.image_xscale*100))
+particle_spawn_y = hurt_by_id.y + ((hurt_by_id.vspeed/hurt_by_id.speed)*(hurt_by_id.image_yscale*100))
+hurt_by_x = particle_spawn_x
+hurt_by_y = particle_spawn_y
+hurt_by_id.penetration -= 1
+}else{
+particle_spawn_x = x
+particle_spawn_y = y
+hurt_by_x = hurt_by_id.x
+hurt_by_y = hurt_by_id.y
+}
+
+repeat(4){
+particle = instance_create_depth(particle_spawn_x,particle_spawn_y,depth-100,ParticleEffect)
+particle.hsp = random_range(-12,12)
+particle.vsp = random_range(-18,4)
+particle.draw_color = blood_color}
+
+
+direction = point_direction(x,y,hurt_by_x,hurt_by_y)
+speed = 1;
+hsp_knockback -= hspeed*hurt_by_id.knockback
+vsp_knockback -= vspeed*hurt_by_id.knockback
+speed = 0
+
+hp -= hurt_by_id.damage
+
+if hurt_by_id.player_id != -1{
+var_hit_reward = hurt_by_id.hit_reward
+with hurt_by_id.player_id{player_point_change(other.var_hit_reward)}
+if hp <= 0{
+var_kill_reward = hurt_by_id.kill_reward
+with hurt_by_id.player_id{player_point_change(other.var_kill_reward)}
+}
+
 }
 
 }

@@ -1,19 +1,8 @@
 if GM.game_paused = true{exit}
 
-if creator != -1{blood_color = creator.blood_color}
-
-if hit_stun != 0{creator.hit_stun = hit_stun;hit_stun = 0}
-
-if spawn_enemy = true{
+if enemy_id = -1{
 enemy_list = GM.enemy_list
-enemy_id = enemy_list[irandom_range(0,array_length(enemy_list)-1)]
-instance_create_depth(x,y,depth,enemy_id)
+enemy_object = enemy_list[irandom_range(0,array_length(enemy_list)-1)]
+instance_create_depth(x,y,depth,enemy_object)
 instance_destroy();exit
 }
-
-if x < 0 or y < 0 or x > room_width or y > room_height{hp = 0}
-
-if creator.object_index != ClawpeedeBody{
-enemy_damage_check()}
-
-while array_length(contact_list) > 100{array_pop(contact_list)}

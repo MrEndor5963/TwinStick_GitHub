@@ -234,7 +234,7 @@ if object_index = GM{
 array_push(item_list,item_sprite)
 exit}
 if object_index = Player && new_item != -1{
-shot_reward_increase += 1
+hit_reward_increase += 1
 }
 }
 

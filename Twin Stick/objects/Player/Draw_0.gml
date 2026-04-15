@@ -1,10 +1,7 @@
 if spawned = false or room = r_FloorTransition{exit}
 if GM.next_room = -1{
-weapon_yscale = 1
-if weapon_draw_sprite = s_0{weapon_draw_sprite = weapon_sprite}
-
 if hit_stun % 5 == 1{}else{
-
+draw_self()
 
 //if recoil != 0{gun_angle = aim_direction+recoil}
 //else{gun_angle = aim_direction+recoil_cooldown}
@@ -37,7 +34,7 @@ draw_sprite_ext(pump_sprite,0,x+(pump_offset*hspeed),y+(pump_offset*vspeed),1,we
 speed = 0}
 */
 
-draw_self()
+
 }
 
 
@@ -130,7 +127,7 @@ var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get
 draw_sprite_ext(weapon_sprite,0,var_x,var_y,pon_x,1,0,-1,1)
 
 draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
-if jam_timer > 0{
+if p_weapon.jam_timer > 0{
 draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
 }
 draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
@@ -187,28 +184,6 @@ vrp += 1}
 
 if hp <= 0{draw_sprite(s_ReviveIcon,0,x,y-64)}
 draw_bar_x = x-(sprite_get_width(s_ReloadBar)/2)
-if reload_timer > 0{
-draw_reload = clamp(1/(reload_time/reload_timer),0,1)
-draw_sprite_ext(s_ReloadBar,0,draw_bar_x,y-(sprite_height/2)-20,-draw_reload,-1,0,draw_color,1)
-if reload_bullet_time != 0{
-
-var_length = sprite_get_width(s_ReloadBar)
-var_length_1 = var_length/(reload_time/reload_startup)
-var_length_2 = var_length/(reload_time/reload_endlag)
-x_offset = (var_length-var_length_1-var_length_2)/reload_amount
-vrp = 1
-repeat(reload_amount){
-draw_sprite_ext(s_ReloadBarSegmant,0,draw_bar_x+var_length_1+(x_offset*vrp),y-(sprite_height/2)-20,1,1,0,draw_color,1)
-vrp += 1}
-}
-draw_sprite(s_ReloadBarOutline,0,draw_bar_x,y-(sprite_height/2)-20)
-}
-
-if jam_timer > 0{
-draw_jam = clamp(1/(jam_time/jam_timer),0,1)
-draw_sprite_ext(s_ReloadBar,0,draw_bar_x,y-(sprite_height/2)-20,-draw_jam,-1,0,draw_color,1)
-draw_sprite(s_ReloadBarOutline,0,draw_bar_x,y-(sprite_height/2)-20)
-}
 
 if revive_timer > 0{
 draw_revive = clamp(1/(revive_time/revive_timer),0,1)
@@ -220,7 +195,6 @@ if revive_timer = revive_time{hp += 2;hit_stun = 120;revive_timer = 0}
 depth = depth_saved
 #endregion Player UI End
 
-draw_text(200,80,weapon_damage)
 //draw_text(200,120,shoot_timer)
 /*
 draw_set_aligns(fa_center,fa_middle)

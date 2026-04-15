@@ -1,6 +1,3 @@
-
-
-if image_xscale = 0{spawn_penetration = penetration}
 damage = damage/(spawn_penetration/penetration)
 
 if GM.game_paused = true{speed = 0;exit}
@@ -17,26 +14,21 @@ y += vspeed}
 }
 else{image_xscale = 1}
 
- 
-
-if hurts_player = true && place_meeting(x,y,Player){
-var_player = instance_nearest(x,y,Player)
-if var_player.hit_stun = 0 && var_player.hp > 0{
-var_player.take_damage = true
-destroy_bullet = true;exit}
-}
-
-if hurts_enemy && place_meeting(x,y,Enemy){
-with instance_nearest(x+(hspeed*(image_xscale*100)),y+(vspeed*(image_yscale*100)),Enemy){
-enemy_damage_check()
+if place_meeting(x,y,Enemy){
+var enemy_hit = instance_nearest(x+(hspeed*(image_xscale*100)),y+(vspeed*(image_yscale*100)),Enemy)
+enemy_hit = enemy_hit.enemy_id
+if !array_contains(contact_list,enemy_hit){
+array_push(contact_list,enemy_hit)
+enemy_hit.hurt_by_id = id
+with enemy_hit{enemy_damage_check()}
 }
 }
 
 if x < 0 or x > room_width or y < 0 or y > room_height or collision_present(x,y) or penetration <= 0{
 if explosive = true{
-var_explosion = instance_create_depth(x,y,depth-1000,PNGExplosion)
-	var_explosion.creator = creator
-	var_explosion.damage = explosion_damage}
+var_explosion = instance_create_depth(x,y,depth-1000,Explosion)
+var_explosion.player_id = player_id
+var_explosion.damage = explosion_damage}
 destroy_bullet = true;exit}
 
 if sprite_index != s_Bullet{exit}
