@@ -225,13 +225,6 @@ ds_list_destroy(list_temp)
 	if place_meeting(x,y-10,WallBuy){
 	var_object = instance_nearest(x,y-10,WallBuy)
 	if key_interact_pressed && useable_money >= var_object.cost{
-	if array_length(weapons_held) = weapon_slots_max{
-	floor_gun = instance_create_depth(x,y,depth+10,FloorGun)
-	//do - sprite_width/2 and stuff
-	floor_gun.weapon_sprite = weapon_sprite
-	floor_gun.saved_ammo_inmag = ammo_inmag
-	floor_gun.saved_ammo_reserve = ammo_reserve
-	floor_gun.floor_y = y+(sprite_height/8)}
 	player_point_change(-var_object.cost)
 	get_new_weapon(var_object.weapon_sprite)
 	saved_ammo_reserve[weapon_equipped] += round(ammo_reserve_max*wall_ammo_multiplier)
@@ -263,18 +256,17 @@ ds_list_destroy(list_temp)
 #endregion End Of Buyable Stuff
 
 
-	if place_meeting(x,y,FloorGun){
-	var_object = instance_nearest(x,y,FloorGun)
-	if key_interact_pressed && var_object.y >= var_object.floor_y{
+	if place_meeting(x,y,FloorWeapon){
+	var_object = instance_nearest(x,y,FloorWeapon)
+	if key_interact_pressed{
 	if array_length(weapons_held) = weapon_slots_max{
-	floor_gun = instance_create_depth(x,y,depth+10,FloorGun)
+	floor_gun = instance_create_depth(x,y,depth+10,FloorWeapon)
 	floor_gun.weapon_sprite = weapon_sprite
 	floor_gun.saved_ammo_inmag = ammo_inmag
-	floor_gun.saved_ammo_reserve = ammo_reserve
-	floor_gun.floor_y = var_object.y}
+	floor_gun.saved_ammo_reserve = ammo_reserve}
 	get_new_weapon(var_object.weapon_sprite)
 	saved_ammo_reserve[weapon_equipped] = var_object.ammo_reserve
-	ammo_inmag[weapon_equipped] = var_object.ammo_inmag
+	saved_ammo_inmag[weapon_equipped] = var_object.ammo_inmag
 	switch_to_weapon(weapon_equipped)
 	//play_sfx(sfx_Buy)
 	with var_object{instance_destroy()}

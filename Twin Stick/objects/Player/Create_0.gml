@@ -156,9 +156,12 @@ glitch_int_points = 1
 }
 
 function get_new_weapon(arg_weapon){
+if array_length(weapons_held) = 0 or weapons_held[0] = s_Unarmed{weapons_held = []}
+
 if array_length(weapons_held) < weapon_slots_max{
+if array_length(weapons_held) > 0{
 saved_ammo_inmag[weapon_equipped] = ammo_inmag
-saved_ammo_reserve[weapon_equipped] = ammo_reserve
+saved_ammo_reserve[weapon_equipped] = ammo_reserve}
 weapon_equipped = array_length(weapons_held)}
 weapons_held[weapon_equipped] = arg_weapon
 weapon_sprite = arg_weapon
@@ -171,6 +174,7 @@ glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 
 function switch_to_weapon(arg_weapon_equipped){
 weapon_equipped = arg_weapon_equipped
+if array_length(weapons_held) = 0{weapons_held[0] = s_Unarmed}
 script_execute_wpn(weapons_held[weapon_equipped])
 ammo_inmag = saved_ammo_inmag[weapon_equipped]
 ammo_reserve = saved_ammo_reserve[weapon_equipped]

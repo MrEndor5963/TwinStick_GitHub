@@ -151,13 +151,29 @@ var_repeat += 1
 ds_list_destroy(list_temp)
 }
 
-if key_throw_pressed = true{
-_thrown = instance_create_depth(x,y,depth,ThrownWeapon)
+if key_throw_pressed = true && weapon_id != s_Unarmed{
+_thrown = instance_create_depth(x,y,depth,FloorWeapon)
 _thrown.weapon_id = weapon_id
 _thrown.image_angle = image_angle
 _thrown.image_yscale = image_yscale
+_thrown.ammo_inmag = ammo_inmag
+_thrown.ammo_reserve = ammo_reserve
 direction = image_angle;speed = 25
 _thrown.hsp = hspeed
 _thrown.vsp = vspeed
 speed = 0
+
+var_number = player_id.weapon_equipped
+array_delete(player_id.weapons_held,var_number,1)
+array_delete(player_id.saved_ammo_inmag,var_number,1)
+array_delete(player_id.saved_ammo_reserve,var_number,1)
+with player_id{
+if weapon_equipped = array_length(weapons_held) && weapon_equipped > 0{weapon_equipped -= 1}
+if array_length(weapons_held) = 0{get_new_weapon(s_Unarmed)}
+switch_to_weapon(weapon_equipped)
+}
+
+weapon_id = player_id.weapons_held[player_id.weapon_equipped]
+script_execute_wpn(weapon_id)
+sprite_index = weapon_id
 }

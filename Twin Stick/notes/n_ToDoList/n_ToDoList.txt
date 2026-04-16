@@ -1,3 +1,10 @@
+draw up some enemies or bosses+
+
+fix gam_over and pause menu
+make thrown weapons hit enemies
+reload bar or animations
+redo guns jamming
+
 Make player vs player gamemode
 
 make UI look cooler (Player, character select,Pause menu)

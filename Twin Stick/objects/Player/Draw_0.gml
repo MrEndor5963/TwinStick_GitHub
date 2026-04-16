@@ -130,7 +130,9 @@ draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(24*pon_y),weapon_
 if p_weapon.jam_timer > 0{
 draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
 }
-draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
+
+if ammo_inmag != -1{
+draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)}
 
 draw_sprite_ext(portrait_sprite,0,draw_origin_x+(48*pon_x),draw_origin_y+(48*pon_y),portrait_x_scale,1,0,-1,1)
 

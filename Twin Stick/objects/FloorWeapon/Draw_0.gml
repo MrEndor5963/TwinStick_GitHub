@@ -4,7 +4,8 @@ if hit_something = true{depth = 401}
 if spawned = false{
 script_execute_wpn(weapon_id)
 
-hsp_arc = 0;vsp_arc = 0
+//hsp_arc = 0;
+vsp_arc = 0
 if abs(hsp) > abs(vsp){vsp_arc = -8}
 //else{hsp_arc = 4*image_xscale}
 spawned = true
@@ -35,10 +36,10 @@ if collision_present(x+hsp,y)
 
 x += hsp//+hsp_arc
 
-if collision_present(x,y+vsp)
+if collision_present(x,y+vsp+vsp_arc)
 {
-	while !collision_present(x,y+sign(vsp)*1){y += sign(vsp)*1}
-	vsp = -vsp/1.5
+	while !collision_present(x,y+sign(vsp+vsp_arc)*1){y += sign(vsp_arc)*1}
+	vsp = -vsp/1.5;vsp_arc = -vsp_arc/1.5
 	hit_something = true
 }
 

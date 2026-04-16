@@ -1,6 +1,6 @@
 if instance_exists(Player){room_start = true}
 
-if layer_exists("TileMap"){
+if instance_exists(Player){
 if room != r_FloorTransition{
 var_bg = layer_get_id("Background")
 var_bg = layer_background_get_id(var_bg)
@@ -26,7 +26,7 @@ tile_wall_up = tilemap_get(map_id,2,1)
 tile_wall_down = tilemap_get(map_id,2,3)
 }
 
-if layer_exists("TileMap") && room != r_FloorTransition{
+if instance_exists(Player) && room != r_FloorTransition{
 var lay_id = layer_get_id("TileMap")
 var map_id = layer_tilemap_get_id(lay_id)
 

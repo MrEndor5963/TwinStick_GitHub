@@ -14,13 +14,13 @@ nazi_list = []
 */
 function script_execute_wpn(arg_weapon_sprite){
 set_melee_attack(50,7)
-set_gun_ammo(8,6,true)
+set_gun_ammo(-1,-1,true)
 set_bullet_power(s_9x19mmParabellum,4)
-set_gun_handling(2,2,1)
-bullet_speed = 60
-shoot_delay = 12
+set_gun_handling(0,0,0)
+bullet_speed = 0
+shoot_delay = 0
 bullet_sprite = s_Bullet
-reload_time = 60
+reload_time = 0
 bullet_amount = 1
 bullet_spread = 1
 jam_chance = 0.08
@@ -203,6 +203,7 @@ function referece_weapons(){
 	//Serving tray
 //Desklamp
 
+wpn_Unarmed()
 wpn_Knife()
 //Tier E, Tier 0
 wpn_Taurus92()
@@ -262,6 +263,24 @@ wpn_AA12()
 //Other
 //wpn_SquareGun()
 //Note weapons are organized by tier
+}
+
+function wpn_Unarmed(){
+weapon_sprite = s_Unarmed
+weapon_name = "Unarmed"
+cost = 0
+if object_index = GM{
+//array_push(weapon_list,weapon_sprite)
+array_push(melee_list,weapon_sprite)
+exit}
+auto = false
+weapon_damage = 0
+penetration = 1
+gun_recoil = 0
+shoot_delay = 0
+knockback = 0
+reload_time = 0
+weapon_weight = 0
 }
 
 function wpn_Knife(){
@@ -595,7 +614,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(2,20,false)
+set_gun_ammo(2,10,false)
 set_bullet_power(s_12GadgeBuckshot,19)
 set_gun_handling(14,5,9.7)
 set_deploy_stats(12,-1)
@@ -747,7 +766,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(7,20,false)
+set_gun_ammo(7,10,false)
 set_bullet_power(s_12GadgeBuckshot,22)
 set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
@@ -772,7 +791,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(8,20,false)
+set_gun_ammo(8,10,false)
 set_bullet_power(s_12GadgeBuckshot,15.7)
 set_gun_handling(95,20,9.7)
 set_deploy_stats(15,-1)
@@ -951,7 +970,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(7,20,false)
+set_gun_ammo(7,10,false)
 set_bullet_power(s_12GadgeBuckshot,28)
 set_gun_handling(70,20,8)
 set_deploy_stats(25,1)
@@ -977,7 +996,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(6,20,false)
+set_gun_ammo(6,10,false)
 set_bullet_power(s_12GadgeBuckshot,30)
 set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
@@ -1396,7 +1415,7 @@ array_push(box_list,weapon_sprite)
 array_push(sniper_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(4,4,true)
+set_gun_ammo(4,2,true)
 set_bullet_power(s_50BMG,20)
 set_gun_handling(60,32,13.9)
 set_deploy_stats(28,1)
