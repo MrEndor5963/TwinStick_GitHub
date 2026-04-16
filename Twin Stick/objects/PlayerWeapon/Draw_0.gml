@@ -17,7 +17,14 @@ draw_sprite_ext(hammer_sprite,0,x+hammer_x_offset,y+hammer_y_offset,1,image_ysca
 }
 */
 
-draw_sprite_ext(weapon_draw_sprite,0,x,y,1,image_yscale,image_angle,-1,1)
+if melee_attack = true{
+center_sprite_offset(sprite_index)
+}
+else{
+sprite_set_offset(sprite_index,weapon_xoffset,weapon_yoffset)
+}
+//draw_sprite_ext(weapon_draw_sprite,0,x,y,1,image_yscale,image_angle,-1,1)
+draw_sprite_ext(sprite_index,0,x,y,1,image_yscale,image_angle,-1,1)
 /*
 if slide_sprite != s_0{
 

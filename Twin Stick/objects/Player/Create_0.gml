@@ -84,6 +84,9 @@ item_draw_y = 0
 mov_mult = 1
 turtle_mov_mult = 0
 
+weapon_weight = 0
+weight_mult = 1
+
 player_damage_mult = 0
 player_reload_mult = 0
 knockback_mult = 1

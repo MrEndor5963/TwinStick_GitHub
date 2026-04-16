@@ -16,7 +16,7 @@ hsp = move_direction_h*1;vsp = move_direction_v*1
 
 
 shoot_timer -= 1
-if shoot_timer = 0{
+if shoot_timer = 9456{//0{
 _bullet = instance_create_depth(x,y,depth-1,Bullet)
 _bullet.sprite_index = s_EnemyBullet
 _bullet.hurts_player = true

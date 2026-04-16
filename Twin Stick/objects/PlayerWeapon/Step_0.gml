@@ -1,6 +1,8 @@
 if GM.game_paused = true or room = r_FloorTransition{exit}
-sprite_index = player_id.weapons_held[player_id.weapon_equipped]
-script_execute_wpn(sprite_index)
+weapon_id = player_id.weapons_held[player_id.weapon_equipped]
+script_execute_wpn(weapon_id)
+sprite_index = weapon_id
+sprite_set_offset(sprite_index,weapon_xoffset,weapon_yoffset)
 
 if abs(recoil) > 10{recoil *= 0.92}else{recoil *= 0.9}
 if recoil < 0.5 && recoil > -0.5{recoil = 0}
@@ -9,6 +11,7 @@ key_shoot = player_id.key_shoot
 key_shoot_pressed = player_id.key_shoot_pressed
 key_reload = player_id.key_reload
 key_melee_pressed = player_id.key_melee_pressed
+key_throw_pressed = player_id.key_throw_pressed
 
 ammo_inmag = player_id.ammo_inmag
 ammo_reserve = player_id.ammo_reserve
@@ -34,6 +37,8 @@ reload_timer = -1
 
 if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0;trigger_needs_reset = false}
 shoot_timer -= 1;if shoot_timer < 0{shoot_timer = 0}
+
+if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0{key_melee_pressed = true}
 
 if ammo_inmag > 0 && shoot_timer = 0 && reload_timer = -1 && trigger_delay_timer >= trigger_delay{
 if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && trigger_needs_reset = false{
@@ -84,6 +89,7 @@ audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+ran
 player_id.ammo_inmag = ammo_inmag
 player_id.ammo_reserve = ammo_reserve
 
+
 x = player_id.x
 y = player_id.y
 aim_direction = player_id.aim_direction
@@ -127,6 +133,8 @@ x = x+xoff
 y = y+yoff
 
 if melee_attack = true{
+center_sprite_offset(sprite_index)
+
 list_temp = ds_list_create()
 instance_place_list(x,y,Enemy,list_temp,false)
 var_repeat = 0
@@ -141,4 +149,15 @@ with enemy_hit{enemy_damage_check()}
 var_repeat += 1
 }
 ds_list_destroy(list_temp)
+}
+
+if key_throw_pressed = true{
+_thrown = instance_create_depth(x,y,depth,ThrownWeapon)
+_thrown.weapon_id = weapon_id
+_thrown.image_angle = image_angle
+_thrown.image_yscale = image_yscale
+direction = image_angle;speed = 25
+_thrown.hsp = hspeed
+_thrown.vsp = vspeed
+speed = 0
 }

@@ -37,6 +37,7 @@ key_map = keyboard_check(vk_tab)
 key_weapon_toggle_back = mouse_wheel_up()
 key_weapon_toggle_forward = mouse_wheel_down()
 key_melee_pressed = mouse_check_button_pressed(mb_middle)
+key_throw_pressed = keyboard_check_pressed(vk_space)
 aim_direction = point_direction(x, y, mouse_x,mouse_y)
 }
 else{//Controller Controls
@@ -55,6 +56,7 @@ key_map = gamepad_button_check(input_number,gp_select)
 key_weapon_toggle_back = gamepad_button_check_pressed(input_number,gp_shoulderl)
 key_weapon_toggle_forward = gamepad_button_check_pressed(input_number,gp_shoulderr) or gamepad_button_check_pressed(input_number,gp_face4)
 key_melee_pressed = gamepad_button_check_pressed(input_number,gp_face2) or gamepad_button_check_pressed(input_number,gp_stickr)
+key_throw_pressed = gamepad_button_check_pressed(input_number,gp_face4)
 if abs(gamepad_axis_value(input_number,gp_axisrh)) > 0.1 or abs(gamepad_axis_value(input_number,gp_axisrv)) > 0.1{
 aim_x = ((gamepad_axis_value(input_number,gp_axisrh)*10) div 1)
 aim_y = ((gamepad_axis_value(input_number,gp_axisrv)*10) div 1)
@@ -96,7 +98,7 @@ if key_weapon_toggle_forward{next_weapon_equipped += 1;if next_weapon_equipped =
 if deploying = false{if deploy_timer > 0{deploy_timer -= 1}}
 if deploy_timer < 0{deploy_timer = 0}
 if deploying = true{
-if deploy_timer < deploy_time{deploy_timer += 1}
+if deploy_timer < deploy_time{deploy_timer += deploy_time}//1}
 if next_weapon_equipped = weapon_equipped{deploying = false}}
 
 if deploy_timer >= deploy_time{
@@ -113,9 +115,7 @@ if deploy_timer >= deploy_time{
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
-mov_debuff = 0
-if instance_exists(Enemy){mov_debuff = turtle_mov_mult}
-var_move = (mov_spd*(mov_mult-mov_debuff))-clamp(weapon_weight/strength,0,100)
+var_move = (mov_spd)
 if var_move<0{var_move = 0.5}
 if var_move > (mov_spd*mov_mult){var_move = mov_spd}
 

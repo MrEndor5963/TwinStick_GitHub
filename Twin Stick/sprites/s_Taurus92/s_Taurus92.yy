@@ -1,7 +1,7 @@
 {
   "$GMSprite":"",
   "%Name":"s_Taurus92",
-  "bboxMode":2,
+  "bboxMode":0,
   "bbox_bottom":59,
   "bbox_left":2,
   "bbox_right":51,

@@ -45,68 +45,18 @@ description = ""
 var_string = string_delete(sprite_get_name(arg_weapon_sprite),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
 
-
-	if object_index = Player{
-	
-	shoot_amount = 1
-	spread_increase = 0
-	spread_mult = 1
-	damage_mult = 1+player_damage_mult
-	recoil_mult = 1
-	knockback_mult = 1
-	bullet_mult = 1
-	weight_mult = 1
-	reload_mult = 1+player_reload_mult
-	if string_starts_with(weapon_name,"S") or string_starts_with(weapon_name,"s"){
-	ammo_reserve_max += round(ammo_reserve_max*cool_s_mult)
-	reload_mult += cool_s_mult
-	recoil_mult -= cool_s_mult
-	knockback_mult -= cool_s_mult
-	weight_mult -= cool_s_mult
-	}
-	if string_digits(weapon_name) = "12" or string_digits(weapon_name) = "1216"{
-	ammo_reserve_max += twelve_bonus_ammo;}
-	
-	if array_contains(GM.handgun_list,weapon_sprite){
-	damage_mult += handgun_damage_mult
-	recoil_mult += handgun_recoil_mult
-	knockback_mult += handgun_knockback_mult
-	}
-	if array_contains(GM.revolver_list,weapon_sprite){
-	trigger_delay /= revolver_hammer_time_divider;trigger_delay = round(trigger_delay)
-	deploy_time /= revolver_hammer_time_divider;deploy_time = round(deploy_time)
-	reload_mult += revolver_reload_mult
-	}
-	
-	if array_contains(GM.smg_list,weapon_sprite){
-	shoot_delay -= smg_shot_delay_decrease;if shoot_delay < 1{shoot_delay = 1}
-	}
-	
-	if array_contains(GM.shotgun_list,weapon_sprite){
-	spread_mult += shotgun_spread_mult
-	bullet_mult += shotgun_bullet_mult
-	}
-	if array_contains(GM.sniper_list,weapon_sprite){
-	spread_increase += sniper_spread_increase
-	damage_mult += sniper_damage_mult
-	}
-	
-	if array_contains(GM.soviet_list,weapon_sprite){
-	ammo_reserve_max += round(ammo_reserve_max*soviet_ammo_mult)}
-	
-	
-	weapon_damage = round(weapon_damage*damage_mult)
-	knockback = knockback*knockback_mult
-	gun_recoil = gun_recoil*recoil_mult
-	weapon_weight = weapon_weight*weight_mult;if weapon_weight < 0{weapon_weight = 0}
-	bullet_spread = (bullet_spread*spread_mult)+spread_increase
-	shoot_amount = shoot_amount+shoot_amount_increase
-	reload_speed = reload_mult
-	hit_reward += hit_reward_increase
-	}
 }
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+function set_weapon_offset(arg_xoffset,arg_yoffset){
+weapon_xoffset = arg_xoffset
+weapon_yoffset = arg_yoffset
+}
+
+function center_sprite_offset(arg_sprite){
+sprite_set_offset(arg_sprite,sprite_get_width(arg_sprite)/2,sprite_get_height(arg_sprite)/2)
+}
+
 function set_melee_attack(arg_melee_damage,arg_melee_knockback){
 melee_damage = arg_melee_damage
 melee_knockback = arg_melee_knockback
@@ -117,12 +67,6 @@ ammo_inmag_max = arg_ammo_inmag_max
 ammo_reserve_max = arg_ammo_reserve_max
 magazine_reload = arg_magazine_reload
 }
-
-//function set_bullet_power(arg_bullet_damage,arg_bullet_knockback,arg_bullet_penetration){
-//weapon_damage = arg_bullet_damage
-//bullet_knockback = arg_bullet_knockback
-//penetration = arg_bullet_penetration
-//}
 
 function set_bullet_power(arg_caliber,arg_barrel_length){
 caliber = arg_caliber
@@ -153,6 +97,7 @@ case s_23mm: set_caliber_stats((1200/32)+(1.1*barrel_length),1.5,1,0.4,500,"23mm
 }
 weapon_damage = round(weapon_damage)
 }
+
 
 function set_caliber_stats(arg_damge,arg_knockback,arg_penetration,arg_weight,arg_price,arg_name){
 weapon_damage = arg_damge
@@ -360,6 +305,7 @@ weapon_weight = 0.5
 
 // E Tier, Tier 0
 function wpn_m1911(){
+set_weapon_offset(-20,33)
 weapon_sprite = s_m1911;
 weapon_draw_sprite = s_m1911Base
 slide_sprite = s_m1911Slide;slide_distance = -8
@@ -386,6 +332,7 @@ description = "Iconic, reliable, and accurate WW1 pistol still manufactured toda
 }
 
 function wpn_Taurus92(){
+set_weapon_offset(-25,32)
 weapon_sprite = s_Taurus92
 weapon_name = "Taurus 92"
 cost = 350
@@ -408,6 +355,7 @@ description = "Effective sidearm based on the Berretta 92, mostly used by the Br
 }
 
 function wpn_P320(){
+set_weapon_offset(-2,31)
 weapon_sprite = s_P320
 weapon_name = "P320"
 cost = 320
@@ -431,6 +379,7 @@ description = ""
 
 // D Tier, tier 1
 function wpn_Glock18(){
+set_weapon_offset(-25,18)
 weapon_sprite = s_Glock18
 weapon_name = "Glock 18"
 cost = 300
@@ -454,6 +403,7 @@ description = ""
 }
 	
 function wpn_Alien(){
+set_weapon_offset(-27,26)
 weapon_sprite = s_Alien
 weapon_name = "Alien"
 cost = 7500
@@ -477,6 +427,7 @@ description = ""
 }
 
 function wpn_FiveSeven(){
+set_weapon_offset(-5,31)
 weapon_sprite = s_FiveSeven
 weapon_name = "Five Seven"
 cost = 800
@@ -500,6 +451,7 @@ description = ""
 }
 	
 function wpn_DEagle(){
+set_weapon_offset(-4,31)
 weapon_sprite = s_DEagle
 weapon_name = "DEagle"
 cost = 900
@@ -523,6 +475,7 @@ description = "Desert Eagle or Deagle for short, a very powerful yet heavy magnu
 }
 	
 function wpn_Python(){
+set_weapon_offset(-15,29)
 weapon_sprite = s_Python
 weapon_draw_sprite = s_PythonBase
 hammer_sprite = s_PythonHammer
@@ -551,6 +504,7 @@ description = "Colt Python Luxery Revolver, considered by some to be one of the 
 }
 
 function wpn_RagingJudge(){
+set_weapon_offset(-11,28)
 weapon_sprite = s_RagingJudge
 //weapon_draw_sprite = s_PythonBase
 //hammer_sprite = s_PythonHammer
@@ -581,6 +535,7 @@ description = "shotgun revolver"
 }
 	
 function wpn_CZ75Auto(){
+set_weapon_offset(-8,30)
 weapon_sprite = s_CZ75Auto
 weapon_name = "CZ75 Auto"
 cost = 400
@@ -605,6 +560,7 @@ description = ""
 }
 
 function wpn_MP40(){
+set_weapon_offset(30,30)
 weapon_sprite = s_MP40
 weapon_name = "MP40"
 cost = 2500
@@ -628,6 +584,7 @@ description = "Nazi SMG during WW2 with slower fire rate making for exceptional 
 }
 	
 function wpn_Olympia(){
+set_weapon_offset(53,38)
 weapon_sprite = s_Olympia
 weapon_name = "Olympia 72"
 cost = 2000
@@ -638,7 +595,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(220,false)
+set_gun_ammo(2,20,false)
 set_bullet_power(s_12GadgeBuckshot,19)
 set_gun_handling(14,5,9.7)
 set_deploy_stats(12,-1)
@@ -656,6 +613,7 @@ description = "A finely made skeet shooting double barrel shotgun. Although relo
 
 // C Tier, tier 2
 function wpn_Luty(){
+set_weapon_offset(-1,29)
 weapon_sprite = s_Luty
 weapon_name = "Luty"
 cost = 80
@@ -683,6 +641,7 @@ description = "Homemade firearm made by Phillip A. Luty in response to UK anti g
 }
 
 function wpn_VzSkorpion(){
+set_weapon_offset(-1,30)
 weapon_sprite = s_VzSkorpion
 weapon_name = "Vz Škorpion"
 cost = 700
@@ -705,6 +664,7 @@ description = "Compact and light SMG with great handling"
 }
 
 function wpn_Uzi(){
+set_weapon_offset(9,28)
 weapon_sprite = s_Uzi
 weapon_name = "Uzi"
 cost = 800
@@ -727,6 +687,7 @@ description = ""
 }
 
 function wpn_PPBison(){
+set_weapon_offset(45,26)
 weapon_sprite = s_PPBison
 weapon_name = "PP Bison"
 cost = 2350
@@ -749,6 +710,7 @@ description = "Light SMG with a spiral magazine allowing for a weapon with good 
 }
 	
 function wpn_mp5(){
+set_weapon_offset(21,13)
 weapon_sprite = s_mp5
 weapon_name = "mp5"
 cost = 2000
@@ -770,6 +732,7 @@ shoot_sfx = sfx_mp5Shoot
 }
 
 function wpn_Ithaca(){
+set_weapon_offset(19,27)
 weapon_sprite = s_Ithaca
 weapon_name = "Ithaca 37"
 weapon_draw_sprite = s_IthacaBase
@@ -784,7 +747,7 @@ array_push(wallbuy_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(720,false)
+set_gun_ammo(7,20,false)
 set_bullet_power(s_12GadgeBuckshot,22)
 set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
@@ -798,6 +761,7 @@ hit_reward = 5
 }
 
 function wpn_Spaz12(){
+set_weapon_offset(12,23)
 weapon_sprite = s_Spaz12
 weapon_name = "Spas 12"
 cost = 1200
@@ -808,7 +772,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(820,false)
+set_gun_ammo(8,20,false)
 set_bullet_power(s_12GadgeBuckshot,15.7)
 set_gun_handling(95,20,9.7)
 set_deploy_stats(15,-1)
@@ -828,6 +792,7 @@ hit_reward = 5
 
 //B Tier, tier 3
 function wpn_SnW500(){
+set_weapon_offset(-14,30)
 weapon_sprite = s_SnW500
 weapon_name = "S&W500"
 cost = 900
@@ -854,6 +819,7 @@ description = "Immensely powerful magnum revolver that lays down large enemies w
 }
 	
 function wpn_Thompson(){
+set_weapon_offset(35,26)
 weapon_sprite = s_Thompson
 weapon_name = "Thompson"
 cost = 3400
@@ -877,6 +843,7 @@ description = "Oldschool gangster gun with a drum mag. Weighes a lot, and is har
 }
 
 function wpn_KrissVector(){
+set_weapon_offset(35,26)
 weapon_sprite = s_KrissVector
 weapon_name = "Vector 45"
 cost = 4800
@@ -899,6 +866,7 @@ shoot_sfx = sfx_mp5Shoot
 }
 	
 function wpn_PPSh41(){
+set_weapon_offset(50,30)
 weapon_sprite = s_PPSh41
 weapon_name = "PPSh41"
 cost = 2950
@@ -924,6 +892,7 @@ description = "Soviet Bullet Hose, typically a reliable weapon but the drum maga
 }
 
 function wpn_AK47(){
+set_weapon_offset(42,12)
 weapon_sprite = s_AK47
 weapon_name = "AK-47"
 cost = 1500
@@ -948,6 +917,7 @@ description = "Most produced firearm in the world as it's a cheap and simple, ye
 }
 
 function wpn_Galil(){
+set_weapon_offset(42,12)
 weapon_sprite = s_Galil
 weapon_name = "Galil"
 cost = 2800
@@ -969,6 +939,7 @@ shoot_sfx = sfx_AK47Shoot
 }
 
 function wpn_Remi870(){
+set_weapon_offset(50,16)
 weapon_sprite = s_Remi870
 weapon_name = "Remi 870 Marine"
 cost = 2500
@@ -980,9 +951,9 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = false
-set_gun_ammo(720,false)
+set_gun_ammo(7,20,false)
 set_bullet_power(s_12GadgeBuckshot,28)
-set_gun_handling(7020,8)
+set_gun_handling(70,20,8)
 set_deploy_stats(25,1)
 shoot_delay = 30
 action_type = s_PumpAction
@@ -994,6 +965,7 @@ hit_reward = 5
 }
 
 function wpn_Winchester1897(){
+set_weapon_offset(50,16)
 weapon_sprite = s_Winchester1897
 weapon_name = "1897 Trench Gun"
 cost = 1150
@@ -1005,7 +977,7 @@ array_push(box_list,weapon_sprite)
 array_push(shotgun_list,weapon_sprite)
 exit}
 auto = true
-set_gun_ammo(620,false)
+set_gun_ammo(6,20,false)
 set_bullet_power(s_12GadgeBuckshot,30)
 set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
@@ -1020,6 +992,7 @@ description = "What used to be a missionary of firearms design is now an antique
 }
 	
 function wpn_Karabiner98k(){
+set_weapon_offset(20,45)
 weapon_sprite = s_Karabiner98k
 weapon_name = "Karabiner98k"
 cost = 1000
@@ -1044,6 +1017,7 @@ shoot_sfx = sfx_SSG08Shoot
 }
 
 function wpn_SSG08(){
+set_weapon_offset(43,33)
 weapon_sprite = s_SSG08
 weapon_name = "SSG-08"
 cost = 750
@@ -1069,6 +1043,7 @@ shoot_sfx = sfx_SSG08Shoot
 
 //A Tier, tier 4
 function wpn_Zip22(){
+set_weapon_offset(-8,29)
 weapon_sprite = s_Zip22
 weapon_name = "Zip 22"
 cost = 22
@@ -1097,6 +1072,7 @@ description = ""
 }
 
 function wpn_M14(){
+set_weapon_offset(43,35)
 weapon_sprite = s_M14
 weapon_name = "M14"
 cost = 400
@@ -1118,6 +1094,7 @@ shoot_sfx = sfx_AK47Shoot
 }
 
 function wpn_AN94(){
+set_weapon_offset(43,12)
 weapon_sprite = s_AN94
 weapon_name = "AN-94"
 cost = 2790
@@ -1141,6 +1118,7 @@ description = "Russian assault rifle with good handling and a unique firing syst
 }
 
 function wpn_Xiuhcoatl(){
+set_weapon_offset(24,15)
 weapon_sprite = s_Xiuhcoatl
 weapon_name = "Xiuhcoatl"
 cost = 1450
@@ -1163,6 +1141,7 @@ description = "Mexican produced AR for the Mexican military. Xiuhcoatl translate
 }
 
 function wpn_ScarH(){
+set_weapon_offset(44,16)
 weapon_sprite = s_ScarH
 weapon_name = "Scar H"
 cost = 2900
@@ -1184,6 +1163,7 @@ shoot_sfx = sfx_AK47Shoot
 }
 	
 function wpn_RPD(){
+set_weapon_offset(41,11)
 weapon_sprite = s_RPD
 weapon_name = "RPD"
 cost = 2900
@@ -1207,6 +1187,7 @@ shoot_sfx = sfx_AK47Shoot
 }
 
 function wpn_MosinNagat(){
+set_weapon_offset(35,45)
 weapon_sprite = s_MosinNagat
 weapon_name = "Mosin Nagat"
 cost = 400
@@ -1232,6 +1213,7 @@ description = "This unassuming broom closet rifle has somehow managed to weasel 
 }
 	
 function wpn_AWP(){
+set_weapon_offset(35,45)
 weapon_sprite = s_AWP
 weapon_name = "AWP"
 cost = 4750
@@ -1258,6 +1240,7 @@ shoot_sfx = sfx_AWPShoot
 
 //S tier , Tier 5
 function wpn_spectre(){
+set_weapon_offset(-1,38)
 weapon_sprite = s_spectre
 weapon_name = "spectre"
 cost = 850
@@ -1280,6 +1263,7 @@ description = ""
 }
 
 function wpn_M60(){
+set_weapon_offset(58,18)
 weapon_sprite = s_M60
 weapon_name = "M60 Rambo"
 cost = 1500
@@ -1302,6 +1286,7 @@ shoot_sfx = sfx_AK47Shoot
 }
 
 function wpn_Lewis(){
+set_weapon_offset(29,19)
 weapon_sprite = s_Lewis
 weapon_name = "Lewis"
 cost = 2150
@@ -1323,6 +1308,7 @@ shoot_sfx = sfx_AK47Shoot
 }
 
 function wpn_MG42(){
+set_weapon_offset(47,19)
 weapon_sprite = s_MG42
 weapon_name = "MG42 Buzzsaw"
 cost = 3200
@@ -1346,6 +1332,7 @@ shoot_sfx = sfx_AK47Shoot
 }
 
 function wpn_KS23(){
+set_weapon_offset(54,22)
 weapon_sprite = s_KS23
 weapon_name = "KS23"
 cost = 2300
@@ -1373,6 +1360,7 @@ description = "4 gadge shotgun made out of whatever spare parts the soviets had 
 }
 
 function wpn_AA12(){
+set_weapon_offset(39,19)
 weapon_sprite = s_AA12
 weapon_name = "AA12"
 cost = 3120
@@ -1397,6 +1385,7 @@ hit_reward = 5
 }
 
 function wpn_DSR50(){
+set_weapon_offset(29,37)
 weapon_sprite = s_DSR50
 weapon_name = "DSR-50"
 cost = 5000
@@ -1419,6 +1408,7 @@ shoot_sfx = sfx_AWPShoot
 }
 
 function wpn_GM6Lynx(){
+set_weapon_offset(43,33)
 weapon_sprite = s_GM6Lynx
 weapon_name = "GM6 Lynx"
 cost = 14000

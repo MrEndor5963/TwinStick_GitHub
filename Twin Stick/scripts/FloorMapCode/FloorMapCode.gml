@@ -71,14 +71,14 @@ open_nodes = []
 if floor_number = 1{
 enemy_list = []
 array_push(enemy_list,Zombie)
-//array_push(enemy_list,Wizard)
-//array_push(enemy_list,Lewt)
-//array_push(enemy_list,Hellhound)
+array_push(enemy_list,Wizard)
+array_push(enemy_list,Lewt)
+array_push(enemy_list,Hellhound)
 }
 if floor_number = 2{
-//array_push(enemy_list,StickBlade)
-//array_push(enemy_list,BombTosser)
-//array_push(enemy_list,Slugee)
+array_push(enemy_list,StickBlade)
+array_push(enemy_list,BombTosser)
+array_push(enemy_list,Slugee)
 
 }
 
