@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_BulletCasing3",
+  "audioGroupId":{
+    "name":"audiogroup_sfx",
+    "path":"audiogroups/audiogroup_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.42501134,
+  "name":"sfx_BulletCasing3",
+  "parent":{
+    "name":"BulletCasings",
+    "path":"folders/DSounds/GunSounds/BulletCasings.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_BulletCasing3.wav",
+  "type":0,
+  "volume":1.0,
+}

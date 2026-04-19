@@ -7,4 +7,7 @@ floor_y = y
 grv = 0.3
 z = 0
 
-hit_something = false
+spin_speed = 0
+
+hit_wall = false
+hit_floor = false

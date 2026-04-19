@@ -38,9 +38,11 @@ player_id.glitch_int_mag = 0.8
 direction = aim_direction;speed = 1
 particle = instance_create_depth(x,y,depth-1,PersistentVFX)
 
-particle.hsp = -hspeed*2
-particle.vsp = -vspeed*2
-particle.zsp = -20
+particle.hsp = -hspeed*random_range(4,5)
+particle.vsp = -vspeed*random_range(4,5)
+particle.zsp = random_range(-12,-6)
+particle.spin_speed = image_yscale*random_range(35,40)
+particle.z = player_id.y-player_id.floor_y
 particle.floor_y = player_id.floor_y
 particle.grv = 0.5
 particle.sprite_index = s_45ACP
@@ -99,9 +101,10 @@ if reload_progress >= 0{reload_progress += player_id.reload_speed
 	y+(mag_yoff-sprite_get_yoffset(sprite_index)),
 	depth,PersistentVFX)
 	particle.zsp = 0
-	particle.real_y = player_id.y+(sprite_get_height(player_id.sprite_index)/2)
-	particle.y = particle.real_y
-	particle.z = y-particle.real_y
+	particle.floor_y = player_id.y+(sprite_get_height(player_id.sprite_index)/2)
+	particle.y = particle.floor_y
+	particle.z = 0
+	particle.spin_speed = image_yscale*random_range(34,40)
 	
 	particle.hsp = 2*hspeed
 	particle.vsp = 1*vspeed

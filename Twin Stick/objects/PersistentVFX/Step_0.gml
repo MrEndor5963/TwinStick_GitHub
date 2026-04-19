@@ -2,40 +2,48 @@ if GM.game_paused = true{exit}
 
 depth = -y+z
 
-image_angle += ((abs(hsp)+abs(vsp))*-image_yscale)*3
+image_angle += spin_speed
 
-y = floor_y
-
-if collision_present(x+hsp,y)
+if collision_present(x+hsp,floor_y)
 {
-	while !collision_present(x+sign(hsp)*1,y){x += sign(hsp)*1}
+	while !collision_present(x+sign(hsp)*1,floor_y){x += sign(hsp)*1}
 	hsp = -hsp/2
-	hit_something = true
+	hit_wall = true
 }
 
 x += hsp
 
-if collision_present(x,y+vsp)
+if collision_present(x,floor_y+vsp)
 {
-	while !collision_present(x,y+sign(vsp)*1){y += sign(vsp)*1}
+	while !collision_present(x,floor_y+sign(vsp)*1){floor_y += sign(vsp)*1}
 	vsp = -vsp/2
-	hit_something = true
+	
+	hit_wall = true
 }
 
 floor_y += vsp
 
-if z > 0{zsp = -zsp/2;hit_something = true}
 
 zsp += grv
 
-if hit_something = true{
-hsp *= 0.95
-vsp *= 0.95
-zsp *= 0.95
-}
-
-if abs(zsp) < grv{zsp = 0}
-
 z += zsp
 
+if z >= 0{
+z = 0
+zsp = -zsp/1.5
+hsp /= 1.5
+vsp /= 1.5
+spin_speed = spin_speed*random_range(-1.2,1.2)
+
+if hit_floor = false && sprite_index = s_45ACP{
+var_sound = irandom_range(1,7)
+var_sound = asset_get_index("sfx_BulletCasing"+string(var_sound))
+var_sound = audio_play_sound(var_sound,2,false)
+audio_sound_pitch(var_sound,random_range(0.9,1.1))
+}
+;hit_wall = true;hit_floor = true
+}
+
 y = floor_y+z
+
+if z >= 0{depth = 399}
