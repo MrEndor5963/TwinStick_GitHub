@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"CaliberTypeSprites",
-    "path":"folders/BSprites/GunAndBulletSprites/CaliberTypeSprites.yy",
+    "name":"?CaliberTypeSprites",
+    "path":"folders/BSprites/GunAndBulletSprites/?CaliberTypeSprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -58,37 +58,6 @@ GM.player_list = []
 game_over = false
 game_paused = false;pause_alpha = 0;audio_stop_all()
 room_goto(r_TitleScreen)
-}
-
-function settings_menu(){
-
-
-var_x = menu_x-32
-var_y = menu_y+(menu_cursor*text_gap)
-draw_sprite(s_MenuCursor,0,var_x,var_y)
-var_x = menu_x+32+(string_width(menu[menu_cursor]))
-if menu_cursor > 1{draw_sprite_ext(s_MenuCursor,0,var_x,var_y,-1,1,0,-1,1)}
-vrp = 0
-repeat(array_length(menu)){
-draw_text(menu_x,menu_y+(vrp*text_gap),menu[vrp])
-
-if vrp = 0{
-i = 0
-repeat(10){
-if GM.sfx_gain_saved*10 <= i{var_index = 1}else{var_index = 0}
-draw_sprite(s_AudioSquare,var_index,menu_x+string_width("Sound ")+(i*26),menu_y+(vrp*text_gap))
-i+= 1}
-}
-
-if vrp = 1{
-i = 0
-repeat(10){
-if GM.msc_gain_saved*10 <= i{var_index = 1}else{var_index = 0}
-draw_sprite(s_AudioSquare,var_index,menu_x+string_width("Music ")+(i*26),menu_y+(vrp*text_gap))
-
-i+= 1}
-}
-
-vrp += 1
-}
+sub_menu = 0
+menu_cursor = 0
 }

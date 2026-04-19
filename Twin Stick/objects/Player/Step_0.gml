@@ -18,7 +18,7 @@ depth = -y
 if hp <= 0{
 sprite_index = asset_get_index("s_"+string(player_name)+"Dead")
 jam_timer = 0
-reload_timer = -1
+reload_progress = -1
 }
 else{
 if can_control = true && hit_stun < 60{
@@ -90,7 +90,7 @@ if key_weapon_toggle_back or key_weapon_toggle_forward{
 if deploying = false{
 next_weapon_equipped = weapon_equipped
 deploying = true}
-reload_timer = -1
+reload_progress = -1
 if key_weapon_toggle_back{next_weapon_equipped -= 1;if next_weapon_equipped < 0{next_weapon_equipped = array_length(weapons_held)-1}}
 if key_weapon_toggle_forward{next_weapon_equipped += 1;if next_weapon_equipped = array_length(weapons_held){next_weapon_equipped = 0}}
 }
@@ -102,10 +102,13 @@ if deploy_timer < deploy_time{deploy_timer += deploy_time}//1}
 if next_weapon_equipped = weapon_equipped{deploying = false}}
 
 if deploy_timer >= deploy_time{
-	reload_timer = -1
+	reload_progress = -1
 	deploying = false;
 	saved_ammo_inmag[weapon_equipped] = ammo_inmag
 	saved_ammo_reserve[weapon_equipped] = ammo_reserve
+	saved_bullet_chambered[weapon_equipped] = bullet_chambered
+	saved_mag_loaded
+	[weapon_equipped] = mag_loaded
 	switch_to_weapon(next_weapon_equipped);
 	deploy_timer = deploy_time
 }
@@ -115,7 +118,7 @@ if deploy_timer >= deploy_time{
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
-var_move = (mov_spd)
+var_move = (mov_spd)-(p_weapon.weapon_weight/strength)
 if var_move<0{var_move = 0.5}
 if var_move > (mov_spd*mov_mult){var_move = mov_spd}
 
@@ -141,6 +144,7 @@ if collision_present(x,y+vsp)
 }
 
  y += vsp
+floor_y = y
 
 refresh_grid -= 1
 if refresh_grid = 0{refresh_grid = 60}

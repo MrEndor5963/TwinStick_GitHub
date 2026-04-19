@@ -10,14 +10,6 @@ draw_self()
 if melee_equipped = false && hp > 0{
 direction = gun_angle;speed = 1
 
-if hammer_sprite != s_0{
-hammer_angle_offset = ((trigger_delay_timer*12)*weapon_yscale)*revolver_hammer_time_divider
-if trigger_delay_timer >= trigger_delay{hammer_angle_offset = 0}
-hammer_x_offset = hspeed*(sprite_get_xoffset(hammer_sprite)-sprite_get_xoffset(weapon_draw_sprite))
-hammer_y_offset = vspeed*(sprite_get_xoffset(hammer_sprite)-sprite_get_xoffset(weapon_draw_sprite))//xoffset*vspeed works I guess?
-draw_sprite_ext(hammer_sprite,0,x+hammer_x_offset,y+hammer_y_offset,1,weapon_yscale,gun_angle+hammer_angle_offset,-1,1)
-}
-
 draw_sprite_ext(weapon_draw_sprite,0,x,y,1,weapon_yscale,gun_angle,-1,1)
 
 if slide_sprite != s_0{

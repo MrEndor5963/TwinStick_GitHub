@@ -30,3 +30,9 @@ Floor3B - Arctic Containment
 Floor4 - Weapons Testing
 
 Floor Final - Classified
+
+
+Difficulties
+Defcon 1 - 
+Defcon 2 - Reloading and unjamming guns is no longer automatic and requires button press, new enemies
+Defcon 3 - Melee weapons break much faster, new enemies, all previous defcons

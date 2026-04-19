@@ -4,6 +4,8 @@ new_floor = false
 array_push(GM.player_list,id)
 set_tileset_collision()
 
+floor_y = y
+
 //Gameplay Variables
 input_number = 0//Input number set by CharacterSelect
 hsp = 0;vsp = 0
@@ -29,9 +31,12 @@ loan_fish = 0
 loan_timer_frames = 0
 loan_timer_seconds = 5
 //Weapon variables
+
 ammo_inmag = 30
 ammo_reserve = 30
-reload_timer = -1
+bullet_chambered = true
+mag_loaded = true
+reload_progress = -1
 current_shoot_sfx = -1
 revive_time = 180
 revive_timer = 0
@@ -161,13 +166,18 @@ if array_length(weapons_held) = 0 or weapons_held[0] = s_Unarmed{weapons_held = 
 if array_length(weapons_held) < weapon_slots_max{
 if array_length(weapons_held) > 0{
 saved_ammo_inmag[weapon_equipped] = ammo_inmag
-saved_ammo_reserve[weapon_equipped] = ammo_reserve}
+saved_ammo_reserve[weapon_equipped] = ammo_reserve
+saved_bullet_chambered[weapon_equipped] = bullet_chambered
+saved_mag_loaded[weapon_equipped] = mag_loaded
+}
 weapon_equipped = array_length(weapons_held)}
 weapons_held[weapon_equipped] = arg_weapon
 weapon_sprite = arg_weapon
 script_execute_wpn(arg_weapon)
 saved_ammo_inmag[weapon_equipped] = ammo_inmag_max
 saved_ammo_reserve[weapon_equipped] = ammo_reserve_max
+saved_bullet_chambered[weapon_equipped] = true
+saved_mag_loaded[weapon_equipped] = true
 glitch_int_mag = 1;glitch_int_reserve = 1
 glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }
@@ -178,6 +188,8 @@ if array_length(weapons_held) = 0{weapons_held[0] = s_Unarmed}
 script_execute_wpn(weapons_held[weapon_equipped])
 ammo_inmag = saved_ammo_inmag[weapon_equipped]
 ammo_reserve = saved_ammo_reserve[weapon_equipped]
+bullet_chambered = saved_bullet_chambered[weapon_equipped]
+mag_loaded = saved_mag_loaded[weapon_equipped]
 glitch_int_mag = 1;glitch_int_reserve = 1
 glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }

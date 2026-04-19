@@ -2,7 +2,7 @@ if GM.game_paused = true or room = r_FloorTransition{exit}
 weapon_id = player_id.weapons_held[player_id.weapon_equipped]
 script_execute_wpn(weapon_id)
 sprite_index = weapon_id
-sprite_set_offset(sprite_index,weapon_xoffset,weapon_yoffset)
+
 
 if abs(recoil) > 10{recoil *= 0.92}else{recoil *= 0.9}
 if recoil < 0.5 && recoil > -0.5{recoil = 0}
@@ -15,37 +15,35 @@ key_throw_pressed = player_id.key_throw_pressed
 
 ammo_inmag = player_id.ammo_inmag
 ammo_reserve = player_id.ammo_reserve
+bullet_chambered = player_id.bullet_chambered
+mag_loaded = player_id.mag_loaded
 
 if ammo_inmag <= 0 or key_reload && ammo_inmag != ammo_inmag_max{
-if ammo_reserve > 0 && reload_timer = -1{
-reload_timer = 0
-play_sfx(reload_sfx)
+if ammo_reserve > 0 && reload_progress = -1{
+reload_progress = 0
 }}
-
-if reload_timer >= 0{
-reload_timer += player_id.reload_speed
-if reload_timer >= reload_time{
-if magazine_reload = true{ammo_inmag = ammo_inmag_max}
-else{ammo_inmag += 1}
-ammo_reserve -= 1
-player_id.glitch_int_mag = 1
-player_id.glitch_int_reserve = 1
-reload_timer = -1
-}
-
-}
 
 if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0;trigger_needs_reset = false}
 shoot_timer -= 1;if shoot_timer < 0{shoot_timer = 0}
 
 if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0{key_melee_pressed = true}
 
-if ammo_inmag > 0 && shoot_timer = 0 && reload_timer = -1 && trigger_delay_timer >= trigger_delay{
+if ammo_inmag > 0 && shoot_timer = 0 && reload_progress = -1 && trigger_delay_timer >= trigger_delay && bullet_chambered = true{
 if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && trigger_needs_reset = false{
 shoot_timer = shoot_delay
 ammo_inmag -= 1;
 if auto = false{trigger_delay_timer = 0;trigger_needs_reset = true}
 player_id.glitch_int_mag = 0.8
+
+direction = aim_direction;speed = 1
+particle = instance_create_depth(x,y,depth-1,PersistentVFX)
+
+particle.hsp = -hspeed*2
+particle.vsp = -vspeed*2
+particle.zsp = -20
+particle.floor_y = player_id.floor_y
+particle.grv = 0.5
+particle.sprite_index = s_45ACP
 
 direction = aim_direction+recoil
 var_x = sprite_get_xoffset(sprite_index)
@@ -55,6 +53,7 @@ var_y = y+(vspeed)
 speed = 0
 flash = instance_create_depth(var_x,var_y,depth-2,MuzzleFlash)
 flash.image_angle = aim_direction+recoil
+
 repeat(round(bullet_amount)){
 _bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
 var_spread = bullet_spread+clamp(recoil/5,0,5)
@@ -86,14 +85,64 @@ audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+ran
 //if jam_chance != 0 && random_range(0,100) <= jam_chance{jam_timer += 1}
 }}
 	
+if reload_progress >= 0{reload_progress += player_id.reload_speed
+	
+	shoot_timer = 0;trigger_delay_timer = 0
+
+	if reload_animation = "Auto Pistol"{
+	if mag_loaded = true && ammo_inmag <= ammo_inmag_max{
+	angle_offset = 100*image_yscale
+	mag_loaded = false
+	direction = aim_direction;speed = 1
+	particle = instance_create_depth(
+	x+(mag_xoff-sprite_get_xoffset(sprite_index))+((sprite_get_width(sprite_index)*hspeed)/2),
+	y+(mag_yoff-sprite_get_yoffset(sprite_index)),
+	depth,PersistentVFX)
+	particle.zsp = 0
+	particle.real_y = player_id.y+(sprite_get_height(player_id.sprite_index)/2)
+	particle.y = particle.real_y
+	particle.z = y-particle.real_y
+	
+	particle.hsp = 2*hspeed
+	particle.vsp = 1*vspeed
+	speed = 0
+	}
+	
+	if mag_loaded = false && abs(angle_offset) <= 1{
+	mag_offset = (reload_time-(reload_time/(reload_time/reload_progress)))*20
+	
+	}else{reload_progress -= player_id.reload_speed}
+	
+	
+	}
+	
+	if reload_progress >= reload_time{
+	if magazine_reload = true{
+	if ammo_inmag > 1{ammo_inmag = 1}
+	ammo_inmag += ammo_inmag_max
+	mag_loaded = true}
+	else{ammo_inmag += 1}
+	ammo_reserve -= 1
+	player_id.glitch_int_mag = 1
+	player_id.glitch_int_reserve = 1
+	reload_progress = -1
+	}
+}
+
 player_id.ammo_inmag = ammo_inmag
 player_id.ammo_reserve = ammo_reserve
+player_id.bullet_chambered = bullet_chambered
+player_id.mag_loaded = mag_loaded
 
-
-x = player_id.x
-y = player_id.y
 aim_direction = player_id.aim_direction
-image_angle = aim_direction+recoil
+
+direction = aim_direction+recoil
+speed = 1
+position_xoffset = sprite_get_xoffset(sprite_index)-weapon_xoffset
+x = player_id.x+(position_xoffset*hspeed)
+y = player_id.y+(position_xoffset*vspeed)
+speed = 0
+image_angle = direction
 depth = player_id.depth-1
 if player_id.aim_string = "U"{depth += 2}
 if aim_direction > 90 && aim_direction < 270{image_yscale = -1}else{image_yscale = 1}
@@ -133,7 +182,6 @@ x = x+xoff
 y = y+yoff
 
 if melee_attack = true{
-center_sprite_offset(sprite_index)
 
 list_temp = ds_list_create()
 instance_place_list(x,y,Enemy,list_temp,false)
@@ -151,13 +199,15 @@ var_repeat += 1
 ds_list_destroy(list_temp)
 }
 
-if key_throw_pressed = true && weapon_id != s_Unarmed{
+if key_throw_pressed = true && melee_attack = false && weapon_id != s_Unarmed{
 _thrown = instance_create_depth(x,y,depth,FloorWeapon)
 _thrown.weapon_id = weapon_id
 _thrown.image_angle = image_angle
 _thrown.image_yscale = image_yscale
 _thrown.ammo_inmag = ammo_inmag
 _thrown.ammo_reserve = ammo_reserve
+_thrown.bullet_chambered = bullet_chambered
+_thrown.mag_loaded = mag_loaded
 direction = image_angle;speed = 25
 _thrown.hsp = hspeed
 _thrown.vsp = vspeed
@@ -167,6 +217,8 @@ var_number = player_id.weapon_equipped
 array_delete(player_id.weapons_held,var_number,1)
 array_delete(player_id.saved_ammo_inmag,var_number,1)
 array_delete(player_id.saved_ammo_reserve,var_number,1)
+array_delete(player_id.saved_mag_loaded,var_number,1)
+array_delete(player_id.saved_bullet_chambered,var_number,1)
 with player_id{
 if weapon_equipped = array_length(weapons_held) && weapon_equipped > 0{weapon_equipped -= 1}
 if array_length(weapons_held) = 0{get_new_weapon(s_Unarmed)}

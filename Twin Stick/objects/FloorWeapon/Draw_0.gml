@@ -1,3 +1,9 @@
+if GM.map_x != home_x or GM.map_y != home_y{
+x = -3000
+exit
+}
+else{x_saved = x}
+
 depth = -y
 if hit_something = true{depth = 401}
 
@@ -23,7 +29,6 @@ hit_something = true
 
 
 sprite_index = weapon_sprite
-center_sprite_offset(sprite_index)
 
 image_angle += (abs(hsp)+abs(vsp))*-image_yscale
 
@@ -44,6 +49,8 @@ if collision_present(x,y+vsp+vsp_arc)
 }
 
 y += vsp+vsp_arc
+
+
 
 if hit_something = false{
 hsp *= 0.98

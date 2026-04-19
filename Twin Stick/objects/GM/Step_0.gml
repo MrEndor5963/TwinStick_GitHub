@@ -1,5 +1,149 @@
 set_tileset_collision()
 
+if audio_is_playing(floor_music_id){
+pitch = audio_sound_get_pitch(floor_music_id)
+
+if pause_alpha > 0 or game_over = true {if pitch > 0.7{pitch -= 0.01}}
+if pitch < 1 && glitch_intensity = 0 && pause_alpha = 0{pitch += 0.01}
+
+audio_sound_pitch(floor_music_id,pitch)
+}
+
+//Civilian - D Class
+//Security - C Class
+//Soldier - B Class
+//Elite Op - A Class
+//Containment Breach - S Class
+//Classified - Z Class
+#region menus and menu control
+menu_active = false
+key_pause = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed_any(gp_start)
+if key_pause && room != r_TitleScreen && room != r_CharacterSelectScreen && room != r_FloorTransition{
+if game_paused = false{game_paused = true}else{game_paused = false}
+glitch_intensity = 0.5
+}
+
+
+if room = r_TitleScreen{
+menu_active = true
+if sub_menu = 0{
+menu[0] = "Solo"
+menu[1] = "Co-Op"
+menu[2] = "??????"//"Versus"
+menu[3] = "Database"
+menu[4] = "???????????"//"Achievments"
+menu[5] = "Configuration"}
+}
+
+if game_paused = true{
+menu_active = true
+if sub_menu = 0{
+menu = []
+menu[0] = "Resume"
+menu[1] = "Main Menu"
+menu[2] = "Configuration"
+}
+//Main menu = "Abondon protocol"
+//WARING: Performing this action will result in the immediete mutilation and/or dismemberment of any/all living organisims remaining 
+//within the facility
+//Continue?
+}
+
+if game_over = true{
+menu_active = true
+menu = []
+menu[0] = "Retry"
+menu[1] = "Main Menu"
+}
+
+if menu_active = true{
+menu_controls()
+if key_down_pressed or key_up_pressed{play_sfx(sfx_Cursor)}
+
+if key_back{
+if sub_menu != 0{
+sub_menu = 0
+play_sfx(sfx_MenuBack)
+GM.glitch_intensity = 0.5
+}
+}
+
+if key_enter{
+sub_menu = menu[menu_cursor]
+
+if sub_menu = "Solo"{
+sub_menu = 0
+glitch_intensity = 1
+room_goto(r_CharacterSelectScreen)}
+
+if sub_menu = "Configuration"{
+menu_cursor = 0
+glitch_intensity = 0.5
+}
+
+if sub_menu = "Fullscreen: Enabled" or sub_menu = "Fullscreen: Disabled"{
+if window_get_fullscreen() = false{
+window_set_fullscreen(true)}
+else{window_set_fullscreen(false)}
+glitch_intensity = 0.5
+sub_menu = "Configuration"}
+
+//play_sfx(sfx_MenuClick)
+	if sub_menu = "Retry"{
+
+	glitch_intensity += 1
+	repeat (GM.player_amount){
+	var1 = player_list[0].player_name
+	var2 = player_list[0].input_number
+	var3 = player_list[0].player_number
+	with player_list[0]{player_destroy_protocol()}
+	var_player = instance_create_depth(300,300,depth,Player)
+	var_player.player_name = var1
+	var_player.input_number = var2
+	var_player.player_number = var3
+	array_delete(player_list,0,1)}
+
+	if instance_exists(Key){instance_destroy(Key)}
+
+
+	floor_number = 0
+	next_floor = true
+	}
+
+	if sub_menu = "Main Menu"{goto_main_menu();glitch_intensity += 1}
+
+	if sub_menu = "Exit Game"{game_end()}
+
+}
+
+if sub_menu = "Configuration"{
+menu = []
+menu[0] = "Sound"
+menu[1] = "Music"
+if window_get_fullscreen() = false{menu[2] = "Fullscreen: Disabled"}
+else{menu[2] = "Fullscreen: Enabled"}
+//window_set
+if menu_cursor = 0{
+if key_left_pressed{sfx_gain_saved -= 0.1}
+if key_right_pressed{sfx_gain_saved += 0.1}
+sfx_gain_saved = clamp(sfx_gain_saved,0,1)
+audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
+}
+
+if menu_cursor = 1{
+if key_left_pressed{msc_gain_saved -= 0.1}
+if key_right_pressed{msc_gain_saved += 0.1}
+msc_gain_saved = clamp(msc_gain_saved,0,1)
+audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
+}
+
+}	
+
+}
+
+
+#endregion menus
+
 #region Camera control
 view_enabled = true
 view_visible[0] = true
@@ -172,126 +316,3 @@ array_push(weapon_tiers,5)
 	game_over = false
 
 	}
-
-	//if room = r_FloorTransition{
-	//room_goto(spawn_room)}
-
-if audio_is_playing(floor_music_id){
-pitch = audio_sound_get_pitch(floor_music_id)
-
-if pause_alpha > 0 or game_over = true {if pitch > 0.7{pitch -= 0.01}}
-if pitch < 1 && glitch_intensity = 0 && pause_alpha = 0{pitch += 0.01}
-
-audio_sound_pitch(floor_music_id,pitch)
-}
-
-//Civilian - D Class
-//Security - C Class
-//Soldier - B Class
-//Elite Op - A Class
-//Containment Breach - S Class
-//Classified - Z Class
-#region menus and menu control
-menu_active = false
-key_pause = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed_any(gp_start)
-if key_pause && room != r_TitleScreen && room != r_CharacterSelectScreen && room != r_FloorTransition{
-if game_paused = false{game_paused = true}else{game_paused = false}
-glitch_intensity = 0.5
-}
-
-
-if room = r_TitleScreen{
-menu_active = true
-if sub_menu = 0{
-menu[0] = "Solo"
-menu[1] = "Co-Op"
-menu[2] = "??????"//"Versus"
-menu[3] = "Database"
-menu[4] = "???????????"//"Achievments"
-menu[5] = "Configuration"}
-}
-
-if game_paused = true{
-menu_active = true
-if sub_menu = 0{
-menu = []
-menu[0] = "Resume"
-menu[1] = "Main Menu"
-menu[2] = "Configuration"
-}
-//Main menu = "Abondon protocol"
-//WARING: Performing this action will result in the immediete mutilation and/or dismemberment of any/all living organisims remaining 
-//within the facility
-//Continue?
-}
-
-if game_over = true{
-menu_active = true
-menu = []
-menu[0] = "Retry"
-menu[1] = "Main Menu"
-}
-
-if menu_active = true{
-menu_controls()
-if key_down_pressed or key_up_pressed{play_sfx(sfx_Cursor)}
-
-if key_back{
-if sub_menu != 0{
-sub_menu = 0
-play_sfx(sfx_MenuBack)
-GM.glitch_intensity = 0.5
-}
-}
-
-if key_enter{
-sub_menu = menu[menu_cursor]
-
-if sub_menu = "Solo"{
-sub_menu = 0
-glitch_intensity = 1
-room_goto(r_CharacterSelectScreen)}
-
-if sub_menu = "Configuration"{
-menu_cursor = 0
-glitch_intensity = 0.5
-}
-
-if sub_menu = "Fullscreen: Enabled" or sub_menu = "Fullscreen: Disabled"{
-if window_get_fullscreen() = false{
-window_set_fullscreen(true)}
-else{window_set_fullscreen(false)}
-glitch_intensity = 0.5
-sub_menu = "Configuration"}
-
-//play_sfx(sfx_MenuClick)
-
-}
-
-if sub_menu = "Configuration"{
-menu = []
-menu[0] = "Sound"
-menu[1] = "Music"
-if window_get_fullscreen() = false{menu[2] = "Fullscreen: Disabled"}
-else{menu[2] = "Fullscreen: Enabled"}
-//window_set
-if menu_cursor = 0{
-if key_left_pressed{sfx_gain_saved -= 0.1}
-if key_right_pressed{sfx_gain_saved += 0.1}
-sfx_gain_saved = clamp(sfx_gain_saved,0,1)
-audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
-}
-
-if menu_cursor = 1{
-if key_left_pressed{msc_gain_saved -= 0.1}
-if key_right_pressed{msc_gain_saved += 0.1}
-msc_gain_saved = clamp(msc_gain_saved,0,1)
-audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
-}
-
-}	
-
-}
-
-
-#endregion menus
