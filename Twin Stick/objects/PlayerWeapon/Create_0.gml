@@ -13,7 +13,7 @@ reload_time = 60
 reload_progress = -1
 jam_timer = -1
 
-reload_animation = ""
+animation = ""
 mag_offset = 0
 
 contact_list = []
@@ -28,3 +28,6 @@ damage = 25
 
 weapon_weight = 1
 angle_offset = 0
+
+slide_offset = 0
+pump_offset = 0

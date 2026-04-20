@@ -9,11 +9,10 @@ if player_id.hp > 0{
 direction = image_angle;speed = 1
 #region Reloads and reload animations
 if reload_progress >= 0 && mag_loaded = false && angle_offset = 0{
-direction = aim_direction+recoil+(mag_offset*-image_yscale)
+direction = image_angle+(mag_offset*-image_yscale)
 speed = 1
 draw_x = player_id.x+((mag_xoff-sprite_get_xoffset(sprite_index))*hspeed)+(position_xoffset*hspeed)
 draw_y = player_id.y+((mag_xoff-sprite_get_xoffset(sprite_index))*vspeed)+(position_xoffset*vspeed)+(mag_yoff-sprite_get_yoffset(sprite_index))
-speed = 0
 draw_sprite_ext(mag_sprite,0,draw_x,draw_y,1,image_yscale,image_angle+(mag_offset*-image_yscale),-1,1)}
 #endregion
 
@@ -30,17 +29,15 @@ draw_sprite_ext(hammer_sprite,0,x+hammer_x_offset,y+hammer_y_offset,1,image_ysca
 
 draw_sprite_ext(weapon_draw_sprite,0,x,y,1,image_yscale,image_angle+angle_offset,-1,1)
 
+direction = image_angle+angle_offset
 
-if slide_sprite != s_0 && melee_attack = false{
-//if ammo_inmag = 0{shoot_timer = shoot_delay}
-slide_offset = slide_distance/(shoot_delay/shoot_timer)
+if slide_sprite != s_0{
 draw_sprite_ext(slide_sprite,0,x+(slide_offset*hspeed),y+(slide_offset*vspeed),1,image_yscale,image_angle+angle_offset,-1,1)
 }
 
-//if pump_sprite != s_0{
-//pump_offset = 0
-//draw_sprite_ext(pump_sprite,0,x+(pump_offset*hspeed),y+(pump_offset*vspeed),1,image_yscale,image_angle,-1,1)
-//}
+if pump_sprite != s_0{
+draw_sprite_ext(pump_sprite,0,x+(pump_offset*hspeed),y+(pump_offset*vspeed),1,image_yscale,image_angle+angle_offset,-1,1)
+}
 
 speed = 0}
 

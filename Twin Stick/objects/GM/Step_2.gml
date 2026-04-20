@@ -19,7 +19,8 @@ else{
 sfx_gain_saved = 0
 msc_gain_saved = 0
 }
-
+audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
+audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
 }
 
 if keyboard_check_pressed(ord("C")){
@@ -34,7 +35,7 @@ if room != r_Floor1_Boss{room = r_Floor1_Boss}
 if keyboard_check_pressed(ord("G")){
 if instance_exists(Player){
 with Player{
-weapon = []
+weapons_held = []
 script_execute_wpn(s_m1911)
 
 weapons_held = []

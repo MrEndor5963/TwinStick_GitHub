@@ -17,6 +17,7 @@ ammo_inmag = player_id.ammo_inmag
 ammo_reserve = player_id.ammo_reserve
 bullet_chambered = player_id.bullet_chambered
 mag_loaded = player_id.mag_loaded
+case_ejects_needed = player_id.case_ejects_needed
 
 if ammo_inmag <= 0 or key_reload && ammo_inmag != ammo_inmag_max{
 if ammo_reserve > 0 && reload_progress = -1{
@@ -28,86 +29,111 @@ shoot_timer -= 1;if shoot_timer < 0{shoot_timer = 0}
 
 if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0{key_melee_pressed = true}
 
-if ammo_inmag > 0 && shoot_timer = 0 && reload_progress = -1 && trigger_delay_timer >= trigger_delay && bullet_chambered = true{
-if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && trigger_needs_reset = false{
-shoot_timer = shoot_delay
-ammo_inmag -= 1;
-if auto = false{trigger_delay_timer = 0;trigger_needs_reset = true}
-player_id.glitch_int_mag = 0.8
-
-direction = aim_direction;speed = 1
-particle = instance_create_depth(x,y,depth-1,PersistentVFX)
-
-particle.hsp = -hspeed*random_range(4,5)
-particle.vsp = -vspeed*random_range(4,5)
-particle.zsp = random_range(-12,-6)
-particle.spin_speed = image_yscale*random_range(35,40)
-particle.z = player_id.y-player_id.floor_y
-particle.floor_y = player_id.floor_y
-particle.grv = 0.5
-particle.sprite_index = s_45ACP
-
-direction = aim_direction+recoil
-var_x = sprite_get_xoffset(sprite_index)
-speed = sprite_get_width(sprite_index)-var_x-5
-var_x = x+(hspeed)
-var_y = y+(vspeed)
-speed = 0
-flash = instance_create_depth(var_x,var_y,depth-2,MuzzleFlash)
-flash.image_angle = aim_direction+recoil
-
-repeat(round(bullet_amount)){
-_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
-var_spread = bullet_spread+clamp(recoil/5,0,5)
-_bullet.image_angle = aim_direction+recoil+irandom_range(-var_spread,var_spread)
-_bullet.damage = weapon_damage
-_bullet.penetration = penetration
-_bullet.spawn_penetration = penetration
-_bullet.bullet_speed = bullet_speed
-_bullet.knockback = bullet_knockback
-_bullet.sprite_index = bullet_sprite
-_bullet.player_id = player_id
-_bullet.hit_reward = hit_reward
-_bullet.kill_reward = kill_reward
-_bullet.explosive = explosive
-_bullet.explosion_damage = explosion_damage
-_bullet.png_explosion_checks = png_explosions
+if slide_sprite != s_0{
+if ammo_inmag = 0{shoot_timer = shoot_delay}
+slide_offset = slide_distance/(shoot_delay/shoot_timer)
+if slide_offset = 0{bullet_chambered = true}
 }
 
-direction = aim_direction+recoil+180
-speed = knockback/player_id.weight
-player_id.hsp_knockback += hspeed
-player_id.vsp_knockback += vspeed
-GM.cam_shake_x += hspeed*4
-GM.cam_shake_y += vspeed*4
-speed = 0
-recoil += gun_recoil*image_yscale
-current_shoot_sfx = play_sfx(shoot_sfx)
-audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.045))
-//if jam_chance != 0 && random_range(0,100) <= jam_chance{jam_timer += 1}
-}}
+if pump_sprite != s_0{
+if pump_offset = 0 && case_ejects_needed = 0{bullet_chambered = true}
+}
+
+#region Shooting the gun
+	
+	
+	can_shoot = true
+	
+	if ammo_inmag = 0 or shoot_timer != 0 or reload_progress != -1 or trigger_delay_timer < trigger_delay or bullet_chambered = false
+	{can_shoot = false}
+	
+	
+	if can_shoot = true{
+	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && trigger_needs_reset = false{
+	shoot_timer = shoot_delay
+	ammo_inmag -= 1;
+	case_ejects_needed += 1
+	bullet_chambered = false
+	if auto = false{trigger_delay_timer = 0;trigger_needs_reset = true}
+	player_id.glitch_int_mag = 0.8
+	
+	
+	if action_type = s_SemiAuto or action_type = s_FullAuto{
+	case_ejects_needed -= 1
+	direction = aim_direction;speed = 1
+	particle = instance_create_depth(x,y,depth-1,PersistentVFX)
+	particle.hsp = -hspeed*random_range(4,5)
+	particle.vsp = -vspeed*random_range(4,5)
+	particle.zsp = random_range(-12,-6)
+	particle.spin_speed = image_yscale*random_range(35,40)
+	particle.z = player_id.y-player_id.floor_y
+	particle.floor_y = player_id.floor_y
+	particle.grv = 0.5
+	particle.sprite_index = caliber
+	}
+
+	direction = aim_direction+recoil
+	var_x = sprite_get_xoffset(sprite_index)
+	speed = sprite_get_width(sprite_index)-var_x-5
+	var_x = x+(hspeed)
+	var_y = y+(vspeed)
+	speed = 0
+	flash = instance_create_depth(var_x,var_y,depth-2,MuzzleFlash)
+	flash.image_angle = aim_direction+recoil
+
+	repeat(round(bullet_amount)){
+	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
+	var_spread = bullet_spread+clamp(recoil/5,0,5)
+	_bullet.image_angle = aim_direction+recoil+irandom_range(-var_spread,var_spread)
+	_bullet.damage = weapon_damage
+	_bullet.penetration = penetration
+	_bullet.spawn_penetration = penetration
+	_bullet.bullet_speed = bullet_speed
+	_bullet.knockback = bullet_knockback
+	_bullet.sprite_index = bullet_sprite
+	_bullet.player_id = player_id
+	_bullet.hit_reward = hit_reward
+	_bullet.kill_reward = kill_reward
+	_bullet.explosive = explosive
+	_bullet.explosion_damage = explosion_damage
+	_bullet.png_explosion_checks = png_explosions
+	}
+
+	direction = aim_direction+recoil+180
+	speed = knockback/player_id.weight
+	player_id.hsp_knockback += hspeed
+	player_id.vsp_knockback += vspeed
+	GM.cam_shake_x += hspeed*4
+	GM.cam_shake_y += vspeed*4
+	speed = 0
+	recoil += gun_recoil*image_yscale
+	current_shoot_sfx = play_sfx(shoot_sfx)
+	audio_sound_pitch(current_shoot_sfx,audio_sound_get_pitch(current_shoot_sfx)+random_range(-0.045,0.045))
+	//if jam_chance != 0 && random_range(0,100) <= jam_chance{jam_timer += 1}
+	}}
+
+#endregion shooting the gun
 	
 if reload_progress >= 0{reload_progress += player_id.reload_speed
 	
-	shoot_timer = 0;trigger_delay_timer = 0
+	trigger_delay_timer = 0
 
-	if reload_animation = "Auto Pistol"{
-	if mag_loaded = true && ammo_inmag <= ammo_inmag_max{
+	if animation = "Auto Pistol"{
+	if mag_loaded = true && ammo_inmag <= ammo_inmag_max && abs(recoil) < 5{
 	angle_offset = 100*image_yscale
 	mag_loaded = false
 	direction = aim_direction;speed = 1
 	particle = instance_create_depth(
 	x+(mag_xoff-sprite_get_xoffset(sprite_index))+((sprite_get_width(sprite_index)*hspeed)/2),
-	y+(mag_yoff-sprite_get_yoffset(sprite_index)),
+	y+(mag_yoff-sprite_get_yoffset(sprite_index))+6,
 	depth,PersistentVFX)
-	particle.zsp = 0
-	particle.floor_y = player_id.y+(sprite_get_height(player_id.sprite_index)/2)
-	particle.y = particle.floor_y
-	particle.z = 0
-	particle.spin_speed = image_yscale*random_range(34,40)
-	
-	particle.hsp = 2*hspeed
-	particle.vsp = 1*vspeed
+	particle.hsp = hspeed*random_range(1,3)
+	particle.vsp = vspeed*random_range(1,3)
+	particle.zsp = random_range(-6,-3)
+	particle.spin_speed = image_yscale*random_range(5,10)
+	particle.z = player_id.y-player_id.floor_y
+	particle.floor_y = player_id.floor_y
+	particle.grv = 0.5
 	speed = 0
 	}
 	
@@ -136,6 +162,7 @@ player_id.ammo_inmag = ammo_inmag
 player_id.ammo_reserve = ammo_reserve
 player_id.bullet_chambered = bullet_chambered
 player_id.mag_loaded = mag_loaded
+player_id.case_ejects_needed = case_ejects_needed
 
 aim_direction = player_id.aim_direction
 
@@ -204,17 +231,16 @@ ds_list_destroy(list_temp)
 
 if key_throw_pressed = true && melee_attack = false && weapon_id != s_Unarmed{
 _thrown = instance_create_depth(x,y,depth,FloorWeapon)
-_thrown.weapon_id = weapon_id
-_thrown.image_angle = image_angle
+_thrown.player_id = player_id;
 _thrown.image_yscale = image_yscale
+_thrown.image_angle = image_angle
+_thrown.weapon_id = weapon_id
+_thrown.z = player_id.y-player_id.floor_y
+_thrown.floor_y = player_id.floor_y
 _thrown.ammo_inmag = ammo_inmag
 _thrown.ammo_reserve = ammo_reserve
 _thrown.bullet_chambered = bullet_chambered
 _thrown.mag_loaded = mag_loaded
-direction = image_angle;speed = 25
-_thrown.hsp = hspeed
-_thrown.vsp = vspeed
-speed = 0
 
 var_number = player_id.weapon_equipped
 array_delete(player_id.weapons_held,var_number,1)

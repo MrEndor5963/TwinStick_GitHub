@@ -169,6 +169,7 @@ saved_ammo_inmag[weapon_equipped] = ammo_inmag
 saved_ammo_reserve[weapon_equipped] = ammo_reserve
 saved_bullet_chambered[weapon_equipped] = bullet_chambered
 saved_mag_loaded[weapon_equipped] = mag_loaded
+saved_case_ejects_needed[weapon_equipped] = case_ejects_needed
 }
 weapon_equipped = array_length(weapons_held)}
 weapons_held[weapon_equipped] = arg_weapon
@@ -178,6 +179,7 @@ saved_ammo_inmag[weapon_equipped] = ammo_inmag_max
 saved_ammo_reserve[weapon_equipped] = ammo_reserve_max
 saved_bullet_chambered[weapon_equipped] = true
 saved_mag_loaded[weapon_equipped] = true
+saved_case_ejects_needed[weapon_equipped] = 0
 glitch_int_mag = 1;glitch_int_reserve = 1
 glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }
@@ -190,6 +192,7 @@ ammo_inmag = saved_ammo_inmag[weapon_equipped]
 ammo_reserve = saved_ammo_reserve[weapon_equipped]
 bullet_chambered = saved_bullet_chambered[weapon_equipped]
 mag_loaded = saved_mag_loaded[weapon_equipped]
+case_ejects_needed = saved_case_ejects_needed[weapon_equipped]
 glitch_int_mag = 1;glitch_int_reserve = 1
 glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }

@@ -11,3 +11,4 @@ spin_speed = 0
 
 hit_wall = false
 hit_floor = false
+spawned = false
