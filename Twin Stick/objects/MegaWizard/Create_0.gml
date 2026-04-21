@@ -15,3 +15,5 @@ node_x = x div 48
 node_y = y div 48
 
 blood_color = $FF00FF
+
+glitch_intensity = 0

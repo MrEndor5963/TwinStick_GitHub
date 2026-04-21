@@ -24,7 +24,7 @@ bktglitch_set_channel_dispersion(0);
 
 //draw_gui_origin_x+(216*pon_x),draw_gui_origin_y+(48*pon_y),"Jammed",draw_color)
 bktglitch_set_intensity(0.04 + (glitch_int_gun_sprite));
-glitch_sprite(weapon_sprite,draw_gui_origin_x+((96+(sprite_get_width(weapon_sprite)/2))*pon_x),
+glitch_sprite(weapon_id,draw_gui_origin_x+((96+(sprite_get_width(weapon_id)/2))*pon_x),
 draw_gui_origin_y+(48*pon_y)
 )
 

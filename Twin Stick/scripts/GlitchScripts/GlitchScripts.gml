@@ -1,4 +1,9 @@
-
+function glitch_sprite(arg_sprite,arg_x,arg_y){
+_width = sprite_get_width(arg_sprite)
+_height = sprite_get_height(arg_sprite)
+_x = arg_x-(_width/2)
+_y = arg_y-(_height/2)
+draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////
 //                              //
@@ -13,7 +18,8 @@
 //////////////////////////////////
 
 /// @function bktglitch_init()
-/// @description Initialises the shader.
+/// @description Initialises the shader
+
 function bktglitch_init() {
 	/*	    
 	    This is run automatically the first time bktglitch_activate is used.

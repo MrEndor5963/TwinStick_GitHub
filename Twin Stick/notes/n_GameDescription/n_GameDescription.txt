@@ -1,8 +1,14 @@
 Game description
 
+Possible Names
+Alien Homicide Party/AHP
+Alien Slaughter Party/ASP
+Alien Massacre Protocol/AMP
+Alien Genocide Protocol/AGP
+
 Steam header
-Left for dead in an Alien Research Facility on the moon,
-you and your fellow test subjects must shoot, slash, and bomb your way through the hordes of alien creatures
+Left for dead in an Alien Prison/Research Facility on the moon,
+you and your fellow test subjects must shoot, slash, and bomb through the hordes of alien creatures
 infesting the facility from floor to celling.
 But be quick, you only have 152 minutes to teleport back to earth before the whole facility is nuked
 

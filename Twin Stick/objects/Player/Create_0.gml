@@ -22,7 +22,7 @@ player_name = ""
 money = 500
 mov_spd = 10
 hp = 6;hp_max = 6
-weapon_slots_max = 3
+weapon_slots_max = 2
 strength = 2
 reload_speed = 1
 
@@ -139,12 +139,7 @@ glitch_int_points = 0.0
 //glitch_int_item = [] 
 
 
-function glitch_sprite(arg_sprite,arg_x,arg_y){
-_width = sprite_get_width(arg_sprite)
-_height = sprite_get_height(arg_sprite)
-_x = arg_x-(_width/2)
-_y = arg_y-(_height/2)
-draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)}
+
 
 function glitch_text(arg_x,arg_y,arg_text){
 _width = string_width(arg_text)

@@ -18,7 +18,7 @@ y += vsp
 
 timer -= 1
 if timer = 0{instance_destroy()
-var1 = instance_create_depth(x,y,depth-10,PNGExplosion)
+var1 = instance_create_depth(x,y,depth-10,Explosion)
 var1.hurts_player = true
 var1.creator = creator
 }

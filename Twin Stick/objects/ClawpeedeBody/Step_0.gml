@@ -14,9 +14,9 @@ x = creator.record_x[record]
 y = creator.record_y[record]
 image_xscale = creator.record_xscale[record]
 image_angle = creator.record_angle[record]}
-else{hitbox.hp = 0}
+else{hp = 0}
 
-if hitbox.hp <= 0{
+if hp <= 0{
 instance_destroy(hitbox);instance_destroy();Player.kills += 1;
 
 blood_splatter()
