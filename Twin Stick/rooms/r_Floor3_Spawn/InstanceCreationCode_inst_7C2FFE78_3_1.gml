@@ -1,1 +1,1 @@
-weapon_sprite = s_AK47
+weapon_id = s_AK47

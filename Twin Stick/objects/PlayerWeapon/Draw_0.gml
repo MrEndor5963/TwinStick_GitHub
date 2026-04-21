@@ -42,3 +42,7 @@ draw_sprite_ext(pump_sprite,0,x+(pump_offset*hspeed),y+(pump_offset*vspeed),1,im
 speed = 0}
 
 angle_offset *= 0.85;if abs(angle_offset) < 0.5{angle_offset = 0}
+
+/*
+draw_text(x,y,shoot_timer)
+draw_text(x,y+30,slide_offset)

@@ -1,1 +1,1 @@
-weapon_sprite = s_Uzi
+weapon_id = s_Uzi

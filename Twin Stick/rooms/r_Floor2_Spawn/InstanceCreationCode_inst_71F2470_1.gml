@@ -1,1 +1,1 @@
-weapon_sprite = s_Ithaca
+weapon_id = s_Ithaca

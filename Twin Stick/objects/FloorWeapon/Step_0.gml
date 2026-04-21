@@ -20,7 +20,7 @@ spawned = true
 }
 
 
-sprite_index = weapon_sprite
+sprite_index = weapon_id
 depth = -y+z
 
 image_angle += spin_speed

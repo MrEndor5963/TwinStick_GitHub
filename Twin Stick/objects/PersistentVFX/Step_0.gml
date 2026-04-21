@@ -35,8 +35,12 @@ vsp /= 1.5
 spin_speed = spin_speed*random_range(-1.2,1.2)
 
 if hit_floor = false{
+if sprite_index = s_12GadgeBuckshot{
+var_sound = irandom_range(1,3)
+var_sound = asset_get_index("sfx_BulletCasingShell"+string(var_sound))}
+else{
 var_sound = irandom_range(1,7)
-var_sound = asset_get_index("sfx_BulletCasing"+string(var_sound))
+var_sound = asset_get_index("sfx_BulletCasing"+string(var_sound))}
 var_sound = audio_play_sound(var_sound,2,false)
 audio_sound_pitch(var_sound,random_range(0.9,1.1))
 audio_sound_gain(var_sound,GM.sfx_gain_saved/2,0)

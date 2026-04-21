@@ -31,3 +31,16 @@ angle_offset = 0
 
 slide_offset = 0
 pump_offset = 0
+
+function eject_bullet_casing(){
+	direction = aim_direction;speed = 1
+	particle = instance_create_depth(x,y,depth-1,PersistentVFX)
+	particle.hsp = -hspeed*random_range(4,5)
+	particle.vsp = -vspeed*random_range(4,5)
+	particle.zsp = random_range(-12,-6)
+	particle.spin_speed = image_yscale*random_range(35,40)
+	particle.z = player_id.y-player_id.floor_y
+	particle.floor_y = player_id.floor_y
+	particle.grv = 0.5
+	particle.sprite_index = caliber
+}

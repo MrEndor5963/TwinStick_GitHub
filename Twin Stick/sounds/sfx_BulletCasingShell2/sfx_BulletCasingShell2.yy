@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"sfx_ShotgunShellReload",
+  "%Name":"sfx_BulletCasingShell2",
   "audioGroupId":{
     "name":"audiogroup_sfx",
     "path":"audiogroups/audiogroup_sfx",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.7329932,
-  "name":"sfx_ShotgunShellReload",
+  "duration":0.15002267,
+  "name":"sfx_BulletCasingShell2",
   "parent":{
-    "name":"ShotgunSounds",
-    "path":"folders/DSounds/GunSounds/ShotgunSounds.yy",
+    "name":"BulletCasings",
+    "path":"folders/DSounds/GunSounds/BulletCasings.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_ShotgunShellReload.mp3",
+  "soundFile":"sfx_BulletCasingShell2.wav",
   "type":0,
   "volume":1.0,
 }

@@ -25,32 +25,53 @@ reload_progress = 0
 }}
 
 if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0;trigger_needs_reset = false}
-shoot_timer -= 1;if shoot_timer < 0{shoot_timer = 0}
+
+shoot_timer += 1;if shoot_timer > shoot_delay{shoot_timer = shoot_delay}
+if action_type = s_PumpAction{
+if abs(recoil) > 5{shoot_timer = 0}
+}
 
 if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0{key_melee_pressed = true}
 
 if slide_sprite != s_0{
-if ammo_inmag = 0{shoot_timer = shoot_delay}
-slide_offset = slide_distance/(shoot_delay/shoot_timer)
+if ammo_inmag = 0{shoot_timer = 0}
+slide_offset = slide_distance-(slide_distance/(shoot_delay/shoot_timer))
 if slide_offset = 0{bullet_chambered = true}
 }
 
-if pump_sprite != s_0{
-if pump_offset = 0 && case_ejects_needed = 0{bullet_chambered = true}
+if pump_sprite != s_0{pump_offset = 0
+
+if case_ejects_needed = 1 && bullet_chambered = false{
+if shoot_timer = 1{play_sfx(sfx_PumpBack)}
+pump_offset = -pump_distance/(shoot_delay/shoot_timer)
+if shoot_timer = shoot_delay{
+case_ejects_needed = 0
+eject_bullet_casing()
+shoot_timer = 0}
 }
+
+if case_ejects_needed = 0 && bullet_chambered = false{
+if shoot_timer = 0{play_sfx(sfx_PumpForward)}
+pump_offset = -pump_distance+(pump_distance/(shoot_delay/shoot_timer))
+if shoot_timer = shoot_delay{bullet_chambered = true}
+}
+
+}
+	
+if slide_sprite = s_0 && pump_sprite = s_0{if shoot_timer = shoot_delay{bullet_chambered = true}}
 
 #region Shooting the gun
 	
 	
 	can_shoot = true
 	
-	if ammo_inmag = 0 or shoot_timer != 0 or reload_progress != -1 or trigger_delay_timer < trigger_delay or bullet_chambered = false
+	if ammo_inmag = 0 or shoot_timer != shoot_delay or reload_progress != -1 or trigger_delay_timer < trigger_delay or bullet_chambered = false
 	{can_shoot = false}
 	
 	
 	if can_shoot = true{
 	if key_shoot && auto = true or key_shoot_pressed && auto = false or key_shoot && trigger_needs_reset = false{
-	shoot_timer = shoot_delay
+	shoot_timer = 0
 	ammo_inmag -= 1;
 	case_ejects_needed += 1
 	bullet_chambered = false
@@ -60,16 +81,7 @@ if pump_offset = 0 && case_ejects_needed = 0{bullet_chambered = true}
 	
 	if action_type = s_SemiAuto or action_type = s_FullAuto{
 	case_ejects_needed -= 1
-	direction = aim_direction;speed = 1
-	particle = instance_create_depth(x,y,depth-1,PersistentVFX)
-	particle.hsp = -hspeed*random_range(4,5)
-	particle.vsp = -vspeed*random_range(4,5)
-	particle.zsp = random_range(-12,-6)
-	particle.spin_speed = image_yscale*random_range(35,40)
-	particle.z = player_id.y-player_id.floor_y
-	particle.floor_y = player_id.floor_y
-	particle.grv = 0.5
-	particle.sprite_index = caliber
+	eject_bullet_casing()
 	}
 
 	direction = aim_direction+recoil

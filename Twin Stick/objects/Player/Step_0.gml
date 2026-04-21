@@ -220,7 +220,7 @@ ds_list_destroy(list_temp)
 
 	if key_interact_pressed && var_object.box_open = true && var_object.box_timer = 0{
 	var_object.box_open = false
-	get_new_weapon(var_object.weapon_sprite)
+	get_new_weapon(var_object.weapon_id)
 	switch_to_weapon(weapon_equipped)
 	}
 	}
@@ -230,7 +230,7 @@ ds_list_destroy(list_temp)
 	var_object = instance_nearest(x,y-10,WallBuy)
 	if key_interact_pressed && useable_money >= var_object.cost{
 	player_point_change(-var_object.cost)
-	get_new_weapon(var_object.weapon_sprite)
+	get_new_weapon(var_object.weapon_id)
 	saved_ammo_reserve[weapon_equipped] += round(ammo_reserve_max*wall_ammo_multiplier)
 	switch_to_weapon(weapon_equipped)
 	play_sfx(sfx_Buy)
@@ -265,10 +265,10 @@ ds_list_destroy(list_temp)
 	if key_interact_pressed{
 	if array_length(weapons_held) = weapon_slots_max{
 	floor_gun = instance_create_depth(x,y,depth+10,FloorWeapon)
-	floor_gun.weapon_sprite = weapon_sprite
+	floor_gun.weapon_id = weapon_id
 	floor_gun.saved_ammo_inmag = ammo_inmag
 	floor_gun.saved_ammo_reserve = ammo_reserve}
-	get_new_weapon(var_object.weapon_sprite)
+	get_new_weapon(var_object.weapon_id)
 	saved_ammo_reserve[weapon_equipped] = var_object.ammo_reserve
 	saved_ammo_inmag[weapon_equipped] = var_object.ammo_inmag
 	switch_to_weapon(weapon_equipped)

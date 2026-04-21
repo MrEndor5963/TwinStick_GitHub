@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"sfx_OlympiaShoot",
+  "%Name":"sfx_PumpBack",
   "audioGroupId":{
     "name":"audiogroup_sfx",
     "path":"audiogroups/audiogroup_sfx",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.6861678,
-  "name":"sfx_OlympiaShoot",
+  "duration":0.17,
+  "name":"sfx_PumpBack",
   "parent":{
-    "name":"GunSounds",
-    "path":"folders/DSounds/GunSounds.yy",
+    "name":"ShotgunSounds",
+    "path":"folders/DSounds/GunSounds/ShotgunSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_OlympiaShoot.mp3",
+  "soundFile":"sfx_PumpBack.wav",
   "type":0,
   "volume":1.0,
 }

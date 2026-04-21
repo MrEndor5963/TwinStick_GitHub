@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"sfx_IthacaShoot",
+  "%Name":"sfx_ShotGunShoot",
   "audioGroupId":{
     "name":"audiogroup_sfx",
     "path":"audiogroups/audiogroup_sfx",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.313424,
-  "name":"sfx_IthacaShoot",
+  "duration":1.6861678,
+  "name":"sfx_ShotGunShoot",
   "parent":{
-    "name":"GunSounds",
-    "path":"folders/DSounds/GunSounds.yy",
+    "name":"ShotgunSounds",
+    "path":"folders/DSounds/GunSounds/ShotgunSounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_IthacaShoot.mp3",
+  "soundFile":"sfx_ShotGunShoot.mp3",
   "type":0,
   "volume":1.0,
 }

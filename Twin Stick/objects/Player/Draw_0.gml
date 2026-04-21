@@ -102,9 +102,9 @@ draw_origin_x+((288+36)*pon_x)+(72*vrp)-(row_offset*288),draw_origin_y+(36*pon_y
 vrp += 1}
 
 //draw_set_aligns(fa_center,fa_middle)
-//var_x = draw_origin_x+(216*pon_x)-(sprite_get_width(weapon_sprite)/2)+sprite_get_xoffset(weapon_sprite)
-//var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
-//draw_sprite(weapon_sprite,0,var_x,var_y)
+//var_x = draw_origin_x+(216*pon_x)-(sprite_get_width(weapon_id)/2)+sprite_get_xoffset(weapon_id)
+//var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_id)/2)+sprite_get_yoffset(weapon_id)
+//draw_sprite(weapon_id,0,var_x,var_y)
 
 //draw_text_with_outline(draw_origin_x+(216*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
 //if jam_timer > 0{
@@ -114,9 +114,9 @@ vrp += 1}
 
 if player_number = 0 or player_number = 2{draw_set_halign(fa_left)};else{draw_set_halign(fa_right)}
 
-var_x = draw_origin_x+(96*pon_x)+(sprite_get_xoffset(weapon_sprite)*pon_x)
-var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_sprite)/2)+sprite_get_yoffset(weapon_sprite)
-draw_sprite_ext(weapon_sprite,0,var_x,var_y,pon_x,1,0,-1,1)
+var_x = draw_origin_x+(96*pon_x)+(sprite_get_xoffset(weapon_id)*pon_x)
+var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_id)/2)+sprite_get_yoffset(weapon_id)
+draw_sprite_ext(weapon_id,0,var_x,var_y,pon_x,1,0,-1,1)
 
 draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
 if p_weapon.jam_timer > 0{

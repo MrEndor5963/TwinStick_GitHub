@@ -1,4 +1,5 @@
-if instance_exists(Player){room_start = true}
+if instance_exists(Player){room_start = true;//game_set_speed(20,gamespeed_fps)
+}
 
 if instance_exists(Player){
 if room != r_FloorTransition{

@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"sfx_ShotgunShellReload",
+  "%Name":"sfx_PumpForward",
   "audioGroupId":{
     "name":"audiogroup_sfx",
     "path":"audiogroups/audiogroup_sfx",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.7329932,
-  "name":"sfx_ShotgunShellReload",
+  "duration":0.2443084,
+  "name":"sfx_PumpForward",
   "parent":{
     "name":"ShotgunSounds",
     "path":"folders/DSounds/GunSounds/ShotgunSounds.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_ShotgunShellReload.mp3",
+  "soundFile":"sfx_PumpForward.wav",
   "type":0,
   "volume":1.0,
 }

@@ -125,7 +125,7 @@ weapon_damage = round(weapon_damage)
 }
 
 
-function referece_weapons(){weapon_id = -1
+function referece_weapons(){
 //Ordered by tier -> gun class -> gun power
 //Pistol, Revolvers, Machine pistol, smg, Assault rifle, LMG's, Shotguns, Sniper Rifles
 
@@ -194,61 +194,60 @@ function referece_weapons(){weapon_id = -1
 	//Pot
 	//Serving tray
 //Desklamp
-
-wpn_Unarmed()
-wpn_Knife()
+weapon_id = s_Unarmed;wpn_Unarmed()
+weapon_id = s_Knife;wpn_Knife()
 //Tier E, Tier 0
-wpn_Taurus92()
-wpn_m1911()
-wpn_P320()
+weapon_id = s_Taurus92;wpn_Taurus92()
+weapon_id = s_m1911;wpn_m1911()
+weapon_id = s_P320;wpn_P320()
 //Beretta 92
 //Tier D, Tier 1
-wpn_Glock18()
-wpn_Alien()
-wpn_FiveSeven()
-wpn_DEagle()
-wpn_Python()
-wpn_RagingJudge()
-wpn_CZ75Auto()
+weapon_id = s_Glock18;wpn_Glock18()
+weapon_id = s_Alien;wpn_Alien()
+weapon_id = s_FiveSeven;wpn_FiveSeven()
+weapon_id = s_DEagle;wpn_DEagle()
+weapon_id = s_Python;wpn_Python()
+weapon_id = s_RagingJudge;wpn_RagingJudge()
+weapon_id = s_CZ75Auto;wpn_CZ75Auto()
 //Tier C, Tier 2
-wpn_SnW500()
-wpn_Luty()
-wpn_VzSkorpion()
-wpn_Uzi()
-wpn_mp5()
-wpn_PPBison()
-wpn_MP40()
-wpn_Olympia()
-wpn_Ithaca()
-wpn_Spaz12()
+weapon_id = s_SnW500;wpn_SnW500()
+weapon_id = s_Luty;wpn_Luty()
+weapon_id = s_VzSkorpion;wpn_VzSkorpion()
+weapon_id = s_Uzi;wpn_Uzi()
+weapon_id = s_mp5;wpn_mp5()
+weapon_id = s_PPBison;wpn_PPBison()
+weapon_id = s_MP40;wpn_MP40()
+weapon_id = s_Olympia;wpn_Olympia()
+weapon_id = s_Ithaca;wpn_Ithaca()
+weapon_id = s_Spaz12;wpn_Spaz12()
 //Tier B, Tier 3
-wpn_Thompson()
-wpn_KrissVector()
-wpn_PPSh41()
-wpn_AK47()
-wpn_Galil()
-wpn_Remi870()
-wpn_Winchester1897()
-wpn_Karabiner98k()
-wpn_MosinNagat()
-wpn_SSG08()
+weapon_id = s_Thompson;wpn_Thompson()
+weapon_id = s_KrissVector;wpn_KrissVector()
+weapon_id = s_PPSh41;wpn_PPSh41()
+weapon_id = s_AK47;wpn_AK47()
+weapon_id = s_Galil;wpn_Galil()
+weapon_id = s_Remi870;wpn_Remi870()
+weapon_id = s_Winchester1897;wpn_Winchester1897()
+weapon_id = s_Karabiner98k;wpn_Karabiner98k()
+weapon_id = s_MosinNagat;wpn_MosinNagat()
+weapon_id = s_SSG08;wpn_SSG08()
 //Tier A, Tier 4
-wpn_Zip22()
-wpn_M14()
-wpn_AN94()
-wpn_Xiuhcoatl()
-wpn_ScarH()
-wpn_RPD()
-wpn_AWP()
+weapon_id = s_Zip22;wpn_Zip22()
+weapon_id = s_M14;wpn_M14()
+weapon_id = s_AN94;wpn_AN94()
+weapon_id = s_Xiuhcoatl;wpn_Xiuhcoatl()
+weapon_id = s_ScarH;wpn_ScarH()
+weapon_id = s_RPD;wpn_RPD()
+weapon_id = s_AWP;wpn_AWP()
 //Tier S, Tier 5
-wpn_spectre()
-wpn_M60()
-wpn_Lewis()
-wpn_MG42()
-wpn_DSR50()
-wpn_GM6Lynx()
-wpn_KS23()
-wpn_AA12()
+weapon_id = s_spectre;wpn_spectre()
+weapon_id = s_M60;wpn_M60()
+weapon_id = s_Lewis;wpn_Lewis()
+weapon_id = s_MG42;wpn_MG42()
+weapon_id = s_DSR50;wpn_DSR50()
+weapon_id = s_GM6Lynx;wpn_GM6Lynx()
+weapon_id = s_KS23;wpn_KS23()
+weapon_id = s_AA12;wpn_AA12()
 //Explosive
 //wpn_M79()
 //wpn_RPG7()
@@ -601,7 +600,7 @@ action_type = s_DoubleBarrel
 set_animation("None")
 bullet_spread = 6
 bullet_amount = 9
-shoot_sfx = sfx_OlympiaShoot
+shoot_sfx = sfx_ShotGunShoot
 hit_reward = 5
 description = "A finely made skeet shooting double barrel shotgun. Although reloading will be frequent and it lacks firepower compared to other shotguns, it's excellent handling and accuracy makes it a favorite for some"
 }
@@ -742,11 +741,11 @@ set_gun_ammo(7,10,false)
 set_bullet_power(s_12GadgeBuckshot,22)
 set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
-shoot_delay = 30
+shoot_delay = 15
 action_type = s_PumpAction
 bullet_spread = 20
 bullet_amount = 9
-shoot_sfx = sfx_IthacaShoot
+shoot_sfx = sfx_ShotGunShoot
 hit_reward = 5
 }
 
@@ -770,7 +769,7 @@ action_type = s_SemiAuto
 set_animation("None")
 bullet_spread = 30
 bullet_amount = 9
-shoot_sfx = sfx_OlympiaShoot
+shoot_sfx = sfx_ShotGunShoot
 jam_chance = 3
 jam_time = 130
 hit_reward = 5
@@ -939,7 +938,7 @@ shoot_delay = 30
 action_type = s_PumpAction
 bullet_spread = 35
 bullet_amount = 9
-shoot_sfx = sfx_IthacaShoot
+shoot_sfx = sfx_ShotGunShoot
 hit_reward = 5
 }
 
@@ -963,7 +962,7 @@ shoot_delay = 35
 action_type = s_PumpAction
 bullet_spread = 35
 bullet_amount = 9
-shoot_sfx = sfx_IthacaShoot
+shoot_sfx = sfx_ShotGunShoot
 hit_reward = 5
 description = "What used to be a missionary of firearms design is now an antique overshadowed by more modern shotguns. However should the trench gun need to come out of retirement it can get the job done, though it may be uncomfortable to shoot."
 }
@@ -1315,7 +1314,7 @@ shoot_delay = 45
 action_type = s_PumpAction
 bullet_spread = 30
 bullet_amount = 40
-shoot_sfx = sfx_IthacaShoot
+shoot_sfx = sfx_ShotGunShoot
 hit_reward = 4
 description = "4 gadge shotgun made out of old aircrafts and whatever spare parts the soviets had laying around"
 }
@@ -1340,7 +1339,7 @@ action_type = s_FullAuto
 set_animation("None")
 bullet_spread = 20
 bullet_amount = 9
-shoot_sfx = sfx_OlympiaShoot
+shoot_sfx = sfx_ShotGunShoot
 hit_reward = 5
 }
 

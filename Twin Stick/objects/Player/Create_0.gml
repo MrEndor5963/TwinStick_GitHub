@@ -195,6 +195,8 @@ mag_loaded = saved_mag_loaded[weapon_equipped]
 case_ejects_needed = saved_case_ejects_needed[weapon_equipped]
 glitch_int_mag = 1;glitch_int_reserve = 1
 glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
+if action_type = s_SemiAuto or action_type = s_FullAuto{p_weapon.shoot_timer = shoot_delay}
+else{if bullet_chambered = false{p_weapon.shoot_timer = 0}else{p_weapon.shoot_timer = shoot_delay}}
 }
 
 weapons_held = []

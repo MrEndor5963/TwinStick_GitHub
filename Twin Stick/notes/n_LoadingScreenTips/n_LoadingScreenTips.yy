@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"n_LoadingScreenTips",
+  "name":"n_LoadingScreenTips",
+  "parent":{
+    "name":"Notes",
+    "path":"folders/Notes.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

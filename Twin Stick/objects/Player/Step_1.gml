@@ -2,7 +2,7 @@ if spawned = false{
 if player_name = "Hazel"{
 country = "Brazil"
 hp = 4;hp_max = 4
-starting_weapon = s_Taurus92
+starting_weapon = s_Ithaca//s_Taurus92
 money = 600
 mov_spd = 12
 strength = 3

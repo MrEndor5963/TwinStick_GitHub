@@ -1,1 +1,1 @@
-weapon_sprite = s_SnW500
+weapon_id = s_SnW500
