@@ -1,4 +1,4 @@
-if GM.game_paused = true or room = r_FloorTransition{exit}
+if GM.game_paused = true or GM.game_over = true or room = r_FloorTransition{exit}
 weapon_id = player_id.weapons_held[player_id.weapon_equipped]
 script_execute_wpn(weapon_id)
 sprite_index = weapon_id
@@ -97,7 +97,7 @@ if slide_sprite = s_0 && pump_sprite = s_0{if shoot_timer = shoot_delay{bullet_c
 	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
 	var_spread = bullet_spread+clamp(recoil/5,0,5)
 	_bullet.image_angle = aim_direction+recoil+irandom_range(-var_spread,var_spread)
-	_bullet.damage = weapon_damage
+	_bullet.damage = bullet_damage
 	_bullet.penetration = penetration
 	_bullet.spawn_penetration = penetration
 	_bullet.bullet_speed = bullet_speed
@@ -253,6 +253,7 @@ _thrown.ammo_inmag = ammo_inmag
 _thrown.ammo_reserve = ammo_reserve
 _thrown.bullet_chambered = bullet_chambered
 _thrown.mag_loaded = mag_loaded
+_thrown.thrown = true
 
 var_number = player_id.weapon_equipped
 array_delete(player_id.weapons_held,var_number,1)

@@ -243,8 +243,8 @@ ds_list_destroy(list_temp)
 	var_object = instance_nearest(x,y,Item)
 	if key_interact_pressed && useable_money >= var_object.cost{
 	if var_object.item_is_free = false{player_point_change(-var_object.cost)}
-	new_item = var_object.sprite_index
-	if var_object.consumable = false{array_push(GM.items_bought,var_object.sprite_index)}
+	new_item = var_object.item_id
+	if var_object.consumable = false{array_push(GM.items_bought,var_object.item_id)}
 	if var_object.rebuyable = false{with var_object{instance_destroy()}}
 	with var_object{bought = true}
 	play_sfx(sfx_Buy)
@@ -263,11 +263,6 @@ ds_list_destroy(list_temp)
 	if place_meeting(x,y,FloorWeapon){
 	var_object = instance_nearest(x,y,FloorWeapon)
 	if key_interact_pressed{
-	if array_length(weapons_held) = weapon_slots_max{
-	floor_gun = instance_create_depth(x,y,depth+10,FloorWeapon)
-	floor_gun.weapon_id = weapon_id
-	floor_gun.saved_ammo_inmag = ammo_inmag
-	floor_gun.saved_ammo_reserve = ammo_reserve}
 	get_new_weapon(var_object.weapon_id)
 	saved_ammo_reserve[weapon_equipped] = var_object.ammo_reserve
 	saved_ammo_inmag[weapon_equipped] = var_object.ammo_inmag

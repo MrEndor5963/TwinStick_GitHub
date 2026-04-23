@@ -7,6 +7,7 @@ else{x_saved = x}
 
 if spawned = false{
 script_execute_wpn(weapon_id)
+if thrown = true{
 damage = 20
 direction = player_id.aim_direction
 speed = 1
@@ -16,12 +17,23 @@ speed = 0
 zsp = -10
 spin_speed = 30*-image_yscale
 grv = 0.5
+}
+if thrown = false{
+damage = 1
+direction = player_id.aim_direction;speed = 1
+hsp = -hspeed*random_range(2,4)
+vsp = -vspeed*random_range(2,4)
+zsp = random_range(-6,-4)
+spin_speed = image_yscale*random_range(5,10)
+grv = 0.5
+speed = 0
+}
 spawned = true
 }
 
 
 sprite_index = weapon_id
-depth = -y+z
+depth = -y-z
 
 image_angle += spin_speed
 

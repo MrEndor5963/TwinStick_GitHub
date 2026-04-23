@@ -1,8 +1,6 @@
-draw up some enemies or bosses+
+draw up some enemies or bosses
 
 fix gam_over and pause menu
-make thrown weapons hit enemies
-reload bar or animations
 redo guns jamming
 
 Make player vs player gamemode
@@ -18,6 +16,8 @@ more sfx
 Teleporters to shop, boss room, gun shop and 4th room (medbay or other) in spawn room,
 
 1-4 player balacing (adding more enemies the more players there are)
+
+enemy corpses
 
 enemy and player spritework/animation(long term)
 
@@ -36,6 +36,3 @@ LR 230C
 Dualies of some kind
 Crossbow
 Charleville 1763
-
-
-Complete: add sound slider in settings

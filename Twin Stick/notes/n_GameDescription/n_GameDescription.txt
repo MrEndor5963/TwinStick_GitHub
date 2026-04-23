@@ -1,10 +1,16 @@
 Game description
 
 Possible Names
-Alien Homicide Party/AHP
-Alien Slaughter Party/ASP
-Alien Massacre Protocol/AMP
-Alien Genocide Protocol/AGP
+
+Alien Genocide Protocol
+Alien Homicide Party
+Alien Massacre Protocol
+Alien Slaughter Party
+
+AGP(2)
+AHP(1)
+AMP(0)
+ASP(0)
 
 Steam header
 Left for dead in an Alien Prison/Research Facility on the moon,

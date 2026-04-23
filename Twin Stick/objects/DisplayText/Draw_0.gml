@@ -1,3 +1,6 @@
+
+draw_set_alpha(1-(glitch_intensity/3))
+
 text_width = string_width(text_string)
 if x < 0{x = 0};
 if x+sprite_width > GM.screen_width{x += (GM.screen_width-(x+sprite_width))}
@@ -18,10 +21,14 @@ image_alpha = 1
 draw_set_color(c_white)
 draw_text(x+(padding*2),y,text_string)
 
-text_gap = font_get_size(f_Main)*1.2
+text_gap = font_get_size(f_Main)*1.5
 
-image_xscale = (text_width+(padding*4))/48
+image_xscale = (text_width+(padding*4))
 if description != -1{
-type(x+(padding*2),y+4+text_gap,description,string_length(description),text_width)
-image_yscale = ((text_rows+1)*text_gap)/24}
-if image_yscale<2 && description != -1{image_yscale = 1}
+type(x+(padding*2),y+text_gap,description,string_length(description),text_width)
+image_yscale = ((text_rows+1)*(text_gap))}
+else{image_yscale = text_gap}
+
+draw_text(10,10,text_rows)
+
+draw_set_alpha(1)

@@ -92,7 +92,7 @@ turtle_mov_mult = 0
 weapon_weight = 0
 weight_mult = 1
 
-player_damage_mult = 0
+damage_mult = 0
 player_reload_mult = 0
 knockback_mult = 1
 
@@ -167,6 +167,23 @@ saved_mag_loaded[weapon_equipped] = mag_loaded
 saved_case_ejects_needed[weapon_equipped] = case_ejects_needed
 }
 weapon_equipped = array_length(weapons_held)}
+else{
+	//toss weapon
+	
+	_thrown = instance_create_depth(p_weapon.x,p_weapon.y,depth,FloorWeapon)
+	_thrown.player_id = id;
+	_thrown.image_yscale = p_weapon.image_yscale
+	_thrown.image_angle = p_weapon.image_angle
+	_thrown.weapon_id = p_weapon.weapon_id
+	_thrown.z = y-floor_y
+	_thrown.floor_y = floor_y
+	_thrown.ammo_inmag = ammo_inmag
+	_thrown.ammo_reserve = ammo_reserve
+	_thrown.bullet_chambered = bullet_chambered
+	_thrown.mag_loaded = mag_loaded
+	_thrown.thrown = false
+	
+}
 weapons_held[weapon_equipped] = arg_weapon
 weapon_sprite = arg_weapon
 script_execute_wpn(arg_weapon)

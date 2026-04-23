@@ -24,6 +24,67 @@ description = ""
 var_string = string_delete(sprite_get_name(arg_weapon_id),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
 
+if object_index = PlayerWeapon{
+	
+	
+	shoot_amount = 1
+	spread_increase = 0
+	spread_mult = 1
+	damage_mult = 1+player_id.damage_mult
+	recoil_mult = 1
+	knockback_mult = 1
+	bullet_mult = 1
+	weight_mult = 1
+	reload_mult = 1+player_id.player_reload_mult
+	if string_starts_with(weapon_name,"S") or string_starts_with(weapon_name,"s"){
+	ammo_reserve_max += round(ammo_reserve_max*player_id.cool_s_mult)
+	reload_mult += player_id.cool_s_mult
+	recoil_mult -= player_id.cool_s_mult
+	knockback_mult -= player_id.cool_s_mult
+	weight_mult -= player_id.cool_s_mult
+	}
+	//if string_digits(weapon_name) = "12" or string_digits(weapon_name) = "1216"{
+	//ammo_reserve_max += twelve_bonus_ammo;}
+	
+	if array_contains(GM.handgun_list,weapon_id){
+	damage_mult += player_id.handgun_damage_mult
+	recoil_mult += player_id.handgun_recoil_mult
+	knockback_mult += player_id.handgun_knockback_mult
+	}
+	if array_contains(GM.revolver_list,weapon_id){
+	trigger_delay /= player_id.revolver_hammer_time_divider;trigger_delay = round(trigger_delay)
+	deploy_time /= player_id.revolver_hammer_time_divider;deploy_time = round(deploy_time)
+	reload_mult += player_id.revolver_reload_mult
+	}
+	
+	if array_contains(GM.smg_list,weapon_id){
+	shoot_delay -= player_id.smg_shot_delay_decrease;if shoot_delay < 1{shoot_delay = 1}
+	}
+	
+	if array_contains(GM.shotgun_list,weapon_id){
+	spread_mult += player_id.shotgun_spread_mult
+	bullet_mult += player_id.shotgun_bullet_mult
+	}
+	if array_contains(GM.sniper_list,weapon_id){
+	spread_increase += player_id.sniper_spread_increase
+	damage_mult += player_id.sniper_damage_mult
+	}
+	
+	if array_contains(GM.soviet_list,weapon_id){
+	ammo_reserve_max += round(ammo_reserve_max*player_id.soviet_ammo_mult)}
+	
+	
+	bullet_damage = round(bullet_damage*damage_mult)
+	melee_damage = round(melee_damage*damage_mult)
+	knockback = knockback*knockback_mult
+	gun_recoil = gun_recoil*recoil_mult
+	weapon_weight = weapon_weight*weight_mult;if weapon_weight < 0{weapon_weight = 0}
+	bullet_spread = (bullet_spread*spread_mult)+spread_increase
+	shoot_amount += player_id.shoot_amount_increase
+	reload_speed = reload_mult
+	hit_reward += player_id.hit_reward_increase
+	}
+
 }
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -84,13 +145,13 @@ ejection_y = arg_ejection_y
 }
 
 function set_caliber_stats(arg_damge,arg_knockback,arg_penetration,arg_weight,arg_price,arg_name){
-weapon_damage = arg_damge
+bullet_damage = arg_damge
 bullet_knockback = arg_knockback
 penetration = arg_penetration
 bullet_weight = arg_weight;bullet_weight = arg_weight
 bullet_price = arg_price*3;
 caliber_name = arg_name;caliber_name = caliber_name
-///*temporary damage calculation until I get a better grip on stuff*/weapon_damage = bullet_weight*500
+///*temporary damage calculation until I get a better grip on stuff*/bullet_damage = bullet_weight*500
 
 }
 
@@ -121,7 +182,7 @@ case s_410Bore: set_caliber_stats((400/9)+(1.5*barrel_length),1.5,1,0.1,8,".410 
 case s_12GadgeBuckshot: set_caliber_stats((450/9)+(1.5*barrel_length),1.5,1,0.1,10,"12 Gadge Buckshot") break;
 case s_23mm: set_caliber_stats((1200/32)+(1.1*barrel_length),1.5,1,0.4,500,"23mm") break;
 }
-weapon_damage = round(weapon_damage)
+bullet_damage = round(bullet_damage)
 }
 
 
@@ -264,7 +325,7 @@ if object_index = GM{
 array_push(melee_list,weapon_id)
 exit}
 auto = false
-weapon_damage = 0
+bullet_damage = 0
 penetration = 1
 gun_recoil = 0
 shoot_delay = 0
@@ -281,7 +342,7 @@ if object_index = GM{
 array_push(melee_list,weapon_id)
 exit}
 auto = false
-weapon_damage = 25
+bullet_damage = 25
 penetration = 1
 gun_recoil = 3
 shoot_delay = 30

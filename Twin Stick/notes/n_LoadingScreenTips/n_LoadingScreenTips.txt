@@ -12,3 +12,4 @@
 - Due to the top secret nature of the facilty, funding for the facilty often gets overlooked by international partners. The last official budget increase was in 1992
 - One reason extensive firearms have been collected in the facility is that prototypes are often sent up for organic testing
 - The earth teleporter control overide is located in maximum security and requires a matching id card, handprint, retinel scan, and fresh blood sample
+- There is a small list of alien personel that will not activate an alien species sensor

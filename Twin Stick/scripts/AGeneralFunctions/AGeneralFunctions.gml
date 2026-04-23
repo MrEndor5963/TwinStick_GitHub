@@ -25,7 +25,6 @@ var var_temp = audio_play_sound(arg_msc,1,true)
 return var_temp
 }
 
-
 function draw_text_with_outline(arg_x,arg_y,arg_text,arg_color){
 draw_set_color(c_black)
 draw_text(arg_x-2,arg_y,arg_text)

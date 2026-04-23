@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":3,
   "conversionMode":0,
-  "duration":73.86413,
+  "duration":281.286,
   "name":"msc_Floor1",
   "parent":{
     "name":"Music",

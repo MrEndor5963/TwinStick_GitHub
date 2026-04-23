@@ -1,4 +1,6 @@
-if GM.map_x != home_x or GM.map_y != home_y or bought = true{exit}
+if GM.map_x != home_x or GM.map_y != home_y or bought = true{
+x = -3000;exit}
+else{x = x_saved}
 
 if spawned = false{
 script_execute_item(sprite_index)
