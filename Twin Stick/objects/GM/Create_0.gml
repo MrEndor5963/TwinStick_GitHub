@@ -76,7 +76,7 @@ vrp += 1
 }*/
 
 enemy_list = []
-array_push(enemy_list,Zombie)
+array_push(enemy_list,Crawler)
 //array_push(enemy_list,SpikeFly)
 //array_push(enemy_list,Lewt)
 //array_push(enemy_list,Wizard)

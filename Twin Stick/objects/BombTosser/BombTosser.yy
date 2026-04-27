@@ -10,8 +10,8 @@
   "name":"BombTosser",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/AObjects/Enemies.yy",
+    "name":"Floor2Enemies",
+    "path":"folders/AObjects/Enemies/Floor2Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,

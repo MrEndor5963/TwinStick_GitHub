@@ -10,8 +10,8 @@
   "name":"Lewt",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/AObjects/Enemies.yy",
+    "name":"Floor1Enemies",
+    "path":"folders/AObjects/Enemies/Floor1Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,
