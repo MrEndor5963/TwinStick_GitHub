@@ -1,3 +1,5 @@
+home_x = GM.map_x
+home_y = GM.map_y
 hsp = 0
 vsp = 0
 set_tileset_collision()

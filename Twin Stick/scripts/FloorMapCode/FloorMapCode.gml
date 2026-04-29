@@ -72,7 +72,8 @@ if floor_number = 1{
 enemy_list = []
 array_push(enemy_list,Crawler)
 array_push(enemy_list,SideWalker)
-array_push(enemy_list,Lewt)
+array_push(enemy_list,Spitter)
+//array_push(enemy_list,Lewt)
 //array_push(enemy_list,Wizard)
 //array_push(enemy_list,Hellhound)
 }

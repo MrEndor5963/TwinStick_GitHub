@@ -15,7 +15,7 @@ draw_sprite_ext(weapon_id,0,var_x,var_y,1,1,image_angle,image_blend,image_alpha)
 font = f_Main;draw_set_color(c_white)
 
 
-if place_meeting(x-10,y,Player) or place_meeting(x+10,y,Player) or place_meeting(x,y-10,Player) or place_meeting(x,y+10,Player){
+if player_id != -1{
 var_text = "Press A to Buy "+string(weapon_name)+" [Cost "+string(cost)+"]"
 if !instance_exists(display_text){
 display_text = instance_create_depth(x-(string_width(display_text)/2),y-(font_get_size(font)),-room_height-100,DisplayText)
@@ -25,3 +25,5 @@ display_text.despawn = false
 }
 }
 else{if instance_exists(display_text){display_text.despawn = true}}
+
+player_id = -1

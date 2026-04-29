@@ -1,5 +1,7 @@
 draw up some enemies or bosses
 
+Optimize buying guns and item code, also a lil misc player code optimization too :)
+
 fix gam_over and pause menu
 redo guns jamming
 

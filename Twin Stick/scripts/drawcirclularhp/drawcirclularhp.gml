@@ -29,6 +29,7 @@ function draw_circular_Fill_HP(x ,y ,value, max, colour, radius, transparency){
 	}
 }
 
+/*
 function draw_circular_HP(x ,y ,value, max, colour, radius, transparency , width){
 	if (value > 0) { // no point even running if there is nothing to display (also stops /0
 	    var i, len, tx, ty, val;

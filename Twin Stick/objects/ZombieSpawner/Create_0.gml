@@ -1,1 +1,0 @@
-timer = irandom_range(1,140)

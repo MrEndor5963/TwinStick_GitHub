@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_HazelR",
   "bboxMode":2,
   "bbox_bottom":95,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"89b154fb-789a-4d9b-9142-a6400b6dfc01","name":"89b154fb-789a-4d9b-9142-a6400b6dfc01","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"89b154fb-789a-4d9b-9142-a6400b6dfc01","name":"89b154fb-789a-4d9b-9142-a6400b6dfc01","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -96,7 +96,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":48,
+    "xorigin":30,
     "yorigin":48,
   },
   "swatchColours":null,
@@ -107,5 +107,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":96,
+  "width":60,
 }

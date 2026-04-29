@@ -11,9 +11,11 @@ description_text = -678
 spawned = false
 if room = r_Treasure or room = r_Floor1_Spawn{item_is_free = true}else{item_is_free = false}
 draw_timer = 0
+draw_timer2 = 0
 rebuyable = false
 
 
 var_item = array_get(GM.item_list,irandom_range(0,array_length(GM.item_list)-1))
 sprite_index = var_item
 item_id = var_item
+player_id = -1

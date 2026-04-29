@@ -1,5 +1,5 @@
 if room = r_TitleScreen{
-//play_msc(msc_TitleScreen)
+play_msc(msc_TitleScreen)
 }
 
 if instance_exists(Player){room_start = true;//game_set_speed(20,gamespeed_fps)

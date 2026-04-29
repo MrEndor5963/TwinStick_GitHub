@@ -21,7 +21,7 @@ function character_Hazel(){
 country = "Brazil"
 hp = 4;hp_max = 4
 starting_weapon = s_Taurus92
-money = 600
+money = 1000
 mov_spd = 12
 strength = 3
 weight = 1.14
@@ -167,7 +167,7 @@ mov_spd = 8
 strength = 3
 weight = 1.02
 //reload_speed = 0.95
-healthcare = 0
+healthcare = 1000
 draw_color = c_red
 player_age = 26
 futbol_skill = 85

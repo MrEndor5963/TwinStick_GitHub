@@ -1,4 +1,4 @@
-if GM.map_x != home_x or GM.map_y != home_y or bought = true{
+if GM.map_x != home_x or GM.map_y != home_y{
 x = -3000;exit}
 else{x = x_saved}
 
@@ -38,7 +38,16 @@ ds_list_destroy(list_temp)
 
 font = f_Main;draw_set_color(c_white)
 
-if place_meeting(x,y,Player){
+if player_id != -1 && bought = false{
+
+useable_money = player_id.debt_limit+player_id.money
+if player_id.key_interact_pressed && useable_money >= cost{
+if item_is_free = false{with player_id{player_point_change(-other.cost)}}
+player_id.new_item = item_id
+bought = true
+play_sfx(sfx_Buy)
+}	
+
 if item_is_free = true{
 var_text = "Press A to take "+string(item_name)}
 else{
@@ -53,7 +62,7 @@ display_text.description = description
 }
 else{if instance_exists(display_text){display_text.despawn = true}}
 
-
+player_id = -1
 
 //GM.description_text = true
 //GM.description_text_x = x+(sprite_width/2)

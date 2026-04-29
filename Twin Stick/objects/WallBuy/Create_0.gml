@@ -18,3 +18,4 @@ array_push(GM.wallguns_on_map,weapon_id)
 display_text = -68
 spawned = false
 
+player_id = -1

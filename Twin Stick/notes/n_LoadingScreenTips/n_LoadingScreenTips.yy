@@ -1,5 +1,5 @@
 {
-  "$GMNotes":"",
+  "$GMNotes":"v1",
   "%Name":"n_LoadingScreenTips",
   "name":"n_LoadingScreenTips",
   "parent":{

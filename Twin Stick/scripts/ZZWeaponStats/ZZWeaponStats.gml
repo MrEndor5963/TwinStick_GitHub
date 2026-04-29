@@ -140,8 +140,8 @@ deploy_direction = arg_deploy_direction;deploy_direction = arg_deploy_direction
 }
 
 function set_ejection_point(arg_ejection_x,arg_ejection_y){
-ejection_x = arg_ejection_x
-ejection_y = arg_ejection_y
+ejection_x = arg_ejection_x;ejection_x = ejection_x
+ejection_y = arg_ejection_y;ejection_y = ejection_y
 }
 
 function set_caliber_stats(arg_damge,arg_knockback,arg_penetration,arg_weight,arg_price,arg_name){
@@ -586,7 +586,7 @@ set_gun_handling(35,11,4.5)
 set_deploy_stats(12,-1)
 shoot_delay = 2
 bullet_amount = 5
-bullet_spread = 12
+bullet_spread = 8
 trigger_delay = 12
 action_type = s_DoubleAction
 reload_sfx = sfx_DEagleReload
@@ -804,7 +804,7 @@ set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
 shoot_delay = 15
 action_type = s_PumpAction
-bullet_spread = 20
+bullet_spread = 22
 bullet_amount = 9
 shoot_sfx = sfx_ShotGunShoot
 hit_reward = 5
@@ -828,7 +828,7 @@ set_deploy_stats(15,-1)
 shoot_delay = 5
 action_type = s_SemiAuto
 set_animation("None")
-bullet_spread = 30
+bullet_spread = 20
 bullet_amount = 9
 shoot_sfx = sfx_ShotGunShoot
 jam_chance = 3
@@ -997,7 +997,7 @@ set_gun_handling(70,20,8)
 set_deploy_stats(25,1)
 shoot_delay = 30
 action_type = s_PumpAction
-bullet_spread = 35
+bullet_spread = 25
 bullet_amount = 9
 shoot_sfx = sfx_ShotGunShoot
 hit_reward = 5
@@ -1021,7 +1021,7 @@ set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
 shoot_delay = 35
 action_type = s_PumpAction
-bullet_spread = 35
+bullet_spread = 30
 bullet_amount = 9
 shoot_sfx = sfx_ShotGunShoot
 hit_reward = 5

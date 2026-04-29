@@ -139,7 +139,11 @@ glitch_int_points = 0.0
 //glitch_int_item = [] 
 
 
-
+function player_destroy_protocol(){
+ds_grid_destroy(pathfinding_grid)
+instance_destroy(p_weapon)
+instance_destroy()
+}
 
 function glitch_text(arg_x,arg_y,arg_text){
 _width = string_width(arg_text)

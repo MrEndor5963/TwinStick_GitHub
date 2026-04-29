@@ -1,4 +1,4 @@
-if GM.game_paused = true{exit}
+if zsp = 0 or GM.game_paused = true{exit}
 
 depth = -y+z
 

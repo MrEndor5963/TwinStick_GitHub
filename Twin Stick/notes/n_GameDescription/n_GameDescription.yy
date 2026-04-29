@@ -1,5 +1,5 @@
 {
-  "$GMNotes":"",
+  "$GMNotes":"v1",
   "%Name":"n_GameDescription",
   "name":"n_GameDescription",
   "parent":{

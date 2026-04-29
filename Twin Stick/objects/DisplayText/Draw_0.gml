@@ -29,6 +29,6 @@ type(x+(padding*2),y+text_gap,description,string_length(description),text_width)
 image_yscale = ((text_rows+1)*(text_gap))}
 else{image_yscale = text_gap}
 
-draw_text(10,10,text_rows)
+//draw_text(10,10,text_rows)//debug
 
 draw_set_alpha(1)

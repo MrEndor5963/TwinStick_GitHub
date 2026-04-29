@@ -13,6 +13,10 @@ hurt_by_id = -1
 }
 
 function draw_enemy(){
+//floor_y = y+(sprite_get_height(sprite_index)/2)
+//shadow_width = sprite_get_width(sprite_index)/50
+//draw_sprite_ext(s_Shadow,image_index,x,floor_y-4,shadow_width,1,image_angle,c_black,image_alpha)
+depth = -y-(sprite_get_height(sprite_index)/2)
 if hit_stun > 0{
 shader_set(sh_HitFlash)}
 draw_self()
@@ -22,7 +26,25 @@ if hp <= 0{
 blood_splatter()
 play_sfx(sfx_EnemyDeath)
 instance_destroy(hitbox)
-instance_destroy()}
+
+corpse = instance_create_depth(x,y,depth,PersistentVFX)
+corpse.hsp = hsp_knockback*random_range(2,3)
+corpse.vsp = vsp_knockback*random_range(2,3)
+corpse.zsp = random_range(-8,-6)
+corpse.image_angle = point_direction(x,y,x+hsp_knockback,y+vsp_knockback)+180
+corpse.image_yscale = image_xscale
+corpse.z = -1
+corpse.floor_y = y
+corpse.grv = 0.5
+corpse_sprite = asset_get_index("s_"+object_get_name(object_index)+"Dead")
+if corpse_sprite != -1{corpse.sprite_index = corpse_sprite}
+else{corpse.sprite_index = s_0}
+
+instance_destroy()
+
+
+}
+
 }
 
 function blood_splatter(){

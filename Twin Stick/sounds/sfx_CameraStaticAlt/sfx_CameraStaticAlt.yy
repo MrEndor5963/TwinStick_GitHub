@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"sfx_CameraStaticAlt",
   "audioGroupId":{
     "name":"audiogroup_sfx",
     "path":"audiogroups/audiogroup_sfx",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":0,
   "compression":0,
+  "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":15.470295,
+  "exportDir":"",
   "name":"sfx_CameraStaticAlt",
   "parent":{
     "name":"UISounds",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sfx_CameraStaticAlt.ogg",
-  "type":0,
   "volume":1.0,
 }

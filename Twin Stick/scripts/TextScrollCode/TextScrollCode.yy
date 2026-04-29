@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"TextScrollCode",
   "parent":{
-    "name":"!Scripts",
-    "path":"folders/!Scripts.yy",
+    "name":"LessEditedScripts",
+    "path":"folders/!Scripts/LessEditedScripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

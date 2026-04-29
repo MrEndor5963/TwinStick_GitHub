@@ -34,7 +34,7 @@ corp_logo_timer += 0.03
 yoff =  1*sin(corp_logo_timer)
 if yoff >=0{
 draw_sprite_ext(s_RedactedCorp,0,1280-96,720-96,yoff,1,0,-1,1)}
-else{draw_sprite_ext(s_RedactedCorpBack,0,1280-96,720-96,yoff,1,0,-1,1)}
+else{draw_sprite_ext(s_RedactedCorp,1,1280-96,720-96,yoff,1,0,-1,1)}
 }
 
 if draw_map = true{
@@ -48,7 +48,7 @@ var_yy = 0
 repeat(map_size){
 room_type = ds_grid_get(map,var_xx,var_yy)
 if room_type = 0{
-//draw_sprite(s_UnVisited,0,var_xx*48,var_yy*48)
+//draw_sprite(s_UnVisited,0,var_xx*72,var_yy*72)
 }
 else{
 if array_contains(visited_rooms,x_plus_y(var_xx,var_yy)){
@@ -65,7 +65,7 @@ if room_type = r_Shop{draw_sprite(s_ShopMarker,0,draw_map_x+var_xx*72,draw_map_y
 if room_type = r_GunShop{draw_sprite(s_GunShopMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 if room_type = r_Medbay{draw_sprite(s_MedbayMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 if room_type = r_Gauntlet{draw_sprite(s_GauntletMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_BoxRoom{draw_sprite(s_BoxRoomMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
+//if room_type = r_BoxRoom{draw_sprite(s_BoxRoomMarker_1,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 if room_type = r_Treasure{draw_sprite(s_TreaureMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
 
 var_yy += 1}

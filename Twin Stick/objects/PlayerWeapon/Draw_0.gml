@@ -1,6 +1,8 @@
 if room = r_FloorTransition{exit}
 
-
+//direction = image_angle;speed = 1
+//floor_y = y+(player_id.floor_y-player_id.y)
+//draw_sprite_ext(sprite_index,0,x,floor_y,image_xscale,image_yscale,image_angle+angle_offset,c_black,0.5)
 //gun_angle = aim_direction+recoil+((deploy_timer*(90/deploy_time))*(image_yscale*deploy_direction))
 
 if weapon_draw_sprite = s_0{weapon_draw_sprite = sprite_index}

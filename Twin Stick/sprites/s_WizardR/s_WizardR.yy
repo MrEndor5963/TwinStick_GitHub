@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_WizardR",
   "bboxMode":2,
   "bbox_bottom":95,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"bbad6b4b-d222-48f3-a57c-76526f648af3","name":"bbad6b4b-d222-48f3-a57c-76526f648af3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bbad6b4b-d222-48f3-a57c-76526f648af3","name":"bbad6b4b-d222-48f3-a57c-76526f648af3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Wizard",
-    "path":"folders/BSprites/EnemySprites/Wizard.yy",
+    "path":"folders/BSprites/EnemySprites/ZOldEnemies/Wizard.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

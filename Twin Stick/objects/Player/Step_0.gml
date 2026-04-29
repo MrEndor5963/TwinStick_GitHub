@@ -14,7 +14,7 @@ repeat(cryptocoin){player_point_change(irandom_range(-10000,10000))}
 new_floor = false
 }
 
-depth = -y
+depth = -floor_y
 if hp <= 0{
 sprite_index = asset_get_index("s_"+string(player_name)+"Dead")
 jam_timer = 0
@@ -144,7 +144,7 @@ if collision_present(x,y+vsp)
 }
 
  y += vsp
-floor_y = y
+floor_y = y+(sprite_height/2)
 
 refresh_grid -= 1
 if refresh_grid = 0{refresh_grid = 60}
@@ -161,7 +161,7 @@ sprite_set_bbox(sprite_index,30,50,(sprite_width)-30,sprite_height)
 
 
 
-if place_meeting(x,y,[Enemy,Explosion,SlugeeTrail]) && hit_stun = 0 or take_damage = true{
+if place_meeting(x,y,[Enemy,Explosion,SlugeeTrail,EnemyBullet]) && hit_stun = 0 or take_damage = true{
 if place_meeting(x,y,Enemy) or place_meeting(x,y,Explosion){
 if place_meeting(x,y,Enemy){var_thing = instance_nearest(x,y,Enemy)}
 if place_meeting(x,y,Explosion){var_thing = instance_nearest(x,y,Explosion)}
@@ -204,9 +204,7 @@ ds_list_destroy(list_temp)
 #endregion
 
 #region Buyable Stuff
-	set_image_scale(1.5)
-	useable_money = money+debt_limit
-
+	useable_money = debt_limit+money
 	if place_meeting(x,y,MysteryBox){
 	var_object = instance_nearest(x,y,MysteryBox)
 	if key_interact_pressed && useable_money >= 950 && var_object.box_open = false{
@@ -225,9 +223,9 @@ ds_list_destroy(list_temp)
 	}
 	}
 
-	useable_money = money+debt_limit
 	if place_meeting(x,y-10,WallBuy){
 	var_object = instance_nearest(x,y-10,WallBuy)
+	var_object.player_id = id
 	if key_interact_pressed && useable_money >= var_object.cost{
 	player_point_change(-var_object.cost)
 	get_new_weapon(var_object.weapon_id)
@@ -238,27 +236,14 @@ ds_list_destroy(list_temp)
 	}
 	}
 
-	useable_money = money+debt_limit
 	if place_meeting(x,y,Item){
 	var_object = instance_nearest(x,y,Item)
-	if key_interact_pressed && useable_money >= var_object.cost{
-	if var_object.item_is_free = false{player_point_change(-var_object.cost)}
-	new_item = var_object.item_id
-	if var_object.consumable = false{array_push(GM.items_bought,var_object.item_id)}
-	if var_object.rebuyable = false{with var_object{instance_destroy()}}
-	with var_object{bought = true}
-	play_sfx(sfx_Buy)
-	}
-
+	var_object.player_id = id
 	}
 
 	if place_meeting(x,y,Teleporter) && key_interact{
 	Teleporter.teleport_timer += 1
 	}
-
-	set_image_scale(1)
-#endregion End Of Buyable Stuff
-
 
 	if place_meeting(x,y,FloorWeapon){
 	var_object = instance_nearest(x,y,FloorWeapon)
@@ -271,6 +256,9 @@ ds_list_destroy(list_temp)
 	with var_object{instance_destroy()}
 	}
 	}
+	
+#endregion End Of Interactable tuff
+
 //end of alive code
 }
 

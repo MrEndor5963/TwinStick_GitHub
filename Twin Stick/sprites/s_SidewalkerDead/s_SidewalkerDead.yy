@@ -1,19 +1,18 @@
 {
-  "$GMSprite":"",
-  "%Name":"s_SidewalkerDead",
+  "$GMSprite":"v2",
+  "%Name":"s_SideWalkerDead",
   "bboxMode":0,
-  "bbox_bottom":63,
-  "bbox_left":3,
-  "bbox_right":83,
-  "bbox_top":6,
-  "collisionKind":1,
+  "bbox_bottom":55,
+  "bbox_left":7,
+  "bbox_right":87,
+  "bbox_top":23,
+  "collisionKind":5,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"590632c3-badd-4930-a31a-86809c4094a2","name":"590632c3-badd-4930-a31a-86809c4094a2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"597d46dc-be7c-4c25-857e-13051efb877b","name":"597d46dc-be7c-4c25-857e-13051efb877b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"590632c3-badd-4930-a31a-86809c4094a2","name":"590632c3-badd-4930-a31a-86809c4094a2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -22,7 +21,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"761959d1-a7ed-45f4-bfc1-93754ccbb984","blendMode":0,"displayName":"default","isLocked":false,"name":"761959d1-a7ed-45f4-bfc1-93754ccbb984","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"s_SidewalkerDead",
+  "name":"s_SideWalkerDead",
   "nineSlice":null,
   "origin":4,
   "parent":{
@@ -34,7 +33,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"s_SidewalkerDead",
+    "%Name":"s_SideWalkerDead",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -50,7 +49,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":2.0,
+    "length":1.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -58,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"s_SidewalkerDead",
+    "name":"s_SideWalkerDead",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -72,11 +71,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"590632c3-badd-4930-a31a-86809c4094a2","path":"sprites/s_SidewalkerDead/s_SidewalkerDead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"590632c3-badd-4930-a31a-86809c4094a2","path":"sprites/s_SideWalkerDead/s_SideWalkerDead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"9829765a-9f24-4e3f-9c9d-0f2a080ee35c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"597d46dc-be7c-4c25-857e-13051efb877b","path":"sprites/s_SidewalkerDead/s_SidewalkerDead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"53b92c1d-90f4-4b68-8703-2d687f487891","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

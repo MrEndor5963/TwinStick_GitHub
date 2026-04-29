@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_Hellhound",
   "bboxMode":0,
   "bbox_bottom":78,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"1ca0a83e-3468-4f9a-b782-159ca397a83b","name":"1ca0a83e-3468-4f9a-b782-159ca397a83b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"1ca0a83e-3468-4f9a-b782-159ca397a83b","name":"1ca0a83e-3468-4f9a-b782-159ca397a83b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"EnemySprites",
-    "path":"folders/BSprites/EnemySprites.yy",
+    "name":"Wizard",
+    "path":"folders/BSprites/EnemySprites/ZOldEnemies/Wizard.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

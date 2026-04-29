@@ -113,7 +113,7 @@ referece_weapons()
 
 item_list = []
 reference_items()
-items_bought = []
+//items_bought = []
 
 wallguns_on_map = []
 
@@ -123,6 +123,8 @@ array_push(persistent_object_list,MysteryBox)
 array_push(persistent_object_list,WallBuy)
 array_push(persistent_object_list,Item)
 array_push(persistent_object_list,Key)
+array_push(persistent_object_list,PersistentVFX)
+array_push(persistent_object_list,FloorWeapon)
 
 corp_logo_timer = 0
 
@@ -132,7 +134,7 @@ description_text = false
 //application_surface_draw_enable(false); //disabling automatic redrawing of the application surface
 display_set_gui_size(1280, 720);
 glitch_intensity = 2
-glitch_sound = -22
+//glitch_sound = -22
 
 //////////////////////
 ///////////////////////
