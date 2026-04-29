@@ -134,6 +134,7 @@ if reload_progress >= 0{reload_progress += player_id.reload_speed
 	if mag_loaded = true && ammo_inmag <= ammo_inmag_max && abs(recoil) < 5{
 	angle_offset = 100*image_yscale
 	mag_loaded = false
+	if ammo_inmag > 1{ammo_inmag = 1;player_id.glitch_int_mag = 1}
 	direction = aim_direction;speed = 1
 	particle = instance_create_depth(
 	x+(mag_xoff-sprite_get_xoffset(sprite_index))+((sprite_get_width(sprite_index)*hspeed)/2),
@@ -158,15 +159,19 @@ if reload_progress >= 0{reload_progress += player_id.reload_speed
 	}
 	
 	if reload_progress >= reload_time{
+	reload_progress = -1
 	if magazine_reload = true{
 	if ammo_inmag > 1{ammo_inmag = 1}
 	ammo_inmag += ammo_inmag_max
 	mag_loaded = true}
-	else{ammo_inmag += 1}
+	else{
+	ammo_inmag += 1
+	if ammo_inmag < ammo_inmag_max && ammo_reserve >0{reload_progress = 0}
+	}
 	ammo_reserve -= 1
 	player_id.glitch_int_mag = 1
 	player_id.glitch_int_reserve = 1
-	reload_progress = -1
+	
 	}
 }
 
@@ -182,7 +187,7 @@ direction = aim_direction+recoil
 speed = 1
 position_xoffset = sprite_get_xoffset(sprite_index)-weapon_xoffset
 x = player_id.x+(position_xoffset*hspeed)
-y = player_id.y+(position_xoffset*vspeed)
+y = player_id.y+(position_xoffset*vspeed)+(sprite_get_yoffset(sprite_index)-weapon_yoffset)
 speed = 0
 image_angle = direction
 depth = player_id.depth-1

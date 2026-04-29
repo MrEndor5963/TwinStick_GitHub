@@ -1,7 +1,5 @@
 if GM.game_paused = true or GM.game_over = true{exit}
 
-node_x = x div 48
-node_y = y div 48
 if spawn_timer > 0{
 spawn_timer -= 1;exit
 }
@@ -41,6 +39,9 @@ if collision_present(x,y+vsp+vsp_knockback)
 }
 
 y += vsp+vsp_knockback
+
+node_x = x div 64
+node_y = y div 64
 
 hsp *= 0.95
 vsp *= 0.95

@@ -78,7 +78,7 @@ record_size = 200
 for(var i = record_size-1; i >= 0; i--){
 record_x[i] = x;record_y[i] = y}
 
-pathfinding_grid = ds_grid_create(27,15)
+pathfinding_grid = ds_grid_create(20,12)
 //set_player_grid()
 take_damage = false
 //Item variables
@@ -201,6 +201,7 @@ glitch_int_gun_name = 1;glitch_int_gun_sprite = 1
 }
 
 function switch_to_weapon(arg_weapon_equipped){
+p_weapon.reload_progress= -1
 weapon_equipped = arg_weapon_equipped
 if array_length(weapons_held) = 0{weapons_held[0] = s_Unarmed}
 script_execute_wpn(weapons_held[weapon_equipped])

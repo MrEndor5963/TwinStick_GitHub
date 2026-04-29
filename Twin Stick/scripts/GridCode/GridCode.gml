@@ -7,7 +7,7 @@ return false
 function set_player_grid(){
 ds_grid_clear(pathfinding_grid,0)
 
-node_x = x div 48;node_y = y div 48
+node_x = x div 64;node_y = y div 64
 
 c = node_x;r = node_y
 
@@ -53,7 +53,7 @@ repeat(1000){if array_length(open_nodes) = 0{exit}
 	repeat(array_length(child_nodes)){
 		child_c = round(floor(child_nodes[var_repeat]))
 		child_r = round(frac(child_nodes[var_repeat])*100)
-		if ds_grid_get(global.collision_grid,child_c,child_r) = 1 or ongrid(child_c,child_r) = false{
+		if ds_grid_get(pathfinding_grid,child_c,child_r) = 1 or ongrid(child_c,child_r) = false{
 		array_push(closed_nodes,child_nodes[var_repeat])
 		ds_grid_set(pathfinding_grid,child_c,child_r,1000)
 		}
@@ -79,10 +79,18 @@ repeat(1000){if array_length(open_nodes) = 0{exit}
 		
 		
 		mov_cost += 1//ds_grid_get(global.grid,child_c,child_r)
-		if mov_cost != 0 && ds_grid_get(pathfinding_grid,child_c,child_r) <= 0{
+		
+		saved_sprite = sprite_index;saved_index = image_index
+		sprite_index = s_Collision
+		if !place_empty(child_c*64,child_r*64,tiles){mov_cost = 999}
+		sprite_index = saved_sprite;image_index = saved_index
+		
+		if mov_cost != 0 && ds_grid_get(pathfinding_grid,child_c,child_r) <= 0 && mov_cost < 999{
 		ds_grid_set(pathfinding_grid,child_c,child_r,mov_cost)
 		array_push(moveable_tiles,x_plus_y(child_c,child_r))}
-		else{array_push(closed_nodes,x_plus_y(child_c,child_r))}
+		else{
+		ds_grid_set(pathfinding_grid,child_c,child_r,mov_cost)
+		array_push(closed_nodes,x_plus_y(child_c,child_r))}
 		}
 		
 		var_repeat += 1;code_loops_2 +=1

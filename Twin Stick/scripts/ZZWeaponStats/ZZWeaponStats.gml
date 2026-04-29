@@ -526,7 +526,7 @@ array_push(wallbuy_list,weapon_id)
 array_push(handgun_list,weapon_id)
 exit}
 auto = false
-set_gun_ammo(7,4,true)
+set_gun_ammo(7,3,true)
 set_bullet_power(s_50AE,6)
 set_gun_handling(85,9,4.4)
 set_deploy_stats(9,-1)

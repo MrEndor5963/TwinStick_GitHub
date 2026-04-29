@@ -37,7 +37,6 @@ camera_set_view_size(view_camera[0],cam_size_x,cam_size_y)
 clamp_x1 = 0;clamp_x2 = room_width
 clamp_y1 = 0;clamp_y2 = room_height
 
-global.collision_grid = ds_grid_create(27,15)
 floor_music_id = -1
 floor_number = 0
 next_floor = false
