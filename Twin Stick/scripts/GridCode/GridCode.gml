@@ -1,3 +1,8 @@
+function set_nodes(){
+node_x = x div 64
+node_y = (y+sprite_get_yoffset(sprite_index)) div 64
+}
+
 function ongrid(arg_x,arg_y){
 if arg_x < 0 or arg_y < 0 or arg_x > ds_grid_width(pathfinding_grid)-1 or arg_y >ds_grid_height(pathfinding_grid)-1{
 return false
@@ -7,7 +12,7 @@ return false
 function set_player_grid(){
 ds_grid_clear(pathfinding_grid,0)
 
-node_x = x div 64;node_y = y div 64
+set_nodes()
 
 c = node_x;r = node_y
 
@@ -114,4 +119,106 @@ repeat(1000){if array_length(open_nodes) = 0{exit}
 
 	
 ds_grid_set(pathfinding_grid,c,r,1)
+}
+
+//enemy grid code
+
+function get_move_directions(){
+if instance_exists(Player) && GM.game_over = false{
+	
+i = 0;lowest_value = 1000
+repeat(array_length(GM.player_list)){
+var_player = GM.player_list[i]
+var_grid = var_player.pathfinding_grid
+value = ds_grid_get(var_grid,node_x,node_y) 
+if value < lowest_value && var_player.hp > 0{lowest_value = value;player_target = GM.player_list[i]}
+i += 1
+}
+if !collision_present(x+move_direction_h,y+move_direction_v) &&
+collision_line(node_x*64,node_y*64,player_target.node_x*64,player_target.node_y*64,[Collision,tiles],false,false) = noone{
+
+direction = point_direction(x,y+sprite_get_yoffset(sprite_index),player_target.x,player_target.y+sprite_get_yoffset(player_target.sprite_index))
+speed = 1
+if abs(hspeed) > 0.01{move_direction_h = hspeed}else{move_direction_h = 0}
+if abs(vspeed) > 0.01{move_direction_v = vspeed}else{move_direction_v = 0}
+
+speed = 0
+}
+else{
+astar(player_target.pathfinding_grid,node_x,node_y,player_target.node_x,player_target.node_y)
+
+grid_xoffset = (sprite_get_xoffset(sprite_index)*(move_path_x[1]-node_x))
+grid_yoffset = (sprite_get_yoffset(sprite_index)*(move_path_y[1]-node_y))
+
+grid_x = x
+grid_y = y+sprite_get_yoffset(sprite_index)
+grid_goal_x = (move_path_x[1]*64)+32
+grid_goal_y = (move_path_y[1]*64)+32
+
+direction = point_direction(grid_x,grid_y,grid_goal_x,grid_goal_y)
+speed = 1
+move_direction_h = sign(hspeed)
+move_direction_v = sign(vspeed)
+speed = 0
+if abs(grid_goal_x-grid_x) <= 1{move_direction_h = 0}
+if abs(grid_goal_y-grid_y) <= 1{move_direction_v = 0}
+
+}
+//if collision_present(x+move_direction_h,y){move_direction_v = sign(move_direction_v)}
+//if collision_present(x,y+move_direction_v){move_direction_h = sign(move_direction_h)}
+}
+else{
+move_direction_h = 0;move_direction_v = 0
+}
+	
+//if collision_present(x,y+(sign(move_direction_v)*2)){move_direction_v = 0}
+//if collision_present(x+(sign(move_direction_h)*2),y){move_direction_h = 0}
+}
+	
+function astar(arg_grid, arg_startx, arg_starty, arg_endx, arg_endy){
+move_path_x = []
+move_path_y = []
+pathfinding_grid = arg_grid
+if ds_grid_get(arg_grid,arg_endx,arg_endy) = 999{return false}
+//if Cursor.c = endx && Cursor.r = endy{throw("this code was read")}
+x_saved = x;y_saved = y
+x = arg_startx;y = arg_starty
+
+move_path_x[0] = arg_startx
+move_path_y[0] = arg_starty
+tiles_moved = 0
+
+do {
+	tiles_moved += 1
+	lowest_value = infinity
+	
+	value = ds_grid_get(arg_grid,x-1,y)
+	move_direction = "Left";lowest_value = value
+	
+	value = ds_grid_get(arg_grid,x+1,y)
+	if value < lowest_value{move_direction = "Right";lowest_value = value}
+	
+	value = ds_grid_get(arg_grid,x,y-1)
+	if value < lowest_value{move_direction = "Up";lowest_value = value}
+	
+	value = ds_grid_get(arg_grid,x,y+1)
+	if value < lowest_value{move_direction = "Down";}
+	
+	if move_direction = "Left"{x -= 1}
+	if move_direction = "Right"{x += 1}
+	if move_direction = "Up"{y -= 1};
+	if move_direction = "Down"{y += 1}
+	array_push(move_path_x,x)
+	array_push(move_path_y,y)
+	if ongrid(x,y) = false{
+	x = x_saved;y = y_saved;return false
+	//failsafe code
+	}
+}
+until(x = arg_endx && y = arg_endy)
+
+x = x_saved;y = y_saved
+
+return true
+
 }

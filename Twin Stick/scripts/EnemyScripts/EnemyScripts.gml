@@ -9,7 +9,10 @@ spawn_timer = 60
 
 hsp_knockback = 0;vsp_knockback = 0
 hsp = 0;vsp = 0
+move_direction_h = 0
+move_direction_v = 0
 hurt_by_id = -1
+set_nodes()
 }
 
 function draw_enemy(){
@@ -44,7 +47,10 @@ instance_destroy()
 
 
 }
-
+draw_set_colour(c_red)
+draw_text(x,y,"hsp+vsp:"+string(hsp)+"|"+string(vsp))
+draw_text(x,y+30,"movdirh+v:"+string(move_direction_h)+"|"+string(move_direction_v))
+draw_text(x,y+60,"node_x+y:"+string(node_x)+"|"+string(node_y))
 }
 
 function blood_splatter(){
@@ -67,90 +73,33 @@ hitbox.image_angle = image_angle
 hitbox.depth = depth+1	
 }
 
-function get_move_directions(){
-if instance_exists(Player) && GM.game_over = false{
-	
-i = 0;lowest_value = 1000
-repeat(array_length(GM.player_list)){
-var_player = GM.player_list[i]
-var_grid = var_player.pathfinding_grid
-value = ds_grid_get(var_grid,node_x,node_y) 
-if value < lowest_value && var_player.hp > 0{lowest_value = value;player_target = GM.player_list[i]}
-i += 1
-}
-if collision_line(x,y,player_target.x,player_target.y,[Collision,tiles],false,false) = noone{
-direction = point_direction(x,y,player_target.x,player_target.y)
-speed = 1
-move_direction_h = hspeed
-move_direction_v = vspeed
-speed = 0
-}
-else{
-var_grid = player_target.pathfinding_grid
-
-move_direction_h = 0;move_direction_v = 0
-lowest_value = ds_grid_get(var_grid,node_x,node_y)
-
-value = ds_grid_get(var_grid,node_x-1,node_y)
-if value < lowest_value{move_direction_h = -1;move_direction_v = 0;}
-
-value = ds_grid_get(var_grid,node_x+1,node_y)
-if value < lowest_value{move_direction_h = 1;move_direction_v = 0;}
-
-value = ds_grid_get(var_grid,node_x,node_y-1)
-if value < lowest_value{move_direction_h = 0;move_direction_v = -1;}
-
-value = ds_grid_get(var_grid,node_x,node_y+1)
-if value < lowest_value{move_direction_h = 0;move_direction_v = 1;}
-
-value = ds_grid_get(var_grid,node_x-1,node_y-1)
-if value < lowest_value{move_direction_h = -1;move_direction_v = -1;}
-
-value = ds_grid_get(var_grid,node_x+1,node_y-1)
-if value < lowest_value{move_direction_h = 1;move_direction_v = -1;}
-
-value = ds_grid_get(var_grid,node_x-1,node_y+1)
-if value < lowest_value{move_direction_h = -1;move_direction_v = 1;}
-
-value = ds_grid_get(var_grid,node_x+1,node_y+1)
-if value < lowest_value{move_direction_h = 1;move_direction_v = 1;}
-}
-}
-else{
-move_direction_h = 0;move_direction_v = 0
-}
-	
-//if collision_present(x,y+(sign(move_direction_v)*2)){move_direction_v = 0}
-//if collision_present(x+(sign(move_direction_h)*2),y){move_direction_h = 0}
-}
-
 function corner_cutting(){
-	
+/*	
 corner_cut = false;i = 0
-if collision_present(x+move_direction_h,y+move_direction_v){
-repeat (4){i += 2
+if collision_present(x+hsp,y+vsp){
+repeat (1){i += 1
 
 if vsp < 0{
-if !collision_present(x-i,y-1){y-=1;while collision_present(x,y){x-=1};corner_cut = true;break}
-if !collision_present(x+i,y-1){y-=1;while collision_present(x,y){x+=1};corner_cut = true;break}
+if !collision_present(x-i,y-1){y-=1;corner_cut = true;break}
+if !collision_present(x+i,y-1){y-=1;corner_cut = true;break}
 }
 
 if vsp > 0{
-if !collision_present(x-i,y+1){y+=1;while collision_present(x,y){x-=1};corner_cut = true;break}
-if !collision_present(x+i,y+1){y+=1;while collision_present(x,y){x+=1};corner_cut = true;break}
+if !collision_present(x-i,y+1){y+=1;corner_cut = true;break}
+if !collision_present(x+i,y+1){y+=1;corner_cut = true;break}
 }
 
 if hsp > 0{
-if !collision_present(x+1,y-i){x+=1;while collision_present(x,y){y-= 1};corner_cut = true;break}
-if !collision_present(x+1,y+i){x+=1;while collision_present(x,y){y+= 1};corner_cut = true;break}
+if !collision_present(x+1,y-i){x+=1;corner_cut = true;break}
+if !collision_present(x+1,y+i){x+=1;corner_cut = true;break}
 }													  													
 if hsp < 0{
-if !collision_present(x-1,y-i){x-=i;while collision_present(x,y){y-= 1};corner_cut = true;break}
-if !collision_present(x-1,y+i){x-=i;while collision_present(x,y){y+=1};corner_cut = true;break}
+if !collision_present(x-1,y-i){x -= 1;corner_cut = true;break}
+if !collision_present(x-1,y+i){x -= 1;corner_cut = true;break}
 }
 }
 }
-
+*/
 }
 	
 //function pop_out_of_collision()

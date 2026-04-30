@@ -12,7 +12,4 @@ hsp = 0;vsp = 0
 move_direction_h = 0
 move_direction_v = 0
 
-node_x = x div 48
-node_y = y div 48
-
 blood_color = $FF00FF

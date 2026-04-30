@@ -441,6 +441,9 @@ set_animation("Auto Pistol")
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = ""
+if irandom_range(1,20000) = 1 && object_index = PlayerWeapon{
+player_id.key_shoot_pressed = true
+key_shoot_pressed = true}
 }
 
 // D Tier, tier 1

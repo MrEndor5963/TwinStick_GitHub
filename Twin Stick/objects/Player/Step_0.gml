@@ -157,7 +157,7 @@ if aim_direction  >= 315 or aim_direction  <= 45{aim_string = "R"}
 
 sprite_string = "s_"+string(player_name)+string(aim_string)
 sprite_index = asset_get_index(sprite_string)
-sprite_set_bbox(sprite_index,30,50,(sprite_width)-30,sprite_height)
+sprite_set_bbox(sprite_index,20,50,(sprite_width)-20,sprite_height)
 
 
 

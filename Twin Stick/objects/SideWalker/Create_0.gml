@@ -9,9 +9,6 @@ move_timer = 1
 create_enemy()
 hsp = 0;vsp = 0
 
-node_x = x div 64
-node_y = y div 64
-
 blood_color = $D1D2FF
 image_xscale = irandom_range(-1,1)
 while image_xscale = 0{image_xscale = irandom_range(-1,1)}

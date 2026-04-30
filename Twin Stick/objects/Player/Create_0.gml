@@ -78,7 +78,7 @@ record_size = 200
 for(var i = record_size-1; i >= 0; i--){
 record_x[i] = x;record_y[i] = y}
 
-pathfinding_grid = ds_grid_create(20,12)
+pathfinding_grid = ds_grid_create(20+1,12+1)
 //set_player_grid()
 take_damage = false
 //Item variables

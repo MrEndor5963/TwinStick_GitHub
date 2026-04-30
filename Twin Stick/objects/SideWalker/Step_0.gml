@@ -7,12 +7,13 @@ spawn_timer -= 1;exit
 depth = -y
 if hit_stun > 0{hit_stun -= 1}
 
+var_width = sprite_get_width(sprite_index)
+var_height = sprite_get_height(sprite_index)
+sprite_set_bbox(sprite_index,var_width*0.25,var_height*0.75,var_width*0.75,var_height)
 
 get_move_directions()
-if abs(move_direction_v) < 0.8 {move_direction_v = 0}
-else{move_direction_h = 0}
 
-hsp = move_direction_h*7;vsp = move_direction_v*1
+hsp = move_direction_h*8;vsp = move_direction_v*0.4
 
 
 
@@ -24,7 +25,8 @@ if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockba
 
 if collision_present(x+hsp+hsp_knockback,y)
 {
-	while !collision_present(x+sign(hsp+hsp_knockback)*1,y){x += sign(hsp+hsp_knockback)*1}
+	while !collision_present(x+sign(hsp+hsp_knockback)*1,y){x += sign(hsp+hsp_knockback)*1};
+	if collision_present(x,y){x -= sign(hsp+hsp_knockback)};
 	hsp = 0
 	hsp_knockback = 0
 }
@@ -33,15 +35,15 @@ x += hsp+hsp_knockback
 
 if collision_present(x,y+vsp+vsp_knockback)
 {
-	while !collision_present(x,y+sign(vsp+vsp_knockback)*1){y += sign(vsp+vsp_knockback)*1}
+	while !collision_present(x,y+sign(vsp+vsp_knockback)*1){y += sign(vsp+vsp_knockback)*1};
+	if collision_present(x,y){y -= sign(hsp+hsp_knockback)}
 	vsp = 0
 	vsp_knockback = 0
 }
 
 y += vsp+vsp_knockback
 
-node_x = x div 64
-node_y = y div 64
+set_nodes()
 
 hsp *= 0.95
 vsp *= 0.95
@@ -50,8 +52,13 @@ if move_direction_h != 0 or move_direction_v != 0{
 image_speed = 1
 if move_direction_h != 0{image_xscale = sign(move_direction_h)}
 
-if move_direction_v != 0{sprite_index = s_Sidewalker2}
+if move_direction_v <= move_direction_h/2{sprite_index = s_Sidewalker2}
 else{sprite_index = s_Sidewalker1}
 }
 
 move_hitbox()
+
+if sprite_index = s_Sidewalker1 && image_index = 1 or sprite_index = s_Sidewalker2{
+sprite_set_bbox(sprite_index,13,23,78,63)
+}
+else{sprite_set_bbox(sprite_index,10,30,86,63)}
