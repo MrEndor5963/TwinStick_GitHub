@@ -10,12 +10,25 @@ if weapon_draw_sprite = s_0{weapon_draw_sprite = sprite_index}
 if player_id.hp > 0{
 direction = image_angle;speed = 1
 #region Reloads and reload animations
+
+//Semi auto pistol reload
 if reload_progress >= 0 && mag_loaded = false && angle_offset = 0{
+
 direction = image_angle+(mag_offset*-image_yscale)
 speed = 1
 draw_x = player_id.x+((mag_xoff-sprite_get_xoffset(sprite_index))*hspeed)+(position_xoffset*hspeed)
 draw_y = player_id.y+((mag_xoff-sprite_get_xoffset(sprite_index))*vspeed)+(position_xoffset*vspeed)+(mag_yoff-sprite_get_yoffset(sprite_index))
 draw_sprite_ext(mag_sprite,0,draw_x,draw_y,1,image_yscale,image_angle+(mag_offset*-image_yscale),-1,1)}
+
+//bottom loaded shotguns reload
+if reload_progress >= 0 && angle_offset = 0 && magazine_reload = false{
+
+direction = image_angle+(mag_offset*-image_yscale)
+speed = 1
+draw_x = player_id.x+(weapon_xoffset*hspeed)
+draw_y = y+((25/(reload_time/(reload_time-reload_progress)))*hspeed)
+draw_sprite_ext(caliber,0,draw_x,draw_y,1,image_yscale,image_angle+angle_offset,-1,1)}
+
 #endregion
 
 

@@ -190,7 +190,7 @@ depth = depth_saved
 #endregion Player UI End
 
 //draw_text(200,120,shoot_timer)
-
+/*
 draw_set_aligns(fa_center,fa_middle)
 var_xx = 0
 repeat(ds_grid_width(pathfinding_grid)){

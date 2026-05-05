@@ -1,8 +1,5 @@
 if GM.game_paused = true or GM.game_over = true{exit}
 
-
-set_nodes()
-
 if spawn_timer > 0{
 spawn_timer -= 1;exit
 }
@@ -12,18 +9,18 @@ if hit_stun > 0{hit_stun -= 1}
 
 var_width = sprite_get_width(sprite_index)
 var_height = sprite_get_height(sprite_index)
-sprite_set_bbox(sprite_index,var_width*0.25,var_height*0.75,var_width*0.75,var_height)
+sprite_set_bbox(sprite_index,10,var_height*0.75,var_width-10-1,var_height)
 
 get_move_directions()
 
-if shoot_timer > 1// && player_target != -1 && collision_line(x,y,player_target.x,player_target.y,[Collision,tiles],false,false) = false
+if shoot_timer > 0// && player_target != -1 && collision_line(x,y,player_target.x,player_target.y,[Collision,tiles],false,false) = false
 {shoot_timer -= 1;if shoot_timer = 0{image_index = 0}}
 
 mov_spd = 2
-//if shoot_timer != 0{
+if shoot_timer != 0{
 	hsp = move_direction_h*mov_spd
 	;vsp = move_direction_v*mov_spd
-	//}
+}
 
 if move_direction_h != 0 or move_direction_v != 0{
 if move_direction_h != 0{image_xscale = sign(move_direction_h)}
@@ -50,32 +47,34 @@ sprite_index = s_SpitterF
 var_width = sprite_get_width(sprite_index)
 var_height = sprite_get_height(sprite_index)
 
-sprite_set_bbox(sprite_index,var_width*0.25,var_height*0.75,var_width*0.75,var_height)
-
-corner_cutting()
+sprite_set_bbox(sprite_index,10,var_height*0.75,var_width-10-1,var_height)
 
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
 if collision_present(x+hsp+hsp_knockback,y)
 {
-	while !collision_present(x+sign(hsp+hsp_knockback)*1,y){x += sign(hsp+hsp_knockback)*1};
-	if collision_present(x,y){x -= sign(hsp+hsp_knockback)};
+	while !collision_present(x,y){x += sign(hsp+hsp_knockback)*1};
 	hsp = 0
 	hsp_knockback = 0
 }
 
 x += hsp+hsp_knockback
 
+pop_out_of_collision()
+
 if collision_present(x,y+vsp+vsp_knockback)
 {
-	while !collision_present(x,y+sign(vsp+vsp_knockback)*1){y += sign(vsp+vsp_knockback)*1};
-	if collision_present(x,y){y -= sign(hsp+hsp_knockback)}
+	while !collision_present(x,y){y += sign(vsp+vsp_knockback)*1};
+
 	vsp = 0
 	vsp_knockback = 0
 }
 
 y += vsp+vsp_knockback
+pop_out_of_collision()
+
+set_nodes()
 
 
 hsp *= 0.94

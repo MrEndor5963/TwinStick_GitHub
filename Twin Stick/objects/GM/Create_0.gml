@@ -57,7 +57,7 @@ sub_menu = 0
 
 room_list_1 = []
 vrp = 1
-repeat(10){
+repeat(1){
 if vrp < 10{var_string = "0"+string(vrp)}else{var_string = vrp}
 var_temp = asset_get_index("r_Floor1_Main"+string(var_string))
 array_push(room_list_1,var_temp)

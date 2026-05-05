@@ -1,5 +1,5 @@
 //Object will be created by CharacterSelect
-spawned = false
+spawned = false;
 new_floor = false
 array_push(GM.player_list,id)
 set_tileset_collision()
@@ -77,6 +77,8 @@ point_draw_timer = []
 record_size = 200
 for(var i = record_size-1; i >= 0; i--){
 record_x[i] = x;record_y[i] = y}
+
+set_nodes();
 
 pathfinding_grid = ds_grid_create(20+1,12+1)
 //set_player_grid()

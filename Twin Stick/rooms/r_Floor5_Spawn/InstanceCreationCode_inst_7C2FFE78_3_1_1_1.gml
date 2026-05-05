@@ -1,1 +1,0 @@
-weapon_id = s_AK47

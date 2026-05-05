@@ -29,8 +29,8 @@ bktglitch_set_intensity(0.08 + (glitch_intensity))
 
 _width = sprite_width
 _height = sprite_height
-_x = x
-_y = y
+_x = x-GM.cam_x
+_y = y-GM.cam_y
 draw_surface_part(application_surface,_x,_y,_width,_height,_x,_y)
 
 

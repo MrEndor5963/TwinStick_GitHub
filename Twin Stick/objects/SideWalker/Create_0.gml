@@ -6,6 +6,7 @@ instance_destroy();exit
 
 hp = 320+((GM.floor_number-1)*200)
 move_timer = 1
+timer =0
 create_enemy()
 hsp = 0;vsp = 0
 

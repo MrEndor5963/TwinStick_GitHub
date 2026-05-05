@@ -84,12 +84,10 @@ array_push(enemy_list,Slugee)
 }
 
 
-spawn_room = asset_get_index("r_Floor"+string(floor_number)+"_Spawn")
 floor_music = asset_get_index("msc_Floor"+string(floor_number))
 ds_grid_clear(map,0)
-ds_grid_set(map,map_x,map_y,spawn_room)
+ds_grid_set(map,map_x,map_y,r_SpawnRoom)
 array_push(open_nodes,x_plus_y(map_x,map_y))
-array_push(rooms_in_use,spawn_room)
 start_x = map_x
 start_y = map_y
 

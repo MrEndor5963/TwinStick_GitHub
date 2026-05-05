@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":184.00601,
+  "duration":281.286,
   "exportDir":"",
   "name":"msc_Floor1",
   "parent":{

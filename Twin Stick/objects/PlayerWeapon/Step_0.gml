@@ -26,12 +26,15 @@ reload_progress = 0
 
 if key_shoot{trigger_delay_timer += 1}else{trigger_delay_timer = 0;trigger_needs_reset = false}
 
-shoot_timer += 1;if shoot_timer > shoot_delay{shoot_timer = shoot_delay}
+if reload_progress = -1{shoot_timer += 1;}
+if shoot_timer > shoot_delay{shoot_timer = shoot_delay}
 if action_type = s_PumpAction{
-if abs(recoil) > 5{shoot_timer = 0}
+if abs(recoil) > 10{shoot_timer = 0}
 }
 
 if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0{key_melee_pressed = true}
+
+#region reloading and gun animations
 
 if slide_sprite != s_0{
 if ammo_inmag = 0{shoot_timer = 0}
@@ -42,7 +45,7 @@ if slide_offset = 0{bullet_chambered = true}
 if pump_sprite != s_0{pump_offset = 0
 
 if case_ejects_needed = 1 && bullet_chambered = false{
-if shoot_timer = 1{play_sfx(sfx_PumpBack)}
+if shoot_timer = 1 && reload_progress = -1{play_sfx(sfx_PumpBack)}
 pump_offset = -pump_distance/(shoot_delay/shoot_timer)
 if shoot_timer = shoot_delay{
 case_ejects_needed = 0
@@ -51,7 +54,7 @@ shoot_timer = 0}
 }
 
 if case_ejects_needed = 0 && bullet_chambered = false{
-if shoot_timer = 0{play_sfx(sfx_PumpForward)}
+if shoot_timer = 0 && reload_progress = -1{play_sfx(sfx_PumpForward)}
 pump_offset = -pump_distance+(pump_distance/(shoot_delay/shoot_timer))
 if shoot_timer = shoot_delay{bullet_chambered = true}
 }
@@ -59,6 +62,92 @@ if shoot_timer = shoot_delay{bullet_chambered = true}
 }
 	
 if slide_sprite = s_0 && pump_sprite = s_0{if shoot_timer = shoot_delay{bullet_chambered = true}}
+
+if reload_progress >= 0{
+	
+	trigger_delay_timer = 0
+
+	if animation = "Auto Pistol"{
+	if mag_loaded = true && ammo_inmag <= ammo_inmag_max && abs(recoil) < 5{
+	angle_offset = 100*image_yscale
+	mag_loaded = false
+	if ammo_inmag > 1{ammo_inmag = 1;player_id.glitch_int_mag = 1}
+	direction = aim_direction;speed = 1
+	particle = instance_create_depth(
+	x+(mag_xoff-sprite_get_xoffset(sprite_index))+((sprite_get_width(sprite_index)*hspeed)/2),
+	y+(mag_yoff-sprite_get_yoffset(sprite_index))+6,
+	depth,PersistentVFX)
+	particle.hsp = hspeed*random_range(1,3)
+	particle.vsp = vspeed*random_range(1,3)
+	particle.zsp = random_range(-6,-3)
+	particle.spin_speed = image_yscale*random_range(5,10)
+	particle.z = player_id.y-player_id.floor_y
+	particle.floor_y = player_id.floor_y
+	particle.grv = 0.5
+	speed = 0
+	}
+	
+	if mag_loaded = false && abs(angle_offset) <= 1{
+	reload_progress += player_id.reload_speed
+	mag_offset = (reload_time-(reload_time/(reload_time/reload_progress)))*20
+	}
+	
+	
+	}
+		
+	if animation = "Revolver"{
+	if case_ejects_needed > 0 && abs(recoil) < 5{
+	angle_offset = 100*image_yscale
+	direction = aim_direction;speed = 1
+	repeat(case_ejects_needed){
+	particle = instance_create_depth(
+	x,
+	y,
+	depth,PersistentVFX)
+	particle.sprite_index = caliber
+	particle.hsp = random_range(-1.5,1.5)
+	particle.vsp = random_range(-1.5,1.5)
+	particle.zsp = random_range(-1,0)
+	particle.spin_speed = image_yscale*random_range(2,6)
+	particle.z = player_id.y-player_id.floor_y
+	particle.floor_y = player_id.floor_y
+	particle.grv = 0.5
+	speed = 0}
+	case_ejects_needed = 0
+	}
+	
+	
+	//add more reload revolver code 
+	
+	
+	}
+	
+	if action_type = s_PumpAction or weapon_id = s_Spaz12 or animation = "Revolver"{
+	
+	if abs(angle_offset) <= 1{
+	reload_progress += player_id.reload_speed
+	mag_offset = reload_time-reload_progress
+	}
+	
+	}
+	
+	if reload_progress >= reload_time{
+	reload_progress = -1
+	if magazine_reload = true{
+	if ammo_inmag > 1{ammo_inmag = 1}
+	ammo_inmag += ammo_inmag_max
+	mag_loaded = true}
+	else{
+	ammo_inmag += 1;if caliber = s_12GadgeBuckshot{play_sfx(sfx_ShotgunShellReload)}
+	if ammo_inmag < ammo_inmag_max && ammo_reserve-1 > 0{reload_progress = 0}
+	}
+	ammo_reserve -= 1
+	player_id.glitch_int_mag = 1
+	player_id.glitch_int_reserve = 1
+	
+	}
+}
+#endregion end of reloading and gun animations
 
 #region Shooting the gun
 	
@@ -80,6 +169,7 @@ if slide_sprite = s_0 && pump_sprite = s_0{if shoot_timer = shoot_delay{bullet_c
 	
 	
 	if action_type = s_SemiAuto or action_type = s_FullAuto{
+	if slide_sprite != s_0{slide_offset = slide_distance}
 	case_ejects_needed -= 1
 	eject_bullet_casing()
 	}
@@ -125,55 +215,7 @@ if slide_sprite = s_0 && pump_sprite = s_0{if shoot_timer = shoot_delay{bullet_c
 	}}
 
 #endregion shooting the gun
-	
-if reload_progress >= 0{reload_progress += player_id.reload_speed
-	
-	trigger_delay_timer = 0
 
-	if animation = "Auto Pistol"{
-	if mag_loaded = true && ammo_inmag <= ammo_inmag_max && abs(recoil) < 5{
-	angle_offset = 100*image_yscale
-	mag_loaded = false
-	if ammo_inmag > 1{ammo_inmag = 1;player_id.glitch_int_mag = 1}
-	direction = aim_direction;speed = 1
-	particle = instance_create_depth(
-	x+(mag_xoff-sprite_get_xoffset(sprite_index))+((sprite_get_width(sprite_index)*hspeed)/2),
-	y+(mag_yoff-sprite_get_yoffset(sprite_index))+6,
-	depth,PersistentVFX)
-	particle.hsp = hspeed*random_range(1,3)
-	particle.vsp = vspeed*random_range(1,3)
-	particle.zsp = random_range(-6,-3)
-	particle.spin_speed = image_yscale*random_range(5,10)
-	particle.z = player_id.y-player_id.floor_y
-	particle.floor_y = player_id.floor_y
-	particle.grv = 0.5
-	speed = 0
-	}
-	
-	if mag_loaded = false && abs(angle_offset) <= 1{
-	mag_offset = (reload_time-(reload_time/(reload_time/reload_progress)))*20
-	
-	}else{reload_progress -= player_id.reload_speed}
-	
-	
-	}
-	
-	if reload_progress >= reload_time{
-	reload_progress = -1
-	if magazine_reload = true{
-	if ammo_inmag > 1{ammo_inmag = 1}
-	ammo_inmag += ammo_inmag_max
-	mag_loaded = true}
-	else{
-	ammo_inmag += 1
-	if ammo_inmag < ammo_inmag_max && ammo_reserve >0{reload_progress = 0}
-	}
-	ammo_reserve -= 1
-	player_id.glitch_int_mag = 1
-	player_id.glitch_int_reserve = 1
-	
-	}
-}
 
 player_id.ammo_inmag = ammo_inmag
 player_id.ammo_reserve = ammo_reserve

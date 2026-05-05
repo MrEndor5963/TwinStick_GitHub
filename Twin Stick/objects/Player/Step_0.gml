@@ -129,7 +129,7 @@ hsp += hsp_knockback
 vsp = (key_down-key_up)*var_move
 vsp += vsp_knockback
 
-if collision_present(x+hsp,y)
+if collision_present(x+hsp,y) && !place_meeting(x+hsp,y,Door)
 {
 	while !collision_present(x+sign(hsp)*1,y){x += sign(hsp)*1}
 	hsp = 0
@@ -137,7 +137,7 @@ if collision_present(x+hsp,y)
 
 x += hsp
 
-if collision_present(x,y+vsp)
+if collision_present(x,y+vsp) && !place_meeting(x,y+vsp,Door)
 {
 	while !collision_present(x,y+sign(vsp)*1){y += sign(vsp)*1}
 	vsp = 0
@@ -260,12 +260,6 @@ ds_list_destroy(list_temp)
 #endregion End Of Interactable tuff
 
 //end of alive code
-}
-
-
-if place_meeting(x,y,RoomChange){
-var_object = instance_place(x,y,RoomChange)
-GM.next_room = var_object.next_room
 }
 
 

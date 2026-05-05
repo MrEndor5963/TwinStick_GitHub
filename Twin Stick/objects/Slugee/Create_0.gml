@@ -16,7 +16,6 @@ while hsp = 0{hsp = irandom_range(-1,1)}}
 else{
 while vsp = 0{vsp = irandom_range(-1,1)}}
 
-node_x = x div 48
-node_y = y div 48
+set_nodes()
 
 blood_color = c_lime

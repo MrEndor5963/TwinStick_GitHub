@@ -11,6 +11,7 @@ set_animation("None")
 set_ejection_point(-111,-111)
 bullet_speed = 30;bullet_sprite = s_Bullet
 bullet_amount = 1;bullet_spread = 1
+load_direction = 1
 jam_chance = 0.08;jam_time = 150
 trigger_delay = 0
 reload_sfx = sfx_m1911Reload;shoot_sfx = sfx_m1911Shoot
@@ -103,7 +104,11 @@ reload_time = 15
 }
 
 if arg_animation = "Pump Action"{
-reload_time = 15
+reload_time = 30
+}
+
+if arg_animation = "Revolver"{
+reload_time = 30
 }
 
 if arg_animation = "None"{
@@ -112,8 +117,8 @@ reload_time = 60
 
 animation = arg_animation
 
-if arg_animation != "Auto Pistol" && arg_animation != "None"{
-throw("script read error, Reload animation not found")}
+//if arg_animation != "Auto Pistol" && arg_animation != "Pump Action" && arg_animation != "None"{
+//throw("script read error, Reload animation not found")}
 }
 
 function set_melee_attack(arg_melee_damage,arg_melee_knockback){
@@ -562,6 +567,7 @@ set_gun_handling(31,10,2.8)
 set_deploy_stats(9,-1)
 shoot_delay = 2
 trigger_delay = 7
+set_animation("Revolver")
 action_type = s_DoubleAction
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
@@ -591,6 +597,7 @@ shoot_delay = 2
 bullet_amount = 5
 bullet_spread = 8
 trigger_delay = 12
+set_animation("Revolver")
 action_type = s_DoubleAction
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
@@ -807,6 +814,7 @@ set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
 shoot_delay = 15
 action_type = s_PumpAction
+set_animation("Pump Action")
 bullet_spread = 22
 bullet_amount = 9
 shoot_sfx = sfx_ShotGunShoot
@@ -831,6 +839,7 @@ set_deploy_stats(15,-1)
 shoot_delay = 5
 action_type = s_SemiAuto
 set_animation("None")
+reload_time = 25
 bullet_spread = 20
 bullet_amount = 9
 shoot_sfx = sfx_ShotGunShoot
@@ -861,6 +870,7 @@ set_gun_handling(90,40,4.8)
 set_deploy_stats(12,-1)
 shoot_delay = 2
 trigger_delay = 20
+set_animation("Revolver")
 action_type = s_DoubleAction
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
@@ -1000,6 +1010,7 @@ set_gun_handling(70,20,8)
 set_deploy_stats(25,1)
 shoot_delay = 30
 action_type = s_PumpAction
+set_animation("Pump Action")
 bullet_spread = 25
 bullet_amount = 9
 shoot_sfx = sfx_ShotGunShoot
@@ -1024,6 +1035,7 @@ set_gun_handling(25,42,8.4)
 set_deploy_stats(14,-1)
 shoot_delay = 35
 action_type = s_PumpAction
+set_animation("Pump Action")
 bullet_spread = 30
 bullet_amount = 9
 shoot_sfx = sfx_ShotGunShoot
@@ -1376,6 +1388,8 @@ set_gun_handling(25,36,8.5)
 set_deploy_stats(14,-1)
 shoot_delay = 45
 action_type = s_PumpAction
+set_animation("Pump Action")
+reload_time = 55
 bullet_spread = 30
 bullet_amount = 40
 shoot_sfx = sfx_ShotGunShoot

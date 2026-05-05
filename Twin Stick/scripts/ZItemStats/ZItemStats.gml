@@ -38,6 +38,7 @@ item_LoanFish()
 }
 
 function item_Heart(){
+item_id = s_item_Heart
 item_name = "Medkit"
 cost = 500
 description = "Heals all HP"

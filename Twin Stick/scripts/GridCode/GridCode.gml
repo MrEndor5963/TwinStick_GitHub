@@ -1,6 +1,23 @@
 function set_nodes(){
+if object_index = Player && spawned = false or object_index != Player && spawn_timer > 0{
+
 node_x = x div 64
 node_y = (y+sprite_get_yoffset(sprite_index)) div 64
+previous_node_x = -1
+previous_node_y = -1
+}
+
+if node_x != x div 64{
+previous_node_x = node_x
+node_x = x div 64
+}
+
+if node_y != ((y+sprite_get_yoffset(sprite_index)) div 64){
+previous_node_y = node_y
+node_y = ((y+sprite_get_yoffset(sprite_index)) div 64)
+}
+
+
 }
 
 function ongrid(arg_x,arg_y){
@@ -87,7 +104,7 @@ repeat(1000){if array_length(open_nodes) = 0{exit}
 		
 		saved_sprite = sprite_index;saved_index = image_index
 		sprite_index = s_Collision
-		if !place_empty(child_c*64,child_r*64,tiles){mov_cost = 999}
+		if !place_empty(child_c*64,child_r*64,Collision){mov_cost = 999}
 		sprite_index = saved_sprite;image_index = saved_index
 		
 		if mov_cost != 0 && ds_grid_get(pathfinding_grid,child_c,child_r) <= 0 && mov_cost < 999{
@@ -134,38 +151,46 @@ value = ds_grid_get(var_grid,node_x,node_y)
 if value < lowest_value && var_player.hp > 0{lowest_value = value;player_target = GM.player_list[i]}
 i += 1
 }
-if !collision_present(x+move_direction_h,y+move_direction_v) &&
-collision_line(node_x*64,node_y*64,player_target.node_x*64,player_target.node_y*64,[Collision,tiles],false,false) = noone{
+if 
+collision_line(node_x*64,node_y*64,player_target.node_x*64,player_target.node_y*64,Collision,false,false) = noone{
 
 direction = point_direction(x,y+sprite_get_yoffset(sprite_index),player_target.x,player_target.y+sprite_get_yoffset(player_target.sprite_index))
 speed = 1
-if abs(hspeed) > 0.01{move_direction_h = hspeed}else{move_direction_h = 0}
-if abs(vspeed) > 0.01{move_direction_v = vspeed}else{move_direction_v = 0}
-
+//if abs(hspeed) > 0.01{move_direction_h = hspeed}else{move_direction_h = 0}
+//if abs(vspeed) > 0.01{move_direction_v = vspeed}else{move_direction_v = 0}
+move_direction_h = hspeed
+move_direction_v = vspeed
 speed = 0
 }
 else{
 astar(player_target.pathfinding_grid,node_x,node_y,player_target.node_x,player_target.node_y)
 
-grid_xoffset = (sprite_get_xoffset(sprite_index)*(move_path_x[1]-node_x))
-grid_yoffset = (sprite_get_yoffset(sprite_index)*(move_path_y[1]-node_y))
+//grid_xoffset = (sprite_get_xoffset(sprite_index)*(move_path_x[1]-node_x))
+//grid_yoffset = (sprite_get_yoffset(sprite_index)*(move_path_y[1]-node_y))
 
 grid_x = x
 grid_y = y+sprite_get_yoffset(sprite_index)
+
 grid_goal_x = (move_path_x[1]*64)+32
 grid_goal_y = (move_path_y[1]*64)+32
 
 direction = point_direction(grid_x,grid_y,grid_goal_x,grid_goal_y)
 speed = 1
-move_direction_h = sign(hspeed)
+if move_path_x[1] != node_x{move_direction_h = sign(hspeed)}
 move_direction_v = sign(vspeed)
 speed = 0
-if abs(grid_goal_x-grid_x) <= 1{move_direction_h = 0}
-if abs(grid_goal_y-grid_y) <= 1{move_direction_v = 0}
+if collision_present(x+(sign(move_direction_h)*2),y){
+if !collision_present(x+(sign(move_direction_h)*2),y-2){move_direction_v = -1}
+if !collision_present(x+(sign(move_direction_h)*2),y+2){move_direction_v = 1}
+}
+}
+if collision_present(x,y+(sign(move_direction_v)*2)){
+if !collision_present(x-1,y+(sign(move_direction_v)*2)){move_direction_h = -1}
+if !collision_present(x+1,y+(sign(move_direction_v)*2)){move_direction_h = 1}
+
 
 }
-//if collision_present(x+move_direction_h,y){move_direction_v = sign(move_direction_v)}
-//if collision_present(x,y+move_direction_v){move_direction_h = sign(move_direction_h)}
+
 }
 else{
 move_direction_h = 0;move_direction_v = 0

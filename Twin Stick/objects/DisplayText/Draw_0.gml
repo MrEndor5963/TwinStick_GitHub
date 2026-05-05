@@ -1,10 +1,9 @@
-
 draw_set_alpha(1-(glitch_intensity/3))
 
 text_width = string_width(text_string)
 if x < 0{x = 0};
-if x+sprite_width > GM.screen_width{x += (GM.screen_width-(x+sprite_width))}
-if y+sprite_height > GM.screen_height{y += (GM.screen_height-(y+sprite_height))}
+if x+sprite_width > room_width{x += (room_width-(x+sprite_width))}
+if y+sprite_height > room_height{y += (room_height-(y+sprite_height))}
 
 draw_set_aligns(fa_left,fa_top)
 

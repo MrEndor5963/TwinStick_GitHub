@@ -12,6 +12,7 @@ hsp = 0;vsp = 0
 move_direction_h = 0
 move_direction_v = 0
 hurt_by_id = -1
+pathfinding_grid = -1
 set_nodes()
 }
 
@@ -47,10 +48,15 @@ instance_destroy()
 
 
 }
-draw_set_colour(c_red)
-draw_text(x,y,"hsp+vsp:"+string(hsp)+"|"+string(vsp))
-draw_text(x,y+30,"movdirh+v:"+string(move_direction_h)+"|"+string(move_direction_v))
-draw_text(x,y+60,"node_x+y:"+string(node_x)+"|"+string(node_y))
+	
+//debug grid
+//draw_set_colour(c_red)
+//draw_text(x,y,"hsp+vsp:"+string(hsp)+"|"+string(vsp))
+//draw_text(x,y+30,"movdirh+v:"+string(move_direction_h)+"|"+string(move_direction_v))
+//draw_text(x,y+60,"node_x+y:"+string(node_x)+"|"+string(node_y))
+//if pathfinding_grid != -1{
+//draw_set_aligns(fa_right,fa_center)
+//draw_text(x,y+40,"pathfinding value"+string(ds_grid_get(pathfinding_grid,node_x,node_y)))}
 }
 
 function blood_splatter(){
@@ -102,7 +108,13 @@ if !collision_present(x-1,y+i){x -= 1;corner_cut = true;break}
 */
 }
 	
-//function pop_out_of_collision()
+function pop_out_of_collision(){if collision_present(x,y){
+if !collision_present(x-1,y){while collision_present(x,y){x -= 0.2};exit}
+if !collision_present(x+1,y){while collision_present(x,y){x += 0.2};exit}
+if !collision_present(x,y-1){while collision_present(x,y){y -= 0.2};exit}
+if !collision_present(x,y+1){while collision_present(x,y){y += 0.2};exit}
+}
+}
 	
 function enemy_damage_check(){
 hit_stun = 2

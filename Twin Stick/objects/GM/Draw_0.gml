@@ -27,7 +27,8 @@ if gamepad_button_check_pressed_any(gp_face1) or keyboard_check_pressed(vk_space
 			var_player.new_floor = true
 			i += 1}
 	floor_music_id = play_msc(floor_music)
-	room_goto(spawn_room)
+	room_goto(r_SpawnRoom)
+	draw_map = false
 }
 
 corp_logo_timer += 0.03
@@ -38,44 +39,65 @@ else{draw_sprite_ext(s_RedactedCorp,1,1280-96,720-96,yoff,1,0,-1,1)}
 }
 
 if draw_map = true{
-draw_map_x = (screen_width/2)-((map_size/2)*72)
-draw_map_y = (screen_height/2)-((map_size/2)*72)
-draw_set_alpha(0.5)
+draw_map = false
+draw_map_x = cam_x+(screen_width/2)-((map_size/2)*96)
+draw_map_y = cam_y+(screen_height/2)-((map_size/2)*96)
+draw_set_alpha(1)
 var_xx = 0
 if instance_exists(Player){
+draw_sprite_ext(s_Textbox,0,cam_x+(screen_width/2)-480,draw_map_y,960,540,0,-1,0.5)	
+
 repeat(map_size){
 var_yy = 0
 repeat(map_size){
 room_type = ds_grid_get(map,var_xx,var_yy)
 if room_type = 0{
-//draw_sprite(s_UnVisited,0,var_xx*72,var_yy*72)
+//draw_sprite(s_UnVisited,0,var_xx*96,var_yy*96)
 }
 else{
+if var_xx > 0 && ds_grid_get(map,var_xx-1,var_yy) != 0{
+if array_contains(visited_rooms,x_plus_y(var_xx,var_yy)) && array_contains(visited_rooms,x_plus_y(var_xx-1,var_yy))
+{var_index =1}else{var_index = 0}
+draw_sprite(s_RoomConnectorH,var_index,draw_map_x+var_xx*96,draw_map_y+var_yy*96)
+
+}
+if var_yy > 0 && ds_grid_get(map,var_xx,var_yy-1) != 0{
+if array_contains(visited_rooms,x_plus_y(var_xx,var_yy)) && array_contains(visited_rooms,x_plus_y(var_xx,var_yy-1))
+{var_index =1}else{var_index = 0}
+draw_sprite(s_RoomConnectorV,var_index,draw_map_x+var_xx*96,draw_map_y+var_yy*96)
+}	
+
 if array_contains(visited_rooms,x_plus_y(var_xx,var_yy)){
-draw_sprite(s_Visited,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-else{draw_sprite(s_UnVisited,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
+draw_sprite(s_Visited,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+else{draw_sprite(s_UnVisited,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+
+if var_yy = 0 or ds_grid_get(map,var_xx,var_yy-1) = 0{draw_sprite(s_RoomWallMap,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if var_xx = map_size-1 or ds_grid_get(map,var_xx+1,var_yy) = 0{draw_sprite(s_RoomWallMap,1,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if var_yy = map_size-1 or ds_grid_get(map,var_xx,var_yy+1) = 0{draw_sprite(s_RoomWallMap,2,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if var_xx = 0 or ds_grid_get(map,var_xx-1,var_yy) = 0{draw_sprite(s_RoomWallMap,3,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+
+
 }
 
 if room_type = r_Floor1_Boss or room_type = r_Floor2_Boss
-{draw_sprite(s_BossMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_Floor1_Spawn{draw_sprite(s_SpawnMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_Key{draw_sprite(s_KeyRoomMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_Shop{draw_sprite(s_ShopMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_Shop{draw_sprite(s_ShopMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_GunShop{draw_sprite(s_GunShopMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_Medbay{draw_sprite(s_MedbayMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_Gauntlet{draw_sprite(s_GauntletMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-//if room_type = r_BoxRoom{draw_sprite(s_BoxRoomMarker_1,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
-if room_type = r_Treasure{draw_sprite(s_TreaureMarker,0,draw_map_x+var_xx*72,draw_map_y+var_yy*72)}
+{draw_sprite(s_BossMarker,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if room_type = r_SpawnRoom{draw_sprite(s_SpawnMarker,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if room_type = r_Key{draw_sprite(s_KeyRoomMarker,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if room_type = r_Shop{draw_sprite(s_ShopMarker,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if room_type = r_Shop{draw_sprite(s_ShopMarker,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if room_type = r_GunShop{draw_sprite(s_GunShopMarker,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if room_type = r_Medbay{draw_sprite(s_MedbayMarker,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+//if room_type = r_BoxRoom{draw_sprite(s_BoxRoomMarker_1,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
+if room_type = r_Treasure{draw_sprite(s_TreaureMarker,0,draw_map_x+var_xx*96,draw_map_y+var_yy*96)}
 
 var_yy += 1}
 var_xx += 1}
-
-draw_sprite(s_PlayerMarker,0,draw_map_x+map_x*72,draw_map_y+map_y*72)
+var_sprite = player_list[0].player_name
+var_sprite = asset_get_index("s_PlayerMarker"+string(var_sprite))
+draw_sprite(var_sprite,0,draw_map_x+map_x*96,draw_map_y+map_y*96)
 }
 
 draw_set_alpha(1)
-draw_map = false
 }
 #endregion Map screen
 

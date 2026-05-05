@@ -215,29 +215,6 @@ if abs(cam_x-cam_target_x) < 10 && abs(cam_y-cam_target_y) < 10{
 	if next_room = "Right"{map_x += 1}
 	if next_room = "Up"{map_y -= 1}
 	if next_room = "Down"{map_y += 1}
-
-	var_repeat = 0
-	repeat (player_amount){
-	var_player = array_get(player_list,var_repeat)
-	if next_room = "Left"{
-	var_player.x = room_width-160
-	var_player.y = room_height/2
-	}
-	if next_room = "Right"{
-	var_player.x = 160
-	var_player.y = room_height/2
-	}
-	if next_room = "Up"{
-	var_player.x = room_width/2
-	var_player.y = room_height-160
-	}
-	if next_room = "Down"{
-	var_player.x = room_width/2
-	var_player.y = 160
-	}
-	var_player.can_control = true
-	var_repeat += 1}
-	next_room = -1
 }
 
 }
