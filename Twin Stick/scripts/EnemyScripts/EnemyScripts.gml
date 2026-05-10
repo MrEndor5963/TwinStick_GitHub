@@ -62,8 +62,8 @@ instance_destroy()
 function blood_splatter(){
 repeat(32){
 particle = instance_create_depth(x,y,depth-1,ParticleEffect)
-while particle.hsp > -1 && particle.hsp < 1{particle.hsp = random_range(-12,12)}
-particle.vsp = random_range(-24,-4)
+while particle.hsp > -1 && particle.hsp < 1{particle.hsp = random_range(-8,8)}
+particle.vsp = random_range(-8,8)
 particle.timer += 10
 particle.draw_color = blood_color
 }
@@ -125,6 +125,8 @@ particle_spawn_y = hurt_by_id.y + ((hurt_by_id.vspeed/hurt_by_id.speed)*(hurt_by
 hurt_by_x = particle_spawn_x
 hurt_by_y = particle_spawn_y
 hurt_by_id.penetration -= 1
+var_damage_number = instance_create_depth(hurt_by_x,hurt_by_y,depth-1,DamageNumber)
+var_damage_number.text_string = hurt_by_id.damage
 }else{
 particle_spawn_x = x
 particle_spawn_y = y
@@ -134,8 +136,8 @@ hurt_by_y = hurt_by_id.y
 
 repeat(4){
 particle = instance_create_depth(particle_spawn_x,particle_spawn_y,depth-100,ParticleEffect)
-particle.hsp = random_range(-12,12)
-particle.vsp = random_range(-18,4)
+particle.hsp = random_range(-8,8)
+particle.vsp = random_range(-8,8)
 particle.draw_color = blood_color}
 
 

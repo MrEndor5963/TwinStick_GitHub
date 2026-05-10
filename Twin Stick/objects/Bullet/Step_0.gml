@@ -1,10 +1,11 @@
-if image_xscale = 0{spawn_penetration = penetration}
-damage = damage/(spawn_penetration/penetration)
+if image_xscale = 0{spawn_penetration = penetration;base_damage = damage}
+damage = base_damage/(spawn_penetration/penetration)
 
 if GM.game_paused = true{speed = 0;exit}
 
 direction = image_angle
 speed = bullet_speed
+
 
 repeat(100){
 if sprite_index = s_Bullet{
@@ -14,6 +15,10 @@ x += hspeed
 y += vspeed}
 }
 else{image_xscale = 1}
+
+//damage = base_damage-(point_distance(x,y,xstart,ystart)/16)
+//if damage < base_damage/2{damage = (base_damage/2)+random_range(1,3)}
+//damage = round(damage)
 
 if place_meeting(x,y,Enemy){
 var enemy_hit = instance_nearest(x+(hspeed*(image_xscale*100)),y+(vspeed*(image_yscale*100)),Enemy)

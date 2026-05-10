@@ -35,24 +35,28 @@ var_bg_sprite = asset_get_index("s_BackgroundF"+string(floor_number))
 layer_background_change(var_bg,var_bg_sprite)
 
 var_sprite = s_WallF1
+if floor_number = 2{var_sprite = s_WallF2}
+_width = sprite_get_width(var_sprite)
 var_wall = instance_create_layer(0,0,"Walls",Collision)
-var_wall.image_xscale = room_width/256
+var_wall.image_xscale = (room_width-128)/_width
 var_wall.sprite_index = var_sprite
 
 var_wall = instance_create_layer(0,room_height,"Walls",Collision)
-var_wall.image_xscale = room_height/256
+var_wall.image_xscale = (room_height-128)/_width
 var_wall.sprite_index = var_sprite
 var_wall.image_angle = 90
 
 var_wall = instance_create_layer(room_width,0,"Walls",Collision)
-var_wall.image_xscale = room_height/256
+var_wall.image_xscale = (room_height-128)/_width
 var_wall.sprite_index = var_sprite
 var_wall.image_angle = -90
 
 var_wall = instance_create_layer(room_width,room_height,"Walls",Collision)
-var_wall.image_xscale = room_width/256
+var_wall.image_xscale = (room_width-128)/_width
 var_wall.sprite_index = var_sprite
 var_wall.image_angle = 180
+
+
 
 var_offset = 32
 if map_x < map_size-1 && ds_grid_get(map,map_x+1,map_y) != 0{
@@ -74,6 +78,8 @@ var_door = instance_create_layer(room_width/2,room_height-var_offset,"Walls",Doo
 var_door.image_angle = 180
 var_door.depth -= 1
 }
+
+instance_create_depth(0,0,depth,Shade)
 
 }
 time_in_room = 0

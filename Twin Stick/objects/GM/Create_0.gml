@@ -44,7 +44,7 @@ floor_door = true
 map_size = 6
 map = ds_grid_create(map_size,map_size)
 draw_map = false
-
+draw_damage_numbers = false
 
 pause_alpha = 0
 menu_cursor = 0
@@ -121,7 +121,6 @@ array_push(persistent_object_list,Player)
 array_push(persistent_object_list,MysteryBox)
 array_push(persistent_object_list,WallBuy)
 array_push(persistent_object_list,Item)
-array_push(persistent_object_list,Key)
 array_push(persistent_object_list,PersistentVFX)
 array_push(persistent_object_list,FloorWeapon)
 

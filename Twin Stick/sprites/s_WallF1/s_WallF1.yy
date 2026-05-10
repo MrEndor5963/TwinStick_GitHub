@@ -1,7 +1,7 @@
 {
   "$GMSprite":"v2",
   "%Name":"s_WallF1",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":127,
   "bbox_left":0,
   "bbox_right":255,
@@ -14,12 +14,12 @@
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"b22d0a3f-2b2b-4341-8dd8-0f29f3f1b1b0","name":"b22d0a3f-2b2b-4341-8dd8-0f29f3f1b1b0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
-  "gridX":16,
-  "gridY":16,
+  "gridX":64,
+  "gridY":32,
   "height":128,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"4fb8e667-00ce-4e57-b037-e94867600a99","blendMode":0,"displayName":"default","isLocked":false,"name":"4fb8e667-00ce-4e57-b037-e94867600a99","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"4fb8e667-00ce-4e57-b037-e94867600a99","blendMode":0,"displayName":"default","isLocked":true,"name":"4fb8e667-00ce-4e57-b037-e94867600a99","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"s_WallF1",
   "nineSlice":{
@@ -29,10 +29,10 @@
     "guideColour":[4294902015,4294902015,4294902015,4294902015,],
     "highlightColour":1728023040,
     "highlightStyle":1,
-    "left":127,
+    "left":128,
     "resourceType":"GMNineSliceData",
     "resourceVersion":"2.0",
-    "right":127,
+    "right":0,
     "tileMode":[
       0,
       0,

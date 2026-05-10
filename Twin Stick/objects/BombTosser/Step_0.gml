@@ -15,7 +15,7 @@ get_move_directions()
 
 
 
-if collision_line(x,y,player_target.x,player_target.y,[Collision,tiles],false,false) = noone{
+if collision_line(x,y,player_target.x,player_target.y,Collision,false,false) = noone{
 if abs(hsp) < 0.8 && abs(vsp) < 0.8{hsp = move_direction_h*5;vsp = move_direction_v*5}
 if abs(Player.x-x) < 200{hsp = -move_direction_h*6}
 if abs(Player.x-x) < 200 && distance_to_object(Player) < 100{
