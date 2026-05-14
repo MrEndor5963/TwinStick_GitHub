@@ -3,10 +3,13 @@ set_tileset_collision()
 if audio_is_playing(floor_music_id){
 pitch = audio_sound_get_pitch(floor_music_id)
 
-if pause_alpha > 0 or game_over = true {if pitch > 0.7{pitch -= 0.01}}
-if pitch < 1 && glitch_intensity = 0 && pause_alpha = 0{pitch += 0.01}
+if game_paused = true or game_over = true {if pitch > 0.7{pitch -= 0.01}}
+if pitch < 1 && glitch_intensity = 0 && game_paused = false{pitch += 0.01}
 
 audio_sound_pitch(floor_music_id,pitch)
+
+if game_paused = true or game_over = true{audio_sound_gain(floor_music_id,msc_gain_saved*(pitch/1.5),0)}
+else{audio_sound_gain(floor_music_id,msc_gain_saved,0)}
 }
 
 //Civilian - D Class
@@ -89,6 +92,9 @@ glitch_intensity = 0.5
 sub_menu = "Configuration"}
 
 //play_sfx(sfx_MenuClick)
+
+	if sub_menu = "Resume"{glitch_intensity = 0.5;game_paused = false;sub_menu = 0}
+
 	if sub_menu = "Retry"{
 
 	glitch_intensity += 1
@@ -102,8 +108,6 @@ sub_menu = "Configuration"}
 	var_player.input_number = var2
 	var_player.player_number = var3
 	array_delete(player_list,0,1)}
-
-	if instance_exists(Key){instance_destroy(Key)}
 
 
 	floor_number = 0
@@ -159,7 +163,7 @@ aim_offset_y = Player.stick_aim_y*100
 if var1 = 2{
 aim_offset_x = ((mouse_x-Player.x)*0.4)*(1+Player.key_aim)
 aim_offset_y = ((mouse_y-Player.y)*0.4)*(1+Player.key_aim)
-//saim_offset_x = clamp(aim_offset_x,-300,300)
+//aim_offset_x = clamp(aim_offset_x,-300,300)
 //aim_offset_y = clamp(aim_offset_y,-200,200)
 }
 
@@ -203,18 +207,18 @@ cam_target_y = room_height
 }
 
 if abs(cam_x-cam_target_x) < 10 && abs(cam_y-cam_target_y) < 10{
-	room_goto(next_room_id)
+	array_push(map_visited,x_plus_y(map_x,map_y))
 	cam_target_x = 0;cam_target_y = 0
 	free_camera = false
 	cam_x = -cam_x
 	cam_y = -cam_y
 	
-	array_push(map_visited,x_plus_y(map_x,map_y))
 
 	if next_room = "Left"{map_x -= 1}
 	if next_room = "Right"{map_x += 1}
 	if next_room = "Up"{map_y -= 1}
 	if next_room = "Down"{map_y += 1}
+	room_goto(next_room_id)
 }
 
 }

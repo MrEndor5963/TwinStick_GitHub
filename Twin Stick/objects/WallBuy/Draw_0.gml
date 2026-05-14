@@ -5,7 +5,9 @@ x = xstart
 }
 
 if spawned = false{
-;script_execute_wpn(weapon_id);spawned = true}
+script_execute_wpn(weapon_id);
+sprite_index = weapon_id
+spawned = true}
 draw_sprite_ext(weapon_id,0,x,y,1,1,image_angle,image_blend,image_alpha)
 
 

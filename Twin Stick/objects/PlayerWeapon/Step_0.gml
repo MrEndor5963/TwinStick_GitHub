@@ -66,6 +66,8 @@ if slide_sprite = s_0 && pump_sprite = s_0{if shoot_timer = shoot_delay{bullet_c
 if reload_progress >= 0{
 	
 	trigger_delay_timer = 0
+	
+	if animation = "None"{reload_progress += player_id.reload_speed}
 
 	if animation = "Auto Pistol"{
 	if mag_loaded = true && ammo_inmag <= ammo_inmag_max && abs(recoil) < 5{

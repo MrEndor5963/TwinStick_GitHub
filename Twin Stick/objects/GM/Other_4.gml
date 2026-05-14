@@ -28,6 +28,8 @@ if instance_exists(Player) && room != r_FloorTransition{
 	var_player.can_control = true
 	var_repeat += 1}
 	next_room = -1
+	
+if layer_exists("Assets_1"){layer_set_visible("Assets_1",false)}
 
 var_bg = layer_get_id("Background")
 var_bg = layer_background_get_id(var_bg)
@@ -57,7 +59,7 @@ var_wall.sprite_index = var_sprite
 var_wall.image_angle = 180
 
 
-
+if !instance_exists(Door){
 var_offset = 32
 if map_x < map_size-1 && ds_grid_get(map,map_x+1,map_y) != 0{
 var_door = instance_create_layer(room_width-var_offset,room_height/2,"Walls",Door)
@@ -77,6 +79,7 @@ if map_y < map_size-1 && ds_grid_get(map,map_x,map_y+1) != 0{
 var_door = instance_create_layer(room_width/2,room_height-var_offset,"Walls",Door)
 var_door.image_angle = 180
 var_door.depth -= 1
+}
 }
 
 instance_create_depth(0,0,depth,Shade)

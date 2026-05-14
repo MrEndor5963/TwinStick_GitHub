@@ -31,10 +31,11 @@ draw_color = $00CC00
 //favorite_gun = s_SMT9
 //Ex occupation - Unemployed
 /*
-Subject was picked up outside São Paulo Guarulhos Airport at 7:09AM with a flight booked for Portugal
-Subject asked no questions while being apprehended and was "oddly calm" about the situation.
-Subject remained highly cooperative until mauling the head off a technician at the local teleportaion hub
-when being escorted to the CADE facility
+Subject was tracked down to a ranch in Southern Brazil after local authorities reported a strange murder scene at a penthouse party in Sao Palo.
+Victims were heavily mutilated missing parts of the body, usually
+the bowl organs, as well have have chunks of flesh seemly bitten off.
+If subject is to switch to it's alien form while out of it's containment chambers, it's kill collar should be
+promptly activated
 */
 player_age = 20
 futbol_skill = 320
@@ -56,9 +57,11 @@ draw_color = c_aqua
 favorite_gun = s_Xiuhcoatl//Cartel Killer
 //Ex occupation - Student
 /*
-Subject was detained at a shopping mall after a 3 day pursuit by a team of two Special Operatives.
+Subject was detained at a shopping mall in Cancun Mexico after evading 2 special opperative for 16 days.
 Subject then negotiated the operatives to take him out the eat at a local restaurant and then go to
-an assosiates birthday party with subject before officially going into CADE custody
+an assosiates birthday party with subject before officially going into CADE custody.
+Research on subjects potential mind altering properties are currently being investigated.
+Personel are not to talk with subject under any circumstances.
 */
 player_age = 17
 futbol_skill = 230
@@ -68,7 +71,7 @@ gambling_degeneracy = 8
 
 function character_Craig(){
 country = "USA"
-hp = 15;hp_max = 15
+hp = 9;hp_max = 75
 starting_weapon = s_m1911
 money = 420
 mov_spd = 7
@@ -80,9 +83,10 @@ draw_color = $FF00A9
 favorite_gun = s_Thompson//Chicago Typewriter
 //Ex occupation - Dish Washer
 /*
-Subject was shot 17 times in a shootout in downtown Chicago before subject willfully dropped fire arm, calmy walked
-towards opperatives and said "take me to area 51 and fix my shit" reguarding subjects host's
-multiple gunshot wounds
+Subject was shot 74 times in a shootout in South Side Chicago before subject willfully dropped fire arm, calmy walked
+towards opperatives and said "Take me to area 51 before I up an' die" reguarding subjects multiple gunshot wounds.
+All security personel are to carry a bright flashlight while guarding subject as shining a light at it is much more effective than bullets
+Under no circumstances can subject be allowed to wear sunglasses, a hat, or a black shirt
 */
 player_age = 26
 futbol_skill = 60
@@ -99,18 +103,14 @@ mov_spd = 7
 strength = 4
 weight = 1.23
 //reload_speed = 1.5
-healthcare = 3500//Heals everyone except Craig
+healthcare = 3000//Heals everyone except Craig
 draw_color = $3B00FF
 //Ex occupation - Online Artist
 /*
-Subject was aprehended in their apartment at 1:18 PM on a Tuesday.
+Subject was aprehended in their Toronto apartment at 1:18 PM on a Tuesday.
 According to both opperatives present, subject kept making sexual remarks and overall
-"needs to go outside more".
-
-
-When opperatives gave subject a compliance notice, the Subject's host, of her own will, told
-operatives she would kill herself she and "lil demon" (subject) were seperated.
-Roughly 4 minutes of negotiating ended with one of the opperatives knocking subjects host unconsious
+"needs to touch some grass". Subject is minimally dangerous however any personel fond of
+anthropomorphic animal creatures are not to be in contact with subject
 */
 player_age = 23
 futbol_skill = 15
@@ -122,12 +122,12 @@ function character_Christos(){
 country = "Spain"
 hp = 8;hp_max = 8
 starting_weapon = s_P320
-money = 2000
+money = -1000
 mov_spd = 10
 strength = 11
 weight = 1.48
 //reload_speed = 0.95
-healthcare = 3000//Heals everyone except Craig
+healthcare = 2000//Heals everyone except Craig
 draw_color = c_orange
 player_age = 29
 //Ex occupation - Bartender

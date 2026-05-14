@@ -23,8 +23,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"s_WallsF1",
-    "path":"sprites/s_WallsF1/s_WallsF1.yy",
+    "name":"s_WallsTileset",
+    "path":"sprites/s_WallsTileset/s_WallsTileset.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{

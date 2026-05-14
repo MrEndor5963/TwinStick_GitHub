@@ -159,8 +159,6 @@ sprite_string = "s_"+string(player_name)+string(aim_string)
 sprite_index = asset_get_index(sprite_string)
 sprite_set_bbox(sprite_index,20,50,(sprite_width)-20,sprite_height)
 
-
-
 if place_meeting(x,y,[Enemy,Explosion,SlugeeTrail,EnemyBullet]) && hit_stun = 0 or take_damage = true{
 if place_meeting(x,y,Enemy) or place_meeting(x,y,Explosion){
 if place_meeting(x,y,Enemy){var_thing = instance_nearest(x,y,Enemy)}
@@ -204,6 +202,10 @@ ds_list_destroy(list_temp)
 #endregion
 
 #region Buyable Stuff
+saved_sprite = sprite_index
+saved_index = image_index
+sprite_index = s_PlayerInteractBox
+
 	useable_money = debt_limit+money
 	if place_meeting(x,y,MysteryBox){
 	var_object = instance_nearest(x,y,MysteryBox)
@@ -223,8 +225,8 @@ ds_list_destroy(list_temp)
 	}
 	}
 
-	if place_meeting(x,y-10,WallBuy){
-	var_object = instance_nearest(x,y-10,WallBuy)
+	if place_meeting(x,y,WallBuy){
+	var_object = instance_nearest(x,y,WallBuy)
 	var_object.player_id = id
 	if key_interact_pressed && useable_money >= var_object.cost{
 	player_point_change(-var_object.cost)
@@ -235,16 +237,7 @@ ds_list_destroy(list_temp)
 	with var_object{instance_destroy()}
 	}
 	}
-
-	if place_meeting(x,y,Item){
-	var_object = instance_nearest(x,y,Item)
-	var_object.player_id = id
-	}
-
-	if place_meeting(x,y,Teleporter) && key_interact{
-	Teleporter.teleport_timer += 1
-	}
-
+	
 	if place_meeting(x,y,FloorWeapon){
 	var_object = instance_nearest(x,y,FloorWeapon)
 	if key_interact_pressed{
@@ -257,6 +250,17 @@ ds_list_destroy(list_temp)
 	}
 	}
 	
+	sprite_index = saved_sprite
+	image_index = saved_index
+
+	if place_meeting(x,y,Item){
+	var_object = instance_nearest(x,y,Item)
+	var_object.player_id = id
+	}
+
+	if place_meeting(x,y,Teleporter) && key_interact{
+	Teleporter.teleport_timer += 1
+	}
 #endregion End Of Interactable tuff
 
 //end of alive code

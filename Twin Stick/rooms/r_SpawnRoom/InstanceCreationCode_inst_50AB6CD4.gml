@@ -1,0 +1,1 @@
+weapon_id = s_FiveSeven

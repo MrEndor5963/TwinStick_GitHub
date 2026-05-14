@@ -11,7 +11,7 @@ set_animation("None")
 set_ejection_point(-111,-111)
 bullet_speed = 30;bullet_sprite = s_Bullet
 bullet_amount = 1;bullet_spread = 1
-load_direction = 1
+//load_direction = 1
 jam_chance = 0.08;jam_time = 150
 trigger_delay = 0
 reload_sfx = sfx_m1911Reload;shoot_sfx = sfx_m1911Shoot

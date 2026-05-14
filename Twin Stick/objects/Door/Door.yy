@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_DoorFrame",
-    "path":"sprites/s_DoorFrame/s_DoorFrame.yy",
+    "name":"s_DoorOpen",
+    "path":"sprites/s_DoorOpen/s_DoorOpen.yy",
   },
   "spriteMaskId":null,
   "visible":true,

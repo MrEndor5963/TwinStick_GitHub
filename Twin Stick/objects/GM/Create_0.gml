@@ -5,7 +5,7 @@ dev_mode = true
 randomize()
 audio_group_load(audiogroup_sfx)
 msc_gain_saved = 0
-sfx_gain_saved = 1
+sfx_gain_saved = 0
 audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
 audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
 depth = -1000
@@ -57,12 +57,14 @@ sub_menu = 0
 
 room_list_1 = []
 vrp = 1
-repeat(1){
+do{
 if vrp < 10{var_string = "0"+string(vrp)}else{var_string = vrp}
 var_temp = asset_get_index("r_Floor1_Main"+string(var_string))
 array_push(room_list_1,var_temp)
 vrp += 1
 }
+until(var_temp = -1)
+array_delete(room_list_1,array_length(room_list_1)-1,1)
 
 /*
 room_list_2 = []

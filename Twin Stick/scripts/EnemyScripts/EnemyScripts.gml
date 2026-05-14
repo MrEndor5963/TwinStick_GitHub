@@ -141,7 +141,8 @@ particle.vsp = random_range(-8,8)
 particle.draw_color = blood_color}
 
 
-direction = point_direction(x,y,hurt_by_x,hurt_by_y)
+if hurt_by_id.object_index = Bullet{direction = hurt_by_id.direction+180}
+else{direction = point_direction(x,y,hurt_by_x,hurt_by_y)}
 speed = 1;
 hsp_knockback -= hspeed*hurt_by_id.knockback
 vsp_knockback -= vspeed*hurt_by_id.knockback
