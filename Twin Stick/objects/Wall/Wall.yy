@@ -1,20 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"PersistentVFX",
+  "%Name":"Wall",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"PersistentVFX",
+  "name":"Wall",
   "overriddenProperties":[],
   "parent":{
-    "name":"AMainStuff",
-    "path":"folders/AObjects/AMainStuff.yy",
+    "name":"RoomMaker",
+    "path":"folders/AObjects/RoomMaker.yy",
   },
   "parentObjectId":null,
-  "persistent":true,
+  "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
   "physicsFriction":0.2,
@@ -31,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"s_WallF1",
+    "path":"sprites/s_WallF1/s_WallF1.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

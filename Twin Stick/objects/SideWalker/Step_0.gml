@@ -4,7 +4,6 @@ if spawn_timer > 0{
 spawn_timer -= 1;exit
 }
 
-depth = -y
 if hit_stun > 0{hit_stun -= 1}
 
 var_width = sprite_get_width(sprite_index)
@@ -66,3 +65,5 @@ if sprite_index = s_Sidewalker1 && image_index = 1 or sprite_index = s_Sidewalke
 sprite_set_bbox(sprite_index,13,23,78,63)
 }
 else{sprite_set_bbox(sprite_index,10,30,86,63)}
+
+depth = -y-(sprite_get_height(sprite_index)/2)

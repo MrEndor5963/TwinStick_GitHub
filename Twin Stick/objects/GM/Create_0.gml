@@ -26,6 +26,8 @@ cam_shake_y = 0
 cam_angle = 0
 free_camera = true
 next_room = -1
+door_left = -1;door_right = -1
+door_up = -1;door_down = -1
 room_start = true
 disable_countdown = true
 game_over = false
@@ -146,8 +148,8 @@ glitch_intensity = 2
 
 //global.noise=spr_noise_4
 
-tile_landlocked = -1//Landlocked tile
-tile_wall_down = -1//Wall Facing Down
-tile_wall_up = -1//Wall Facing Up
-tile_wall_right = -1//Wall Facing Right
-tile_wall_left = -1//Wall Facing Left
+//tile_landlocked = -1//Landlocked tile
+//tile_wall_down = -1//Wall Facing Down
+//tile_wall_up = -1//Wall Facing Up
+//tile_wall_right = -1//Wall Facing Right
+//tile_wall_left = -1//Wall Facing Left

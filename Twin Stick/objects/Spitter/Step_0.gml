@@ -4,7 +4,6 @@ if spawn_timer > 0{
 spawn_timer -= 1;exit
 }
 
-depth = -y
 if hit_stun > 0{hit_stun -= 1}
 
 var_width = sprite_get_width(sprite_index)
@@ -83,3 +82,5 @@ vsp *= 0.94
 move_hitbox()
 
 sprite_set_bbox(sprite_index,47,15,96,126)
+
+depth = -y-(sprite_get_height(sprite_index)/2)

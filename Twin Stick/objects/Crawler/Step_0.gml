@@ -5,7 +5,6 @@ if spawn_timer > 0{
 spawn_timer -= 1;exit
 }
 
-depth = -y
 if hit_stun > 0{hit_stun -= 1}
 
 
@@ -57,3 +56,5 @@ else{
 image_speed = 0}
 
 move_hitbox()
+
+depth = -y-(sprite_get_height(sprite_index)/2)

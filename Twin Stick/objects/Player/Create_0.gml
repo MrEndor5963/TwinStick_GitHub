@@ -1,6 +1,7 @@
 //Object will be created by CharacterSelect
 spawned = false;
 new_floor = false
+next_room = -1
 array_push(GM.player_list,id)
 set_tileset_collision()
 

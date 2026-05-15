@@ -19,8 +19,6 @@ hit_reward = 10;kill_reward = 100
 explosive = false;explosion_damage = 0
 weapon_draw_sprite = s_0;slide_sprite = s_0;hammer_sprite = s_0;pump_sprite = s_0
 mag_sprite = s_m1911Mag//asset_get_index(sprite_get_name(arg_weapon_id)+"Mag")
-mag_xoff = 8
-mag_yoff = 25
 description = ""
 var_string = string_delete(sprite_get_name(arg_weapon_id),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
@@ -99,7 +97,7 @@ weapon_yoffset = arg_yoffset
 }
 
 function set_animation(arg_animation){
-if arg_animation = "Auto Pistol"{
+if arg_animation = "Pistol Clip"{
 reload_time = 15
 }
 
@@ -117,7 +115,7 @@ reload_time = 60
 
 animation = arg_animation
 
-//if arg_animation != "Auto Pistol" && arg_animation != "Pump Action" && arg_animation != "None"{
+//if arg_animation != "Pistol Clip" && arg_animation != "Pump Action" && arg_animation != "None"{
 //throw("script read error, Reload animation not found")}
 }
 
@@ -395,7 +393,7 @@ set_gun_handling(16,2,2.4)
 set_deploy_stats(8,-1)
 shoot_delay = 8
 action_type = s_SemiAuto
-set_animation("Auto Pistol")
+set_animation("Pistol Clip")
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = "Iconic, reliable, and accurate WW1 pistol still manufactured today"
@@ -417,7 +415,7 @@ set_gun_handling(24,2.5,2.1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
-set_animation("Auto Pistol")
+set_animation("Pistol Clip")
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = "Effective sidearm based on the Berretta 92, mostly used by the Brazilian police and military"
@@ -439,7 +437,7 @@ set_gun_handling(20,2.5,2.1)
 set_deploy_stats(7,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
-set_animation("Auto Pistol")
+set_animation("Pistol Clip")
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = ""
@@ -465,7 +463,7 @@ set_gun_handling(22,1.5,1.3)
 set_deploy_stats(6,-1)
 shoot_delay = 4
 action_type = s_SemiAuto
-set_animation("Auto Pistol")
+set_animation("Pistol Clip")
 weapon_draw_sprite = s_Glock18Base
 set_slide_distance(-8)
 reload_sfx = sfx_m1911Reload
@@ -490,7 +488,7 @@ set_deploy_stats(6,-1)
 bullet_spread = 0
 shoot_delay = 3
 action_type = s_SemiAuto
-set_animation("Auto Pistol")
+set_animation("Pistol Clip")
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = ""
@@ -513,7 +511,7 @@ set_gun_handling(15,3,1.6)
 set_deploy_stats(7,-1)
 shoot_delay = 5
 action_type = s_SemiAuto
-set_animation("Auto Pistol")
+set_animation("Pistol Clip")
 reload_sfx = sfx_m1911Reload
 shoot_sfx = sfx_m1911Shoot
 description = ""
@@ -536,7 +534,7 @@ set_gun_handling(85,9,4.4)
 set_deploy_stats(9,-1)
 shoot_delay = 5
 action_type = s_SemiAuto
-set_animation("Auto Pistol")
+set_animation("Pistol Clip")
 reload_sfx = sfx_DEagleReload
 shoot_sfx = sfx_DEagleShoot
 description = "Desert Eagle or Deagle for short, a very powerful yet heavy magnum pistol with high recoil"
@@ -914,7 +912,7 @@ description = "Homemade firearm made by Phillip A. Luty in response to UK anti g
 }
 
 function wpn_VzSkorpion(){
-set_weapon_offset(-1,30)
+set_weapon_offset(-12,16)
 weapon_name = "Vz Škorpion"
 cost = 700
 if object_index = GM{
@@ -930,7 +928,7 @@ set_gun_handling(-3,1.5,2.9)
 set_deploy_stats(8,-1)
 shoot_delay = 3
 action_type = s_FullAuto
-set_animation("None")
+set_animation("Mag Bottom")
 shoot_sfx = sfx_mp5Shoot
 description = "Compact and light SMG with great handling"
 }

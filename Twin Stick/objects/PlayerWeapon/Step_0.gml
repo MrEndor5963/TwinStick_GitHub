@@ -69,15 +69,16 @@ if reload_progress >= 0{
 	
 	if animation = "None"{reload_progress += player_id.reload_speed}
 
-	if animation = "Auto Pistol"{
+	if animation = "Pistol Clip"{
 	if mag_loaded = true && ammo_inmag <= ammo_inmag_max && abs(recoil) < 5{
 	angle_offset = 100*image_yscale
+	play_sfx(sfx_PistolClipOut)
 	mag_loaded = false
 	if ammo_inmag > 1{ammo_inmag = 1;player_id.glitch_int_mag = 1}
 	direction = aim_direction;speed = 1
 	particle = instance_create_depth(
-	x+(mag_xoff-sprite_get_xoffset(sprite_index))+((sprite_get_width(sprite_index)*hspeed)/2),
-	y+(mag_yoff-sprite_get_yoffset(sprite_index))+6,
+	x+(sprite_get_xoffset(sprite_index))+((sprite_get_width(sprite_index)*hspeed)/2),
+	y+(sprite_get_yoffset(sprite_index))+6,
 	depth,PersistentVFX)
 	particle.hsp = hspeed*random_range(1,3)
 	particle.vsp = vspeed*random_range(1,3)
@@ -86,12 +87,15 @@ if reload_progress >= 0{
 	particle.z = player_id.y-player_id.floor_y
 	particle.floor_y = player_id.floor_y
 	particle.grv = 0.5
+	particle.sprite_index = mag_sprite
 	speed = 0
 	}
 	
 	if mag_loaded = false && abs(angle_offset) <= 1{
 	reload_progress += player_id.reload_speed
-	mag_offset = (reload_time-(reload_time/(reload_time/reload_progress)))*20
+	if reload_progress = reload_time-(player_id.reload_speed*4){play_sfx(sfx_PistolClipIn)}
+	if reload_progress >= reload_time && ammo_inmag = 0{play_sfx(sfx_PistolSlideRelease)}
+	mag_offset = 150*((reload_time-reload_progress)/reload_time)
 	}
 	
 	
@@ -230,8 +234,9 @@ aim_direction = player_id.aim_direction
 direction = aim_direction+recoil
 speed = 1
 position_xoffset = sprite_get_xoffset(sprite_index)-weapon_xoffset
+position_yoffset = sprite_get_yoffset(sprite_index)-weapon_yoffset
 x = player_id.x+(position_xoffset*hspeed)
-y = player_id.y+(position_xoffset*vspeed)+(sprite_get_yoffset(sprite_index)-weapon_yoffset)
+y = player_id.y+(position_xoffset*vspeed)+position_yoffset
 speed = 0
 image_angle = direction
 depth = player_id.depth-1

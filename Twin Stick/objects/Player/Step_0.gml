@@ -1,5 +1,36 @@
 if GM.game_paused = true or room = r_FloorTransition{exit}
 
+if next_room != -1 && GM.next_room = -1{
+
+var _height = sprite_get_height(s_DoorOpen)
+
+if next_room = "Left"{
+var _door = GM.door_right
+x = _door.x-_height-(sprite_get_width(sprite_index)/2)
+y = _door.y
+}
+
+if next_room = "Right"{
+var _door = GM.door_left
+x = _door.x+_height+(sprite_get_width(sprite_index)/2)
+y = _door.y
+}
+
+if next_room = "Up"{
+var _door = GM.door_down
+x = _door.x
+y = _door.y-_height-(sprite_get_height(sprite_index)/2)
+}
+
+if next_room = "Down"{
+var _door = GM.door_up
+x = _door.x
+y = _door.y+_height
+}
+
+	
+next_room = -1}
+
 if new_floor = true{
 i = 0
 repeat(array_length(weapons_held)){
@@ -36,8 +67,8 @@ key_reload = keyboard_check_pressed(ord("R"))
 key_map = keyboard_check(vk_tab)
 key_weapon_toggle_back = mouse_wheel_up()
 key_weapon_toggle_forward = mouse_wheel_down()
-key_melee_pressed = mouse_check_button_pressed(mb_middle)
-key_throw_pressed = keyboard_check_pressed(vk_space)
+key_melee_pressed = keyboard_check_pressed(vk_space)
+key_throw_pressed = mouse_check_button_pressed(mb_middle) or keyboard_check_pressed(ord("T"))
 aim_direction = point_direction(x, y, mouse_x,mouse_y)
 }
 else{//Controller Controls

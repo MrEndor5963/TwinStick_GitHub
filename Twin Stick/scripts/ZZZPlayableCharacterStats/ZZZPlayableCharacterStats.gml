@@ -20,7 +20,7 @@ character_Christos()
 function character_Hazel(){
 country = "Brazil"
 hp = 4;hp_max = 4
-starting_weapon = s_Ithaca //Taurus92
+starting_weapon = s_Taurus92
 money = 1000
 mov_spd = 12
 strength = 3
@@ -46,7 +46,7 @@ gambling_degeneracy = 4
 function character_Justin(){
 country = "Mexico"
 hp = 5;hp_max = 5
-starting_weapon = s_m1911
+starting_weapon = s_VzSkorpion //m1911
 money = 12
 mov_spd = 12
 strength = 5

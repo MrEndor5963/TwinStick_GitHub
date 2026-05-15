@@ -9,22 +9,7 @@ if instance_exists(Player) && room != r_FloorTransition{
 	var_repeat = 0
 	repeat (player_amount){
 	var_player = array_get(player_list,var_repeat)
-	if next_room = "Left"{
-	var_player.x = room_width-160
-	var_player.y = room_height/2
-	}
-	if next_room = "Right"{
-	var_player.x = 160
-	var_player.y = room_height/2
-	}
-	if next_room = "Up"{
-	var_player.x = room_width/2
-	var_player.y = room_height-160 - var_player.sprite_height
-	}
-	if next_room = "Down"{
-	var_player.x = room_width/2
-	var_player.y = var_player.sprite_height+160
-	}
+
 	var_player.can_control = true
 	var_repeat += 1}
 	next_room = -1
@@ -36,27 +21,29 @@ var_bg = layer_background_get_id(var_bg)
 var_bg_sprite = asset_get_index("s_BackgroundF"+string(floor_number))
 layer_background_change(var_bg,var_bg_sprite)
 
+if !instance_exists(Wall){
 var_sprite = s_WallF1
 if floor_number = 2{var_sprite = s_WallF2}
 _width = sprite_get_width(var_sprite)
-var_wall = instance_create_layer(0,0,"Walls",Collision)
+var_wall = instance_create_layer(0,0,"Walls",Wall)
 var_wall.image_xscale = (room_width-128)/_width
 var_wall.sprite_index = var_sprite
 
-var_wall = instance_create_layer(0,room_height,"Walls",Collision)
+var_wall = instance_create_layer(0,room_height,"Walls",Wall)
 var_wall.image_xscale = (room_height-128)/_width
 var_wall.sprite_index = var_sprite
 var_wall.image_angle = 90
 
-var_wall = instance_create_layer(room_width,0,"Walls",Collision)
+var_wall = instance_create_layer(room_width,0,"Walls",Wall)
 var_wall.image_xscale = (room_height-128)/_width
 var_wall.sprite_index = var_sprite
 var_wall.image_angle = -90
 
-var_wall = instance_create_layer(room_width,room_height,"Walls",Collision)
+var_wall = instance_create_layer(room_width,room_height,"Walls",Wall)
 var_wall.image_xscale = (room_width-128)/_width
 var_wall.sprite_index = var_sprite
 var_wall.image_angle = 180
+}
 
 
 if !instance_exists(Door){

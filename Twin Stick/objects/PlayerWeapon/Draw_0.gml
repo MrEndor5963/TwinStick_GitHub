@@ -16,9 +16,21 @@ if reload_progress >= 0 && mag_loaded = false && angle_offset = 0{
 
 direction = image_angle+(mag_offset*-image_yscale)
 speed = 1
-draw_x = player_id.x+((mag_xoff-sprite_get_xoffset(sprite_index))*hspeed)+(position_xoffset*hspeed)
-draw_y = player_id.y+((mag_xoff-sprite_get_xoffset(sprite_index))*vspeed)+(position_xoffset*vspeed)+(mag_yoff-sprite_get_yoffset(sprite_index))
-draw_sprite_ext(mag_sprite,0,draw_x,draw_y,1,image_yscale,image_angle+(mag_offset*-image_yscale),-1,1)}
+
+
+direction = aim_direction+recoil-(mag_offset*image_yscale)
+speed = 1
+
+//9 and 28 and mag_x and mag_yoffsets
+position_xoffset = (sprite_get_xoffset(sprite_index)-(weapon_xoffset))-(sprite_get_xoffset(sprite_index)-(9))
+position_yoffset = (sprite_get_yoffset(sprite_index)-(weapon_yoffset))-(sprite_get_yoffset(sprite_index)-(28))
+draw_x = player_id.x+(position_xoffset*hspeed)
+draw_y = player_id.y+(position_xoffset*vspeed)+position_yoffset
+speed = 0
+
+draw_sprite_ext(mag_sprite,0,draw_x,draw_y,1,image_yscale,image_angle-(mag_offset*image_yscale),-1,1)
+
+}
 
 //bottom loaded shotguns reload
 if reload_progress >= 0 && angle_offset = 0 && magazine_reload = false{

@@ -3,7 +3,7 @@ home_y = GM.map_y
 if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
-hp = (10000)
+hp = (20000)
 hp += round((GM.player_amount-1)*0.2)
 hp_max = hp
 move_timer = 1

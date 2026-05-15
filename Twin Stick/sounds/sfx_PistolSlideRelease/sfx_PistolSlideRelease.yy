@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sfx_PistolSlideRelease",
+  "audioGroupId":{
+    "name":"audiogroup_sfx",
+    "path":"audiogroups/audiogroup_sfx",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.33564627,
+  "exportDir":"",
+  "name":"sfx_PistolSlideRelease",
+  "parent":{
+    "name":"PistolSounds",
+    "path":"folders/DSounds/GunSounds/PistolSounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_PistolSlideRelease.wav",
+  "volume":1.0,
+}
