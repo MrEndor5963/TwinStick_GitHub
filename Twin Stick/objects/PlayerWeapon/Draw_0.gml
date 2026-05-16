@@ -60,6 +60,7 @@ direction = image_angle+angle_offset
 
 if slide_sprite != s_0{
 draw_sprite_ext(slide_sprite,0,x+(slide_offset*hspeed),y+(slide_offset*vspeed),1,image_yscale,image_angle+angle_offset,-1,1)
+//draw_text(x,y,slide_offset)
 }
 
 if pump_sprite != s_0{

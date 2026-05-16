@@ -37,8 +37,9 @@ if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0{key_melee_pressed = t
 #region reloading and gun animations
 
 if slide_sprite != s_0{
-if ammo_inmag = 0{shoot_timer = 0}
-slide_offset = slide_distance-(slide_distance/(shoot_delay/shoot_timer))
+//slide_offset = slide_distance-(slide_distance/(shoot_delay/shoot_timer))
+//slide_offset = slide_distance*((shoot_delay-shoot_timer)/shoot_delay)
+if ammo_inmag = 0 or mag_loaded = false{shoot_timer = 0;slide_offset = slide_distance}
 if slide_offset = 0{bullet_chambered = true}
 }
 
@@ -175,7 +176,6 @@ if reload_progress >= 0{
 	
 	
 	if action_type = s_SemiAuto or action_type = s_FullAuto{
-	if slide_sprite != s_0{slide_offset = slide_distance}
 	case_ejects_needed -= 1
 	eject_bullet_casing()
 	}

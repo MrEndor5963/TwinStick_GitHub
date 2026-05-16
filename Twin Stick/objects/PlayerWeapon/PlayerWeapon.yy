@@ -31,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"s_m1911",
+    "path":"sprites/s_m1911/s_m1911.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
