@@ -1,7 +1,7 @@
 if GM.game_paused = true or GM.game_over = true{exit}
 
-node_x = x div 48
-node_y = y div 48
+node_x = x div 64
+node_y = y div 64
 if spawn_timer > 0{
 spawn_timer -= 1;exit
 }

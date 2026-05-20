@@ -30,10 +30,10 @@ glitch_intensity = 0.5
 if room = r_TitleScreen{
 menu_active = true
 if sub_menu = 0{
-menu[0] = "Solo"
-menu[1] = "Co-Op"
+menu[0] = "Start Game"
+menu[1] = "?????"
 menu[2] = "??????"//"Versus"
-menu[3] = "Database"
+menu[3] = "????????"
 menu[4] = "???????????"//"Achievments"
 menu[5] = "Configuration"}
 }
@@ -74,7 +74,7 @@ GM.glitch_intensity = 0.5
 if key_enter{
 sub_menu = menu[menu_cursor]
 
-if sub_menu = "Solo"{
+if sub_menu = "Start Game"{
 sub_menu = 0
 glitch_intensity = 1
 room_goto(r_CharacterSelectScreen)}

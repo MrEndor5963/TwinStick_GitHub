@@ -49,9 +49,9 @@ play_sfx(sfx_Buy)
 }	
 
 if item_is_free = true{
-var_text = "Press A to take "+string(item_name)}
+var_text = "Press "+string(player_id.interact_glyph)+" to take "+string(item_name)}
 else{
-var_text = "Press A to Buy "+string(item_name)+" [Cost "+string(cost)+"]"}
+var_text = "Press "+string(player_id.interact_glyph)+" to Buy "+string(item_name)+" [Cost "+string(cost)+"]"}
 if !instance_exists(display_text){
 display_text = instance_create_depth(x-(string_width(var_text)/2),y,-room_height-100,DisplayText)
 display_text.text_string = var_text

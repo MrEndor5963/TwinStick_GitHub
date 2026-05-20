@@ -10,8 +10,8 @@
   "name":"ParticleEffect",
   "overriddenProperties":[],
   "parent":{
-    "name":"AObjects",
-    "path":"folders/AObjects.yy",
+    "name":"VFX",
+    "path":"folders/AObjects/VFX.yy",
   },
   "parentObjectId":null,
   "persistent":false,

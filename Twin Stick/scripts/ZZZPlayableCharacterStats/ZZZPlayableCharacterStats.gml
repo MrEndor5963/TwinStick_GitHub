@@ -46,7 +46,7 @@ gambling_degeneracy = 4
 function character_Justin(){
 country = "Mexico"
 hp = 5;hp_max = 5
-starting_weapon = s_VzSkorpion //m1911
+starting_weapon = s_m1911
 money = 12
 mov_spd = 12
 strength = 5
@@ -118,7 +118,7 @@ liquor_tolorance = 0.07
 gambling_degeneracy = 6
 }
 
-function character_Christos(){	
+function character_Christos(){
 country = "Spain"
 hp = 8;hp_max = 8
 starting_weapon = s_P320
@@ -174,8 +174,10 @@ futbol_skill = 85
 liquor_tolorance = 0.05
 gambling_degeneracy = 99999
 //Ex Occupation - Gambler and Card dealer
-Subject was detained at an underground poker game after an off duty opperative called for backup
-upon identifying subject's alien nature.
+
+Subject was detained at an underground poker game in Central Shanghai after an off duty opperative called for backup
+upon identifying subject's alien nature. Subject is unexplainably lucky when it comes to specifically games with
+cash involved. Personel under no circumstances may gamble with subject unless currency is not invovled
 
 //Casinos spawn on every floor, rigged odds, kicked out of casino after too many wins
 //Can only make money by gambling

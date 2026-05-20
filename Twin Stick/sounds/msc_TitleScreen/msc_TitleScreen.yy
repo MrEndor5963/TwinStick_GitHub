@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":225.07101,
+  "duration":0.0,
   "exportDir":"",
   "name":"msc_TitleScreen",
   "parent":{

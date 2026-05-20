@@ -13,7 +13,7 @@ if hit_stun > 0{hit_stun -= 1}
 get_move_directions()
 
 
-if collision_line(x,y,player_target.x,player_target.y,[Collision,tiles],false,false) = noone
+if collision_line(x,y,player_target.x,player_target.y,Collision,false,false) = noone
 {
 move_timer -= 1
 if move_timer = 0{move_timer = 90

@@ -9,8 +9,8 @@
   "name":"MysteryBox",
   "overriddenProperties":[],
   "parent":{
-    "name":"BuyableStuff",
-    "path":"folders/AObjects/BuyableStuff.yy",
+    "name":"InteractableStuff",
+    "path":"folders/AObjects/InteractableStuff.yy",
   },
   "parentObjectId":null,
   "persistent":true,

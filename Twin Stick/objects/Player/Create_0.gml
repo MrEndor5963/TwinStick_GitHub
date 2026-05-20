@@ -19,6 +19,7 @@ stick_aim_x = 0;stick_aim_y = 0
 blood_color = $FF00FF
 
 //Player stats
+interact_glyph = "E"
 player_name = ""
 money = 500
 mov_spd = 10

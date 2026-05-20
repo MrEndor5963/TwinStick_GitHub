@@ -7,6 +7,11 @@ else{x_saved = x}
 
 if spawned = false{
 script_execute_wpn(weapon_id)
+if spawned_in = true{
+ammo_inmag = irandom_range(0,ammo_inmag_max)
+ammo_reserve = 0
+}
+
 if thrown = true{
 damage = 20
 direction = player_id.aim_direction
@@ -18,7 +23,7 @@ zsp = -10
 spin_speed = 30*-image_yscale
 grv = 0.5
 }
-if thrown = false{
+if thrown = false && spawned_in = false{
 damage = 1
 direction = player_id.aim_direction;speed = 1
 hsp = -hspeed*random_range(2,4)

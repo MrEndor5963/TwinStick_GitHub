@@ -10,8 +10,8 @@
   "name":"BigBack",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/AObjects/Enemies.yy",
+    "name":"EnemyObjects",
+    "path":"folders/AObjects/EnemyObjects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

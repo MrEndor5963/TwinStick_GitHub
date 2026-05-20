@@ -1,5 +1,4 @@
 if spawned = false{
-x_offset = 0;y_offset = 0
 if image_angle = 90{next_room = "Left";x_offset = -48;GM.door_left = id
 if GM.map_x = 0 or ds_grid_get(GM.map,GM.map_x-1,GM.map_y) = 0{instance_destroy()}
 }

@@ -4,8 +4,8 @@ if instance_number(GM) > 1{instance_destroy();exit}
 dev_mode = true
 randomize()
 audio_group_load(audiogroup_sfx)
-msc_gain_saved = 0
-sfx_gain_saved = 0
+msc_gain_saved = 1
+sfx_gain_saved = 1
 audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
 audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
 depth = -1000

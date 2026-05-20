@@ -3,7 +3,7 @@
   "%Name":"s_PlayerInteractBox",
   "bboxMode":2,
   "bbox_bottom":111,
-  "bbox_left":0,
+  "bbox_left":-12,
   "bbox_right":72,
   "bbox_top":0,
   "collisionKind":1,

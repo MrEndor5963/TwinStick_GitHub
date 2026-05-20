@@ -17,15 +17,16 @@ trigger_delay = 0
 reload_sfx = sfx_m1911Reload;shoot_sfx = sfx_m1911Shoot
 hit_reward = 10;kill_reward = 100
 explosive = false;explosion_damage = 0
-weapon_draw_sprite = s_0;slide_sprite = s_0;hammer_sprite = s_0;pump_sprite = s_0
-mag_sprite = s_m1911Mag//asset_get_index(sprite_get_name(arg_weapon_id)+"Mag")
+weapon_draw_sprite = s_0;mag_sprite = s_0;slide_sprite = s_0;hammer_sprite = s_0;pump_sprite = s_0
+set_mag_sprite(s_0,9,28)
+//asset_get_index(sprite_get_name(arg_weapon_id)+"Mag")
 description = ""
 var_string = string_delete(sprite_get_name(arg_weapon_id),1,2)
 script_execute(asset_get_index("wpn_"+string(var_string)))
 
 if object_index = PlayerWeapon{
 	
-	
+	if mag_sprite != s_0{mag_dropped_sprite = asset_get_index(sprite_get_name(mag_sprite)+"Dropped")}
 	shoot_amount = 1
 	spread_increase = 0
 	spread_mult = 1
@@ -90,6 +91,13 @@ if object_index = PlayerWeapon{
 function set_slide_distance(arg_slide_distance){
 slide_sprite = asset_get_index(sprite_get_name(weapon_id)+"Slide")
 slide_distance = arg_slide_distance}
+	
+function set_mag_sprite(arg_mag_sprite,arg_mag_xoff,arg_mag_yoff){
+mag_sprite = arg_mag_sprite
+mag_xoff = arg_mag_xoff
+mag_yoff = arg_mag_yoff
+mag_xoff = mag_xoff;mag_yoff = mag_yoff
+}
 
 function set_weapon_offset(arg_xoffset,arg_yoffset){
 weapon_xoffset = arg_xoffset
@@ -98,8 +106,11 @@ weapon_yoffset = arg_yoffset
 
 function set_animation(arg_animation){
 if arg_animation = "Pistol Clip"{
+set_mag_sprite(s_m1911Mag,9,28)
 reload_time = 15
 }
+
+//if arg_animation = "Mag Bottom"{reload_time = 15}
 
 if arg_animation = "Pump Action"{
 reload_time = 30
@@ -309,6 +320,9 @@ weapon_id = s_DSR50;wpn_DSR50()
 weapon_id = s_GM6Lynx;wpn_GM6Lynx()
 weapon_id = s_KS23;wpn_KS23()
 weapon_id = s_AA12;wpn_AA12()
+weapon_id = s_M79;wpn_M79()
+weapon_id = s_RPG7;wpn_RPG7()
+weapon_id = s_SquareGun;wpn_SquareGun()
 //Explosive
 //wpn_M79()
 //wpn_RPG7()
@@ -720,7 +734,7 @@ set_gun_ammo(7,10,false)
 set_bullet_power(s_12GadgeBuckshot,22)
 set_gun_handling(40,18,7)
 set_deploy_stats(15,-1)
-shoot_delay = 12
+shoot_delay = 11
 action_type = s_PumpAction
 set_animation("Pump Action")
 bullet_spread = 22
@@ -757,9 +771,11 @@ hit_reward = 5
 }
 
 function wpn_Remi870(){
-set_weapon_offset(50,16)
+set_weapon_offset(50,6)
 weapon_name = "Remi 870 Marine"
 cost = 2500
+pump_sprite = s_Remi870Pump;pump_distance = 20
+weapon_draw_sprite = s_Remi870Base
 if object_index = GM{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -772,7 +788,7 @@ set_gun_ammo(7,10,false)
 set_bullet_power(s_12GadgeBuckshot,28)
 set_gun_handling(70,20,8)
 set_deploy_stats(25,1)
-shoot_delay = 30
+shoot_delay = 14
 action_type = s_PumpAction
 set_animation("Pump Action")
 bullet_spread = 25
@@ -811,6 +827,8 @@ function wpn_KS23(){
 set_weapon_offset(54,22)
 weapon_name = "KS23"
 cost = 2300
+pump_sprite = s_KS23Pump;pump_distance = 30
+weapon_draw_sprite = s_KS23Base
 if object_index = GM{
 array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -928,9 +946,13 @@ set_gun_handling(-3,1.5,2.9)
 set_deploy_stats(8,-1)
 shoot_delay = 3
 action_type = s_FullAuto
-set_animation("Mag Bottom")
+set_animation("Pistol Clip")
+set_mag_sprite(s_VzSkorpionMag,40,34)
 shoot_sfx = sfx_mp5Shoot
 description = "Compact and light SMG with great handling"
+weapon_draw_sprite = s_VzSkorpionBase
+
+
 }
 
 function wpn_Uzi(){
@@ -1109,7 +1131,9 @@ set_gun_handling(-30,11,8.4)
 set_deploy_stats(20,1)
 shoot_delay = 8
 action_type = s_FullAuto
-set_animation("None")
+set_animation("Pistol Clip")
+weapon_draw_sprite = s_AK47Base
+mag_sprite = s_AK47Mag
 shoot_sfx = sfx_AK47Shoot
 description = "Most produced firearm in the world as it's a cheap and simple, yet deadly weapon. High power but known for it's inaccuracy due to subpar recoil control"
 }
@@ -1452,7 +1476,7 @@ reload_sfx = sfx_AWPReload
 shoot_sfx = sfx_AWPShoot
 description = ".50 BMG semi auto rifle that would be an ideal head exploding weapon if it wasn't hindered by it's weight, violent recoil, and unreliability. If (or when) this gun jams, you'll need a screwdriver, knife, or some other kind of tool to get the rounds unstuck"
 }
-/*
+
 function wpn_M79(){
 weapon_id = s_M79
 weapon_name = "M79 Thumper"
@@ -1463,7 +1487,7 @@ array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(box_list,weapon_id)
 exit}
-set_gun_ammo(1,8)
+set_gun_ammo(1,8,false)
 //set_bullet_power(150,0,1)
 set_gun_handling(5,2,6)
 set_deploy_stats(10,-1)
@@ -1489,7 +1513,7 @@ array_push(wallbuy_list,weapon_id)
 array_push(box_list,weapon_id)
 array_push(soviet_list,weapon_id)
 exit}
-set_gun_ammo(1,1)
+set_gun_ammo(1,1,false)
 //set_bullet_power(500,0,1)
 set_gun_handling(-5,0,15.4)
 set_deploy_stats(30,1)
@@ -1504,18 +1528,18 @@ explosive = true
 explosion_damage = 600
 description = ""
 }
-/*
+
 function wpn_SquareGun(){
 weapon_id = s_SquareGun
 weapon_name = "Quad Lazer"
 cost = 6666333325
 auto = false
 if object_index = GM{
-array_push(tier_6_gun_list,weapon_id)
+array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(box_list,weapon_id)
 exit}
-set_gun_ammo(4,0)
+set_gun_ammo(4,0,false)
 //set_bullet_power(16000,0,4000)
 set_gun_handling(0,96,16)
 set_deploy_stats(20,-1)
@@ -1525,7 +1549,7 @@ bullet_speed = 0.2
 bullet_sprite = s_SquareGunBullet
 set_animation("None")
 description = "Standard issue Lazer Pistol for Mooninite infantry during the Plutonian conflict"}
-	
+	/*
 function wpn_LR230(){
 weapon_id = s_SquareGun
 weapon_name = "LR 230C"

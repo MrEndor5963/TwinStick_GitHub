@@ -12,23 +12,20 @@ direction = image_angle;speed = 1
 #region Reloads and reload animations
 
 //Semi auto pistol reload
-if reload_progress >= 0 && mag_loaded = false && angle_offset = 0{
+if mag_sprite != s_0{
 
-direction = image_angle+(mag_offset*-image_yscale)
-speed = 1
+if mag_loaded = true{draw_sprite_ext(mag_sprite,0,x,y,1,image_yscale,image_angle+angle_offset,-1,1)}
 
-
+if mag_offset != 0{
 direction = aim_direction+recoil-(mag_offset*image_yscale)
 speed = 1
-
-//9 and 28 and mag_x and mag_yoffsets
-position_xoffset = (sprite_get_xoffset(sprite_index)-(weapon_xoffset))-(sprite_get_xoffset(sprite_index)-(9))
-position_yoffset = (sprite_get_yoffset(sprite_index)-(weapon_yoffset))-(sprite_get_yoffset(sprite_index)-(28))
+position_xoffset = (sprite_get_xoffset(sprite_index)-(weapon_xoffset))
+position_yoffset = (sprite_get_yoffset(sprite_index)-(weapon_yoffset))
 draw_x = player_id.x+(position_xoffset*hspeed)
 draw_y = player_id.y+(position_xoffset*vspeed)+position_yoffset
 speed = 0
-
-draw_sprite_ext(mag_sprite,0,draw_x,draw_y,1,image_yscale,image_angle-(mag_offset*image_yscale),-1,1)
+draw_sprite_ext(mag_sprite,0,draw_x,draw_y,1,image_yscale,image_angle+angle_offset-(mag_offset*image_yscale),-1,1)
+}
 
 }
 
@@ -57,10 +54,12 @@ draw_sprite_ext(hammer_sprite,0,x+hammer_x_offset,y+hammer_y_offset,1,image_ysca
 draw_sprite_ext(weapon_draw_sprite,0,x,y,1,image_yscale,image_angle+angle_offset,-1,1)
 
 direction = image_angle+angle_offset
+speed = 1
 
 if slide_sprite != s_0{
 draw_sprite_ext(slide_sprite,0,x+(slide_offset*hspeed),y+(slide_offset*vspeed),1,image_yscale,image_angle+angle_offset,-1,1)
 //draw_text(x,y,slide_offset)
+//draw_text(x,y+30,hspeed)
 }
 
 if pump_sprite != s_0{

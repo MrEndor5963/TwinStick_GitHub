@@ -5,24 +5,28 @@ if next_room != -1 && GM.next_room = -1{
 var _height = sprite_get_height(s_DoorOpen)
 
 if next_room = "Left"{
+if !instance_exists(GM.door_right){exit}
 var _door = GM.door_right
 x = _door.x-_height-(sprite_get_width(sprite_index)/2)
 y = _door.y
 }
 
 if next_room = "Right"{
+if !instance_exists(GM.door_left){exit}
 var _door = GM.door_left
 x = _door.x+_height+(sprite_get_width(sprite_index)/2)
 y = _door.y
 }
 
 if next_room = "Up"{
+if !instance_exists(GM.door_down){exit}
 var _door = GM.door_down
 x = _door.x
 y = _door.y-_height-(sprite_get_height(sprite_index)/2)
 }
 
 if next_room = "Down"{
+if !instance_exists(GM.door_up){exit}
 var _door = GM.door_up
 x = _door.x
 y = _door.y+_height
@@ -63,6 +67,7 @@ key_shoot = mouse_check_button(mb_left)
 key_shoot_pressed = mouse_check_button_pressed(mb_left)
 key_interact = keyboard_check(ord("E"))
 key_interact_pressed = keyboard_check_pressed(ord("E"))
+interact_glyph = "E"
 key_reload = keyboard_check_pressed(ord("R"))
 key_map = keyboard_check(vk_tab)
 key_weapon_toggle_back = mouse_wheel_up()
@@ -82,6 +87,7 @@ key_shoot = gamepad_button_check(input_number,gp_shoulderrb)
 key_shoot_pressed = gamepad_button_check_pressed(input_number,gp_shoulderrb)
 key_interact = gamepad_button_check(input_number,gp_face1)
 key_interact_pressed = gamepad_button_check_pressed(input_number,gp_face1)
+interact_glyph = "A"
 key_reload = gamepad_button_check_pressed(input_number,gp_face3)
 key_map = gamepad_button_check(input_number,gp_select)
 key_weapon_toggle_back = gamepad_button_check_pressed(input_number,gp_shoulderl)
@@ -253,6 +259,7 @@ sprite_index = s_PlayerInteractBox
 	var_object.box_open = false
 	get_new_weapon(var_object.weapon_id)
 	switch_to_weapon(weapon_equipped)
+	key_interact_pressed = false
 	}
 	}
 
@@ -263,7 +270,7 @@ sprite_index = s_PlayerInteractBox
 	player_point_change(-var_object.cost)
 	get_new_weapon(var_object.weapon_id)
 	saved_ammo_reserve[weapon_equipped] += round(ammo_reserve_max*wall_ammo_multiplier)
-	switch_to_weapon(weapon_equipped)
+	switch_to_weapon(weapon_equipped);key_interact_pressed = false
 	play_sfx(sfx_Buy)
 	with var_object{instance_destroy()}
 	}
@@ -289,8 +296,9 @@ sprite_index = s_PlayerInteractBox
 	var_object.player_id = id
 	}
 
-	if place_meeting(x,y,Teleporter) && key_interact{
-	Teleporter.teleport_timer += 1
+	if place_meeting(x,y,Teleporter){
+	if key_interact{Teleporter.teleport_timer += 1}
+	Teleporter.player_id = id
 	}
 #endregion End Of Interactable tuff
 

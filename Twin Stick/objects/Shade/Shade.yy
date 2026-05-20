@@ -8,8 +8,8 @@
   "name":"Shade",
   "overriddenProperties":[],
   "parent":{
-    "name":"AMainStuff",
-    "path":"folders/AObjects/AMainStuff.yy",
+    "name":"VFX",
+    "path":"folders/AObjects/VFX.yy",
   },
   "parentObjectId":null,
   "persistent":false,

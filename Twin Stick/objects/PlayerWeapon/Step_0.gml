@@ -37,9 +37,8 @@ if key_shoot_pressed && ammo_inmag = 0 && ammo_reserve = 0{key_melee_pressed = t
 #region reloading and gun animations
 
 if slide_sprite != s_0{
-//slide_offset = slide_distance-(slide_distance/(shoot_delay/shoot_timer))
-//slide_offset = slide_distance*((shoot_delay-shoot_timer)/shoot_delay)
-if ammo_inmag = 0 or mag_loaded = false{shoot_timer = 0;slide_offset = slide_distance}
+slide_offset = slide_distance*((shoot_delay-shoot_timer)/shoot_delay)
+if ammo_inmag = 0{slide_offset = slide_distance}
 if slide_offset = 0{bullet_chambered = true}
 }
 
@@ -78,7 +77,7 @@ if reload_progress >= 0{
 	if ammo_inmag > 1{ammo_inmag = 1;player_id.glitch_int_mag = 1}
 	direction = aim_direction;speed = 1
 	particle = instance_create_depth(
-	x+(sprite_get_xoffset(sprite_index))+((sprite_get_width(sprite_index)*hspeed)/2),
+	x+(sprite_get_xoffset(sprite_index)*hspeed),
 	y+(sprite_get_yoffset(sprite_index))+6,
 	depth,PersistentVFX)
 	particle.hsp = hspeed*random_range(1,3)
@@ -88,7 +87,7 @@ if reload_progress >= 0{
 	particle.z = player_id.y-player_id.floor_y
 	particle.floor_y = player_id.floor_y
 	particle.grv = 0.5
-	particle.sprite_index = mag_sprite
+	particle.sprite_index = mag_dropped_sprite
 	speed = 0
 	}
 	
@@ -105,6 +104,7 @@ if reload_progress >= 0{
 	if animation = "Revolver"{
 	if case_ejects_needed > 0 && abs(recoil) < 5{
 	angle_offset = 100*image_yscale
+	play_sfx(sfx_RevolverOpen)
 	direction = aim_direction;speed = 1
 	repeat(case_ejects_needed){
 	particle = instance_create_depth(
@@ -145,7 +145,12 @@ if reload_progress >= 0{
 	ammo_inmag += ammo_inmag_max
 	mag_loaded = true}
 	else{
-	ammo_inmag += 1;if caliber = s_12GadgeBuckshot{play_sfx(sfx_ShotgunShellReload)}
+	ammo_inmag += 1;
+	if caliber = s_12GadgeBuckshot{play_sfx(sfx_ShotgunShellReload)}
+	if animation = "Revolver"{
+	play_sfx(sfx_RevolverBulletLoad)
+	if ammo_inmag = ammo_inmag_max{play_sfx(sfx_RevolverClose)}
+	}
 	if ammo_inmag < ammo_inmag_max && ammo_reserve-1 > 0{reload_progress = 0}
 	}
 	ammo_reserve -= 1
@@ -180,11 +185,14 @@ if reload_progress >= 0{
 	eject_bullet_casing()
 	}
 
+	//get bullet spawn x and y (var_x and var_y)
 	direction = aim_direction+recoil
 	var_x = sprite_get_xoffset(sprite_index)
 	speed = sprite_get_width(sprite_index)-var_x-5
 	var_x = x+(hspeed)
 	var_y = y+(vspeed)
+	speed = 1
+	var_y += (weapon_yoffset-sprite_get_yoffset(sprite_index))*abs(hspeed)
 	speed = 0
 	flash = instance_create_depth(var_x,var_y,depth-2,MuzzleFlash)
 	flash.image_angle = aim_direction+recoil

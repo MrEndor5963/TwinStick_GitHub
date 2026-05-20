@@ -14,17 +14,17 @@ get_move_directions()
 hsp = move_direction_h*2;vsp = move_direction_v*2
 
 
-//shoot_timer -= 1
-//if shoot_timer = 0{
-//_bullet = instance_create_depth(x,y,depth-1,Bullet)
-//_bullet.sprite_index = s_EnemyBullet
-//_bullet.hurts_player = true
-//_bullet.hurts_enemy = false
-//_bullet.image_angle = point_direction(x,y,x+move_direction_h,y+move_direction_v)
-//_bullet.bullet_speed = 8
-//_bullet.creator = id
-//shoot_timer = 30
-//}
+shoot_timer -= 1
+if shoot_timer = 0{
+_bullet = instance_create_depth(x,y,depth-1,EnemyBullet)
+_bullet.sprite_index = s_EnemyBullet
+_bullet.hurts_player = true
+_bullet.hurts_enemy = false
+_bullet.image_angle = point_direction(x,y,x+move_direction_h,y+move_direction_v)
+_bullet.bullet_speed = 8
+_bullet.creator = id
+shoot_timer = 30
+}
 
 
 

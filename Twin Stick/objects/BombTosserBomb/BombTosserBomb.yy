@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Floor2Enemies",
-    "path":"folders/AObjects/Enemies/Floor2Enemies.yy",
+    "path":"folders/AObjects/EnemyObjects/Floor2Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,

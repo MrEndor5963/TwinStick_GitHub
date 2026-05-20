@@ -11,8 +11,8 @@
   "name":"FloorWeapon",
   "overriddenProperties":[],
   "parent":{
-    "name":"AMainStuff",
-    "path":"folders/AObjects/AMainStuff.yy",
+    "name":"InteractableStuff",
+    "path":"folders/AObjects/InteractableStuff.yy",
   },
   "parentObjectId":null,
   "persistent":true,
@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"s_Taurus92",
+    "path":"sprites/s_Taurus92/s_Taurus92.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

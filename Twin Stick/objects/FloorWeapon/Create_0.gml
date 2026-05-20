@@ -10,3 +10,12 @@ hit_enemy = false
 spawned = false
 grv = 0.4
 contact_list = []
+spawned_in = false
+
+hsp = 0
+vsp = 0
+zsp = 0
+z = 0
+thrown = false
+spin_speed = 0
+floor_y = y

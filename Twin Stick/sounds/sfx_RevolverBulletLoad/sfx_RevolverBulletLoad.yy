@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sfx_RevolverBulletLoad",
+  "audioGroupId":{
+    "name":"audiogroup_sfx",
+    "path":"audiogroups/audiogroup_sfx",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.444966,
+  "exportDir":"",
+  "name":"sfx_RevolverBulletLoad",
+  "parent":{
+    "name":"RevolverSounds",
+    "path":"folders/DSounds/GunSounds/RevolverSounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_RevolverBulletLoad.mp3",
+  "volume":1.0,
+}

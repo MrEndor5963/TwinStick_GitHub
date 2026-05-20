@@ -37,6 +37,6 @@ else{draw_text(var_x,var_y+20,"Ready")}
 vrp += 1
 }
 
-if start_timer < 300{
+if start_timer < 300 && GM.disable_countdown = false{
 draw_set_aligns(fa_center,fa_middle)
 draw_text(640,360,(start_timer div 60)+1)}

@@ -99,8 +99,8 @@ set_room_with_path(r_GunShop)
 set_room_with_path(r_Treasure)
 //if irandom_range(1,2) = 1{set_room_with_path(r_FastFood)}
 //else{set_room_with_path(r_Casino)}
-set_room_with_path(r_Key)
-if floor_number = 1{set_room_with_path(r_Floor1_Boss)}
-else{set_room_with_path(r_Floor2_Boss)}
+//set_room_with_path(r_Key)
+set_room_with_path(r_Floor1_Boss)
+
 
 }

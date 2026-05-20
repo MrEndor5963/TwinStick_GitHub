@@ -16,7 +16,7 @@ font = f_Main;draw_set_color(c_white)
 
 
 if player_id != -1{
-var_text = "Press A to Buy "+string(weapon_name)+" [Cost "+string(cost)+"]"
+var_text = "Press "+string(player_id.interact_glyph)+" to Buy "+string(weapon_name)+" [Cost "+string(cost)+"]"
 if !instance_exists(display_text){
 display_text = instance_create_depth(x-(string_width(display_text)/2),y-(font_get_size(font)),-room_height-100,DisplayText)
 display_text.text_string = var_text

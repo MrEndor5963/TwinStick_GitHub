@@ -41,6 +41,3 @@ shader_reset()
 }
 
 description_text = false
-
-draw_set_colour(c_white)
-draw_text(200,200,string(instance_number(WallBuy)))

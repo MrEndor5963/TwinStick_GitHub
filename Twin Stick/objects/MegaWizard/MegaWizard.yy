@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Bosses",
-    "path":"folders/AObjects/Enemies/Bosses.yy",
+    "path":"folders/AObjects/EnemyObjects/Bosses.yy",
   },
   "parentObjectId":null,
   "persistent":false,
