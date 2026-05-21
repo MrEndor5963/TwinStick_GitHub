@@ -20,6 +20,8 @@ else{audio_sound_gain(floor_music_id,msc_gain_saved,0)}
 //Classified - Z Class
 #region menus and menu control
 menu_active = false
+if dev_item_menu = true{menu_active = true}
+
 key_pause = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed_any(gp_start)
 if key_pause && room != r_TitleScreen && room != r_CharacterSelectScreen && room != r_FloorTransition{
 if game_paused = false{game_paused = true}else{game_paused = false}

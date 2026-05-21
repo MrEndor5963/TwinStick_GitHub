@@ -97,7 +97,7 @@ weapon_weight = 0
 weight_mult = 1
 
 damage_mult = 0
-player_reload_mult = 0
+reload_mult = 1
 knockback_mult = 1
 
 handgun_damage_mult = 0
@@ -110,7 +110,7 @@ smg_shot_delay_decrease = 0
 shotgun_spread_mult = 0
 shotgun_bullet_mult = 0
 twelve_bonus_ammo = 0
-sniper_damage_mult = 0
+sniper_damage_mult = 1
 sniper_spread_increase = 0
 
 soviet_ammo_mult = 0
@@ -119,8 +119,7 @@ shoot_amount = 1
 shoot_amount_increase = 0
 
 ammo_recived_when_hurt = 0
-wall_ammo_multiplier = 0
-bullets_per_new_room = 0
+wall_ammo_multiplier = 1
 
 //player_shot_reward_mult = 1
 //player_kill_reward_mult = 1

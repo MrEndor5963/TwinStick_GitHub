@@ -1,11 +1,14 @@
-/// @description Console commands
-if keyboard_check_pressed(ord("F")) && keyboard_check(vk_control){
+/// @description Console Commands
+if keyboard_check(vk_control) = false{exit}
+	
+if keyboard_check_pressed(ord("F")){
 if window_get_fullscreen() = false{
 window_set_fullscreen(true)}
 else{window_set_fullscreen(false)}
 }
 
-if keyboard_check(vk_control) && dev_mode = true{
+if dev_mode = false{exit}
+	
 if keyboard_check_pressed(ord("R")){game_restart()}
 
 if keyboard_check_pressed(ord("4")){Player.money += 2000}
@@ -56,4 +59,21 @@ vrp += 1
 }
 }
 }
+	
+	
+if keyboard_check_pressed(ord("I")){
+if dev_item_menu = true{dev_item_menu = false}
+else{dev_item_menu = true;menu_cursor = 0
+
+menu = []
+vrp = 0
+
+repeat(array_length(item_list)){
+menu[vrp] = item_list[vrp]
+vrp += 1
 }
+
+}
+}
+
+

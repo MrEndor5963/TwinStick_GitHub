@@ -67,7 +67,7 @@ if reload_progress >= 0{
 	
 	trigger_delay_timer = 0
 	
-	if animation = "None"{reload_progress += player_id.reload_speed}
+	if animation = "None"{reload_progress += reload_speed}
 
 	if animation = "Pistol Clip"{
 	if mag_loaded = true && ammo_inmag <= ammo_inmag_max && abs(recoil) < 5{
@@ -92,8 +92,8 @@ if reload_progress >= 0{
 	}
 	
 	if mag_loaded = false && abs(angle_offset) <= 1{
-	reload_progress += player_id.reload_speed
-	if reload_progress = reload_time-(player_id.reload_speed*4){play_sfx(sfx_PistolClipIn)}
+	reload_progress += reload_speed
+	if reload_progress = reload_time-(reload_speed*4){play_sfx(sfx_PistolClipIn)}
 	if reload_progress >= reload_time && ammo_inmag = 0{play_sfx(sfx_PistolSlideRelease)}
 	mag_offset = 150*((reload_time-reload_progress)/reload_time)
 	}
@@ -132,7 +132,7 @@ if reload_progress >= 0{
 	if action_type = s_PumpAction or weapon_id = s_Spaz12 or animation = "Revolver"{
 	
 	if abs(angle_offset) <= 1{
-	reload_progress += player_id.reload_speed
+	reload_progress += reload_speed
 	mag_offset = reload_time-reload_progress
 	}
 	

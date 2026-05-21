@@ -2,10 +2,12 @@
 //Operates various game data,Save data, pause menu, and floor map
 if instance_number(GM) > 1{instance_destroy();exit}
 dev_mode = true
+dev_item_menu = false
+add_to_list = true
 randomize()
 audio_group_load(audiogroup_sfx)
-msc_gain_saved = 1
-sfx_gain_saved = 1
+msc_gain_saved = 0
+sfx_gain_saved = 0
 audio_group_set_gain(audiogroup_default,msc_gain_saved,0)
 audio_group_set_gain(audiogroup_sfx,sfx_gain_saved,0)
 depth = -1000
@@ -46,7 +48,7 @@ floor_door = true
 map_size = 6
 map = ds_grid_create(map_size,map_size)
 draw_map = false
-draw_damage_numbers = false
+draw_damage_numbers = true
 
 pause_alpha = 0
 menu_cursor = 0
@@ -113,7 +115,6 @@ tier_5_gun_list = []
 
 referece_weapons()
 
-
 item_list = []
 reference_items()
 //items_bought = []
@@ -136,6 +137,7 @@ description_text = false
 //application_surface_draw_enable(false); //disabling automatic redrawing of the application surface
 display_set_gui_size(1280, 720);
 glitch_intensity = 2
+add_to_list = false
 //glitch_sound = -22
 
 //////////////////////

@@ -141,7 +141,6 @@ if menu_active = true{
 	vrp += 1}
 
 }
-
 #endregion menus
 /*
 if room != r_TitleScreen && room != r_FloorTransition && room != r_CharacterSelectScreen{

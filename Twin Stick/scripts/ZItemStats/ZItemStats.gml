@@ -18,8 +18,6 @@ item_BloodBullets()
 item_MLGNoScoper()
 item_DamageUp()
 item_ShotGunner()
-//item_PoundOfFeathers()
-//item_WeightedBelt()
 item_HandgunHavoc()
 item_NoobiniPizzanini()
 item_TeddyBear()
@@ -64,12 +62,12 @@ ammo_reserve = ammo_reserve_max
 }
 }
 
-function item_SuperMushroom(){//Works
+function item_SuperMushroom(){
 item_id = s_item_SuperMushroom
 item_name = "Super Mushroom"
 cost = 500
 description = "Max HP +1 and Heals 1 HP"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -82,7 +80,7 @@ item_id = s_item_WeaponSlots
 item_name = "Weapon Slots Up"
 cost = 5000
 description = "Carry an extra gun"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -95,7 +93,7 @@ item_id = s_item_Move
 item_name = "Move Up"
 cost = 400
 description = "Increases move spd by a bit"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -108,7 +106,7 @@ item_id = s_item_FastFire
 item_name = "Fast fire"
 cost = 2000
 description = "Increases the fire rate of all smg's"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -121,11 +119,11 @@ item_id = s_item_SpeedCola
 item_name = "Speed Soda"
 cost = 3000
 description = "Increased reload speed on all guns by 100%"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
-player_reload_mult += 1
+reload_mult += 1
 }
 }
 
@@ -134,7 +132,7 @@ item_id = s_item_ShotGunner
 item_name = "Shot Gunner"
 cost = 2500
 description = "Shotguns bullets shoot more pellets but have a larger spread"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -158,7 +156,7 @@ item_id = s_item_BloodBullets
 item_name = "Blood Bullets"
 cost = 1200
 description = "Refill 20% of your max ammo reserve when getting hurt"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -171,7 +169,7 @@ item_id = s_item_MLGNoScoper
 item_name = "MLG No Scoper"
 cost = 2000
 description = "Increases Sniper damage by 42.0% but decreases sniper accuracy"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -185,7 +183,7 @@ item_id = s_item_HandgunHavoc
 item_name = "Hand Gun Havoc"
 cost = 2200
 description = "Increaes the damgage, recoil, and knockback of all handguns by 100%"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -195,13 +193,12 @@ handgun_knockback_mult += 1
 }
 }
 
-
 function item_NoobiniPizzanini(){
 item_id = s_item_NoobiniPizzanini
 item_name = "Noobini Pizzanini"
 cost = 500
 description = "Earn an extra $1 per bullet hit enemy"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -214,7 +211,7 @@ item_id = s_item_TeddyBear
 item_name = "Teddy Bear"
 cost = 1500
 description = "Once per floor, get your money back after using the mystery box"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -227,7 +224,7 @@ item_id = s_item_Wallnut
 item_name = "Wallnut"
 cost = 500
 description = "Max HP +2"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -240,7 +237,7 @@ item_id = s_item_CryptoCoin
 item_name = "Crypto Coin"
 cost = 1000
 description = "Gain or lose $1-$10000 at the start of every floor"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -253,7 +250,7 @@ item_id = s_item_ChoccyMilk
 item_name = "Choccy Milk"
 cost = 1400
 description = "+1 speed, +10% reload speed, and +2 hp"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -268,7 +265,7 @@ item_id = s_item_PNGExplosion
 item_name = "png explosion gif"
 cost = 2000
 description = "1 in 4 chance to cause png explosion gifs when killing enemies, dealing additional explosion damage"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -281,7 +278,7 @@ item_id = s_item_DinoChickenNuggies
 item_name = "Dino Chicken Nuggies"
 cost = 1000
 description = "+5% damage, +5% move speed, +5% reload speed"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -294,7 +291,7 @@ item_id = s_item_CoolLookingS
 item_name = "Cool Looking S"
 cost = 1900
 description = "Guns with names that start with S get -19% recoil, -19% knockback and -19% weight"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -307,7 +304,7 @@ item_id = s_item_CowboyHat
 item_name = "Cowboy Hat"
 cost = 1200
 description = "Doubles the hammer pull speed, draw speed, and reload speed of all revolvers"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -321,7 +318,7 @@ item_id = s_item_RageSpell
 item_name = "Rage Spell"
 cost = 850
 description = "Move at 2x speed for 4.5 seconds after entering a new room"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -334,7 +331,7 @@ item_id = s_item_HammerAndSickle
 item_name = "Hammer & Sickle"
 cost = 1922
 description = "All Soviet invented weaponry gets +50% max reserve ammo and a full ammo refill at the start of each floor but give no money"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -347,7 +344,7 @@ item_id = s_item_DozenEggs
 item_name = "A dozen eggs"
 cost = 1200
 description = "All guns with 12 in their name get +12 max reserve ammo"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -360,7 +357,7 @@ item_id = s_item_PetTurtle
 item_name = "Pet Tortoise"
 cost = 1600
 description = "+4 HP and Max HP but -50% move speed while enemies are in the room"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -373,7 +370,7 @@ item_id = s_item_LoanFish
 item_name = "Loan Fish"
 cost = 2500
 description = "Go an extra -15000$ in debt but for every 50 seconds in debt, lose 1 or more HP (HP loss doubles every additional 50 seconds in debt)"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -390,7 +387,7 @@ cost = 2000
 
 description = "Spawns a Fútbol Ball you can kick to damage enemies, with power depending on how good your character is at Fútbol"
 Player.money += 1
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
@@ -405,7 +402,7 @@ item_id = s_item_CursedIdol
 item_name = "Cursed Idol"
 cost = 5000
 description = "+25000$ but tougher enemies become more common"
-if object_index = GM{
+if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
