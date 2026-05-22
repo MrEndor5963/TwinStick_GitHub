@@ -91,29 +91,30 @@ new_item = -1
 item_draw_y = 0
 
 mov_mult = 1
-turtle_mov_mult = 0
+turtle_mov_mult = 1
 
 weapon_weight = 0
 weight_mult = 1
 
-damage_mult = 0
-reload_mult = 1
+damage_mult = 1
+reload_speed_mult = 1
 knockback_mult = 1
+recoil_mult = 1
 
 handgun_damage_mult = 0
 handgun_recoil_mult = 0
 handgun_knockback_mult = 0
-revolver_reload_mult = 0
+revolver_reload_speed_mult = 0
 revolver_hammer_time_divider = 1
 revolver_deploy_time_divider = 1
 smg_shot_delay_decrease = 0
 shotgun_spread_mult = 0
 shotgun_bullet_mult = 0
 twelve_bonus_ammo = 0
-sniper_damage_mult = 1
+sniper_damage_mult = 0
 sniper_spread_increase = 0
 
-soviet_ammo_mult = 0
+hammer_and_sickles = 0
 
 shoot_amount = 1
 shoot_amount_increase = 0
@@ -123,7 +124,7 @@ wall_ammo_multiplier = 1
 
 //player_shot_reward_mult = 1
 //player_kill_reward_mult = 1
-hit_reward_increase = 0
+hit_reward_additional = 0
 floor_mystery_box_rolls = 0
 total_mystery_box_rolls = 0
 free_mystery_box_rolls_per_floor = 0

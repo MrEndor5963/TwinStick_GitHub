@@ -36,6 +36,13 @@ Victims were heavily mutilated missing parts of the body, usually
 the bowl organs, as well have have chunks of flesh seemly bitten off.
 If subject is to switch to it's alien form while out of it's containment chambers, it's kill collar should be
 promptly activated
+
+Subjects true identity is unknown but has been nicknamed Hazel since a blood covered passport for an unknown individual named "Hazel Harris" 
+was found in subjects pocket during aprehension.
+The passport seems to be from subjects original demension as it originates from the country of "Oceania".
+
+Subject seems to understand Brazilian Portuguese and bits of English and spanish but has not been observed to speak.
+Whether subject is a mute or simply chooses not to speak is unknown
 */
 player_age = 20
 futbol_skill = 320

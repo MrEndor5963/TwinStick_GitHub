@@ -13,6 +13,10 @@ if keyboard_check_pressed(ord("R")){game_restart()}
 
 if keyboard_check_pressed(ord("4")){Player.money += 2000}
 
+if keyboard_check_pressed(ord("D")){
+if draw_damage_numbers = false{draw_damage_numbers = true}
+else{draw_damage_numbers = false}}
+
 if keyboard_check_pressed(ord("M")){
 if sfx_gain_saved = 0{
 sfx_gain_saved = 1

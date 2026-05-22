@@ -143,7 +143,8 @@ if reload_progress >= 0{
 	if magazine_reload = true{
 	if ammo_inmag > 1{ammo_inmag = 1}
 	ammo_inmag += ammo_inmag_max
-	mag_loaded = true}
+	mag_loaded = true
+	mag_offset = 0}
 	else{
 	ammo_inmag += 1;
 	if caliber = s_12GadgeBuckshot{play_sfx(sfx_ShotgunShellReload)}

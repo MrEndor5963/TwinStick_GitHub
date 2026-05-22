@@ -155,7 +155,10 @@ if deploy_timer >= deploy_time{
 if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
 if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
-var_move = (mov_spd)-(p_weapon.weapon_weight/strength)
+if !instance_exists(Enemy){var_turtle = 1}
+else{var_turtle = turtle_mov_mult}
+
+var_move = ((mov_spd)-(p_weapon.weapon_weight/strength))*var_turtle
 if var_move<0{var_move = 0.5}
 if var_move > (mov_spd*mov_mult){var_move = mov_spd}
 
@@ -269,7 +272,7 @@ sprite_index = s_PlayerInteractBox
 	if key_interact_pressed && useable_money >= var_object.cost{
 	player_point_change(-var_object.cost)
 	get_new_weapon(var_object.weapon_id)
-	saved_ammo_reserve[weapon_equipped] += round(ammo_reserve_max*wall_ammo_multiplier)
+	saved_ammo_reserve[weapon_equipped] = round(ammo_reserve_max*wall_ammo_multiplier)
 	switch_to_weapon(weapon_equipped);key_interact_pressed = false
 	play_sfx(sfx_Buy)
 	with var_object{instance_destroy()}

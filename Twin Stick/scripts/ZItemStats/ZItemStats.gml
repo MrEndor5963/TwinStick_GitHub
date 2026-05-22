@@ -14,17 +14,14 @@ item_Move()
 item_WeaponSlots()
 item_FastFire()
 item_SpeedCola()
-item_BloodBullets()
 item_MLGNoScoper()
 item_DamageUp()
 item_ShotGunner()
 item_HandgunHavoc()
 item_NoobiniPizzanini()
-item_TeddyBear()
 item_Wallnut()
 item_CryptoCoin()
 item_ChoccyMilk()
-item_PNGExplosion()
 item_DinoChickenNuggies()
 item_CoolLookingS()
 item_CowboyHat()
@@ -123,7 +120,7 @@ if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
-reload_mult += 1
+reload_speed_mult += 1
 }
 }
 
@@ -148,19 +145,6 @@ cost = 1200
 description = "All weapons do 10% more damage"
 if object_index = Player && new_item != -1{
 damage_mult += 0.1
-}
-}
-
-function item_BloodBullets(){
-item_id = s_item_BloodBullets
-item_name = "Blood Bullets"
-cost = 1200
-description = "Refill 20% of your max ammo reserve when getting hurt"
-if object_index = GM && add_to_list = true{
-array_push(item_list,item_id)
-exit}
-if object_index = Player && new_item != -1{
-ammo_recived_when_hurt += 0.2
 }
 }
 
@@ -202,20 +186,7 @@ if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
-hit_reward_increase += 1
-}
-}
-
-function item_TeddyBear(){
-item_id = s_item_TeddyBear
-item_name = "Teddy Bear"
-cost = 1500
-description = "Once per floor, get your money back after using the mystery box"
-if object_index = GM && add_to_list = true{
-array_push(item_list,item_id)
-exit}
-if object_index = Player && new_item != -1{
-free_mystery_box_rolls_per_floor += 1
+hit_reward_additional += 1
 }
 }
 
@@ -255,21 +226,8 @@ array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
 mov_spd += 1
-player_reload_mult += 0.1
+reload_speed_mult += 0.1
 hp += 2;if hp > hp_max{hp = hp_max}
-}
-}
-
-function item_PNGExplosion(){
-item_id = s_item_PNGExplosion
-item_name = "png explosion gif"
-cost = 2000
-description = "1 in 4 chance to cause png explosion gifs when killing enemies, dealing additional explosion damage"
-if object_index = GM && add_to_list = true{
-array_push(item_list,item_id)
-exit}
-if object_index = Player && new_item != -1{
-png_explosions += 1
 }
 }
 
@@ -282,7 +240,7 @@ if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
-damage_mult += 0.05;mov_mult += 0.05;player_reload_mult += 0.05
+damage_mult += 0.05;mov_mult += 0.05;reload_speed_mult += 0.05
 }
 }
 
@@ -309,7 +267,7 @@ array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
 revolver_deploy_time_divider *= 2;revolver_hammer_time_divider *= 2
-;revolver_reload_mult += 1
+;revolver_reload_speed_mult += 1
 }
 }
 
@@ -330,12 +288,12 @@ function item_HammerAndSickle(){
 item_id = s_item_HammerAndSickle
 item_name = "Hammer & Sickle"
 cost = 1922
-description = "All Soviet invented weaponry gets +50% max reserve ammo and a full ammo refill at the start of each floor but give no money"
+description = "All Soviet invented weaponry is free but give no money"
 if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
-soviet_ammo_mult += 0.50
+hammer_and_sickles += 1
 }
 }
 
@@ -343,12 +301,12 @@ function item_DozenEggs(){
 item_id = s_item_DozenEggs
 item_name = "A dozen eggs"
 cost = 1200
-description = "All guns with 12 in their name get +12 max reserve ammo"
+description = "All guns with 12 in their name get double reserve ammo when purchased"
 if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
-twelve_bonus_ammo += 12
+twelve_bonus_ammo += 1
 }
 }
 
@@ -356,12 +314,12 @@ function item_PetTurtle(){
 item_id = s_item_PetTurtle
 item_name = "Pet Tortoise"
 cost = 1600
-description = "+4 HP and Max HP but -50% move speed while enemies are in the room"
+description = "+4 HP and Max HP but move at half speed while enemies are in the room"
 if object_index = GM && add_to_list = true{
 array_push(item_list,item_id)
 exit}
 if object_index = Player && new_item != -1{
-hp += 4;hp_max += 4;turtle_mov_mult += 0.5
+hp += 4;hp_max += 4;turtle_mov_mult *= 0.5
 }
 }
 

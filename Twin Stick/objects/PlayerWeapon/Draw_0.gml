@@ -70,6 +70,7 @@ speed = 0}
 
 angle_offset *= 0.85;if abs(angle_offset) < 0.5{angle_offset = 0}
 
+
 /*
 draw_text(x,y,shoot_timer)
 draw_text(x,y+30,slide_offset)

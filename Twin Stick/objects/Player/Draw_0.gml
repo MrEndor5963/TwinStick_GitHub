@@ -111,7 +111,7 @@ vrp += 1}
 //draw_text_with_outline(draw_origin_x+(216*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
 //}
 //draw_text_with_outline(draw_origin_x+(216*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)
-
+draw_set_valign(fa_middle)
 if player_number = 0 or player_number = 2{draw_set_halign(fa_left)};else{draw_set_halign(fa_right)}
 
 var_x = draw_origin_x+(96*pon_x)+(sprite_get_xoffset(weapon_id)*pon_x)

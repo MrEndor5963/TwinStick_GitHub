@@ -31,15 +31,15 @@ if object_index = PlayerWeapon{
 	shoot_amount = 1
 	spread_increase = 0
 	spread_mult = 1
-	damage_mult = 1+player_id.damage_mult
-	recoil_mult = 1
+	damage_mult = player_id.damage_mult
+	recoil_mult = player_id.recoil_mult
 	knockback_mult = 1
 	bullet_mult = 1
 	weight_mult = 1
-	reload_mult = 1+player_id.reload_mult
+	reload_speed_mult = player_id.reload_speed_mult
 	if string_starts_with(weapon_name,"S") or string_starts_with(weapon_name,"s"){
 	ammo_reserve_max += round(ammo_reserve_max*player_id.cool_s_mult)
-	reload_mult += player_id.cool_s_mult
+	reload_speed_mult += player_id.cool_s_mult
 	recoil_mult -= player_id.cool_s_mult
 	knockback_mult -= player_id.cool_s_mult
 	weight_mult -= player_id.cool_s_mult
@@ -55,7 +55,7 @@ if object_index = PlayerWeapon{
 	if array_contains(GM.revolver_list,weapon_id){
 	trigger_delay /= player_id.revolver_hammer_time_divider;trigger_delay = round(trigger_delay)
 	deploy_time /= player_id.revolver_hammer_time_divider;deploy_time = round(deploy_time)
-	reload_mult += player_id.revolver_reload_mult
+	reload_speed_mult += player_id.revolver_reload_speed_mult
 	}
 	
 	if array_contains(GM.smg_list,weapon_id){
@@ -71,10 +71,6 @@ if object_index = PlayerWeapon{
 	damage_mult += player_id.sniper_damage_mult
 	}
 	
-	if array_contains(GM.soviet_list,weapon_id){
-	ammo_reserve_max += round(ammo_reserve_max*player_id.soviet_ammo_mult)}
-	
-	
 	bullet_damage = round(bullet_damage*damage_mult)
 	melee_damage = round(melee_damage*damage_mult)
 	knockback = knockback*knockback_mult
@@ -82,8 +78,12 @@ if object_index = PlayerWeapon{
 	weapon_weight = weapon_weight*weight_mult;if weapon_weight < 0{weapon_weight = 0}
 	bullet_spread = (bullet_spread*spread_mult)+spread_increase
 	shoot_amount += player_id.shoot_amount_increase
-	reload_speed = player_id.reload_speed*player_id.reload_mult
-	hit_reward += player_id.hit_reward_increase
+	hit_reward += player_id.hit_reward_additional
+
+	reload_speed = reload_speed_mult;if reload_speed < 0.1{reload_speed = 0.1}
+	if array_contains(GM.soviet_list,weapon_id) && player_id.hammer_and_sickles > 0{
+	hit_reward = 0
+	kill_reward = 0}
 	}
 
 }
@@ -1062,13 +1062,14 @@ shoot_sfx = sfx_mp5Shoot
 	
 function wpn_PPSh41(){
 set_weapon_offset(50,30)
-weapon_name = "PPSh41"
+weapon_name = "PPSh41"//ППШ-41
 cost = 2950
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(box_list,weapon_id)
 array_push(smg_list,weapon_id)
+array_push(soviet_list,weapon_id)
 exit}
 auto = true
 set_gun_ammo(71,1,true)
@@ -1109,7 +1110,7 @@ description = ""
 
 function wpn_AK47(){
 set_weapon_offset(42,12)
-weapon_name = "AK-47"
+weapon_name = "AK-47";
 cost = 1500
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
