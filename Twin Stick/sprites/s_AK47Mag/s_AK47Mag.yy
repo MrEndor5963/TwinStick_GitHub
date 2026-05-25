@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"3AutoAssaultRifles",
-    "path":"folders/BSprites/GunAndBulletSprites/3AutoAssaultRifles.yy",
+    "path":"folders/BSprites/WeaponSprites/3AutoAssaultRifles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

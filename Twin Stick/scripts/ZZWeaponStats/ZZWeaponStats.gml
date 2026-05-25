@@ -1,94 +1,4 @@
-function script_execute_wpn(arg_weapon_id){
-weapon_id = arg_weapon_id
-
-set_melee_attack(30,7)
-set_gun_ammo(-1,-1,true)
-set_bullet_power(s_9x19mmParabellum,4)
-set_gun_handling(0,0,0)
-set_weapon_offset(0,0)
-shoot_amount = 1
-shoot_delay = 1;
-set_animation("None")
-set_ejection_point(-111,-111)
-bullet_speed = 30;bullet_sprite = s_Bullet
-bullet_amount = 1;bullet_spread = 1
-//load_direction = 1
-jam_chance = 0.08;jam_time = 150
-trigger_delay = 0
-reload_sfx = sfx_m1911Reload;shoot_sfx = sfx_m1911Shoot
-hit_reward = 10;kill_reward = 100
-explosive = false;explosion_damage = 0
-weapon_draw_sprite = s_0;mag_sprite = s_0;slide_sprite = s_0;hammer_sprite = s_0;pump_sprite = s_0
-set_mag_sprite(s_0,9,28)
-//asset_get_index(sprite_get_name(arg_weapon_id)+"Mag")
-description = ""
-var_string = string_delete(sprite_get_name(arg_weapon_id),1,2)
-script_execute(asset_get_index("wpn_"+string(var_string)))
-
-if object_index = PlayerWeapon{
-	
-	if mag_sprite != s_0{mag_dropped_sprite = asset_get_index(sprite_get_name(mag_sprite)+"Dropped")}
-	shoot_amount = 1
-	spread_increase = 0
-	spread_mult = 1
-	damage_mult = player_id.damage_mult
-	recoil_mult = player_id.recoil_mult
-	knockback_mult = 1
-	bullet_mult = 1
-	weight_mult = 1
-	reload_speed_mult = player_id.reload_speed_mult
-	if string_starts_with(weapon_name,"S") or string_starts_with(weapon_name,"s"){
-	ammo_reserve_max += round(ammo_reserve_max*player_id.cool_s_mult)
-	reload_speed_mult += player_id.cool_s_mult
-	recoil_mult -= player_id.cool_s_mult
-	knockback_mult -= player_id.cool_s_mult
-	weight_mult -= player_id.cool_s_mult
-	}
-	//if string_digits(weapon_name) = "12" or string_digits(weapon_name) = "1216"{
-	//ammo_reserve_max += twelve_bonus_ammo;}
-	
-	if array_contains(GM.handgun_list,weapon_id){
-	damage_mult += player_id.handgun_damage_mult
-	recoil_mult += player_id.handgun_recoil_mult
-	knockback_mult += player_id.handgun_knockback_mult
-	}
-	if array_contains(GM.revolver_list,weapon_id){
-	trigger_delay /= player_id.revolver_hammer_time_divider;trigger_delay = round(trigger_delay)
-	deploy_time /= player_id.revolver_hammer_time_divider;deploy_time = round(deploy_time)
-	reload_speed_mult += player_id.revolver_reload_speed_mult
-	}
-	
-	if array_contains(GM.smg_list,weapon_id){
-	shoot_delay -= player_id.smg_shot_delay_decrease;if shoot_delay < 1{shoot_delay = 1}
-	}
-	
-	if array_contains(GM.shotgun_list,weapon_id){
-	spread_mult += player_id.shotgun_spread_mult
-	bullet_mult += player_id.shotgun_bullet_mult
-	}
-	if array_contains(GM.sniper_list,weapon_id){
-	spread_increase += player_id.sniper_spread_increase
-	damage_mult += player_id.sniper_damage_mult
-	}
-	
-	bullet_damage = round(bullet_damage*damage_mult)
-	melee_damage = round(melee_damage*damage_mult)
-	knockback = knockback*knockback_mult
-	gun_recoil = gun_recoil*recoil_mult
-	weapon_weight = weapon_weight*weight_mult;if weapon_weight < 0{weapon_weight = 0}
-	bullet_spread = (bullet_spread*spread_mult)+spread_increase
-	shoot_amount += player_id.shoot_amount_increase
-	hit_reward += player_id.hit_reward_additional
-
-	reload_speed = reload_speed_mult;if reload_speed < 0.1{reload_speed = 0.1}
-	if array_contains(GM.soviet_list,weapon_id) && player_id.hammer_and_sickles > 0{
-	hit_reward = 0
-	kill_reward = 0}
-	}
-
-}
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+#region Weapon stat setting functions
 function set_slide_distance(arg_slide_distance){
 slide_sprite = asset_get_index(sprite_get_name(weapon_id)+"Slide")
 slide_distance = arg_slide_distance}
@@ -199,6 +109,101 @@ case s_23mm: set_caliber_stats((1200/32)+(1.1*barrel_length),1.5,1,0.4,500,"23mm
 }
 bullet_damage = round(bullet_damage)
 }
+	
+#endregion Weapon stat setting functions
+	
+function script_execute_wpn(arg_weapon_id){
+weapon_id = arg_weapon_id
+
+set_melee_attack(30,7)
+set_gun_ammo(-1,-1,true)
+set_bullet_power(s_9x19mmParabellum,4)
+set_gun_handling(0,0,0)
+set_weapon_offset(0,0)
+shoot_amount = 1
+shoot_delay = 1;
+set_animation("None")
+set_ejection_point(-111,-111)
+bullet_speed = 30;bullet_sprite = s_Bullet
+bullet_amount = 1;bullet_spread = 1
+//load_direction = 1
+jam_chance = 0.08;jam_time = 150
+trigger_delay = 0
+reload_sfx = sfx_m1911Reload;shoot_sfx = sfx_m1911Shoot
+hit_reward = 10;kill_reward = 100
+explosive = false;explosion_damage = 0
+weapon_draw_sprite = s_0;mag_sprite = s_0;slide_sprite = s_0;hammer_sprite = s_0;pump_sprite = s_0
+held_angle_offset = 0
+set_mag_sprite(s_0,9,28)
+//asset_get_index(sprite_get_name(arg_weapon_id)+"Mag")
+description = ""
+var_string = string_delete(sprite_get_name(arg_weapon_id),1,2)
+primary_action = "Shoot"
+
+script_execute(asset_get_index("wpn_"+string(var_string)))
+
+if object_index = PlayerWeapon{
+	
+	if mag_sprite != s_0{mag_dropped_sprite = asset_get_index(sprite_get_name(mag_sprite)+"Dropped")}
+	shoot_amount = 1
+	spread_increase = 0
+	spread_mult = 1
+	damage_mult = player_id.damage_mult
+	recoil_mult = player_id.recoil_mult
+	knockback_mult = 1
+	bullet_mult = 1
+	weight_mult = 1
+	reload_speed_mult = player_id.reload_speed_mult
+	if string_starts_with(weapon_name,"S") or string_starts_with(weapon_name,"s"){
+	ammo_reserve_max += round(ammo_reserve_max*player_id.cool_s_mult)
+	reload_speed_mult += player_id.cool_s_mult
+	recoil_mult -= player_id.cool_s_mult
+	knockback_mult -= player_id.cool_s_mult
+	weight_mult -= player_id.cool_s_mult
+	}
+	//if string_digits(weapon_name) = "12" or string_digits(weapon_name) = "1216"{
+	//ammo_reserve_max += twelve_bonus_ammo;}
+	
+	if array_contains(GM.handgun_list,weapon_id){
+	damage_mult += player_id.handgun_damage_mult
+	recoil_mult += player_id.handgun_recoil_mult
+	knockback_mult += player_id.handgun_knockback_mult
+	}
+	if array_contains(GM.revolver_list,weapon_id){
+	trigger_delay /= player_id.revolver_hammer_time_divider;trigger_delay = round(trigger_delay)
+	deploy_time /= player_id.revolver_hammer_time_divider;deploy_time = round(deploy_time)
+	reload_speed_mult += player_id.revolver_reload_speed_mult
+	}
+	
+	if array_contains(GM.smg_list,weapon_id){
+	shoot_delay -= player_id.smg_shot_delay_decrease;if shoot_delay < 1{shoot_delay = 1}
+	}
+	
+	if array_contains(GM.shotgun_list,weapon_id){
+	spread_mult += player_id.shotgun_spread_mult
+	bullet_mult += player_id.shotgun_bullet_mult
+	}
+	if array_contains(GM.sniper_list,weapon_id){
+	spread_increase += player_id.sniper_spread_increase
+	damage_mult += player_id.sniper_damage_mult
+	}
+	
+	bullet_damage = round(bullet_damage*damage_mult)
+	melee_damage = round(melee_damage*damage_mult)
+	knockback = knockback*knockback_mult
+	gun_recoil = gun_recoil*recoil_mult
+	weapon_weight = weapon_weight*weight_mult;if weapon_weight < 0{weapon_weight = 0}
+	bullet_spread = (bullet_spread*spread_mult)+spread_increase
+	shoot_amount += player_id.shoot_amount_increase
+	hit_reward += player_id.hit_reward_additional
+
+	reload_speed = reload_speed_mult;if reload_speed < 0.1{reload_speed = 0.1}
+	if array_contains(GM.soviet_list,weapon_id) && player_id.hammer_and_sickles > 0{
+	hit_reward = 0
+	kill_reward = 0}
+	}
+
+}
 
 function referece_weapons(){
 //Ordered by tier -> gun class -> gun power
@@ -271,6 +276,7 @@ function referece_weapons(){
 //Desklamp
 weapon_id = s_Unarmed;wpn_Unarmed()
 weapon_id = s_Knife;wpn_Knife()
+weapon_id = s_FireAxe;wpn_FireAxe()
 
 weapon_id = s_Taurus92;wpn_Taurus92()
 weapon_id = s_m1911;wpn_m1911()
@@ -340,6 +346,8 @@ if object_index = GM && add_to_list = true{
 array_push(melee_list,weapon_id)
 exit}
 auto = false
+set_gun_ammo(0,0,false)
+primary_action = "Melee"
 bullet_damage = 0
 penetration = 1
 gun_recoil = 0
@@ -351,14 +359,33 @@ weapon_weight = 0
 
 function wpn_Knife(){
 weapon_name = "Knife"
-cost = 0
+cost = 200
 if object_index = GM && add_to_list = true{
-//array_push(weapon_list,weapon_id)
+array_push(weapon_list,weapon_id)
 array_push(melee_list,weapon_id)
 exit}
+set_gun_ammo(0,0,false)
+set_weapon_offset(-15,25)
+set_melee_attack(150,2)
+primary_action = "Melee"
 auto = false
-knockback = 2
-weapon_weight = 0.5
+weapon_weight = 3
+}
+
+function wpn_FireAxe(){
+weapon_name = "Fire Axe"
+cost = 200
+if object_index = GM && add_to_list = true{
+array_push(weapon_list,weapon_id)
+array_push(melee_list,weapon_id)
+exit}
+set_gun_ammo(0,0,false)
+set_weapon_offset(60,65)
+set_melee_attack(600,2)
+held_angle_offset = 0
+primary_action = "Melee"
+auto = false
+weapon_weight = 10
 }
 
 //function wpn_Beretta92(){

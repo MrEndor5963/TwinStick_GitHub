@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"6Snipers",
-    "path":"folders/BSprites/GunAndBulletSprites/6Snipers.yy",
+    "path":"folders/BSprites/WeaponSprites/6Snipers.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

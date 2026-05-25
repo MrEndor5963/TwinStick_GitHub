@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"1Pistols",
-    "path":"folders/BSprites/GunAndBulletSprites/1Pistols.yy",
+    "path":"folders/BSprites/WeaponSprites/1Pistols.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

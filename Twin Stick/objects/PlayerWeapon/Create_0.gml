@@ -21,6 +21,7 @@ attack_timer = -1
 xoff = 0
 yoff = 0
 angleoff = 0
+held_angle_offset = 0
 melee_attack = false
 hurtbox_active = false
 hurts_enemy = true

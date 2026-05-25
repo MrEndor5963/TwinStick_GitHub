@@ -334,3 +334,5 @@ weapon_id = player_id.weapons_held[player_id.weapon_equipped]
 script_execute_wpn(weapon_id)
 sprite_index = weapon_id
 }
+
+image_angle = image_angle+held_angle_offset
