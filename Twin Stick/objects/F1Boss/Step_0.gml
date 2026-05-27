@@ -11,7 +11,7 @@ var_height = sprite_get_height(sprite_index)
 //sprite_set_bbox(sprite_index,10,var_height*0.75,var_width-10-1,var_height)
 
 get_move_directions()
-hsp = move_direction_h*8;vsp = move_direction_v*0.5//0.4
+hsp = move_direction_h*4;vsp = move_direction_v*4//0.4
 timer = 0
 
 //10
@@ -21,8 +21,8 @@ timer = 0
 
 
 
-if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
-if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
+if hsp_knockback != 0{hsp_knockback *=0.5};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
+if vsp_knockback != 0{vsp_knockback *=0.5};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
 if collision_present(x+hsp+hsp_knockback,y)
 {
@@ -62,3 +62,5 @@ vsp *= 0.95
 move_hitbox()
 
 depth = -y-(sprite_get_height(sprite_index)/2)
+
+if move_direction_h != 0{image_xscale = sign(move_direction_h)}

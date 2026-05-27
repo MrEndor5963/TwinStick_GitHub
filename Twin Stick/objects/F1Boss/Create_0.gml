@@ -5,6 +5,7 @@ instance_destroy();exit
 }
 
 hp = 20000
+hp_max = hp
 move_timer = 1
 timer =0
 create_enemy()
@@ -13,3 +14,4 @@ hsp = 0;vsp = 0
 blood_color = c_red
 image_xscale = irandom_range(-1,1)
 while image_xscale = 0{image_xscale = irandom_range(-1,1)}
+glitch_intensity = 0

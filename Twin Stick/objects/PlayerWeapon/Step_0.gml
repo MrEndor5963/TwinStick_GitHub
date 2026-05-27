@@ -200,7 +200,7 @@ if reload_progress >= 0{
 
 	repeat(round(bullet_amount)){
 	_bullet = instance_create_depth(var_x,var_y,depth-1,Bullet)
-	var_spread = bullet_spread+clamp(recoil/5,0,5)
+	var_spread = bullet_spread+clamp(recoil/4,0,9)
 	_bullet.image_angle = aim_direction+recoil+irandom_range(-var_spread,var_spread)
 	_bullet.damage = bullet_damage
 	_bullet.penetration = penetration
@@ -277,16 +277,20 @@ speed = 7
 xoff = hspeed*(12-attack_timer)
 yoff = vspeed*(12-attack_timer)
 speed = 0
-if attack_timer = 0{melee_attack = false}
 
 if attack_timer > -1{attack_timer -= 1}
+if attack_timer = 0{melee_attack = false}
+
+if attack_timer > 1 && attack_timer < 9{hurtbox_active = true}else{hurtbox_active = false}
 }
+else{
+hurtbox_active = false}
 
 image_angle = image_angle+angleoff
 x = x+xoff
 y = y+yoff
 
-if melee_attack = true{
+if hurtbox_active = true{
 
 list_temp = ds_list_create()
 instance_place_list(x,y,Enemy,list_temp,false)
@@ -335,4 +339,4 @@ script_execute_wpn(weapon_id)
 sprite_index = weapon_id
 }
 
-image_angle = image_angle+held_angle_offset
+image_angle = image_angle+(held_angle_offset*image_yscale)

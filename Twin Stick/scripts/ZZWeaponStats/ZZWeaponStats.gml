@@ -1,3 +1,5 @@
+//Note - lengths and weight are measured in inches and pounds/lbs
+
 #region Weapon stat setting functions
 function set_slide_distance(arg_slide_distance){
 slide_sprite = asset_get_index(sprite_get_name(weapon_id)+"Slide")
@@ -370,6 +372,7 @@ set_melee_attack(150,2)
 primary_action = "Melee"
 auto = false
 weapon_weight = 3
+held_angle_offset = 70
 }
 
 function wpn_FireAxe(){
@@ -380,12 +383,13 @@ array_push(weapon_list,weapon_id)
 array_push(melee_list,weapon_id)
 exit}
 set_gun_ammo(0,0,false)
-set_weapon_offset(60,65)
+set_weapon_offset(80,45)
 set_melee_attack(600,2)
 held_angle_offset = 0
 primary_action = "Melee"
 auto = false
 weapon_weight = 10
+held_angle_offset = 150
 }
 
 //function wpn_Beretta92(){
@@ -973,7 +977,7 @@ set_mag_sprite(s_VzSkorpionMag,40,34)
 shoot_sfx = sfx_mp5Shoot
 description = "Compact and light SMG with great handling"
 weapon_draw_sprite = s_VzSkorpionBase
-
+mag_sprite = s_VzSkorpionMag
 
 }
 
@@ -1016,7 +1020,10 @@ set_gun_handling(-5,2,4.6)
 set_deploy_stats(14,-1)
 shoot_delay = 5
 action_type = s_FullAuto
-set_animation("None")
+set_animation("Pistol Clip")
+reload_time += 5
+weapon_draw_sprite = s_PPBisonBase
+mag_sprite = s_PPBisonMag
 shoot_sfx = sfx_mp5Shoot
 description = "Light SMG with a spiral magazine allowing for a weapon with good handling and lots of bullets"
 }
@@ -1038,8 +1045,10 @@ set_gun_handling(-3,2,5.5)
 set_deploy_stats(12,-1)
 shoot_delay = 5
 action_type = s_FullAuto
-set_animation("None")
+set_animation("Pistol Clip")
 shoot_sfx = sfx_mp5Shoot
+weapon_draw_sprite = s_mp5Base
+mag_sprite = s_mp5Mag
 }
 	
 function wpn_Thompson(){
@@ -1178,7 +1187,9 @@ set_gun_handling(-5,6,9.5)
 set_deploy_stats(18,1)
 shoot_delay = 7
 action_type = s_FullAuto
-set_animation("None")
+set_animation("Pistol Clip")
+weapon_draw_sprite = s_GalilBase
+mag_sprite = s_GalilMag
 shoot_sfx = sfx_AK47Shoot
 }
 
@@ -1244,7 +1255,10 @@ set_gun_handling(-7,6,8.6)
 set_deploy_stats(18,1)
 shoot_delay = 6
 action_type = s_FullAuto
-set_animation("None")
+set_animation("Pistol Clip")
+reload_time += 5
+weapon_draw_sprite = s_ScarHBase
+mag_sprite = s_ScarHMag
 shoot_sfx = sfx_AK47Shoot
 }
 

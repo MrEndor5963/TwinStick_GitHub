@@ -83,6 +83,10 @@ array_push(enemy_list,BombTosser)
 array_push(enemy_list,Slugee)
 }
 
+if floor_number = 3{
+//array_push(enemy_list,BigBack)
+}
+
 
 floor_music = asset_get_index("msc_Floor"+string(floor_number))
 ds_grid_clear(map,0)
