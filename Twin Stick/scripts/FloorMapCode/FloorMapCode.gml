@@ -83,8 +83,8 @@ array_push(enemy_list,BombTosser)
 array_push(enemy_list,Slugee)
 }
 
-if floor_number = 3{
-//array_push(enemy_list,BigBack)
+if floor_number = 4{
+array_push(enemy_list,BigBack)
 }
 
 

@@ -81,6 +81,7 @@ vsp *= 0.94
 
 move_hitbox()
 
+hurt_player()
 sprite_set_bbox(sprite_index,47,15,96,126)
 
 depth = -y-(sprite_get_height(sprite_index)/2)

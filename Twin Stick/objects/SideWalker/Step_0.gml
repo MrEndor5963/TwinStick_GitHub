@@ -60,6 +60,7 @@ vsp *= 0.95
 //}
 
 move_hitbox()
+hurt_player()
 
 if sprite_index = s_Sidewalker1 && image_index = 1 or sprite_index = s_Sidewalker2{
 sprite_set_bbox(sprite_index,13,23,78,63)

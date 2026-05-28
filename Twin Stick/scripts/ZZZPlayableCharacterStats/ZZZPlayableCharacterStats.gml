@@ -37,9 +37,8 @@ the bowl organs, as well have have chunks of flesh seemly bitten off.
 If subject is to switch to it's alien form while out of it's containment chambers, it's kill collar should be
 promptly activated
 
-Subjects true identity is unknown but has been nicknamed Hazel since a blood covered passport for an unknown individual named "Hazel Harris" 
+Subjects true identity is unknown but has been nicknamed Hazel since a blood covered passport belonging to an Irish tourist named "Hazel Harrison"
 was found in subjects pocket during aprehension.
-The passport seems to be from subjects original demension as it originates from the country of "Oceania".
 
 Subject seems to understand Brazilian Portuguese and bits of English and spanish but has not been observed to speak.
 Whether subject is a mute or simply chooses not to speak is unknown
@@ -78,7 +77,7 @@ gambling_degeneracy = 8
 
 function character_Craig(){
 country = "USA"
-hp = 9;hp_max = 75
+hp = 10;hp_max = 75
 starting_weapon = s_m1911
 money = 420
 mov_spd = 7

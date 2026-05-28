@@ -22,7 +22,7 @@ if next_room = "Up"{
 if !instance_exists(GM.door_down){exit}
 var _door = GM.door_down
 x = _door.x
-y = _door.y-_height-(sprite_get_height(sprite_index)/2)
+y = _door.y-_height-(sprite_get_height(sprite_index)/2)-2
 }
 
 if next_room = "Down"{
@@ -199,17 +199,13 @@ sprite_string = "s_"+string(player_name)+string(aim_string)
 sprite_index = asset_get_index(sprite_string)
 sprite_set_bbox(sprite_index,20,50,(sprite_width)-20,sprite_height)
 
-if place_meeting(x,y,[Enemy,Explosion,SlugeeTrail,EnemyBullet]) && hit_stun = 0 or take_damage = true{
-if place_meeting(x,y,Enemy) or place_meeting(x,y,Explosion){
-if place_meeting(x,y,Enemy){var_thing = instance_nearest(x,y,Enemy)}
-if place_meeting(x,y,Explosion){var_thing = instance_nearest(x,y,Explosion)}
-direction = point_direction(x,y,var_thing.x,var_thing.y)+180
+if take_damage = true && hit_stun = 0{
+direction = point_direction(x,y,hurt_by_id.x,hurt_by_id.y)+180
 	speed = 30/weight
 	hsp_knockback += hspeed
 	vsp_knockback += vspeed
 	GM.cam_angle = -hspeed
 speed = 0
-}
 hp -= 1;hit_stun = 90;
 GM.glitch_intensity += 1
 ammo_reserve += round(ammo_reserve_max*ammo_recived_when_hurt)
@@ -217,7 +213,6 @@ blood_splatter()
 play_sfx(sfx_PlayerHurt)
 //freeze_frame(100)
 take_damage = false
-
 }
 if hit_stun > 70 && GM.game_paused = false{
 audio_sound_pitch(GM.floor_music_id,1-((90-hit_stun)/50))

@@ -51,6 +51,8 @@ sprite_index = asset_get_index(sprite_string)
 
 move_hitbox()
 
+hurt_player()
+
 sprite_set_bbox(sprite_index,23,1,71,95)
 
 trail_timer -= 1

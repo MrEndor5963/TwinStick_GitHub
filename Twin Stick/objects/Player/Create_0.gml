@@ -18,6 +18,8 @@ aim_direction = 0;aim_x = 0;aim_y = 0
 stick_aim_x = 0;stick_aim_y = 0
 blood_color = $FF00FF
 
+hurt_by_id = -1
+
 //Player stats
 interact_glyph = "E"
 player_name = ""

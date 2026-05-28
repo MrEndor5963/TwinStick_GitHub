@@ -80,8 +80,8 @@
   ],
   "name":"r_SpawnRoom",
   "parent":{
-    "name":"SpecialRooms",
-    "path":"folders/CRooms/SpecialRooms.yy",
+    "name":"CRooms",
+    "path":"folders/CRooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -67,4 +67,5 @@ sprite_string = "s_"+string(object_get_name(object_index))+string(var_string)
 sprite_index = asset_get_index(sprite_string)
 }
 
+hurt_player()
 move_hitbox()

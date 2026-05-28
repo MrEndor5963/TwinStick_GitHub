@@ -9,3 +9,5 @@ var_explosion = instance_create_depth(x,y,depth-1000,Explosion)
 var_explosion.player_id = player_id
 var_explosion.damage = explosion_damage}
 destroy_bullet = true;exit}
+
+hurt_player()

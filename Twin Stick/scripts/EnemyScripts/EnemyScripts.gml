@@ -115,6 +115,14 @@ if !collision_present(x,y-1){while collision_present(x,y){y -= 0.2};exit}
 if !collision_present(x,y+1){while collision_present(x,y){y += 0.2};exit}
 }
 }
+
+function hurt_player(){
+if place_meeting(x,y,Player){
+with instance_nearest(x,y,Player){
+hurt_by_id = other.id
+if hit_stun = 0 {take_damage = true}}
+}
+}
 	
 function enemy_damage_check(){
 hit_stun = 2

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Wizard",
-    "path":"folders/BSprites/EnemySprites/ZOldEnemies/Wizard.yy",
+    "name":"ZOldEnemies",
+    "path":"folders/BSprites/EnemySprites/ZOldEnemies.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

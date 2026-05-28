@@ -58,3 +58,5 @@ image_speed = 0}
 move_hitbox()
 
 depth = -y-(sprite_get_height(sprite_index)/2)
+
+hurt_player()

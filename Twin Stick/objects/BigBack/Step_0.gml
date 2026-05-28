@@ -12,16 +12,17 @@ if hit_stun > 0{hit_stun -= 1}
 
 
 move_timer -= 1
-if move_timer = 0{move_timer = 60
+if move_timer <= 0{
+move_timer = 60*(hp/hp_max);if move_timer < 10{move_timer = 10}
 get_move_directions()
-hsp = move_direction_h*24;vsp = move_direction_v*24
+hsp = move_direction_h*15;vsp = move_direction_v*15
 }
 
 corner_cutting()
 
 
-if hsp_knockback != 0{hsp_knockback *=0.9};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
-if vsp_knockback != 0{vsp_knockback *=0.9};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
+if hsp_knockback != 0{hsp_knockback /= weight};if hsp_knockback < 0.1 && hsp_knockback > -0.1{hsp_knockback = 0}
+if vsp_knockback != 0{vsp_knockback /= weight};if vsp_knockback < 0.1 && vsp_knockback > -0.1{vsp_knockback = 0}
 
 if collision_present(x+hsp+hsp_knockback,y)
 {
@@ -41,8 +42,8 @@ if collision_present(x,y+vsp+vsp_knockback)
 
 y += vsp+vsp_knockback
 
-hsp *= 0.8
-vsp *= 0.8
+hsp *= 0.84
+vsp *= 0.84
 
 /*
 if move_direction_h != 0 or move_direction_v != 0{
