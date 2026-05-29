@@ -35,6 +35,14 @@ disable_countdown = true
 game_over = false
 time_in_room = 0
 
+rarity_color[0] = c_white
+rarity_color[1] = c_white//$999999//$FFFF00
+rarity_color[2] = $FF7F00
+rarity_color[3] = $00AAFF
+rarity_color[4] = $FF00A9
+rarity_color[5] = $0000FF
+rarity_color[6] = c_black
+
 cam_size_x = 1280;cam_size_y = 720
 camera_set_view_size(view_camera[0],cam_size_x,cam_size_y)
 

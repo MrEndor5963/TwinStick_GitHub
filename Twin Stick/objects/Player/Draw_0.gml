@@ -118,13 +118,14 @@ var_x = draw_origin_x+(96*pon_x)+(sprite_get_xoffset(weapon_id)*pon_x)
 var_y = draw_origin_y+(48*pon_y)-(sprite_get_height(weapon_id)/2)+sprite_get_yoffset(weapon_id)
 draw_sprite_ext(weapon_id,0,var_x,var_y,pon_x,1,0,-1,1)
 
-draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(24*pon_y),weapon_name,draw_color)
+
+draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(24*pon_y),weapon_name,GM.rarity_color[rarity])
 if p_weapon.jam_timer > 0{
-draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(48*pon_y),"Jammed",draw_color)
+draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(48*pon_y),"Jammed",GM.rarity_color[rarity])
 }
 
 if ammo_inmag != -1{
-draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),draw_color)}
+draw_text_with_outline(draw_origin_x+(96*pon_x),draw_origin_y+(72*pon_y),string(ammo_inmag)+"/"+string(ammo_reserve),GM.rarity_color[rarity])}
 
 draw_sprite_ext(portrait_sprite,0,draw_origin_x+(48*pon_x),draw_origin_y+(48*pon_y),portrait_x_scale,1,0,-1,1)
 

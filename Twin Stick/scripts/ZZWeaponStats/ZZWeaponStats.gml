@@ -119,6 +119,7 @@ weapon_id = arg_weapon_id
 
 set_melee_attack(30,7)
 set_gun_ammo(-1,-1,true)
+rarity = 0
 set_bullet_power(s_9x19mmParabellum,4)
 set_gun_handling(0,0,0)
 set_weapon_offset(0,0)
@@ -343,6 +344,7 @@ weapon_id = s_SquareGun;wpn_SquareGun()
 function wpn_Unarmed(){
 weapon_name = "Unarmed"
 cost = 0
+rarity = 0
 if object_index = GM && add_to_list = true{
 //array_push(weapon_list,weapon_id)
 array_push(melee_list,weapon_id)
@@ -378,6 +380,7 @@ held_angle_offset = 70
 function wpn_FireAxe(){
 weapon_name = "Fire Axe"
 cost = 200
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(weapon_list,weapon_id)
 array_push(melee_list,weapon_id)
@@ -419,6 +422,7 @@ weapon_draw_sprite = s_m1911Base
 set_slide_distance(-8)
 weapon_name = "m1911"
 cost = 200
+rarity = 0
 if object_index = GM && add_to_list = true{
 array_push(tier_0_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -443,6 +447,7 @@ function wpn_Taurus92(){
 set_weapon_offset(-25,32)
 weapon_name = "Taurus 92"
 cost = 350
+rarity = 0
 if object_index = GM && add_to_list = true{
 array_push(tier_0_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -465,6 +470,7 @@ function wpn_P320(){
 set_weapon_offset(-2,31)
 weapon_name = "P320"
 cost = 320
+rarity = 0
 if object_index = GM && add_to_list = true{
 array_push(tier_0_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -490,6 +496,7 @@ function wpn_Glock18(){
 set_weapon_offset(-25,18)
 weapon_name = "Glock 18"
 cost = 300
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -515,6 +522,7 @@ function wpn_Alien(){
 set_weapon_offset(-27,26)
 weapon_name = "Alien"
 cost = 7500
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -538,8 +546,9 @@ function wpn_FiveSeven(){
 set_weapon_offset(-5,31)
 weapon_name = "Five Seven"
 cost = 800
+rarity = 1
 if object_index = GM && add_to_list = true{
-array_push(tier_2_gun_list,weapon_id)
+array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(wallbuy_list,weapon_id)
 array_push(handgun_list,weapon_id)
@@ -561,6 +570,7 @@ function wpn_DEagle(){
 set_weapon_offset(-4,31)
 weapon_name = "DEagle"
 cost = 900
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -586,6 +596,7 @@ weapon_draw_sprite = s_PythonBase
 hammer_sprite = s_PythonHammer
 weapon_name = "Python"
 cost = 1700
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -614,6 +625,7 @@ set_weapon_offset(-11,28)
 //hammer_sprite = s_PythonHammer
 weapon_name = "Raging Judge"
 cost = 1000
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -642,6 +654,7 @@ function wpn_SnW500(){
 set_weapon_offset(-14,30)
 weapon_name = "S&W500"
 cost = 900
+rarity = 3
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -668,6 +681,7 @@ function wpn_Zip22(){
 set_weapon_offset(-8,29)
 weapon_name = "Zip 22"
 cost = 22
+rarity = 4
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -696,6 +710,7 @@ function wpn_CZ75Auto(){
 set_weapon_offset(-8,30)
 weapon_name = "CZ75 Auto"
 cost = 400
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -720,6 +735,7 @@ function wpn_Olympia(){
 set_weapon_offset(53,38)
 weapon_name = "Olympia 72"
 cost = 2000
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -748,6 +764,7 @@ weapon_draw_sprite = s_IthacaBase
 pump_sprite = s_IthacaPump
 pump_distance = 20
 cost = 900
+rarity = 2
 if object_index = GM && add_to_list = true{
 array_push(tier_2_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -773,6 +790,7 @@ function wpn_Spaz12(){
 set_weapon_offset(12,23)
 weapon_name = "Spas 12"
 cost = 1200
+rarity = 2
 if object_index = GM && add_to_list = true{
 array_push(tier_2_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -800,6 +818,7 @@ function wpn_Remi870(){
 set_weapon_offset(50,6)
 weapon_name = "Remi 870 Marine"
 cost = 2500
+rarity = 3
 pump_sprite = s_Remi870Pump;pump_distance = 20
 weapon_draw_sprite = s_Remi870Base
 if object_index = GM && add_to_list = true{
@@ -827,6 +846,7 @@ function wpn_Winchester1897(){
 set_weapon_offset(50,16)
 weapon_name = "1897 Trench Gun"
 cost = 1150
+rarity = 3
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -853,6 +873,7 @@ function wpn_KS23(){
 set_weapon_offset(54,22)
 weapon_name = "KS23"
 cost = 2300
+rarity = 5
 pump_sprite = s_KS23Pump;pump_distance = 30
 weapon_draw_sprite = s_KS23Base
 if object_index = GM && add_to_list = true{
@@ -883,6 +904,7 @@ function wpn_AA12(){
 set_weapon_offset(39,19)
 weapon_name = "AA12"
 cost = 3120
+rarity = 5
 if object_index = GM && add_to_list = true{
 array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -907,6 +929,7 @@ function wpn_MP40(){
 set_weapon_offset(10,29)
 weapon_name = "MP40"
 cost = 1440
+rarity = 1
 if object_index = GM && add_to_list = true{
 array_push(tier_1_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -932,6 +955,7 @@ function wpn_Luty(){
 set_weapon_offset(-1,29)
 weapon_name = "Luty"
 cost = 80
+rarity = 2
 if object_index = GM && add_to_list = true{
 array_push(tier_2_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -959,6 +983,7 @@ function wpn_VzSkorpion(){
 set_weapon_offset(-12,16)
 weapon_name = "Vz Škorpion"
 cost = 700
+rarity = 2
 if object_index = GM && add_to_list = true{
 array_push(tier_2_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -985,6 +1010,7 @@ function wpn_Uzi(){
 set_weapon_offset(9,28)
 weapon_name = "Uzi"
 cost = 800
+rarity = 2
 if object_index = GM && add_to_list = true{
 array_push(tier_2_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1007,6 +1033,7 @@ function wpn_PPBison(){
 set_weapon_offset(45,26)
 weapon_name = "PP Bison"
 cost = 2350
+rarity = 2
 if object_index = GM && add_to_list = true{
 array_push(tier_2_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1032,6 +1059,7 @@ function wpn_mp5(){
 set_weapon_offset(21,13)
 weapon_name = "mp5"
 cost = 2000
+rarity = 2
 if object_index = GM && add_to_list = true{
 array_push(tier_2_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1055,6 +1083,7 @@ function wpn_Thompson(){
 set_weapon_offset(35,26)
 weapon_name = "Thompson"
 cost = 3400
+rarity = 3
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1078,6 +1107,7 @@ function wpn_KrissVector(){
 set_weapon_offset(35,26)
 weapon_name = "Vector 45"
 cost = 4800
+rarity = 3
 if object_index = GM && add_to_list = true{
 //array_push(tier_3_gun_list,weapon_id)
 //array_push(weapon_list,weapon_id)
@@ -1100,6 +1130,7 @@ function wpn_PPSh41(){
 set_weapon_offset(50,30)
 weapon_name = "PPSh41"//ППШ-41
 cost = 2950
+rarity = 3
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1126,6 +1157,7 @@ function wpn_spectre(){
 set_weapon_offset(-1,38)
 weapon_name = "spectre"
 cost = 850
+rarity = 5
 if object_index = GM && add_to_list = true{
 array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1148,6 +1180,7 @@ function wpn_AK47(){
 set_weapon_offset(42,12)
 weapon_name = "AK-47";
 cost = 1500
+rarity = 3
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1173,6 +1206,7 @@ description = "Most produced firearm in the world as it's a cheap and simple, ye
 function wpn_Galil(){
 set_weapon_offset(42,12)
 weapon_name = "Galil"
+rarity = 3
 cost = 2800
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
@@ -1197,6 +1231,7 @@ function wpn_AN94(){
 set_weapon_offset(43,12)
 weapon_name = "AN-94"
 cost = 2790
+rarity = 4
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1220,6 +1255,7 @@ function wpn_Xiuhcoatl(){
 set_weapon_offset(24,15)
 weapon_name = "Xiuhcoatl"
 cost = 1450
+rarity = 4
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1242,6 +1278,7 @@ function wpn_ScarH(){
 set_weapon_offset(44,16)
 weapon_name = "Scar H"
 cost = 2900
+rarity = 4
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1266,6 +1303,7 @@ function wpn_M14(){
 set_weapon_offset(43,35)
 weapon_name = "M14"
 cost = 400
+rarity = 4
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1275,7 +1313,7 @@ exit}
 auto = false
 set_gun_ammo(8,4,true)
 set_bullet_power(s_762x51NATO,22)
-set_gun_handling(4,5,9)
+set_gun_handling(8,5,9)
 set_deploy_stats(18,1)
 shoot_delay = 7
 action_type = s_SemiAuto
@@ -1287,6 +1325,7 @@ function wpn_RPD(){
 set_weapon_offset(41,11)
 weapon_name = "RPD"
 cost = 2900
+rarity = 4
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1310,6 +1349,7 @@ function wpn_M60(){
 set_weapon_offset(58,18)
 weapon_name = "M60 Rambo"
 cost = 1500
+rarity = 5
 if object_index = GM && add_to_list = true{
 array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1332,6 +1372,7 @@ function wpn_Lewis(){
 set_weapon_offset(29,19)
 weapon_name = "Lewis"
 cost = 2150
+rarity = 5
 if object_index = GM && add_to_list = true{
 array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1353,6 +1394,7 @@ function wpn_MG42(){
 set_weapon_offset(47,19)
 weapon_name = "MG42 Buzzsaw"
 cost = 3200
+rarity = 5
 if object_index = GM && add_to_list = true{
 array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1376,6 +1418,7 @@ function wpn_Karabiner98k(){
 set_weapon_offset(20,45)
 weapon_name = "Karabiner98k"
 cost = 1000
+rarity = 3
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1400,6 +1443,7 @@ function wpn_SSG08(){
 set_weapon_offset(43,33)
 weapon_name = "SSG-08"
 cost = 750
+rarity = 3
 if object_index = GM && add_to_list = true{
 array_push(tier_3_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1422,6 +1466,7 @@ function wpn_MosinNagat(){
 set_weapon_offset(35,45)
 weapon_name = "Mosin Nagat"
 cost = 400
+rarity = 4
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1447,6 +1492,7 @@ function wpn_AWP(){
 set_weapon_offset(35,45)
 weapon_name = "AWP"
 cost = 4750
+rarity = 4
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1470,6 +1516,7 @@ function wpn_DSR50(){
 set_weapon_offset(29,37)
 weapon_name = "DSR-50"
 cost = 5000
+rarity = 5
 if object_index = GM && add_to_list = true{
 array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1493,6 +1540,7 @@ set_weapon_offset(43,33)
 weapon_name = "GM6 Lynx"
 cost = 14000
 auto = false
+rarity = 5
 if object_index = GM && add_to_list = true{
 array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
@@ -1518,6 +1566,7 @@ function wpn_M79(){
 weapon_id = s_M79
 weapon_name = "M79 Thumper"
 cost = 3000
+rarity = 4
 auto = false
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
@@ -1542,6 +1591,7 @@ function wpn_RPG7(){
 weapon_id = s_RPG7
 weapon_name = "RPG-7"
 cost = 5500
+rarity = 4
 auto = false
 if object_index = GM && add_to_list = true{
 array_push(tier_4_gun_list,weapon_id)
@@ -1570,6 +1620,7 @@ function wpn_SquareGun(){
 weapon_id = s_SquareGun
 weapon_name = "Quad Lazer"
 cost = 6666333325
+rarity = 6
 auto = false
 if object_index = GM && add_to_list = true{
 array_push(tier_5_gun_list,weapon_id)

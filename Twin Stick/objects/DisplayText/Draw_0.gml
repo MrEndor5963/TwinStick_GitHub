@@ -18,7 +18,20 @@ image_alpha = 1
 //draw_text(x,y-2,text_string)
 //draw_text(x,y+2,text_string)
 draw_set_color(c_white)
-draw_text(x+(padding*2),y,text_string)
+
+if rarity = -1{draw_text(x+(padding*2),y,text_string)}
+
+if rarity != -1{
+text_x = x+(padding*2) 
+draw_text(text_x,y,text_part_1)
+text_x += string_width(text_part_1)
+draw_set_color(GM.rarity_color[rarity])
+draw_text(text_x,y,text_part_2)
+text_x += string_width(text_part_2)
+draw_set_color(c_white)
+draw_text(text_x,y,text_part_3)
+
+}
 
 text_gap = font_get_size(f_Main)*1.5
 

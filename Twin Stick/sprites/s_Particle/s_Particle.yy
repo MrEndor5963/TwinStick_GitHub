@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"BSprites",
-    "path":"folders/BSprites.yy",
+    "name":"ZOther",
+    "path":"folders/BSprites/ZOther.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
