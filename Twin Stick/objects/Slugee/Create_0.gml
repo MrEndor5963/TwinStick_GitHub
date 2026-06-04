@@ -4,7 +4,7 @@ if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
 
-hp = 400+((GM.floor_number-1)*250)
+hp = 400
 trail_timer = 1
 create_enemy()
 

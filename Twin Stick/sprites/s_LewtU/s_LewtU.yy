@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Lewt",
-    "path":"folders/BSprites/EnemySprites/Lewt.yy",
+    "path":"folders/BSprites/EnemySprites/UndefinedEnemies/Lewt.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

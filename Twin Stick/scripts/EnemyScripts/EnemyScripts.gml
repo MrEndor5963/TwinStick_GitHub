@@ -7,6 +7,10 @@ set_tileset_collision()
 spawn_timer = 60
 //enemy_weight = 1.00
 
+grv = 0.4
+z = 0;zsp = 0
+floor_y = y
+
 hsp_knockback = 0;vsp_knockback = 0
 hsp = 0;vsp = 0
 move_direction_h = 0
@@ -14,6 +18,7 @@ move_direction_v = 0
 hurt_by_id = -1
 pathfinding_grid = -1
 set_nodes()
+shell_active = false
 }
 
 function draw_enemy(){
@@ -23,6 +28,9 @@ function draw_enemy(){
 depth = -y-(sprite_get_height(sprite_index)/2)
 if hit_stun > 0{
 shader_set(sh_HitFlash)}
+if z != 0{
+draw_sprite_ext(sprite_index,image_index,x,floor_y,image_xscale,image_yscale,image_angle,c_black,0.5)
+}
 draw_self()
 shader_reset()
 
@@ -125,7 +133,10 @@ if hit_stun = 0 {take_damage = true}}
 }
 	
 function enemy_damage_check(){
-hit_stun = 2
+took_damage = true
+if shell_active = true{took_damage = false}
+
+if took_damage = true{hit_stun = 2}
 
 if hurt_by_id.object_index = Bullet{
 particle_spawn_x = hurt_by_id.x + ((hurt_by_id.hspeed/hurt_by_id.speed)*(hurt_by_id.image_xscale*100))
@@ -134,7 +145,7 @@ hurt_by_x = particle_spawn_x
 hurt_by_y = particle_spawn_y
 hurt_by_id.penetration -= 1
 var_damage_number = instance_create_depth(hurt_by_x,hurt_by_y,depth-1,DamageNumber)
-var_damage_number.text_string = hurt_by_id.damage
+var_damage_number.text_string = hurt_by_id.damage*took_damage
 }else{
 particle_spawn_x = x
 particle_spawn_y = y
@@ -156,6 +167,8 @@ hsp_knockback -= hspeed*hurt_by_id.knockback
 vsp_knockback -= vspeed*hurt_by_id.knockback
 speed = 0
 
+if took_damage = true{
+
 hp -= hurt_by_id.damage
 
 if hurt_by_id.player_id != -1{
@@ -164,6 +177,8 @@ with hurt_by_id.player_id{player_point_change(other.var_hit_reward)}
 if hp <= 0{
 var_kill_reward = hurt_by_id.kill_reward
 with hurt_by_id.player_id{player_point_change(other.var_kill_reward)}
+}
+
 }
 
 }

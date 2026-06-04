@@ -78,9 +78,16 @@ array_push(enemy_list,Spitter)
 //array_push(enemy_list,Hellhound)
 }
 if floor_number = 2{
+enemy_list = []
 array_push(enemy_list,StickBlade)
 array_push(enemy_list,BombTosser)
 array_push(enemy_list,Slugee)
+}
+
+if floor_number = 3{
+enemy_list = []
+array_push(enemy_list,ShellRoller)
+array_push(enemy_list,LongHopper)
 }
 
 if floor_number = 4{

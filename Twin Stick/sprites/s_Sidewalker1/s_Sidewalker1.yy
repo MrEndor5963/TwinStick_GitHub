@@ -27,7 +27,7 @@
   "origin":4,
   "parent":{
     "name":"Sidewalker",
-    "path":"folders/BSprites/EnemySprites/Sidewalker.yy",
+    "path":"folders/BSprites/EnemySprites/Tier1Enemies/Sidewalker.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

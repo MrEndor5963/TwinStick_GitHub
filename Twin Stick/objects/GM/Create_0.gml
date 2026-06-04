@@ -56,7 +56,7 @@ floor_door = true
 map_size = 6
 map = ds_grid_create(map_size,map_size)
 draw_map = false
-draw_damage_numbers = true
+draw_damage_numbers = false
 
 pause_alpha = 0
 menu_cursor = 0
@@ -120,6 +120,7 @@ tier_2_gun_list = []
 tier_3_gun_list = []
 tier_4_gun_list = []
 tier_5_gun_list = []
+tier_6_gun_list = []
 
 referece_weapons()
 

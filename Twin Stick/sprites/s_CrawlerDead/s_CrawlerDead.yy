@@ -45,7 +45,7 @@
   "origin":4,
   "parent":{
     "name":"Crawler",
-    "path":"folders/BSprites/EnemySprites/Crawler.yy",
+    "path":"folders/BSprites/EnemySprites/Tier1Enemies/Crawler.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

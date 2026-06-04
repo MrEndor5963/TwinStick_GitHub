@@ -27,7 +27,7 @@
   "origin":4,
   "parent":{
     "name":"Spitter",
-    "path":"folders/BSprites/EnemySprites/Spitter.yy",
+    "path":"folders/BSprites/EnemySprites/Tier1Enemies/Spitter.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

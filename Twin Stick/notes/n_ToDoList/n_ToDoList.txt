@@ -1,8 +1,8 @@
 draw up some enemies or bosses
 
-Optimize buying guns and item code, also a lil misc player code optimization too :)
+Code panic levels into enemies (they move faster the more dead enemies are in a room and move slower the 
+more alive enemiesw are in the room)
 
-fix gam_over and pause menu
 redo guns jamming
 
 Make player vs player gamemode
@@ -19,7 +19,9 @@ Teleporters to shop, boss room, gun shop and 4th room (medbay or other) in spawn
 
 1-4 player balacing (adding more enemies the more players there are)
 
-enemy corpses
+if possible make enemy corpses get split up depending on where they got hit
+
+add enemy habits after a game over
 
 enemy and player spritework/animation(long term)
 

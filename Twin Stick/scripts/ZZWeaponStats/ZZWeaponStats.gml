@@ -1209,7 +1209,7 @@ weapon_name = "Galil"
 rarity = 3
 cost = 2800
 if object_index = GM && add_to_list = true{
-array_push(tier_3_gun_list,weapon_id)
+array_push(tier_4_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(box_list,weapon_id)
 array_push(full_ar_list,weapon_id)
@@ -1327,7 +1327,7 @@ weapon_name = "RPD"
 cost = 2900
 rarity = 4
 if object_index = GM && add_to_list = true{
-array_push(tier_4_gun_list,weapon_id)
+array_push(tier_5_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(wallbuy_list,weapon_id)
 array_push(box_list,weapon_id)
@@ -1348,10 +1348,10 @@ shoot_sfx = sfx_AK47Shoot
 function wpn_M60(){
 set_weapon_offset(58,18)
 weapon_name = "M60 Rambo"
-cost = 1500
+cost = 6000
 rarity = 5
 if object_index = GM && add_to_list = true{
-array_push(tier_5_gun_list,weapon_id)
+array_push(tier_6_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(wallbuy_list,weapon_id)
 array_push(box_list,weapon_id)
@@ -1374,7 +1374,7 @@ weapon_name = "Lewis"
 cost = 2150
 rarity = 5
 if object_index = GM && add_to_list = true{
-array_push(tier_5_gun_list,weapon_id)
+array_push(tier_6_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(box_list,weapon_id)
 array_push(lmg_list,weapon_id)
@@ -1396,7 +1396,7 @@ weapon_name = "MG42 Buzzsaw"
 cost = 3200
 rarity = 5
 if object_index = GM && add_to_list = true{
-array_push(tier_5_gun_list,weapon_id)
+array_push(tier_6_gun_list,weapon_id)
 array_push(weapon_list,weapon_id)
 array_push(wallbuy_list,weapon_id)
 array_push(box_list,weapon_id)

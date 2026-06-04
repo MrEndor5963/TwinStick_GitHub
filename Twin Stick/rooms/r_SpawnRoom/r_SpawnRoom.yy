@@ -28,6 +28,7 @@
     {"name":"inst_24DC83C","path":"rooms/r_SpawnRoom/r_SpawnRoom.yy",},
     {"name":"inst_5330D27D","path":"rooms/r_SpawnRoom/r_SpawnRoom.yy",},
     {"name":"inst_7B8A85CB","path":"rooms/r_SpawnRoom/r_SpawnRoom.yy",},
+    {"name":"inst_437E40F5","path":"rooms/r_SpawnRoom/r_SpawnRoom.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -51,6 +52,7 @@
         {"$GMRInstance":"v4","%Name":"inst_24DC83C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_24DC83C","objectId":{"name":"FloorWeaponSpawner","path":"objects/FloorWeaponSpawner/FloorWeaponSpawner.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":832.0,"y":288.0,},
         {"$GMRInstance":"v4","%Name":"inst_5330D27D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5330D27D","objectId":{"name":"FloorWeaponSpawner","path":"objects/FloorWeaponSpawner/FloorWeaponSpawner.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":512.0,"y":288.0,},
         {"$GMRInstance":"v4","%Name":"inst_7B8A85CB","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7B8A85CB","objectId":{"name":"Teleporter","path":"objects/Teleporter/Teleporter.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":352.0,"y":608.0,},
+        {"$GMRInstance":"v4","%Name":"inst_437E40F5","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_437E40F5","objectId":{"name":"LongHopper","path":"objects/LongHopper/LongHopper.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":480.0,"y":384.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets_1","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_4FADDBB0_6","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_4FADDBB0_6","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"s_HazelPortrait","path":"sprites/s_HazelPortrait/s_HazelPortrait.yy",},"x":219.0,"y":957.0,},

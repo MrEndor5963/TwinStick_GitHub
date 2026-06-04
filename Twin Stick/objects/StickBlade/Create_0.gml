@@ -4,7 +4,7 @@ if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
 
-hp = 2000+((GM.floor_number-1)*60)
+hp = 2000
 move_timer = 1
 create_enemy()
 hsp = 0;vsp = 0
@@ -12,4 +12,4 @@ hsp = 0;vsp = 0
 node_x = x div 48
 node_y = y div 48
 
-blood_color = c_gray
+blood_color = c_white
