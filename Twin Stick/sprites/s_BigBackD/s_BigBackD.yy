@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"BigBack",
-    "path":"folders/BSprites/EnemySprites/UndefinedEnemies/BigBack.yy",
+    "path":"folders/BSprites/EnemySprites/Tier5Enemies/BigBack.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

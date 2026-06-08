@@ -4,7 +4,7 @@ if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
 
-hp = 1500
+hp = 2000
 move_timer = 1
 create_enemy()
 hsp = 0;vsp = 0
