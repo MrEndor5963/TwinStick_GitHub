@@ -73,7 +73,6 @@ enemy_list = []
 array_push(enemy_list,Crawler)
 array_push(enemy_list,SideWalker)
 array_push(enemy_list,Spitter)
-array_push(enemy_list,AcidWalker)
 //array_push(enemy_list,Lewt)
 //array_push(enemy_list,Wizard)
 //array_push(enemy_list,Hellhound)
@@ -93,8 +92,15 @@ array_push(enemy_list,Charger)
 }
 
 if floor_number = 4{
+array_push(enemy_list,SpikeFloat)
+array_push(enemy_list,LongHopper)
+array_push(enemy_list,Charger)
+}
+
+if floor_number = 5{
 enemy_list = []
 array_push(enemy_list,Teleshooter)
+array_push(enemy_list,LazerMouth)
 array_push(enemy_list,BigBack)
 }
 

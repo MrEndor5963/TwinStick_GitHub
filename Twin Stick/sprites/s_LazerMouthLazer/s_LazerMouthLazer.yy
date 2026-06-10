@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":10,
+  "height":20,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"6ed1a950-1ffe-40ab-aa61-37686b334a36","blendMode":0,"displayName":"default","isLocked":false,"name":"6ed1a950-1ffe-40ab-aa61-37686b334a36","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -45,7 +45,7 @@
   "origin":3,
   "parent":{
     "name":"LazerMouth",
-    "path":"folders/BSprites/EnemySprites/Tier3Enemies/LazerMouth.yy",
+    "path":"folders/BSprites/EnemySprites/Tier5Enemies/LazerMouth.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -95,7 +95,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":5,
+    "yorigin":10,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

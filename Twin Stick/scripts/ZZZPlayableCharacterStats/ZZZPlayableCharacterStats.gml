@@ -19,7 +19,7 @@ character_Christos()
 
 function character_Hazel(){
 country = "Brazil"
-hp = 4;hp_max = 4
+hp = 12;hp_max = 12
 starting_weapon = s_Taurus92
 money = 1000
 mov_spd = 12

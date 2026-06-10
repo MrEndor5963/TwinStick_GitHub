@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"LazerMouth",
+  "%Name":"SpikeFloat",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"LazerMouth",
+  "name":"SpikeFloat",
   "overriddenProperties":[],
   "parent":{
-    "name":"Floor5Enemies",
-    "path":"folders/AObjects/EnemyObjects/Floor5Enemies.yy",
+    "name":"Floor4Enemies",
+    "path":"folders/AObjects/EnemyObjects/Floor4Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_LazerMouth",
-    "path":"sprites/s_LazerMouth/s_LazerMouth.yy",
+    "name":"s_SpikeFloat",
+    "path":"sprites/s_SpikeFloat/s_SpikeFloat.yy",
   },
   "spriteMaskId":null,
   "visible":true,

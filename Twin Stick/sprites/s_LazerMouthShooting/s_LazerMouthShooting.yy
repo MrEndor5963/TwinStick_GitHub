@@ -29,7 +29,7 @@
   "origin":4,
   "parent":{
     "name":"LazerMouth",
-    "path":"folders/BSprites/EnemySprites/Tier3Enemies/LazerMouth.yy",
+    "path":"folders/BSprites/EnemySprites/Tier5Enemies/LazerMouth.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -14,10 +14,15 @@ ASP(0)
 
 Steam header
 
+During a Class 5 Containment Breach, report to the nearest evacuation teleporter.
+You have 60 minutes to evacuate before the onsite nuclear reactor is activated.
+Anyone lacking uniform or proper identification is to be left for dead.
+Lethal force is authorized against any and all alien lifeform.
 
 Left for dead in an Alien Breeding/Research Facility on the moon,
 you and your fellow test subjects must shoot and slash through the hordes of alien creatures infesting every room from floor to celling.
 Grab the nearest lethal weapon and whatever items you find and escape before the whole facility is nuked
+
 
 //But be quick, you only have 152 minutes to teleport back to earth before the whole facility is nuked
 

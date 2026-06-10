@@ -8,7 +8,7 @@ spawn_timer -= 1;exit
 if hit_stun > 0{hit_stun -= 1}
 
 
-if shoot_timer > 2 or shoot_timer < 0{get_move_directions()}
+get_move_directions()
 
 //if shoot_timer > 0// && player_target != -1 && collision_line(x,y,player_target.x,player_target.y,[Collision,tiles],false,false) = false
 //{shoot_timer -= 1;if shoot_timer = 0{image_index = 0}}
@@ -41,11 +41,12 @@ if sprite_index = s_LazerMouthShooting && shoot_timer = 0{
 _bullet = instance_create_depth(x,y,depth-1,EnemyBullet)
 _bullet.sprite_index = s_LazerMouthLazer
 _bullet.is_lazer = true
-_bullet.image_angle = point_direction(0,0,move_direction_h,move_direction_v)
+_bullet.image_angle = point_direction(x,y,Player.x,Player.y)
 _bullet.creator = id
+_bullet.spawn_timer = 60
 }
 
-if sprite_index = s_LazerMouthShooting && shoot_timer = -60{
+if sprite_index = s_LazerMouthShooting && shoot_timer = -180{
 sprite_index = s_LazerMouthOpening
 image_index = image_number-1
 image_speed = -1
