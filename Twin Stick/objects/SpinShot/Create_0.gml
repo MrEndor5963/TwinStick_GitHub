@@ -4,17 +4,17 @@ if array_contains(GM.map_visited,x_plus_y(home_x,home_y)){
 instance_destroy();exit
 }
 
-hp = 5000
+hp = 2400
 move_timer = 1
-shoot_timer = 60
-hover_timer = 0
 create_enemy()
 hsp = 0;vsp = 0
 
-blood_color = c_yellow
+blood_color = c_yellow 
 image_xscale = irandom_range(-1,1)
 while image_xscale = 0{image_xscale = irandom_range(-1,1)}
 
 move_direction_h = 0
 move_direction_v = 0
-grv = 0.5
+grv = 0.3
+shots_left = 0
+hover_timer = 0

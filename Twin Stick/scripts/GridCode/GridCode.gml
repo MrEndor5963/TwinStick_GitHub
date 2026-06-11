@@ -154,7 +154,7 @@ i += 1
 if 
 collision_line(node_x*64,node_y*64,player_target.node_x*64,player_target.node_y*64,Collision,false,false) = noone{
 
-direction = point_direction(x,y+sprite_get_yoffset(sprite_index),player_target.x,player_target.y+sprite_get_yoffset(player_target.sprite_index))
+direction = point_direction(x,floor_y+sprite_get_yoffset(sprite_index),player_target.x,player_target.y+sprite_get_yoffset(player_target.sprite_index))
 speed = 1
 //if abs(hspeed) > 0.01{move_direction_h = hspeed}else{move_direction_h = 0}
 //if abs(vspeed) > 0.01{move_direction_v = vspeed}else{move_direction_v = 0}
@@ -169,7 +169,7 @@ astar(player_target.pathfinding_grid,node_x,node_y,player_target.node_x,player_t
 //grid_yoffset = (sprite_get_yoffset(sprite_index)*(move_path_y[1]-node_y))
 
 grid_x = x
-grid_y = y+sprite_get_yoffset(sprite_index)
+grid_y = floor_y+sprite_get_yoffset(sprite_index)
 
 grid_goal_x = (move_path_x[1]*64)+32
 grid_goal_y = (move_path_y[1]*64)+32

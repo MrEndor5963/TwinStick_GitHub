@@ -8,6 +8,7 @@ image_xscale -= 0.1
 if !instance_exists(creator){instance_destroy();exit}
 var _dir = point_direction(x, y, Player.x, Player.y);
 var _diff = angle_difference(_dir, image_angle);
+_diff = clamp(_diff,-25,25)
 image_angle += _diff * 0.05;
 x = creator.x;y = creator.y
 depth = creator.depth-1

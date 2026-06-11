@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Tier4Enemies",
-    "path":"folders/BSprites/EnemySprites/Tier4Enemies.yy",
+    "name":"SpikeFloat",
+    "path":"folders/BSprites/EnemySprites/Tier4Enemies/SpikeFloat.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

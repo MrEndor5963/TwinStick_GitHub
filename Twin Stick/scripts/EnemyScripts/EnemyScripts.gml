@@ -31,7 +31,9 @@ shader_set(sh_HitFlash)}
 if z != 0{
 draw_sprite_ext(sprite_index,image_index,x,floor_y,image_xscale,image_yscale,image_angle,c_black,0.5)
 }
+
 draw_self()
+if sprite_index = s_SpinShotAir{draw_sprite(s_SpinShotEye,0,x,y)}
 shader_reset()
 
 if hp <= 0{

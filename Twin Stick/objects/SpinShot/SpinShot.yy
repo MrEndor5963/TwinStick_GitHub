@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"Lewt",
+  "%Name":"SpinShot",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Lewt",
+  "name":"SpinShot",
   "overriddenProperties":[],
   "parent":{
-    "name":"EnemyObjects",
-    "path":"folders/AObjects/EnemyObjects.yy",
+    "name":"Floor4Enemies",
+    "path":"folders/AObjects/EnemyObjects/Floor4Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_LewtD",
-    "path":"sprites/s_LewtD/s_LewtD.yy",
+    "name":"s_SpinShotWalk",
+    "path":"sprites/s_SpinShotWalk/s_SpinShotWalk.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -14,9 +14,9 @@ ASP(0)
 
 Steam header
 
-During a Class 5 Containment Breach, report to the nearest evacuation teleporter.
+WARNING Level 5 Containment Breach detected.
 You have 60 minutes to evacuate before the onsite nuclear reactor is activated.
-Anyone lacking uniform or proper identification is to be left for dead.
+Anyone lacking proper identification are to be left for dead.
 Lethal force is authorized against any and all alien lifeform.
 
 Left for dead in an Alien Breeding/Research Facility on the moon,
