@@ -18,3 +18,5 @@ move_direction_v = 0
 grv = 0.3
 shots_left = 0
 hover_timer = 0
+attack_timer = 120
+shoot_timer = 60

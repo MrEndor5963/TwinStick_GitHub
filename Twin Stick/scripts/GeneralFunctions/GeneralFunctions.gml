@@ -11,7 +11,7 @@ function set_tileset_collision(){
 }
 
 function collision_present(x_place,y_place){
-if place_meeting(x_place,y_place,[Collision]){return true}
+if place_meeting(x_place,y_place,Collision){return true}
 return false
 }
 

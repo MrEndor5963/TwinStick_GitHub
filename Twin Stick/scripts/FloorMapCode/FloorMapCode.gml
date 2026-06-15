@@ -92,16 +92,16 @@ array_push(enemy_list,Charger)
 }
 
 if floor_number = 4{
+enemy_list = []
 array_push(enemy_list,SpikeFloat)
-array_push(enemy_list,LongHopper)
-array_push(enemy_list,Charger)
+array_push(enemy_list,SpinShot)
 }
 
 if floor_number = 5{
 enemy_list = []
 array_push(enemy_list,Teleshooter)
 array_push(enemy_list,LazerMouth)
-array_push(enemy_list,BigBack)
+//array_push(enemy_list,BigBack)
 }
 
 

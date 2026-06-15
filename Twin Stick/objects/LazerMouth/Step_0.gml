@@ -16,9 +16,9 @@ get_move_directions()
 move_timer -= 1
 
 if move_timer = 0{
-	while abs(hsp)+ abs(vsp) < 4{
-	hsp = irandom_range(-3,3)
-	vsp = irandom_range(-3,3)}
+	while abs(hsp)+ abs(vsp) < 3{
+	hsp = irandom_range(-2,2)
+	vsp = irandom_range(-2,2)}
 }
 
 shoot_timer -= 1
