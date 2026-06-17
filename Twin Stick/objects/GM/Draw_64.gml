@@ -1,4 +1,5 @@
 // Activating the shader
+
 if glitch_intensity > 0{
 bktglitch_activate(1280,720);
 
